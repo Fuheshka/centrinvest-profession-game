@@ -14,7 +14,8 @@ namespace Studio.UI.Mvp
         public ScrollRect feedScroll;
         public TMPro.TMP_Text header;
         public Image headerAvatar;
-        public Sprite bossAvatar;
+        public Sprite bossAvatar, playerAvatar;
+        public Transform linePrefab, avatarPrefab;   // a message line (avatar + bubble) and the round avatar placed beside a bubble
 
         readonly Dictionary<string, int> read = new Dictionary<string, int>();   // messages of each chat the player has seen
         string open = LevelState.Boss;
@@ -55,13 +56,20 @@ namespace Studio.UI.Mvp
             foreach (var m in s.chat)
             {
                 if (m.chatId != open) continue;
-                var row = Instantiate(messagePrefab, feed);
+                var line = Instantiate(linePrefab, feed);
+                bool mine = m.kind == "me";
+                line.GetComponent<HorizontalLayoutGroup>().childAlignment = mine ? TextAnchor.UpperRight : TextAnchor.UpperLeft;
+                if (!mine) PutAvatar(line, AvatarOf(m.chatId));
+                var row = Instantiate(messagePrefab, line);
+                var le = row.GetComponent<LayoutElement>() ?? row.gameObject.AddComponent<LayoutElement>();
+                le.preferredWidth = Mathf.Clamp(row.title.GetPreferredValues(m.text, 820, 0).x + 64, 260, 880);   // a bubble hugs its text
+                if (mine) PutAvatar(line, playerAvatar);
                 row.Set(m.text, "день " + m.day);
                 row.title.font = row.subtitle.font;   // message text is body text, not a heading
-                row.background.color = m.kind == "file" ? Palette.Cream : m.kind == "review" ? Palette.Yellow : Palette.Light;
+                row.background.color = m.kind == "file" ? Palette.Cream : m.kind == "review" ? Palette.Yellow : Palette.Hex("FBF8EA");
                 if (m.kind == "file") FixButton(row, m.refId);
                 else if (m.kind == "event") EventButtons(row, m);
-                else if (m.kind == "me") { row.background.color = Palette.Cream; row.title.alignment = row.subtitle.alignment = TMPro.TextAlignmentOptions.TopRight; row.Button1(null, false, null); }
+                else if (m.kind == "me") { row.background.color = Palette.Hex("CFE8B8"); row.title.alignment = row.subtitle.alignment = TMPro.TextAlignmentOptions.TopRight; row.Button1(null, false, null); }
                 else row.Button1(null, false, null);
             }
             Canvas.ForceUpdateCanvases();
@@ -75,6 +83,10 @@ namespace Studio.UI.Mvp
             if (img == null || sp == null) return;
             img.sprite = sp; img.color = Color.white;
         }
+
+        void PutAvatar(Transform line, Sprite face) => Instantiate(avatarPrefab, line).GetChild(0).GetComponent<Image>().sprite = face;
+
+        Sprite AvatarOf(string id) => id == LevelState.Boss ? bossAvatar : (game.L.Candidate(id)?.character ?? game.L.Candidate(id)?.portrait);
 
         bool NeedsButtons() => false;
 

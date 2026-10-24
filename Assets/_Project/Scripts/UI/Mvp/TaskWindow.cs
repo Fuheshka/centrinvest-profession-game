@@ -9,11 +9,13 @@ namespace Studio.UI.Mvp
     public class TaskWindow : MonoBehaviour
     {
         public GameLoop game;
-        public Transform list;
-        public RowView rowPrefab;
+        public Transform list, teamGrid, slots;
+        public TaskRowView rowPrefab;
+        public TeamMemberView memberPrefab;
+        public Image slotPrefab;
+        public Sprite fileDesign, fileMechanics, fileSound;
         public Button build;
-        public TMP_Text buildReason, summary;
-        public RowView[] team = new RowView[4];
+        public TMP_Text buildReason, filesLabel;
         float redrawTimer;
 
         void Awake()
@@ -33,6 +35,9 @@ namespace Studio.UI.Mvp
             Redraw();
         }
 
+        static readonly Color Pink = Palette.Hex("F4B9B2"), Purple = Palette.Hex("CBC6F2"), Gold = Palette.Hex("F2DC8A");
+        static readonly Color Blue = Palette.Hex("D5E6F7"), Green = Palette.Hex("C7E8B0"), Grey = Palette.Hex("E2DFD0"), Orange = Palette.Hex("F7D9B0");
+
         void Redraw()
         {
             if (game.S == null) return;
@@ -40,25 +45,48 @@ namespace Studio.UI.Mvp
             for (int i = 0; i < s.tasks.Count; i++)
             {
                 var t = s.tasks[i];
-                var row = RowView.At(list, rowPrefab, i);
+                var row = TaskRowView.At(list, rowPrefab, i);
                 var st = WorkSim.Status(s, l, t.id, out var why);
                 var who = t.assigneeId == null ? null : l.Candidate(t.assigneeId);
-                row.Set(Names.Of(t.d) + " · " + t.title,
-                        "Трудность " + t.tier + " (нужно энергии " + l.tuning.TierEnergy(t.tier) + ") · " + StatusText(s, l, t, st, why),
-                        Mathf.RoundToInt(100 * t.progress / t.effort) + " %");
-                row.Progress(t.done ? 1 : t.progress / t.effort);
-                row.background.color = t.done ? Palette.Dim : st == WorkStatus.Working ? Palette.Olive : Palette.Mustard;
+                Color chipColor = t.d == Discipline.Design ? Pink : t.d == Discipline.Mechanics ? Purple : Gold;
+                Color stColor = st == WorkStatus.Done ? Green : st == WorkStatus.Working ? Blue : st == WorkStatus.Waiting ? Orange : Grey;
+                row.Set(i + 1, t.title, Names.Of(t.d), chipColor, who?.character, who == null ? "Не назначено" : who.name, who == null ? "" : Names.Of(who.d),
+                        StatusText(s, l, t, st, why), stColor, t.done ? 1 : t.progress / t.effort, t.done);
                 string id = t.id;
-                row.Button1(t.done ? null : who == null ? "Назначить" : who.name + " · сменить", !t.done, () => { CycleAssignee(id); });
+                bool open = !t.done;
+                row.assign.gameObject.SetActive(open);
+                row.assignLabel.text = who == null ? "Назначить" : "Сменить";
+                row.assign.onClick.RemoveAllListeners();
+                row.assign.onClick.AddListener(() => CycleAssignee(id));
                 int up = WorkSim.HigherSlot(s, id);
-                row.Button2(up < 0 ? null : "Выше", true, () => { WorkSim.SetPriority(s, id, up); game.Commit(); Redraw(); });
+                row.up.gameObject.SetActive(open && up >= 0);
+                row.up.onClick.RemoveAllListeners();
+                row.up.onClick.AddListener(() => { WorkSim.SetPriority(s, id, up); game.Commit(); Redraw(); });
+            }
+
+            for (int i = 0; i < l.tuning.teamLimit; i++)
+            {
+                var card = TeamMemberView.At(teamGrid, memberPrefab, i);
+                if (i >= s.staff.Count) { card.SetEmpty(); continue; }
+                var e = s.staff[i]; var c = l.Candidate(e.id);
+                card.Set(c.character, c.name, Names.Of(c.d), e.energy, e.currentTaskId == null ? "Свободен(на)" : "Работает");
+            }
+
+            int done = s.tasks.FindAll(x => x.done).Count;
+            filesLabel.text = "Файлы для сборки: " + done + " / " + s.tasks.Count;
+            for (int i = 0; i < s.tasks.Count; i++)
+            {
+                while (slots.childCount <= i) Instantiate(slotPrefab, slots);
+                var slot = slots.GetChild(i).GetComponent<Image>();
+                var t = s.tasks[i];
+                var ic = slot.transform.GetChild(0).GetComponent<Image>();
+                ic.sprite = t.d == Discipline.Design ? fileDesign : t.d == Discipline.Mechanics ? fileMechanics : fileSound;
+                ic.gameObject.SetActive(t.done);
+                slot.color = t.done ? Palette.Primary : Palette.Hex("3A2A20");
             }
             bool ok = Review.CanBuild(s, l, out var reason);
             build.interactable = ok;
-            buildReason.text = ok ? "Все файлы готовы – можно собирать" : reason ?? "";
-            TeamCards.Fill(game, team);
-            int done = s.tasks.FindAll(x => x.done).Count;
-            summary.text = "Задачи\n" + done + " из " + s.tasks.Count + "\n\nСборок\n" + s.builds.Count;
+            buildReason.text = ok ? "Все файлы готовы – можно собирать." : reason ?? "";
         }
 
         static string StatusText(LevelState s, LevelSO l, TaskState t, WorkStatus st, WaitReason why)
@@ -67,11 +95,9 @@ namespace Studio.UI.Mvp
             {
                 case WorkStatus.Done: return "готово";
                 case WorkStatus.Working: return "в работе";
-                case WorkStatus.Queued: return why == WaitReason.NotFirst ? "в очереди" : "ждёт начала дня";
+                case WorkStatus.Queued: return why == WaitReason.NotFirst ? "в очереди" : "ждёт дня";
                 case WorkStatus.Waiting:
-                    if (why == WaitReason.NoBudget) return "нет денег на день";
-                    var e = s.Employee(t.assigneeId);
-                    return "устал(а): нужно " + l.tuning.TierEnergy(t.tier) + ", есть " + Mathf.RoundToInt(e.energy);
+                    return why == WaitReason.NoBudget ? "нет денег" : "ждёт сил";
                 default: return "нет исполнителя";
             }
         }

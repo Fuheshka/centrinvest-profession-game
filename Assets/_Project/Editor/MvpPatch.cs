@@ -52,14 +52,6 @@ public static class MvpPatch
             if (p.Contains("/Left/Card/") || p.Contains("/TotalsCard/")) Center(t, TextAlignmentOptions.Top);
             else if (p.EndsWith("/Reason") || p.EndsWith("/Modal/Panel/Title") || p.EndsWith("/Modal/Panel/Body")) Center(t, TextAlignmentOptions.Top);
         }
-        foreach (var w in new[] { root.GetComponentInChildren<TaskWindow>(true).team })
-            foreach (var card in w)
-            {
-                Center(card.title, TextAlignmentOptions.Center);
-                Center(card.subtitle, TextAlignmentOptions.Center);
-                var vl = card.title.transform.parent.GetComponent<VerticalLayoutGroup>();
-                if (vl) vl.childAlignment = TextAnchor.MiddleCenter;
-            }
 
         PrefabUtility.SaveAsPrefabAsset(root, Path);
         PrefabUtility.UnloadPrefabContents(root);

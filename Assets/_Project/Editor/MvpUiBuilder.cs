@@ -388,11 +388,7 @@ public static class MvpUiBuilder
 
         var tasks = Node("TaskWindow", body); Stretch(tasks);
         var tw = tasks.gameObject.AddComponent<TaskWindow>(); tw.game = game;
-        tw.list = ThreeColumns(tasks, "Задачи", "Задачи", "", rowLight, tw.team, out tw.build, out tw.summary);
-        tw.build.GetComponentInChildren<TMP_Text>().text = "Собрать игру";
-        tw.rowPrefab = rowOlive;
-        tw.buildReason = Txt(tasks, "BuildReason", "", 22, Palette.Ink);
-        Place(tw.buildReason.rectTransform, new Vector2(0, 0), new Vector2(0, 0), new Vector2(330, 10), new Vector2(1380, 60));
+        // task window content is built by Editor/TaskKit.cs
 
         top.windows = new[] { chat.gameObject, dash.gameObject, hire.gameObject, tasks.gameObject };
         modalRoot.SetAsLastSibling();
