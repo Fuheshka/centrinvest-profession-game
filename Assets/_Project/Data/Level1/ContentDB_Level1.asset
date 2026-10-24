@@ -120,5 +120,5 @@ MonoBehaviour:
   - a: "сложный"
     b: "детский"
   startBudget: 500000
-  deadline: 15
+  deadline: 18
   releaseStartDay: 13
