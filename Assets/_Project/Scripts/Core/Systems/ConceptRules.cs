@@ -8,6 +8,13 @@ namespace Studio.Core
     public static class ConceptRules
     {
         static bool Editable(LevelState s) => s.stage == LevelStage.Concept && !s.concept.approved;
+        // After a negative review the parameters (not blocks or links) may be changed: the requirements of the brief
+        // cannot be met by fixing files alone.
+        public static bool CanRework(LevelState s) =>
+            s.stage == LevelStage.Production && s.builds.Count > 0 && !s.builds[s.builds.Count - 1].passed;
+
+        public static string Signature(LevelState s) => string.Join(",", s.concept.blocks.ConvertAll(b => b.paramId ?? "-"));
+
         static Block Find(LevelState s, string id) => s.concept.blocks.Find(b => b.id == id);
 
         public static string Place(LevelState s, LevelSO level, BlockType type, float x, float y)
@@ -22,7 +29,7 @@ namespace Studio.Core
         {
             var b = Find(s, blockId);
             var p = level.Param(paramId);
-            if (!Editable(s) || b == null || p == null || p.type != b.type) return false;
+            if (!(Editable(s) || CanRework(s)) || b == null || p == null || p.type != b.type) return false;
             b.paramId = paramId;
             return true;
         }

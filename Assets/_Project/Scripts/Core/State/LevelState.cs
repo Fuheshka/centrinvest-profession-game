@@ -57,6 +57,7 @@ namespace Studio.Core
     public class BuildRecord
     {
         public int number, day;
+        public string conceptSig;   // parameters of the concept at build time: changing them allows a rebuild
         public List<BuiltFile> files = new List<BuiltFile>();
         public int[] scores = new int[3];
         public int[] concept = new int[3];

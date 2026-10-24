@@ -89,6 +89,7 @@ namespace Studio.UI.Mvp
                     string fid = f.id;
                     opts.Add(("Исправить: " + f.title + " (" + L.Candidate(f.authorId).name + ", " + Mathf.RoundToInt(f.quality) + ")", () => FixPicker.Open(this, fid)));
                 }
+            if (r.unmetRequirements.Count > 0) opts.Insert(0, ("Пересмотреть концепт", () => FindAnyObjectByType<TopBarMvp>()?.Show(1)));
             opts.Add(("Закрыть", null));
             review.Show("Отзыв заказчика", r, L, opts.ToArray());
         }

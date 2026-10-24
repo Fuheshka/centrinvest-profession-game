@@ -13,7 +13,7 @@ public static class DebugState
         var g = Object.FindFirstObjectByType<GameLoop>();
         if (g == null || !Application.isPlaying) { Debug.LogWarning("Debug state: needs Play mode in Game."); return; }
         var s = g.S; var l = g.L;
-        string[] ps = { "platformer", "teen", "space", "pixel", "gravity", "phone" };
+        string[] ps = { "platformer", "adult", "space", "pixel", "gravity", "pc" };   // wrong audience and platform on purpose: a negative review
         var types = (BlockType[])System.Enum.GetValues(typeof(BlockType));
         string prev = null;
         for (int i = 0; i < types.Length; i++)
@@ -32,5 +32,17 @@ public static class DebugState
         }
         WorkSim.Tick(s, l, 90);
         g.Commit();
+    }
+
+    [MenuItem("Tools/UI/Debug: negative review")]
+    public static void NegativeReview()
+    {
+        Production();
+        var g = Object.FindFirstObjectByType<GameLoop>(); var s = g.S;
+        foreach (var t in s.tasks) { t.done = true; t.progress = t.effort; }
+        foreach (var f in s.files) f.quality = 70;
+        var r = Review.Build(s, g.L);
+        g.Commit();
+        if (r != null) g.ShowReview(r);
     }
 }

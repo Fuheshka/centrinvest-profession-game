@@ -18,20 +18,20 @@ namespace Studio.Core
             var last = Last(s);
             if (last != null)
             {
-                bool changed = false;
+                bool changed = last.conceptSig != ConceptRules.Signature(s);
                 foreach (var f in s.files)
                 {
                     var b = last.files.Find(x => x.fileId == f.id);
                     if (b == null || b.revision != f.revision) changed = true;
                 }
-                if (!changed) { reason = "Файлы не менялись: пересборка ничего не даст"; return false; }
+                if (!changed) { reason = "Ничего не менялось: поменяй файл или параметры концепта"; return false; }
             }
             return true;
         }
 
         public static BuildRecord Score(LevelState s, LevelSO level)
         {
-            var r = new BuildRecord { number = s.builds.Count + 1, day = s.day };
+            var r = new BuildRecord { number = s.builds.Count + 1, day = s.day, conceptSig = ConceptRules.Signature(s) };
             var concept = ConceptRules.Totals(s, level);
             var sum = new float[3]; var weight = new float[3];
             foreach (var f in s.files)
@@ -79,7 +79,7 @@ namespace Studio.Core
             string text = "Сборка " + r.number + ": оценка " + r.overall + ". Звук " + r.scores[2] + ", дизайн " + r.scores[0] + ", механики " + r.scores[1] + ".";
             if (r.unmetRequirements.Count > 0) text += " Не выполнено по ТЗ: " + string.Join("; ", r.unmetRequirements) + ".";
             text += r.passed ? " " + level.Text("passed", "Заказчик доволен, игра принята!")
-                             : " " + level.Text("rework", "Ниже порога " + level.passScore + ". Отдай слабый файл на исправление.");
+                             : " " + level.Text("rework", "Ниже порога " + level.passScore + ". Сверь концепт с ТЗ и доработай слабый файл.");
             return text;
         }
 
@@ -96,7 +96,7 @@ namespace Studio.Core
                 "Звук: " + Band(level, "remark_sound", r.scores[2], "музыка и эффекты на месте.", "звук есть, но не запоминается.", "звук слабый, местами раздражает."),
             };
             foreach (var u in r.unmetRequirements) lines.Add("Не по ТЗ – " + u + ".");
-            lines.Add(r.passed ? level.Text("passed", "Заказчик доволен, игра принята!") : level.Text("rework", "Ниже порога " + level.passScore + ". Отдай слабый файл на исправление."));
+            lines.Add(r.passed ? level.Text("passed", "Заказчик доволен, игра принята!") : level.Text("rework", "Ниже порога " + level.passScore + ". Сверь концепт с ТЗ и доработай слабый файл."));
             return string.Join("\n", lines);
         }
 

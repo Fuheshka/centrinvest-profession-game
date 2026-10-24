@@ -45,8 +45,8 @@ namespace Studio.UI.Mvp
 
         public void Clicked(Block b)
         {
-            if (game.S.concept.approved) return;
-            if (linking)
+            if (game.S.concept.approved && !ConceptRules.CanRework(game.S)) return;
+            if (linking && !game.S.concept.approved)
             {
                 if (linkFrom == null) linkFrom = b.id;
                 else if (linkFrom == b.id) linkFrom = null;
@@ -62,7 +62,7 @@ namespace Studio.UI.Mvp
             var opts = new List<(string, System.Action, int)>();
             foreach (var p in game.L.parameters)
                 if (p.type == b.type) { var pid = p.id; opts.Add((p.title, () => { ConceptRules.SetParam(game.S, game.L, b.id, pid); game.Commit(); Redraw(); }, b.paramId == pid ? 1 : 0)); }
-            opts.Add(("Удалить блок", () => { ConceptRules.Remove(game.S, b.id); game.Commit(); Redraw(); }, 2));
+            if (!game.S.concept.approved) opts.Add(("Удалить блок", () => { ConceptRules.Remove(game.S, b.id); game.Commit(); Redraw(); }, 2));
             popup.Show((RectTransform)views[b.id].transform, Names.Of(b.type), opts.ToArray());
         }
 
@@ -129,7 +129,7 @@ namespace Studio.UI.Mvp
             totals.text = "Итог: Дизайн " + Sign(t[0] * l.tuning.conceptStep) + " · Механики " + Sign(t[1] * l.tuning.conceptStep) + " · Звук " + Sign(t[2] * l.tuning.conceptStep);
             bool ok = ConceptRules.CanApprove(s, l, out var why);
             approve.interactable = ok;
-            reason.text = s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
+            reason.text = ConceptRules.CanRework(s) ? "Концепт можно пересмотреть: поменяй параметры и пересобери игру" : s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
             string count = " " + s.concept.links.Count + "/" + ConceptRules.MaxLinks;
             mode.text = linking ? (linkFrom == null ? "Выбери первый блок" : "Выбери второй блок") + count : "Связать блоки" + count;
             tagLayer.SetAsLastSibling();
