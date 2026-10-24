@@ -34,7 +34,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29cee22e7c64452db360179c9c54fa9d, type: 2}
   - {fileID: 11400000, guid: b557c408c7d04148bdd5b2a5bbea291a, type: 2}
   - {fileID: 11400000, guid: 0a88a879744e47cc9b898a39a9c4dd93, type: 2}
-  quotes: []
+  - {fileID: 11400000, guid: b311f7b7526b467797f94c5f3236bbe1, type: 2}
+  - {fileID: 11400000, guid: f60d2f70810242d39bf3cec1d21b2d7f, type: 2}
+  - {fileID: 11400000, guid: ac1d0e02e9e7402280f90d8230404b3e, type: 2}
+  - {fileID: 11400000, guid: 5fcb6c8bb061457ebee03847d43c40f0, type: 2}
+  - {fileID: 11400000, guid: c9db0f7e07ce484c8afb900b25a1f545, type: 2}
+  quotes:
+  - {fileID: 11400000, guid: 739ad3c3a98247a48a0cc6ef95d97cfe, type: 2}
+  - {fileID: 11400000, guid: df2dd4b0021443eb9c1cffce29defc22, type: 2}
+  - {fileID: 11400000, guid: 3d83c91745d64813bdc605c5d9bc7242, type: 2}
+  - {fileID: 11400000, guid: fa4fa1a0042b4b2284af61bccddba40b, type: 2}
+  - {fileID: 11400000, guid: f2383b40a3c8437aa46801c1641e690e, type: 2}
+  - {fileID: 11400000, guid: 284c598b0cae4e98bd5a63ae95f8fbed, type: 2}
+  - {fileID: 11400000, guid: 08a79196673745daad60ccfff17a4043, type: 2}
+  - {fileID: 11400000, guid: 06420dfc2aeb4ad38f4fd0680c9abbad, type: 2}
   tagConflicts: []
   startBudget: 60000
   deadline: 15

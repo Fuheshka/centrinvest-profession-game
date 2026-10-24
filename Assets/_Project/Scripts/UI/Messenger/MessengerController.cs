@@ -72,6 +72,9 @@ namespace Studio.UI
             RefreshAll();
         }
 
+        // Called by the Versions tab after it changes the state (boss reply, reopen).
+        public void Refresh() => RefreshAll();
+
         void RefreshAll()
         {
             if (topBar != null) topBar.Refresh(State);
