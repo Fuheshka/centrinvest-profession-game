@@ -44,8 +44,13 @@ VersionRecord  : number, day, axes int[4], approved, quoteIds (List<string>), bl
 // Системы (чистый C#)
 DecisionResolver.CanAfford(GameState, OptionSO) -> bool
 DecisionResolver.Apply(GameState, MessageSO, OptionSO, ContentDB) -> DecisionRecord
-BoardRules.Thread(CardSO a, CardSO b, ContentDB, BoardState) -> ThreadKind
+BoardRules.Place(GameState, CardSO) / Remove(GameState, Slot)       // замена в слоте стирает связи старой карточки
+BoardRules.Connect(GameState, string cardIdA, string cardIdB) -> bool  // false: дубль, связь с собой, карточки нет на доске
+BoardRules.Disconnect(GameState, string cardIdA, string cardIdB) -> bool
+BoardRules.Thread(CardSO a, CardSO b, ContentDB, BoardState, bool showThreads) -> ThreadKind   // showThreads = DifficultySettings.showThreads
+BoardRules.Reveal(GameState, string cardId) / Research(GameState, string cardId, Cost)        // Research списывает только budget, InvalidOperationException без денег
 BoardRules.Goals(BoardState, ContentDB) -> int[4]
+BoardRules.Commit(GameState, ContentDB)                                // конец этапа 1: goals, эффекты связанных комбо в axes, stage = Production
 DayClock.EndDay(GameState, ContentDB) -> List<MessageSO>      // новые сообщения на утро
 ReviewSystem.Review(GameState, ContentDB) -> VersionRecord
 ReviewSystem.Blame(GameState, VersionRecord, string quoteId) -> string messageId   // виновное решение
