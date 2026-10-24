@@ -11,6 +11,12 @@ namespace Studio.UI
         public Transform imageGrid;
         public ImageCardView cardPrefab;
 
+        public void Reply(string answer)
+        {
+            text.text = answer;
+            imageGrid.gameObject.SetActive(false);
+        }
+
         // Images are selectable cards when each one maps to an option (hero variants).
         public void Setup(GameState s, MessageSO m, bool active, Action<MessageSO, OptionSO> pick)
         {

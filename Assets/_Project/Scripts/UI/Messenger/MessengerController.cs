@@ -34,7 +34,7 @@ namespace Studio.UI
                 State = GameState.New(db, Session.Nickname ?? MenuController.DefaultName, Session.Nickname != null ? Session.Level : difficulty);
                 // DayClock delivers from day 2 on; day-1 messages land in the inbox at start.
                 foreach (var m in db.messages)
-                    if (m != null && m.day <= State.day && m.stage == State.stage) State.inbox.Add(m.id);
+                    if (m != null && m.day >= 1 && m.day <= State.day && m.stage == State.stage) State.inbox.Add(m.id);   // day 0 = follow-up, arrives only via pending
             }
             Session.Continue = false;
 
