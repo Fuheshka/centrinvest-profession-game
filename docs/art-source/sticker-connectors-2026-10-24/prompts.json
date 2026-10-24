@@ -1,0 +1,18 @@
+{
+  "base": "Use case: precise-object-edit. Asset type: isolated Unity 2D sticker sprite, genuine transparent background. Reference image 1 is the EDIT TARGET: a warm yellow square paper sticky note with warm orange paper edges, brown round pushpin near top center, a stepped cut/fold at lower right, empty central paper area. Preserve this recognizable yellow paper design, proportions, flat front view, pixel-art texture and brown pin. The dense black grid lines in the screenshot are an EDITOR GRID OVERLAY, remove them completely. Remove the white screenshot background too. Make a clean production sprite on alpha, centered with generous transparent margins and no clipping. Crisp deliberately pixelated outline, warm yellow paper with restrained texture, slight folded bottom corner, subtle pixel shadow. No text, no letters, no symbols inside the paper, no header band, no screen UI. ADD visible thread connection anchors on the outer edges as described, looking like small warm ivory/brass eyelets with dark brown rims, sized to read at small UI scale and attached to the paper edge. Keep central 75 percent of paper blank for runtime text. No long strings baked into the sprite: dynamic curved strings will be rendered separately in Unity. ",
+  "reference": "User attachment codex-clipboard-a34c324d-f137-4348-9651-b517ef179673.png",
+  "variants": [
+    {
+      "key": "sticker-two-side-ports",
+      "detail": "Variant A: two small circular ivory connection sockets, one centered on the left edge and one centered on the right edge. Simple broad square yellow paper with softly irregular pixel edge. Keep brown pushpin at top center. Socket centers precisely aligned horizontally."
+    },
+    {
+      "key": "sticker-four-edge-ports",
+      "detail": "Variant B: four small brass ring eyelets, one centered on each edge: top, bottom, left, right. Brown paper pin slightly ABOVE the top eyelet so both are distinct; no overlap. Gentle upper-right paper fold, tiny lower-right folded corner. Clean square paper silhouette. All four eyelets functional-looking and individually visible."
+    },
+    {
+      "key": "sticker-double-side-ports",
+      "detail": "Variant C: four ivory/brass connection sockets as two on left edge and two on right edge, at one-third and two-thirds of paper height, for multiple thread connections. Brown pushpin near top center, stepped folded corner bottom-right matching reference. Slightly softer cream-yellow paper center and saturated golden edges, same design family, no decorative clutter."
+    }
+  ]
+}

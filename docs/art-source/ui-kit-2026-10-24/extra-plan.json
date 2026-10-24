@@ -1,0 +1,25 @@
+{
+  "key": "icons-actions",
+  "category": "Icons",
+  "cols": 4,
+  "rows": 4,
+  "names": [
+    "arrow-left",
+    "arrow-right",
+    "arrow-up",
+    "arrow-down",
+    "chevron-down",
+    "plus",
+    "minus",
+    "edit",
+    "delete",
+    "drag",
+    "lock",
+    "info",
+    "help",
+    "link",
+    "unlink",
+    "refresh"
+  ],
+  "spec": "Exactly 4 columns x 4 rows of sixteen isolated compact UI action pictograms, consistent dark brown outlines and olive/sunflower/ivory fills, legible at 24px. Row1 simple left arrow, right arrow, up arrow, down arrow. Row2 down chevron, plus sign, minus sign, diagonal pencil (edit). Row3 trash can (delete), six-dot grip handle (drag), closed padlock, circular info icon containing only a tiny lowercase i. Row4 question mark in circle, two chain links joined, two chain links separated with tiny gap, circular refresh arrow. Genuine transparent background, evenly spaced, no surrounding button tiles or labels, only conventional symbol marks inside icons."
+}

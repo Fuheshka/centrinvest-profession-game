@@ -1,0 +1,561 @@
+fileFormatVersion: 2
+guid: 5c478d216d9474b3d8d6c4c6e04cda4e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4901655949096519398
+    second: avatars-sheet_0
+  - first:
+      213: 2379466829960576440
+    second: avatars-sheet_1
+  - first:
+      213: -975225741416440157
+    second: avatars-sheet_2
+  - first:
+      213: 7474785243108228042
+    second: avatars-sheet_3
+  - first:
+      213: -6218626551421892064
+    second: avatars-sheet_4
+  - first:
+      213: 1803540170381702002
+    second: avatars-sheet_5
+  - first:
+      213: -7943230001822511502
+    second: avatars-sheet_6
+  - first:
+      213: 2857987497032364843
+    second: avatars-sheet_7
+  - first:
+      213: -3161810618534408071
+    second: avatars-sheet_8
+  - first:
+      213: -2433772615439642542
+    second: avatars-sheet_9
+  - first:
+      213: -5211700406353613232
+    second: avatars-sheet_10
+  - first:
+      213: -1556303456663289805
+    second: avatars-sheet_11
+  - first:
+      213: 937965840626787999
+    second: avatars-sheet_12
+  - first:
+      213: 3572914284906276359
+    second: avatars-sheet_13
+  - first:
+      213: 8378073618814825952
+    second: avatars-sheet_14
+  - first:
+      213: 6528465302271009337
+    second: avatars-sheet_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: avatars-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1659
+        width: 248
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a19fbe662e1d9fbb0800000000000000
+      internalID: -4901655949096519398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 1658
+        width: 240
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bdff929970950120800000000000000
+      internalID: 2379466829960576440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1659
+        width: 251
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ae5e0bea5d4772f0800000000000000
+      internalID: -975225741416440157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 1666
+        width: 247
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acb3cc35395cbb760800000000000000
+      internalID: 7474785243108228042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1154
+        width: 244
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02a8fa3691003b9a0800000000000000
+      internalID: -6218626551421892064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1144
+        width: 244
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273bfb9ba36770910800000000000000
+      internalID: 1803540170381702002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 1146
+        width: 263
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27ec42cf56af3c190800000000000000
+      internalID: -7943230001822511502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 1159
+        width: 212
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b233f1d7c7c99a720800000000000000
+      internalID: 2857987497032364843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 637
+        width: 246
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970d2339efdfe14d0800000000000000
+      internalID: -3161810618534408071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 634
+        width: 242
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25095a073b0893ed0800000000000000
+      internalID: -2433772615439642542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 637
+        width: 260
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ea88bd7125ca7b0800000000000000
+      internalID: -5211700406353613232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 642
+        width: 255
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3304fd67046e66ae0800000000000000
+      internalID: -1556303456663289805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 129
+        width: 245
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f96a20666f2540d00800000000000000
+      internalID: 937965840626787999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 123
+        width: 249
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 706e1ccac9a859130800000000000000
+      internalID: 3572914284906276359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 126
+        width: 264
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5778f3195e44470800000000000000
+      internalID: 8378073618814825952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: avatars-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 134
+        width: 215
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 932a3566a94c99a50800000000000000
+      internalID: 6528465302271009337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      avatars-sheet_0: -4901655949096519398
+      avatars-sheet_1: 2379466829960576440
+      avatars-sheet_10: -5211700406353613232
+      avatars-sheet_11: -1556303456663289805
+      avatars-sheet_12: 937965840626787999
+      avatars-sheet_13: 3572914284906276359
+      avatars-sheet_14: 8378073618814825952
+      avatars-sheet_15: 6528465302271009337
+      avatars-sheet_2: -975225741416440157
+      avatars-sheet_3: 7474785243108228042
+      avatars-sheet_4: -6218626551421892064
+      avatars-sheet_5: 1803540170381702002
+      avatars-sheet_6: -7943230001822511502
+      avatars-sheet_7: 2857987497032364843
+      avatars-sheet_8: -3161810618534408071
+      avatars-sheet_9: -2433772615439642542
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

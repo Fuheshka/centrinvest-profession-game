@@ -1,0 +1,209 @@
+{
+  "common": "Use case: ui-mockup. Asset type: production 2D Unity UI SPRITE SHEET for the Russian indie game «Билд к пятнице». Reference image is STYLE REFERENCE ONLY, do NOT draw a screenshot, text, labels, rulers, cell numbers, grids, watermarks or mock browser. Match warm ivory #EFF2DF, olive #718733, sunflower #E7CC38, dark brown #210D08 outlines, chunky rounded UI shapes, subtle tactile offset shadows and crisp friendly illustrated pixel accents. Every requested asset is isolated in its own equal cell; the invisible grid divides the ENTIRE canvas evenly, no external sheet padding. Exactly one item centered in each cell, all nontransparent pixels including shadows inside central 75% of its cell, large TRANSPARENT gutters. Genuine alpha transparency everywhere outside items, no checkerboard painted into image, no opaque background or board. Flat orthographic view, high quality consistent style, no letters or words. Prefer square 2048x2048 canvas unless requested otherwise. ",
+  "reference": "docs/mockup/generated-2026-10-24/03-tasks.png",
+  "sheets": [
+    {
+      "key": "icons-navigation",
+      "category": "Icons",
+      "cols": 4,
+      "rows": 4,
+      "names": [
+        "chat",
+        "dashboard",
+        "hire",
+        "tasks",
+        "calendar",
+        "clock",
+        "coins",
+        "energy",
+        "settings",
+        "pause",
+        "play",
+        "save",
+        "back",
+        "close",
+        "check",
+        "warning"
+      ],
+      "spec": "Exactly 4 columns x 4 rows, sixteen separate chunky compact UI pictograms. Read cells left to right top to bottom: row1 speech bubble with 3 dots, connected-node dashboard, person with plus symbol (hire), clipboard checklist; row2 calendar, round clock, stack of gold coins, battery energy; row3 gear, pause two bars, play triangle, floppy save disk; row4 back arrow left, close X, checkmark, warning exclamation triangle. Uniform 3px-looking dark brown outlines, sunflower/olive/ivory fills, readable silhouettes at 32px, same visual weight. NO surrounding button tiles, just freestanding symbols."
+    },
+    {
+      "key": "icons-concept",
+      "category": "Icons",
+      "cols": 4,
+      "rows": 4,
+      "names": [
+        "genre",
+        "audience",
+        "setting",
+        "style",
+        "mechanics",
+        "phone",
+        "pc",
+        "console",
+        "art",
+        "code",
+        "levels",
+        "sound",
+        "file-image",
+        "file-code",
+        "file-audio",
+        "build"
+      ],
+      "spec": "Exactly 4 columns x 4 rows, sixteen separate pictograms. Row1 game controller (genre), group of three people (audience), mountains with planet (setting), painter palette (style). Row2 gear with small gravity arrow (mechanics), mobile phone, desktop monitor (PC), console controller distinct from genre. Row3 pencil and brush crossed (art), code angle brackets (code), folded level map (levels), speaker with sound waves (sound). Row4 document sheet with tiny mountain glyph (image file), document sheet with code brackets (code file), document sheet with waveform (audio file), folder containing controller and 2 documents (build). Uniform dark brown outlines, sunflower/olive/ivory fills, consistent readable silhouettes, no surrounding tiles."
+    },
+    {
+      "key": "buttons",
+      "category": "Buttons",
+      "cols": 4,
+      "rows": 4,
+      "names": [
+        "primary-normal",
+        "primary-hover",
+        "primary-pressed",
+        "primary-disabled",
+        "secondary-normal",
+        "secondary-hover",
+        "secondary-pressed",
+        "secondary-disabled",
+        "olive-normal",
+        "olive-hover",
+        "olive-pressed",
+        "olive-disabled",
+        "tab-normal",
+        "tab-hover",
+        "tab-selected",
+        "tab-disabled"
+      ],
+      "spec": "Exactly 4 columns x 4 rows of sixteen EMPTY button backgrounds. All buttons have SAME outer width and height, aspect ratio 2.6:1; centered in cells. Four columns are normal, hover, pressed, disabled states. Row1 sunflower yellow primary rounded rectangles, normal thick offset dark shadow, hover brighter outline, pressed darker lowered face and shorter shadow, disabled desaturated gray beige. Row2 ivory secondary outlined rounded rectangles with same four states. Row3 olive green buttons with same four states. Row4 compact navigation tab backgrounds brown/cream normal, brighter hover, sunflower selected, muted disabled. Empty stretchable centers. No icons, no text, no imaginary letters. Preserve silhouettes and alignment across each row, decoration only along outer rim."
+    },
+    {
+      "key": "avatars",
+      "category": "Avatars",
+      "cols": 4,
+      "rows": 4,
+      "names": [
+        "boris-neutral",
+        "lera-neutral",
+        "kostya-neutral",
+        "anya-neutral",
+        "vika-neutral",
+        "dima-neutral",
+        "gosha-neutral",
+        "player-neutral",
+        "boris-tired",
+        "lera-tired",
+        "kostya-tired",
+        "anya-tired",
+        "vika-tired",
+        "dima-tired",
+        "gosha-tired",
+        "player-tired"
+      ],
+      "spec": "Exactly 4 columns x 4 rows, SIXTEEN isolated head-and-shoulders pixel art portraits, same scale, transparent background, NO frames or tiles. Style of warm expressive pixel portraits in reference, not photoreal or 3D. Row1: middle-aged boss Boris with dark hair streaked gray, beard, square glasses, brown jacket; Lera red-haired young woman messy bun olive shirt; Kostya young man tousled black hair dark rectangular glasses navy hoodie; Anya smiling green-haired young woman headphones yellow top. Row2: Vika young woman with purple bob and cream turtleneck; Dima young man blond undercut blue sweatshirt; Gosha young man dark curly hair headphones rust shirt; player neutral friendly orange pixel fox mascot bust. Row3: EXACT SAME characters in row1 order with tired subdued expressions, lowered eyelids, same hair/clothing/face identities. Row4: EXACT SAME characters in row2 order tired, same identities. Keep each portrait complete and separated with generous alpha gutters. No words, no extra bodies."
+    },
+    {
+      "key": "panels",
+      "category": "Panels",
+      "cols": 3,
+      "rows": 3,
+      "names": [
+        "workspace-ivory",
+        "sidebar-olive",
+        "header-brown",
+        "modal-ivory",
+        "title-olive",
+        "tooltip-ivory",
+        "toast-success",
+        "toast-warning",
+        "toast-error"
+      ],
+      "spec": "Exactly 3 columns x 3 rows of nine EMPTY UI panel backgrounds. Center one complete rounded rectangular panel in every cell with width about 78% cell and height 60% cell. Row1 large ivory workspace panel with delicate warm outline, olive sidebar panel with slightly textured rim, dark brown header panel with olive outline. Row2 ivory modal panel with thick olive outer border and offset shadow, olive title plate with yellow rim, ivory tooltip speech panel with small LEFT pointing nub. Row3 pale green success toast panel, pale yellow warning toast panel, pale muted coral error toast panel. No title, no icons, no words, no internal sections, no objects inside. Flat quiet uniform centers suitable for 9-slice scaling; all shading and shadows confined to perimeter, not full-panel lighting gradients."
+    },
+    {
+      "key": "cards",
+      "category": "Cards",
+      "cols": 4,
+      "rows": 3,
+      "names": [
+        "concept-normal",
+        "concept-selected",
+        "concept-conflict",
+        "concept-compatible",
+        "task-normal",
+        "task-active",
+        "task-complete",
+        "task-disabled",
+        "attachment",
+        "candidate",
+        "chat-incoming",
+        "chat-outgoing"
+      ],
+      "spec": "Exactly 4 columns x 3 rows, TWELVE empty card and bubble BACKGROUNDS only, no text or icons. All cards similar landscape rectangle proportions within separate equal cells, generous alpha gutters. Row1 concept-node card ivory with olive header strip, same card selected with yellow outline, same card conflict with coral outline, same card compatible with green outline; all have tiny circular connection ports midway left/right edges. Row2 blank task-row container ivory thin brown border, active task container pale yellow thin olive border, completed task container pale green border, disabled task container gray cream border. Row3 attachment card ivory with softly inset small blank square thumbnail area on left, tall-ish candidate card ivory with no portrait, incoming chat bubble warm gray ivory small tail left, outgoing chat bubble pale green small tail right. No content baked in. Empty smooth surfaces, border ornaments subtle for stretching."
+    },
+    {
+      "key": "controls",
+      "category": "Controls",
+      "cols": 4,
+      "rows": 4,
+      "names": [
+        "progress-track",
+        "progress-green",
+        "progress-amber",
+        "progress-red",
+        "toggle-off",
+        "toggle-on",
+        "toggle-disabled",
+        "slider-thumb",
+        "checkbox-off",
+        "checkbox-on",
+        "checkbox-disabled",
+        "radio-off",
+        "radio-on",
+        "scrollbar-track",
+        "scrollbar-thumb",
+        "notification-badge"
+      ],
+      "spec": "Exactly 4 columns x 4 rows, SIXTEEN UI widget sprites. Row1 four SAME size horizontal pill shapes 3.8:1: empty progress track warm gray, full progress fill olive green, full fill amber yellow, full fill coral red. These are SEPARATE full-width pieces to layer in Unity, not partly filled composites. Row2 toggle off beige track white knob left, toggle on yellow track white knob right, toggle disabled desaturated gray, single ivory circular slider knob with olive rim. Row3 empty square checkbox, checked olive square checkbox with cream tick, disabled gray square checkbox, unselected circular radio outline. Row4 selected circular radio dot, vertical thin warm gray scrollbar track, vertical olive scrollbar thumb, circular coral notification badge WITHOUT a number. Center every widget, true alpha outside, no labels, match reference tactile UI."
+    },
+    {
+      "key": "decor",
+      "category": "Decor",
+      "cols": 4,
+      "rows": 4,
+      "names": [
+        "sparkle",
+        "sparkle-small",
+        "pixel-stars",
+        "moon",
+        "sun",
+        "sticky-note",
+        "paper-clip",
+        "pushpin",
+        "folder",
+        "document-stack",
+        "trophy",
+        "lightbulb",
+        "planet",
+        "astronaut",
+        "fox",
+        "plant"
+      ],
+      "spec": "Exactly 4 columns x 4 rows, sixteen isolated decorative sprites in the warm friendly pixel/illustrated UI style of reference. Row1 one large yellow four-point pixel sparkle, one small yellow cross sparkle, a compact cluster of 3 tiny stars treated as one sprite, yellow pixel crescent moon. Row2 small gold sun, blank yellow sticky note with translucent tape at top, simple metal paperclip, small red pushpin. Row3 yellow build folder with tiny controller, 3-sheet document stack, small gold trophy, warm yellow lightbulb. Row4 purple ringed space planet, cute small pixel astronaut full body, orange pixel fox full body matching mascot, small potted trailing green plant. Transparent background, no writing, no surface behind objects, no shadow beyond cells, consistent art scale and tidy silhouettes."
+    },
+    {
+      "key": "backgrounds",
+      "category": "Backgrounds",
+      "cols": 2,
+      "rows": 2,
+      "names": [
+        "studio-day",
+        "studio-night",
+        "burgundy-pixels",
+        "ivory-dot-grid"
+      ],
+      "opaque": true,
+      "spec": "This category OVERRIDES transparency: opaque BACKGROUND TEXTURE sheet, 2 columns x 2 rows, four separate wide rectangular full-bleed backgrounds. Canvas 2048x1536 landscape, each quadrant landscape 4:3. Exact quadrant division no gutters no frames. Top left cozy illustrated indie studio in daytime with cream CRT monitor, yellow desk lamp, green plants, corkboard, warm window light; no writing anywhere, empty dark left region for menu text and scene mostly right. Top right SAME studio composition at night with blue window and amber lamp, empty dark left region. Bottom left dark burgundy-brown subtle pixel square UI backdrop, very restrained tonal texture no objects. Bottom right warm ivory faint olive dot grid canvas for concept board, uniformly spaced small dots, no objects. No UI, no typography, no numbers, no rounded clipping corners. These are reusable scene/texture layers, not screenshots."
+    }
+  ]
+}

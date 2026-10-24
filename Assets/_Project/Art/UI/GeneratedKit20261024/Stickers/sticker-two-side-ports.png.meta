@@ -1,0 +1,587 @@
+fileFormatVersion: 2
+guid: 6ee53a3e278b6482abbbd4aefaac0c77
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6645617050619137590
+    second: sticker-two-side-ports_0
+  - first:
+      213: -9112635341035073953
+    second: sticker-two-side-ports_1
+  - first:
+      213: -5888260051643013646
+    second: sticker-two-side-ports_2
+  - first:
+      213: 408078278167175461
+    second: sticker-two-side-ports_3
+  - first:
+      213: 5858243693080924005
+    second: sticker-two-side-ports_4
+  - first:
+      213: 5950546580841937143
+    second: sticker-two-side-ports_5
+  - first:
+      213: -5320708604883252908
+    second: sticker-two-side-ports_6
+  - first:
+      213: 1669751550521168814
+    second: sticker-two-side-ports_7
+  - first:
+      213: -4210400656983563987
+    second: sticker-two-side-ports_8
+  - first:
+      213: 342589762527351702
+    second: sticker-two-side-ports_9
+  - first:
+      213: 1367672183499661133
+    second: sticker-two-side-ports_10
+  - first:
+      213: 6977076423858643946
+    second: sticker-two-side-ports_11
+  - first:
+      213: 39475415008965148
+    second: sticker-two-side-ports_12
+  - first:
+      213: -5116798970823419717
+    second: sticker-two-side-ports_13
+  - first:
+      213: -649169422192118080
+    second: sticker-two-side-ports_14
+  - first:
+      213: 3716270021484012427
+    second: sticker-two-side-ports_15
+  - first:
+      213: -3304147697699102222
+    second: sticker-two-side-ports_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sticker-two-side-ports_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1181
+        width: 112
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac13190a08606c3a0800000000000000
+      internalID: -6645617050619137590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_1
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1242
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5e0fe9207a698180800000000000000
+      internalID: -9112635341035073953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_2
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1237
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f5e1bc2ea2b84ea0800000000000000
+      internalID: -5888260051643013646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_3
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1208
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52125ba2809c9a500800000000000000
+      internalID: 408078278167175461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_4
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1211
+        width: 89
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56fc2cdb999ac4150800000000000000
+      internalID: 5858243693080924005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_5
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 1208
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8bf728696949250800000000000000
+      internalID: 5950546580841937143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_6
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1204
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 459c194d6bb0926b0800000000000000
+      internalID: -5320708604883252908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_7
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 1204
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3d8ff30362c2710800000000000000
+      internalID: 1669751550521168814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_8
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1197
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d216c6ef8e6a195c0800000000000000
+      internalID: -4210400656983563987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1189
+        height: 1207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693d02be29f11c400800000000000000
+      internalID: 342589762527351702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_10
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 1196
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f1eaaca92faf210800000000000000
+      internalID: 1367672183499661133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_11
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 1192
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae3e8d69a0e83d060800000000000000
+      internalID: 6977076423858643946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_12
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 1180
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1278f84eae3c8000800000000000000
+      internalID: 39475415008965148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_13
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 47
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb85cfc227a7df8b0800000000000000
+      internalID: -5116798970823419717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_14
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 15
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c6713799dfadf6f0800000000000000
+      internalID: -649169422192118080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_15
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 31
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b83ecf715e7d29330800000000000000
+      internalID: 3716270021484012427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-two-side-ports_16
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 23
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f16831dc2f4522d0800000000000000
+      internalID: -3304147697699102222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sticker-two-side-ports_0: -6645617050619137590
+      sticker-two-side-ports_1: -9112635341035073953
+      sticker-two-side-ports_10: 1367672183499661133
+      sticker-two-side-ports_11: 6977076423858643946
+      sticker-two-side-ports_12: 39475415008965148
+      sticker-two-side-ports_13: -5116798970823419717
+      sticker-two-side-ports_14: -649169422192118080
+      sticker-two-side-ports_15: 3716270021484012427
+      sticker-two-side-ports_16: -3304147697699102222
+      sticker-two-side-ports_2: -5888260051643013646
+      sticker-two-side-ports_3: 408078278167175461
+      sticker-two-side-ports_4: 5858243693080924005
+      sticker-two-side-ports_5: 5950546580841937143
+      sticker-two-side-ports_6: -5320708604883252908
+      sticker-two-side-ports_7: 1669751550521168814
+      sticker-two-side-ports_8: -4210400656983563987
+      sticker-two-side-ports_9: 342589762527351702
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

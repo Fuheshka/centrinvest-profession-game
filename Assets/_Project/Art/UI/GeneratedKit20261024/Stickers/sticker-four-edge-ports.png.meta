@@ -1,0 +1,1081 @@
+fileFormatVersion: 2
+guid: 9440e5e55dcce4d0395e814a6f4fecf9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3139303666402856555
+    second: sticker-four-edge-ports_0
+  - first:
+      213: -2013960284034449122
+    second: sticker-four-edge-ports_1
+  - first:
+      213: -3059511796942878532
+    second: sticker-four-edge-ports_2
+  - first:
+      213: 5244360151144175312
+    second: sticker-four-edge-ports_3
+  - first:
+      213: 7367893968410192529
+    second: sticker-four-edge-ports_4
+  - first:
+      213: -7924654536455129095
+    second: sticker-four-edge-ports_5
+  - first:
+      213: -7058372554512150097
+    second: sticker-four-edge-ports_6
+  - first:
+      213: 8356611825103942963
+    second: sticker-four-edge-ports_7
+  - first:
+      213: 1809442921926358875
+    second: sticker-four-edge-ports_8
+  - first:
+      213: 3906019556464353541
+    second: sticker-four-edge-ports_9
+  - first:
+      213: -8221873842335889695
+    second: sticker-four-edge-ports_10
+  - first:
+      213: -80559914514367587
+    second: sticker-four-edge-ports_11
+  - first:
+      213: -8911267636617110434
+    second: sticker-four-edge-ports_12
+  - first:
+      213: 7707950623325262765
+    second: sticker-four-edge-ports_13
+  - first:
+      213: -5507797119677185868
+    second: sticker-four-edge-ports_14
+  - first:
+      213: -3498427445844684137
+    second: sticker-four-edge-ports_15
+  - first:
+      213: 7252594056059945257
+    second: sticker-four-edge-ports_16
+  - first:
+      213: -6987140806198463803
+    second: sticker-four-edge-ports_17
+  - first:
+      213: -7325889748564115815
+    second: sticker-four-edge-ports_18
+  - first:
+      213: 3161975924936264282
+    second: sticker-four-edge-ports_19
+  - first:
+      213: 3591617971734570688
+    second: sticker-four-edge-ports_20
+  - first:
+      213: 3163183331616987930
+    second: sticker-four-edge-ports_21
+  - first:
+      213: 7192898133643593640
+    second: sticker-four-edge-ports_22
+  - first:
+      213: 4435510197605241959
+    second: sticker-four-edge-ports_23
+  - first:
+      213: -4208905857875191517
+    second: sticker-four-edge-ports_24
+  - first:
+      213: -8099048609009472784
+    second: sticker-four-edge-ports_25
+  - first:
+      213: -4312278091895881791
+    second: sticker-four-edge-ports_26
+  - first:
+      213: 6466586502358277421
+    second: sticker-four-edge-ports_27
+  - first:
+      213: -6083689867867044206
+    second: sticker-four-edge-ports_28
+  - first:
+      213: -3422498140889785749
+    second: sticker-four-edge-ports_29
+  - first:
+      213: 2105923264368639080
+    second: sticker-four-edge-ports_30
+  - first:
+      213: 4859738114941469643
+    second: sticker-four-edge-ports_31
+  - first:
+      213: -5725816453018034077
+    second: sticker-four-edge-ports_32
+  - first:
+      213: 5610586817269708961
+    second: sticker-four-edge-ports_33
+  - first:
+      213: -5321208322255913833
+    second: sticker-four-edge-ports_34
+  - first:
+      213: 8571915586866208367
+    second: sticker-four-edge-ports_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1253
+        height: 1253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e06064d0c019b20800000000000000
+      internalID: 3139303666402856555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1134
+        width: 98
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e11c166cac9fc04e0800000000000000
+      internalID: -2013960284034449122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_2
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1223
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb84a1d0b3e6a85d0800000000000000
+      internalID: -3059511796942878532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_3
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1193
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d6992b85c5b7c840800000000000000
+      internalID: 5244360151144175312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_4
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1211
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19a25d90784004660800000000000000
+      internalID: 7367893968410192529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_5
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 1189
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f777ea8fa8f50290800000000000000
+      internalID: -7924654536455129095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_6
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 1189
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1dfebfe8f9b0e90800000000000000
+      internalID: -7058372554512150097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_7
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 1215
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33536210e26a8f370800000000000000
+      internalID: 8356611825103942963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_8
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1216
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b57f3ca20ce6c1910800000000000000
+      internalID: 1809442921926358875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_9
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1197
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50169c47718f43630800000000000000
+      internalID: 3906019556464353541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_10
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1212
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e64e7f3d4906ed80800000000000000
+      internalID: -8221873842335889695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_11
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 1207
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b3c304f2bc1eef0800000000000000
+      internalID: -80559914514367587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_12
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 1132
+        width: 31
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5c90056c41d45480800000000000000
+      internalID: -8911267636617110434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_13
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 1164
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da39d81e04428fa60800000000000000
+      internalID: 7707950623325262765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_14
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 1065
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0c8b283bf5093b0800000000000000
+      internalID: -5507797119677185868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_15
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1054
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79253f106c6137fc0800000000000000
+      internalID: -3498427445844684137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_16
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1012
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921009b3ed366a460800000000000000
+      internalID: 7252594056059945257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_17
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1016
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c277eac470b80f90800000000000000
+      internalID: -6987140806198463803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_18
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 71
+        width: 234
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99ef8218616355a90800000000000000
+      internalID: -7325889748564115815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_19
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 67
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ac922d95891eb20800000000000000
+      internalID: 3161975924936264282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_20
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 75
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c6e52e148df7d130800000000000000
+      internalID: 3591617971734570688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_21
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 69
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1b97781b72e5eb20800000000000000
+      internalID: 3163183331616987930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_22
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 50
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a785613ebe42d360800000000000000
+      internalID: 7192898133643593640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_23
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 55
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76412ed36091e8d30800000000000000
+      internalID: 4435510197605241959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_24
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 30
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 329d9480c66f695c0800000000000000
+      internalID: -4208905857875191517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_25
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 15
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa6e5163366a9f80800000000000000
+      internalID: -8099048609009472784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_26
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 15
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cfb8df3ce5b724c0800000000000000
+      internalID: -4312278091895881791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_27
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 31
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2d9666992eedb950800000000000000
+      internalID: 6466586502358277421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_28
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 11
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29644264c44629ba0800000000000000
+      internalID: -6083689867867044206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_29
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 33
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6a54d3f218d080d0800000000000000
+      internalID: -3422498140889785749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_30
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 21
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c7ce02d0eb93d10800000000000000
+      internalID: 2105923264368639080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_31
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 21
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc3438a4112417340800000000000000
+      internalID: 4859738114941469643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_32
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 11
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360e5ccc540d980b0800000000000000
+      internalID: -5725816453018034077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_33
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 23
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a8b9d0fbfeccdd40800000000000000
+      internalID: 5610586817269708961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_34
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 13
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c751059354726b0800000000000000
+      internalID: -5321208322255913833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticker-four-edge-ports_35
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 7
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e5bcf6fcf85f670800000000000000
+      internalID: 8571915586866208367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sticker-four-edge-ports_0: 3139303666402856555
+      sticker-four-edge-ports_1: -2013960284034449122
+      sticker-four-edge-ports_10: -8221873842335889695
+      sticker-four-edge-ports_11: -80559914514367587
+      sticker-four-edge-ports_12: -8911267636617110434
+      sticker-four-edge-ports_13: 7707950623325262765
+      sticker-four-edge-ports_14: -5507797119677185868
+      sticker-four-edge-ports_15: -3498427445844684137
+      sticker-four-edge-ports_16: 7252594056059945257
+      sticker-four-edge-ports_17: -6987140806198463803
+      sticker-four-edge-ports_18: -7325889748564115815
+      sticker-four-edge-ports_19: 3161975924936264282
+      sticker-four-edge-ports_2: -3059511796942878532
+      sticker-four-edge-ports_20: 3591617971734570688
+      sticker-four-edge-ports_21: 3163183331616987930
+      sticker-four-edge-ports_22: 7192898133643593640
+      sticker-four-edge-ports_23: 4435510197605241959
+      sticker-four-edge-ports_24: -4208905857875191517
+      sticker-four-edge-ports_25: -8099048609009472784
+      sticker-four-edge-ports_26: -4312278091895881791
+      sticker-four-edge-ports_27: 6466586502358277421
+      sticker-four-edge-ports_28: -6083689867867044206
+      sticker-four-edge-ports_29: -3422498140889785749
+      sticker-four-edge-ports_3: 5244360151144175312
+      sticker-four-edge-ports_30: 2105923264368639080
+      sticker-four-edge-ports_31: 4859738114941469643
+      sticker-four-edge-ports_32: -5725816453018034077
+      sticker-four-edge-ports_33: 5610586817269708961
+      sticker-four-edge-ports_34: -5321208322255913833
+      sticker-four-edge-ports_35: 8571915586866208367
+      sticker-four-edge-ports_4: 7367893968410192529
+      sticker-four-edge-ports_5: -7924654536455129095
+      sticker-four-edge-ports_6: -7058372554512150097
+      sticker-four-edge-ports_7: 8356611825103942963
+      sticker-four-edge-ports_8: 1809442921926358875
+      sticker-four-edge-ports_9: 3906019556464353541
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

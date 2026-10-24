@@ -1,0 +1,4954 @@
+{
+  "coordinate_system": "Unity bottom-left pixels",
+  "sheets": [
+    {
+      "name": "icons-navigation",
+      "category": "Icons",
+      "source": "docs/art-source/ui-kit-2026-10-24/icons-navigation.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "chat",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            329,
+            347
+          ],
+          "source_content_top_left": [
+            53,
+            100,
+            310,
+            319
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/chat.png"
+        },
+        {
+          "name": "dashboard",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            329,
+            0,
+            621,
+            353
+          ],
+          "source_content_top_left": [
+            19,
+            79,
+            267,
+            319
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/dashboard.png"
+        },
+        {
+          "name": "hire",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            0,
+            951,
+            365
+          ],
+          "source_content_top_left": [
+            19,
+            72,
+            327,
+            332
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/hire.png"
+        },
+        {
+          "name": "tasks",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            951,
+            0,
+            1254,
+            368
+          ],
+          "source_content_top_left": [
+            34,
+            67,
+            248,
+            337
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/tasks.png"
+        },
+        {
+          "name": "calendar",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            347,
+            329,
+            664
+          ],
+          "source_content_top_left": [
+            59,
+            28,
+            309,
+            288
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/calendar.png"
+        },
+        {
+          "name": "clock",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            329,
+            353,
+            621,
+            677
+          ],
+          "source_content_top_left": [
+            22,
+            34,
+            274,
+            289
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/clock.png"
+        },
+        {
+          "name": "coins",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            365,
+            951,
+            672
+          ],
+          "source_content_top_left": [
+            33,
+            38,
+            288,
+            268
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/coins.png"
+        },
+        {
+          "name": "energy",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            951,
+            368,
+            1254,
+            645
+          ],
+          "source_content_top_left": [
+            3,
+            75,
+            268,
+            227
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/energy.png"
+        },
+        {
+          "name": "settings",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            664,
+            329,
+            977
+          ],
+          "source_content_top_left": [
+            55,
+            30,
+            310,
+            286
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/settings.png"
+        },
+        {
+          "name": "pause",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            329,
+            677,
+            621,
+            967
+          ],
+          "source_content_top_left": [
+            56,
+            41,
+            242,
+            248
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/pause.png"
+        },
+        {
+          "name": "play",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            672,
+            951,
+            976
+          ],
+          "source_content_top_left": [
+            62,
+            44,
+            243,
+            262
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/play.png"
+        },
+        {
+          "name": "save",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            951,
+            645,
+            1254,
+            960
+          ],
+          "source_content_top_left": [
+            16,
+            51,
+            253,
+            291
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/save.png"
+        },
+        {
+          "name": "back",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            977,
+            329,
+            1254
+          ],
+          "source_content_top_left": [
+            67,
+            27,
+            294,
+            237
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/back.png"
+        },
+        {
+          "name": "close",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            329,
+            967,
+            621,
+            1254
+          ],
+          "source_content_top_left": [
+            57,
+            42,
+            256,
+            240
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/close.png"
+        },
+        {
+          "name": "check",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            976,
+            951,
+            1254
+          ],
+          "source_content_top_left": [
+            55,
+            42,
+            270,
+            220
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/check.png"
+        },
+        {
+          "name": "warning",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            951,
+            960,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            30,
+            25,
+            259,
+            242
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-navigation/warning.png"
+        }
+      ]
+    },
+    {
+      "name": "icons-concept",
+      "category": "Icons",
+      "source": "docs/art-source/ui-kit-2026-10-24/icons-concept.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "genre",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            324,
+            327
+          ],
+          "source_content_top_left": [
+            28,
+            62,
+            304,
+            299
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/genre.png"
+        },
+        {
+          "name": "audience",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            324,
+            0,
+            632,
+            337
+          ],
+          "source_content_top_left": [
+            8,
+            82,
+            300,
+            314
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/audience.png"
+        },
+        {
+          "name": "setting",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            632,
+            0,
+            931,
+            344
+          ],
+          "source_content_top_left": [
+            18,
+            64,
+            288,
+            313
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/setting.png"
+        },
+        {
+          "name": "style",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            0,
+            1254,
+            351
+          ],
+          "source_content_top_left": [
+            33,
+            85,
+            293,
+            310
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/style.png"
+        },
+        {
+          "name": "mechanics",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            327,
+            324,
+            634
+          ],
+          "source_content_top_left": [
+            31,
+            29,
+            317,
+            282
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/mechanics.png"
+        },
+        {
+          "name": "phone",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            324,
+            337,
+            632,
+            649
+          ],
+          "source_content_top_left": [
+            60,
+            23,
+            234,
+            280
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/phone.png"
+        },
+        {
+          "name": "pc",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            632,
+            344,
+            931,
+            641
+          ],
+          "source_content_top_left": [
+            10,
+            31,
+            282,
+            269
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/pc.png"
+        },
+        {
+          "name": "console",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            351,
+            1254,
+            628
+          ],
+          "source_content_top_left": [
+            11,
+            42,
+            304,
+            236
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/console.png"
+        },
+        {
+          "name": "art",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            634,
+            324,
+            930
+          ],
+          "source_content_top_left": [
+            55,
+            25,
+            299,
+            269
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/art.png"
+        },
+        {
+          "name": "code",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            324,
+            649,
+            632,
+            931
+          ],
+          "source_content_top_left": [
+            20,
+            33,
+            273,
+            255
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/code.png"
+        },
+        {
+          "name": "levels",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            632,
+            641,
+            931,
+            930
+          ],
+          "source_content_top_left": [
+            9,
+            29,
+            283,
+            262
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/levels.png"
+        },
+        {
+          "name": "sound",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            628,
+            1254,
+            922
+          ],
+          "source_content_top_left": [
+            30,
+            41,
+            291,
+            269
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/sound.png"
+        },
+        {
+          "name": "file-image",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            930,
+            324,
+            1254
+          ],
+          "source_content_top_left": [
+            78,
+            28,
+            273,
+            271
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/file-image.png"
+        },
+        {
+          "name": "file-code",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            324,
+            931,
+            632,
+            1254
+          ],
+          "source_content_top_left": [
+            56,
+            27,
+            251,
+            270
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/file-code.png"
+        },
+        {
+          "name": "file-audio",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            632,
+            930,
+            931,
+            1254
+          ],
+          "source_content_top_left": [
+            55,
+            28,
+            249,
+            271
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/file-audio.png"
+        },
+        {
+          "name": "build",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            922,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            16,
+            26,
+            303,
+            283
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-concept/build.png"
+        }
+      ]
+    },
+    {
+      "name": "buttons",
+      "category": "Buttons",
+      "source": "docs/art-source/ui-kit-2026-10-24/buttons.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        2048,
+        768
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        512,
+        192
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "primary-normal",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 576,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            132,
+            60,
+            133,
+            59
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            325,
+            372
+          ],
+          "source_content_top_left": [
+            25,
+            225,
+            320,
+            346
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/primary-normal.png"
+        },
+        {
+          "name": "primary-hover",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 576,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            131,
+            56,
+            131,
+            56
+          ],
+          "source_cell_top_left": [
+            325,
+            0,
+            634,
+            373
+          ],
+          "source_content_top_left": [
+            6,
+            220,
+            304,
+            348
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/primary-hover.png"
+        },
+        {
+          "name": "primary-pressed",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 576,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            62,
+            140,
+            62
+          ],
+          "source_cell_top_left": [
+            634,
+            0,
+            927,
+            371
+          ],
+          "source_content_top_left": [
+            6,
+            227,
+            286,
+            343
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/primary-pressed.png"
+        },
+        {
+          "name": "primary-disabled",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 576,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            132,
+            60,
+            133,
+            59
+          ],
+          "source_cell_top_left": [
+            927,
+            0,
+            1254,
+            372
+          ],
+          "source_content_top_left": [
+            7,
+            225,
+            302,
+            346
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/primary-disabled.png"
+        },
+        {
+          "name": "secondary-normal",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 384,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            132,
+            60,
+            133,
+            60
+          ],
+          "source_cell_top_left": [
+            0,
+            372,
+            325,
+            639
+          ],
+          "source_content_top_left": [
+            25,
+            96,
+            320,
+            216
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/secondary-normal.png"
+        },
+        {
+          "name": "secondary-hover",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 384,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            131,
+            57,
+            131,
+            57
+          ],
+          "source_cell_top_left": [
+            325,
+            373,
+            634,
+            639
+          ],
+          "source_content_top_left": [
+            6,
+            91,
+            304,
+            217
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/secondary-hover.png"
+        },
+        {
+          "name": "secondary-pressed",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 384,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            63,
+            140,
+            62
+          ],
+          "source_cell_top_left": [
+            634,
+            371,
+            927,
+            640
+          ],
+          "source_content_top_left": [
+            6,
+            100,
+            286,
+            215
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/secondary-pressed.png"
+        },
+        {
+          "name": "secondary-disabled",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 384,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            132,
+            60,
+            133,
+            60
+          ],
+          "source_cell_top_left": [
+            927,
+            372,
+            1254,
+            640
+          ],
+          "source_content_top_left": [
+            7,
+            96,
+            302,
+            216
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/secondary-disabled.png"
+        },
+        {
+          "name": "olive-normal",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 192,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            132,
+            59,
+            133,
+            59
+          ],
+          "source_cell_top_left": [
+            0,
+            639,
+            325,
+            892
+          ],
+          "source_content_top_left": [
+            25,
+            52,
+            320,
+            174
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/olive-normal.png"
+        },
+        {
+          "name": "olive-hover",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 192,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            131,
+            57,
+            131,
+            57
+          ],
+          "source_cell_top_left": [
+            325,
+            639,
+            634,
+            891
+          ],
+          "source_content_top_left": [
+            6,
+            49,
+            304,
+            175
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/olive-hover.png"
+        },
+        {
+          "name": "olive-pressed",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 192,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            62,
+            140,
+            62
+          ],
+          "source_cell_top_left": [
+            634,
+            640,
+            927,
+            892
+          ],
+          "source_content_top_left": [
+            6,
+            54,
+            286,
+            170
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/olive-pressed.png"
+        },
+        {
+          "name": "olive-disabled",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 192,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            132,
+            60,
+            133,
+            60
+          ],
+          "source_cell_top_left": [
+            927,
+            640,
+            1254,
+            892
+          ],
+          "source_content_top_left": [
+            7,
+            52,
+            302,
+            172
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/olive-disabled.png"
+        },
+        {
+          "name": "tab-normal",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            135,
+            61,
+            135,
+            61
+          ],
+          "source_cell_top_left": [
+            0,
+            892,
+            325,
+            1254
+          ],
+          "source_content_top_left": [
+            27,
+            38,
+            317,
+            156
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/tab-normal.png"
+        },
+        {
+          "name": "tab-hover",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            134,
+            61,
+            135,
+            60
+          ],
+          "source_cell_top_left": [
+            325,
+            891,
+            634,
+            1254
+          ],
+          "source_content_top_left": [
+            9,
+            38,
+            300,
+            157
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/tab-hover.png"
+        },
+        {
+          "name": "tab-selected",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 0,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            139,
+            61,
+            140,
+            61
+          ],
+          "source_cell_top_left": [
+            634,
+            892,
+            927,
+            1254
+          ],
+          "source_content_top_left": [
+            5,
+            38,
+            286,
+            156
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/tab-selected.png"
+        },
+        {
+          "name": "tab-disabled",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 0,
+            "width": 512,
+            "height": 192
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            135,
+            61,
+            135,
+            61
+          ],
+          "source_cell_top_left": [
+            927,
+            892,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            10,
+            38,
+            300,
+            156
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Buttons/buttons/tab-disabled.png"
+        }
+      ]
+    },
+    {
+      "name": "avatars",
+      "category": "Avatars",
+      "source": "docs/art-source/ui-kit-2026-10-24/avatars-v2.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        2048,
+        2048
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "boris-neutral",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 1536,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            321,
+            345
+          ],
+          "source_content_top_left": [
+            49,
+            56,
+            295,
+            320
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/boris-neutral.png"
+        },
+        {
+          "name": "lera-neutral",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 1536,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            321,
+            0,
+            621,
+            335
+          ],
+          "source_content_top_left": [
+            38,
+            54,
+            276,
+            321
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/lera-neutral.png"
+        },
+        {
+          "name": "kostya-neutral",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 1536,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            0,
+            931,
+            338
+          ],
+          "source_content_top_left": [
+            27,
+            57,
+            276,
+            322
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/kostya-neutral.png"
+        },
+        {
+          "name": "anya-neutral",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 1536,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            0,
+            1254,
+            351
+          ],
+          "source_content_top_left": [
+            27,
+            71,
+            272,
+            322
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/anya-neutral.png"
+        },
+        {
+          "name": "vika-neutral",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 1024,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            345,
+            321,
+            639
+          ],
+          "source_content_top_left": [
+            48,
+            26,
+            290,
+            276
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/vika-neutral.png"
+        },
+        {
+          "name": "dima-neutral",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 1024,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            321,
+            335,
+            621,
+            636
+          ],
+          "source_content_top_left": [
+            27,
+            15,
+            269,
+            285
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/dima-neutral.png"
+        },
+        {
+          "name": "gosha-neutral",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 1024,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            338,
+            931,
+            640
+          ],
+          "source_content_top_left": [
+            28,
+            16,
+            289,
+            283
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/gosha-neutral.png"
+        },
+        {
+          "name": "player-neutral",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 1024,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            351,
+            1254,
+            645
+          ],
+          "source_content_top_left": [
+            65,
+            30,
+            275,
+            270
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/player-neutral.png"
+        },
+        {
+          "name": "boris-tired",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            639,
+            321,
+            934
+          ],
+          "source_content_top_left": [
+            50,
+            18,
+            294,
+            279
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/boris-tired.png"
+        },
+        {
+          "name": "lera-tired",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            321,
+            636,
+            621,
+            928
+          ],
+          "source_content_top_left": [
+            35,
+            17,
+            275,
+            283
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/lera-tired.png"
+        },
+        {
+          "name": "kostya-tired",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            640,
+            931,
+            932
+          ],
+          "source_content_top_left": [
+            24,
+            19,
+            282,
+            279
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/kostya-tired.png"
+        },
+        {
+          "name": "anya-tired",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 512,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            645,
+            1254,
+            941
+          ],
+          "source_content_top_left": [
+            21,
+            24,
+            274,
+            274
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/anya-tired.png"
+        },
+        {
+          "name": "vika-tired",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            934,
+            321,
+            1254
+          ],
+          "source_content_top_left": [
+            47,
+            17,
+            290,
+            270
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/vika-tired.png"
+        },
+        {
+          "name": "dima-tired",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            321,
+            928,
+            621,
+            1254
+          ],
+          "source_content_top_left": [
+            27,
+            10,
+            274,
+            275
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/dima-tired.png"
+        },
+        {
+          "name": "gosha-tired",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            621,
+            932,
+            931,
+            1254
+          ],
+          "source_content_top_left": [
+            26,
+            14,
+            288,
+            273
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/gosha-tired.png"
+        },
+        {
+          "name": "player-tired",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 0,
+            "width": 512,
+            "height": 512
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            931,
+            941,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            62,
+            22,
+            275,
+            264
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/player-tired.png"
+        }
+      ]
+    },
+    {
+      "name": "panels",
+      "category": "Panels",
+      "source": "docs/art-source/ui-kit-2026-10-24/panels.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        1536,
+        1152
+      ],
+      "grid": [
+        3,
+        3
+      ],
+      "cell_size": [
+        512,
+        384
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "workspace-ivory",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            82,
+            96,
+            83,
+            96
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            425,
+            449
+          ],
+          "source_content_top_left": [
+            19,
+            152,
+            414,
+            392
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/workspace-ivory.png"
+        },
+        {
+          "name": "sidebar-olive",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            90,
+            100,
+            90,
+            100
+          ],
+          "source_cell_top_left": [
+            425,
+            0,
+            829,
+            460
+          ],
+          "source_content_top_left": [
+            11,
+            155,
+            391,
+            387
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/sidebar-olive.png"
+        },
+        {
+          "name": "header-brown",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            83,
+            96,
+            83,
+            96
+          ],
+          "source_cell_top_left": [
+            829,
+            0,
+            1254,
+            456
+          ],
+          "source_content_top_left": [
+            13,
+            153,
+            407,
+            393
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/header-brown.png"
+        },
+        {
+          "name": "modal-ivory",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            91,
+            94,
+            91,
+            94
+          ],
+          "source_cell_top_left": [
+            0,
+            449,
+            425,
+            808
+          ],
+          "source_content_top_left": [
+            25,
+            58,
+            403,
+            302
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/modal-ivory.png"
+        },
+        {
+          "name": "title-olive",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            92,
+            125,
+            93,
+            124
+          ],
+          "source_cell_top_left": [
+            425,
+            460,
+            829,
+            793
+          ],
+          "source_content_top_left": [
+            15,
+            73,
+            390,
+            256
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/title-olive.png"
+        },
+        {
+          "name": "tooltip-ivory",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            89,
+            112,
+            89,
+            112
+          ],
+          "source_cell_top_left": [
+            829,
+            456,
+            1254,
+            797
+          ],
+          "source_content_top_left": [
+            18,
+            64,
+            400,
+            272
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/tooltip-ivory.png"
+        },
+        {
+          "name": "toast-success",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            91,
+            113,
+            92,
+            112
+          ],
+          "source_cell_top_left": [
+            0,
+            808,
+            425,
+            1254
+          ],
+          "source_content_top_left": [
+            31,
+            58,
+            408,
+            265
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/toast-success.png"
+        },
+        {
+          "name": "toast-warning",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            94,
+            113,
+            95,
+            112
+          ],
+          "source_cell_top_left": [
+            425,
+            793,
+            829,
+            1254
+          ],
+          "source_content_top_left": [
+            17,
+            73,
+            388,
+            280
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/toast-warning.png"
+        },
+        {
+          "name": "toast-error",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            92,
+            113,
+            92,
+            112
+          ],
+          "source_cell_top_left": [
+            829,
+            797,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            18,
+            69,
+            394,
+            276
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Panels/panels/toast-error.png"
+        }
+      ]
+    },
+    {
+      "name": "cards",
+      "category": "Cards",
+      "source": "docs/art-source/ui-kit-2026-10-24/cards.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        2048,
+        1152
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "cell_size": [
+        512,
+        384
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "concept-normal",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            142,
+            128,
+            142,
+            128
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            320,
+            492
+          ],
+          "source_content_top_left": [
+            30,
+            279,
+            306,
+            451
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/concept-normal.png"
+        },
+        {
+          "name": "concept-selected",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            137,
+            126,
+            138,
+            125
+          ],
+          "source_cell_top_left": [
+            320,
+            0,
+            625,
+            494
+          ],
+          "source_content_top_left": [
+            11,
+            274,
+            296,
+            455
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/concept-selected.png"
+        },
+        {
+          "name": "concept-conflict",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            139,
+            128,
+            140,
+            127
+          ],
+          "source_cell_top_left": [
+            625,
+            0,
+            934,
+            493
+          ],
+          "source_content_top_left": [
+            17,
+            276,
+            298,
+            453
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/concept-conflict.png"
+        },
+        {
+          "name": "concept-compatible",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 768,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            128,
+            141,
+            127
+          ],
+          "source_cell_top_left": [
+            934,
+            0,
+            1254,
+            493
+          ],
+          "source_content_top_left": [
+            15,
+            276,
+            294,
+            453
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/concept-compatible.png"
+        },
+        {
+          "name": "task-normal",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            128,
+            141,
+            128
+          ],
+          "source_cell_top_left": [
+            0,
+            492,
+            320,
+            778
+          ],
+          "source_content_top_left": [
+            31,
+            93,
+            310,
+            208
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/task-normal.png"
+        },
+        {
+          "name": "task-active",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            141,
+            128,
+            142,
+            128
+          ],
+          "source_cell_top_left": [
+            320,
+            494,
+            625,
+            771
+          ],
+          "source_content_top_left": [
+            19,
+            91,
+            296,
+            206
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/task-active.png"
+        },
+        {
+          "name": "task-complete",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            141,
+            128,
+            141,
+            128
+          ],
+          "source_cell_top_left": [
+            625,
+            493,
+            934,
+            791
+          ],
+          "source_content_top_left": [
+            15,
+            92,
+            293,
+            207
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/task-complete.png"
+        },
+        {
+          "name": "task-disabled",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 384,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            128,
+            140,
+            128
+          ],
+          "source_cell_top_left": [
+            934,
+            493,
+            1254,
+            791
+          ],
+          "source_content_top_left": [
+            11,
+            92,
+            291,
+            207
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/task-disabled.png"
+        },
+        {
+          "name": "attachment",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            140,
+            128,
+            140,
+            128
+          ],
+          "source_cell_top_left": [
+            0,
+            778,
+            320,
+            1254
+          ],
+          "source_content_top_left": [
+            29,
+            59,
+            309,
+            217
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/attachment.png"
+        },
+        {
+          "name": "candidate",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            142,
+            128,
+            142,
+            127
+          ],
+          "source_cell_top_left": [
+            320,
+            771,
+            625,
+            1254
+          ],
+          "source_content_top_left": [
+            17,
+            52,
+            293,
+            229
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/candidate.png"
+        },
+        {
+          "name": "chat-incoming",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 1024,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            137,
+            128,
+            137,
+            128
+          ],
+          "source_cell_top_left": [
+            625,
+            791,
+            934,
+            1254
+          ],
+          "source_content_top_left": [
+            10,
+            71,
+            296,
+            178
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/chat-incoming.png"
+        },
+        {
+          "name": "chat-outgoing",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 1536,
+            "y": 0,
+            "width": 512,
+            "height": 384
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            135,
+            128,
+            135,
+            128
+          ],
+          "source_cell_top_left": [
+            934,
+            791,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            11,
+            71,
+            301,
+            177
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Cards/cards/chat-outgoing.png"
+        }
+      ]
+    },
+    {
+      "name": "controls",
+      "category": "Controls",
+      "source": "docs/art-source/ui-kit-2026-10-24/controls.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        1024,
+        640
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        256,
+        160
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "progress-track",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 480,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            313,
+            319
+          ],
+          "source_content_top_left": [
+            23,
+            171,
+            290,
+            240
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/progress-track.png"
+        },
+        {
+          "name": "progress-green",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 480,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            313,
+            0,
+            627,
+            318
+          ],
+          "source_content_top_left": [
+            24,
+            168,
+            291,
+            238
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/progress-green.png"
+        },
+        {
+          "name": "progress-amber",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 480,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            627,
+            0,
+            940,
+            318
+          ],
+          "source_content_top_left": [
+            23,
+            167,
+            289,
+            238
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/progress-amber.png"
+        },
+        {
+          "name": "progress-red",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 480,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            940,
+            0,
+            1254,
+            319
+          ],
+          "source_content_top_left": [
+            24,
+            167,
+            290,
+            239
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/progress-red.png"
+        },
+        {
+          "name": "toggle-off",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 320,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            319,
+            313,
+            631
+          ],
+          "source_content_top_left": [
+            46,
+            119,
+            264,
+            231
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/toggle-off.png"
+        },
+        {
+          "name": "toggle-on",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 320,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            313,
+            318,
+            627,
+            631
+          ],
+          "source_content_top_left": [
+            51,
+            120,
+            267,
+            232
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/toggle-on.png"
+        },
+        {
+          "name": "toggle-disabled",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 320,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            627,
+            318,
+            940,
+            630
+          ],
+          "source_content_top_left": [
+            49,
+            120,
+            264,
+            231
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/toggle-disabled.png"
+        },
+        {
+          "name": "slider-thumb",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 320,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            940,
+            319,
+            1254,
+            637
+          ],
+          "source_content_top_left": [
+            84,
+            98,
+            229,
+            244
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/slider-thumb.png"
+        },
+        {
+          "name": "checkbox-off",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 160,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            631,
+            313,
+            940
+          ],
+          "source_content_top_left": [
+            89,
+            89,
+            226,
+            225
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/checkbox-off.png"
+        },
+        {
+          "name": "checkbox-on",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 160,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            313,
+            631,
+            627,
+            904
+          ],
+          "source_content_top_left": [
+            90,
+            89,
+            227,
+            226
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/checkbox-on.png"
+        },
+        {
+          "name": "checkbox-disabled",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 160,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            627,
+            630,
+            940,
+            928
+          ],
+          "source_content_top_left": [
+            88,
+            90,
+            225,
+            226
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/checkbox-disabled.png"
+        },
+        {
+          "name": "radio-off",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 160,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            940,
+            637,
+            1254,
+            943
+          ],
+          "source_content_top_left": [
+            89,
+            85,
+            227,
+            223
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/radio-off.png"
+        },
+        {
+          "name": "radio-on",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            940,
+            313,
+            1254
+          ],
+          "source_content_top_left": [
+            89,
+            85,
+            225,
+            221
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/radio-on.png"
+        },
+        {
+          "name": "scrollbar-track",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            313,
+            904,
+            627,
+            1254
+          ],
+          "source_content_top_left": [
+            122,
+            47,
+            190,
+            325
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/scrollbar-track.png"
+        },
+        {
+          "name": "scrollbar-thumb",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            627,
+            928,
+            940,
+            1254
+          ],
+          "source_content_top_left": [
+            124,
+            73,
+            188,
+            249
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/scrollbar-thumb.png"
+        },
+        {
+          "name": "notification-badge",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 160
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            940,
+            943,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            102,
+            96,
+            213,
+            207
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Controls/controls/notification-badge.png"
+        }
+      ]
+    },
+    {
+      "name": "decor",
+      "category": "Decor",
+      "source": "docs/art-source/ui-kit-2026-10-24/decor.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "sparkle",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            339,
+            330
+          ],
+          "source_content_top_left": [
+            59,
+            44,
+            282,
+            283
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/sparkle.png"
+        },
+        {
+          "name": "sparkle-small",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            339,
+            0,
+            636,
+            293
+          ],
+          "source_content_top_left": [
+            83,
+            107,
+            228,
+            228
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/sparkle-small.png"
+        },
+        {
+          "name": "pixel-stars",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            636,
+            0,
+            947,
+            324
+          ],
+          "source_content_top_left": [
+            64,
+            82,
+            229,
+            266
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/pixel-stars.png"
+        },
+        {
+          "name": "moon",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            947,
+            0,
+            1254,
+            328
+          ],
+          "source_content_top_left": [
+            55,
+            79,
+            248,
+            277
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/moon.png"
+        },
+        {
+          "name": "sun",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            330,
+            339,
+            624
+          ],
+          "source_content_top_left": [
+            61,
+            48,
+            267,
+            248
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/sun.png"
+        },
+        {
+          "name": "sticky-note",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            339,
+            293,
+            636,
+            620
+          ],
+          "source_content_top_left": [
+            50,
+            66,
+            259,
+            290
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/sticky-note.png"
+        },
+        {
+          "name": "paper-clip",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            636,
+            324,
+            947,
+            618
+          ],
+          "source_content_top_left": [
+            67,
+            58,
+            254,
+            255
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/paper-clip.png"
+        },
+        {
+          "name": "pushpin",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            947,
+            328,
+            1254,
+            609
+          ],
+          "source_content_top_left": [
+            78,
+            51,
+            242,
+            242
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/pushpin.png"
+        },
+        {
+          "name": "folder",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            624,
+            339,
+            938
+          ],
+          "source_content_top_left": [
+            50,
+            47,
+            296,
+            271
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/folder.png"
+        },
+        {
+          "name": "document-stack",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            339,
+            620,
+            636,
+            912
+          ],
+          "source_content_top_left": [
+            18,
+            38,
+            271,
+            258
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/document-stack.png"
+        },
+        {
+          "name": "trophy",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            636,
+            618,
+            947,
+            924
+          ],
+          "source_content_top_left": [
+            37,
+            40,
+            265,
+            275
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/trophy.png"
+        },
+        {
+          "name": "lightbulb",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            947,
+            609,
+            1254,
+            919
+          ],
+          "source_content_top_left": [
+            47,
+            40,
+            274,
+            275
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/lightbulb.png"
+        },
+        {
+          "name": "planet",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            938,
+            339,
+            1254
+          ],
+          "source_content_top_left": [
+            41,
+            43,
+            322,
+            264
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/planet.png"
+        },
+        {
+          "name": "astronaut",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            339,
+            912,
+            636,
+            1254
+          ],
+          "source_content_top_left": [
+            49,
+            34,
+            236,
+            303
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/astronaut.png"
+        },
+        {
+          "name": "fox",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            636,
+            924,
+            947,
+            1254
+          ],
+          "source_content_top_left": [
+            26,
+            32,
+            251,
+            283
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/fox.png"
+        },
+        {
+          "name": "plant",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            947,
+            919,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            47,
+            35,
+            268,
+            304
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Decor/decor/plant.png"
+        }
+      ]
+    },
+    {
+      "name": "backgrounds",
+      "category": "Backgrounds",
+      "source": "docs/art-source/ui-kit-2026-10-24/backgrounds.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Backgrounds/backgrounds-sheet.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "size": [
+        2048,
+        1536
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "cell_size": [
+        1024,
+        768
+      ],
+      "transparent": false,
+      "source_alpha_range": [
+        255,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "studio-day",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 1024,
+            "height": 768
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            724,
+            543
+          ],
+          "source_content_top_left": [
+            0,
+            0,
+            724,
+            543
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Backgrounds/backgrounds/studio-day.png"
+        },
+        {
+          "name": "studio-night",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 1024,
+            "y": 768,
+            "width": 1024,
+            "height": 768
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            724,
+            0,
+            1448,
+            543
+          ],
+          "source_content_top_left": [
+            0,
+            0,
+            724,
+            543
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Backgrounds/backgrounds/studio-night.png"
+        },
+        {
+          "name": "burgundy-pixels",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1024,
+            "height": 768
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            543,
+            724,
+            1086
+          ],
+          "source_content_top_left": [
+            0,
+            0,
+            724,
+            543
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Backgrounds/backgrounds/burgundy-pixels.png"
+        },
+        {
+          "name": "ivory-dot-grid",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 1024,
+            "y": 0,
+            "width": 1024,
+            "height": 768
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            724,
+            543,
+            1448,
+            1086
+          ],
+          "source_content_top_left": [
+            0,
+            0,
+            724,
+            543
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Backgrounds/backgrounds/ivory-dot-grid.png"
+        }
+      ]
+    },
+    {
+      "name": "icons-actions",
+      "category": "Icons",
+      "source": "docs/art-source/ui-kit-2026-10-24/icons-actions.png",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions-sheet.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "grid": [
+        4,
+        4
+      ],
+      "cell_size": [
+        256,
+        256
+      ],
+      "transparent": true,
+      "source_alpha_range": [
+        0,
+        255
+      ],
+      "sprites": [
+        {
+          "name": "arrow-left",
+          "row": 0,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            0,
+            315,
+            338
+          ],
+          "source_content_top_left": [
+            67,
+            82,
+            271,
+            277
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/arrow-left.png"
+        },
+        {
+          "name": "arrow-right",
+          "row": 0,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            315,
+            0,
+            615,
+            326
+          ],
+          "source_content_top_left": [
+            66,
+            80,
+            269,
+            277
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/arrow-right.png"
+        },
+        {
+          "name": "arrow-up",
+          "row": 0,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            615,
+            0,
+            954,
+            338
+          ],
+          "source_content_top_left": [
+            71,
+            72,
+            258,
+            278
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/arrow-up.png"
+        },
+        {
+          "name": "arrow-down",
+          "row": 0,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 768,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            954,
+            0,
+            1254,
+            325
+          ],
+          "source_content_top_left": [
+            32,
+            72,
+            232,
+            278
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/arrow-down.png"
+        },
+        {
+          "name": "chevron-down",
+          "row": 1,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            338,
+            315,
+            616
+          ],
+          "source_content_top_left": [
+            57,
+            70,
+            282,
+            227
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/chevron-down.png"
+        },
+        {
+          "name": "plus",
+          "row": 1,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            315,
+            326,
+            615,
+            636
+          ],
+          "source_content_top_left": [
+            49,
+            50,
+            263,
+            259
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/plus.png"
+        },
+        {
+          "name": "minus",
+          "row": 1,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            615,
+            338,
+            954,
+            604
+          ],
+          "source_content_top_left": [
+            64,
+            100,
+            273,
+            195
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/minus.png"
+        },
+        {
+          "name": "edit",
+          "row": 1,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 512,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            954,
+            325,
+            1254,
+            633
+          ],
+          "source_content_top_left": [
+            34,
+            47,
+            245,
+            256
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/edit.png"
+        },
+        {
+          "name": "delete",
+          "row": 2,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            616,
+            315,
+            939
+          ],
+          "source_content_top_left": [
+            67,
+            52,
+            271,
+            282
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/delete.png"
+        },
+        {
+          "name": "drag",
+          "row": 2,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            315,
+            636,
+            615,
+            943
+          ],
+          "source_content_top_left": [
+            76,
+            51,
+            232,
+            256
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/drag.png"
+        },
+        {
+          "name": "lock",
+          "row": 2,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            615,
+            604,
+            954,
+            949
+          ],
+          "source_content_top_left": [
+            72,
+            64,
+            267,
+            294
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/lock.png"
+        },
+        {
+          "name": "info",
+          "row": 2,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 256,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            954,
+            633,
+            1254,
+            933
+          ],
+          "source_content_top_left": [
+            40,
+            52,
+            246,
+            257
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/info.png"
+        },
+        {
+          "name": "help",
+          "row": 3,
+          "column": 0,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            0,
+            939,
+            315,
+            1254
+          ],
+          "source_content_top_left": [
+            50,
+            42,
+            266,
+            259
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/help.png"
+        },
+        {
+          "name": "link",
+          "row": 3,
+          "column": 1,
+          "rect": {
+            "x": 256,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            315,
+            943,
+            615,
+            1254
+          ],
+          "source_content_top_left": [
+            33,
+            52,
+            265,
+            236
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/link.png"
+        },
+        {
+          "name": "unlink",
+          "row": 3,
+          "column": 2,
+          "rect": {
+            "x": 512,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            615,
+            949,
+            954,
+            1254
+          ],
+          "source_content_top_left": [
+            31,
+            51,
+            307,
+            232
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/unlink.png"
+        },
+        {
+          "name": "refresh",
+          "row": 3,
+          "column": 3,
+          "rect": {
+            "x": 768,
+            "y": 0,
+            "width": 256,
+            "height": 256
+          },
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "border_suggested_lbrt": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "source_cell_top_left": [
+            954,
+            933,
+            1254,
+            1254
+          ],
+          "source_content_top_left": [
+            40,
+            44,
+            251,
+            264
+          ],
+          "file": "Assets/_Project/Art/UI/GeneratedKit20261024/Icons/icons-actions/refresh.png"
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

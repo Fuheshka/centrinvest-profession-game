@@ -1,0 +1,561 @@
+fileFormatVersion: 2
+guid: 90e0c6c38add14736bca4fe825269ba8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1031471655360706533
+    second: buttons-sheet_0
+  - first:
+      213: 2450941732014722296
+    second: buttons-sheet_1
+  - first:
+      213: 4150686622153408199
+    second: buttons-sheet_2
+  - first:
+      213: 614242055166887198
+    second: buttons-sheet_3
+  - first:
+      213: -7040406183730009127
+    second: buttons-sheet_4
+  - first:
+      213: -9088525736350792920
+    second: buttons-sheet_5
+  - first:
+      213: 2685029852494306387
+    second: buttons-sheet_6
+  - first:
+      213: -4885986578369615081
+    second: buttons-sheet_7
+  - first:
+      213: -2203540320034117537
+    second: buttons-sheet_8
+  - first:
+      213: -5735114343737241613
+    second: buttons-sheet_9
+  - first:
+      213: -9186840317955981010
+    second: buttons-sheet_10
+  - first:
+      213: 5106571727150208689
+    second: buttons-sheet_11
+  - first:
+      213: -1297874828221153999
+    second: buttons-sheet_12
+  - first:
+      213: -433956557742753048
+    second: buttons-sheet_13
+  - first:
+      213: 7633037928115452449
+    second: buttons-sheet_14
+  - first:
+      213: -2569975424690706061
+    second: buttons-sheet_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: buttons-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 611
+        width: 297
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7b8ad6106805e00800000000000000
+      internalID: 1031471655360706533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 607
+        width: 300
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fc0be5058e730220800000000000000
+      internalID: 2450941732014722296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 613
+        width: 282
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce7b67dd733a9930800000000000000
+      internalID: 4150686622153408199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 611
+        width: 297
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15045015e9368800800000000000000
+      internalID: 614242055166887198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 419
+        width: 297
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9db2f48a0e37b4e90800000000000000
+      internalID: -7040406183730009127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 416
+        width: 300
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 823c0d0fef11fd180800000000000000
+      internalID: -9088525736350792920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 422
+        width: 282
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c1e39cc64234520800000000000000
+      internalID: 2685029852494306387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 419
+        width: 297
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71be3f2181d713cb0800000000000000
+      internalID: -4885986578369615081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 226
+        width: 297
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f58ad18f0c37b61e0800000000000000
+      internalID: -2203540320034117537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 224
+        width: 300
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff4b4be3e7c860b0800000000000000
+      internalID: -5735114343737241613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 229
+        width: 282
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e214fff9769c18080800000000000000
+      internalID: -9186840317955981010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 227
+        width: 297
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b657d81eef2ed640800000000000000
+      internalID: 5106571727150208689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 36
+        width: 292
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13df4fc58b50dfde0800000000000000
+      internalID: -1297874828221153999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 36
+        width: 293
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eabac75fc64af9f0800000000000000
+      internalID: -433956557742753048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 36
+        width: 283
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ab766dd8ffde960800000000000000
+      internalID: 7633037928115452449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 36
+        width: 292
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379a3d1b7fc955cd0800000000000000
+      internalID: -2569975424690706061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      buttons-sheet_0: 1031471655360706533
+      buttons-sheet_1: 2450941732014722296
+      buttons-sheet_10: -9186840317955981010
+      buttons-sheet_11: 5106571727150208689
+      buttons-sheet_12: -1297874828221153999
+      buttons-sheet_13: -433956557742753048
+      buttons-sheet_14: 7633037928115452449
+      buttons-sheet_15: -2569975424690706061
+      buttons-sheet_2: 4150686622153408199
+      buttons-sheet_3: 614242055166887198
+      buttons-sheet_4: -7040406183730009127
+      buttons-sheet_5: -9088525736350792920
+      buttons-sheet_6: 2685029852494306387
+      buttons-sheet_7: -4885986578369615081
+      buttons-sheet_8: -2203540320034117537
+      buttons-sheet_9: -5735114343737241613
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
