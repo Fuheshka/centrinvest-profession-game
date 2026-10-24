@@ -1,6 +1,6 @@
 # PROMPTS: карточки задач
 
-Каждая карточка – готовый промпт для отдельного чата с агентом (Claude Code в этой репе). Скопировать блок целиком. Под заголовком строка статуса, обновлять вместе с галочкой в `ROADMAP.md`.
+Каждая карточка – готовый промпт по шаблону `.agent/skills/task-prompt/SKILL.md` (переведены: P-1; остальные – в старом коротком формате, переводятся перед стартом) для отдельного чата с агентом (Claude Code в этой репе). Скопировать блок целиком. Под заголовком строка статуса, обновлять вместе с галочкой в `ROADMAP.md`.
 
 Кто что делает и правила git – `TEAM.md`. Макеты экранов – `docs/mockup/*.png`. Промпты подходят для любой нейронки: агент в репе читает файлы сам, в браузерный чат – приложить файлы (см. `TEAM.md`, «Нейронки»).
 
@@ -10,38 +10,55 @@
 
 ## P-1 Каркас проекта
 
-**Тип.** код · **Статус.** не сделано · **Кто.** Р1 · Ядро · **Модель.** Sonnet, effort medium · **Зависит от.** –
+**Тип.** код · **Статус.** сделано (ждёт мержа) · **Кто.** Р1 · Ядро · **Модель.** лёгкая (Sonnet), усилие среднее · **Зависит от.** –
 
 ```
-Задача P-1 из docs/PROMPTS.md: каркас Unity-проекта для демо.
+Проект «Билд к пятнице» (Unity 6, Universal 2D, Web). Роль: Р1 Ядро – правишь только свои папки из docs/TEAM.md (на этой карточке – весь каркас, остальные ещё не начали). Ветка: p-1-skeleton от свежего dev. Задача: P-1 – каркас проекта, сборки, все контракты заглушками, сцены, Web-профиль.
 
-Сначала прочитай CLAUDE.md, docs/TEAM.md, docs/STATE.md, docs/ROADMAP.md (раздел «Контракты»), docs/DEMO.md (раздел «Системы в Unity»). Ветка от dev: p-1-skeleton, в конце PR в dev. Проверь git status до и после.
+МОДЕЛЬ И РЕЖИМ
+Лёгкая модель (Sonnet / GPT-5 mini / Gemini Flash), усилие среднее. /unlazy: в начале GATES.md по воротам ниже (GATES.md в .gitignore) – пунктов 7, файлов много. Решений с компромиссами нет: всё задано контрактами; если контракт не компилируется как написан – остановись и скажи.
+Субагенты – только для механики (прогон тестов, логи). Других не запускай.
 
-Проект: Unity 6, шаблон Universal 2D, цель – Web (WebGL). Проект уже создан в корне репы.
+ЧТО ПРОЧИТАТЬ ПЕРВЫМ (только это)
+- CLAUDE.md, docs/TEAM.md («Роли и владение», «Unity: как не ломать сцены»), docs/STATE.md, docs/ROADMAP.md («Контракты» – сигнатуры обязательны дословно).
+- Дизайн: docs/DEMO.md («Системы в Unity»).
+- Код: в Assets/ пока только шаблон Universal 2D, своего кода нет.
+- Вкусы автора: тире «–», без эмодзи; сцена и префаб прежде кода; никакой логики сверх заглушек.
 
-Сделай:
-1. Папки по владению из docs/TEAM.md: Assets/_Project/{Scripts/Core/State, Scripts/Core/Data, Scripts/Core/Systems, Scripts/UI/{Messenger,Menu,Board,Versions,Common}, Data/{Test,Level1}, Prefabs/UI/{Common,Messenger,Board,Versions}, Scenes, Art, Tests/EditMode/{Core,Board,Review}}.
+ЧТО СДЕЛАТЬ
+1. Папки по владению: Assets/_Project/{Scripts/Core/State, Scripts/Core/Data, Scripts/Core/Systems, Scripts/UI/{Messenger,Menu,Board,Versions,Common}, Data/{Test,Level1}, Prefabs/UI/{Common,Messenger,Board,Versions}, Scenes, Art, Audio/{Music,SFX}, Tests/EditMode/{Core,Board,Review}}. Пустые папки – с .gitkeep, чтобы ушли в git.
 2. Сборки (asmdef):
-   - Studio.Core (Scripts/Core) – логика и ScriptableObject-данные, ссылается только на UnityEngine.
-   - Studio.UI (Scripts/UI) – ссылается на Studio.Core, Unity.TextMeshPro, UnityEngine.UI.
-   - Studio.Tests.EditMode (Tests/EditMode) – ссылается на Studio.Core, тестовая сборка NUnit, только Editor.
-   Тесты в отдельной asmdef, чтобы Test Runner их видел.
-3. ВСЕ контракты из docs/ROADMAP.md заглушками, чтобы остальные трое с первого дня писали против одного API:
-   - Scripts/Core/Enums.cs: enum'ы и struct Cost.
-   - Scripts/Core/Data: OptionSO, MessageSO, CardSO, ComboSO, QuoteSO, ContentDB – поля полностью, CreateAssetMenu "Studio/<Имя>".
-   - Scripts/Core/State: GameState, BoardState (+SlotEntry, Link), DecisionRecord, VersionRecord (+QuoteBlame) – поля полностью, [Serializable], только List и массивы.
-   - Scripts/Core/Systems: DecisionResolver, BoardRules, DayClock, ReviewSystem, Difficulty, SaveSystem – статические классы, каждый в своём файле, все методы с сигнатурами из контрактов и телом throw new NotImplementedException("P-N"), где P-N – карточка, которая его реализует.
-   Логику не пиши – это следующие карточки.
-4. Один тест-заглушка EditMode, который проверяет, что Axis имеет 4 значения. Прогони тесты, они зелёные.
-5. Сцены Menu и Game в Scenes, обе в Build Settings (Menu первая). В Game – пустые корневые префабы TopBar, MessengerPanel, BoardPanel, VersionsPanel, EndingPanel в своих папках Prefabs/UI/* (их дальше наполняют владельцы, сцену после P-1 трогает только Р1). В каждой Canvas с CanvasScaler: Scale With Screen Size, 1920×1080, match 0.5. EventSystem с Input System UI Input Module.
-6. Build Profile Web: Compression Brotli, Decompression Fallback включён, Data Caching включён. Пустую сборку собери в Builds/Web (папка в .gitignore), запиши вес в DEVLOG.
-7. Заполни раздел Layout в CLAUDE.md: где код, тесты, данные, сцены, как запускать тесты.
+   - Studio.Core (Scripts/Core) – ссылается только на UnityEngine.
+   - Studio.UI (Scripts/UI) – Studio.Core, Unity.TextMeshPro, UnityEngine.UI, Unity.InputSystem.
+   - Studio.Tests.EditMode (Tests/EditMode) – Studio.Core, NUnit (Test Assemblies), только Editor.
+3. Все контракты из ROADMAP.md заглушками, namespace Studio.Core:
+   - Scripts/Core/Enums.cs – enum'ы и struct Cost.
+   - Scripts/Core/Data – OptionSO, MessageSO, CardSO, ComboSO, QuoteSO, ContentDB: поля полностью, CreateAssetMenu "Studio/<Имя>".
+   - Scripts/Core/State – GameState, BoardState (+SlotEntry, Link), DecisionRecord, VersionRecord (+QuoteBlame): поля полностью, [Serializable], только List и массивы (JsonUtility).
+   - Scripts/Core/Systems – DecisionResolver, BoardRules, DayClock, ReviewSystem, Difficulty (+DifficultySettings), SaveSystem: статические классы, файл на класс, сигнатуры дословно, тело throw new NotImplementedException("P-N") с номером карточки, которая реализует (Decision – P-2, Board – P-3, DayClock – P-6, Review – P-7, Difficulty и Save – P-9).
+4. Тест Tests/EditMode/Core/SmokeTests: Axis имеет 4 значения; GameState и VersionRecord переживают JsonUtility.ToJson/FromJson (пустые). TDD здесь формальный: тест сначала красный (нет типов), потом зелёный.
+5. Сцены Scenes/Menu и Scenes/Game, обе в Build Profiles (Menu первая). В каждой: Canvas (Screen Space Overlay), CanvasScaler Scale With Screen Size 1920×1080, match 0.5; EventSystem с Input System UI Input Module. В Game под Canvas – пустые префабы TopBar (Prefabs/UI/Common), MessengerPanel (Prefabs/UI/Messenger), BoardPanel (Prefabs/UI/Board), VersionsPanel и EndingPanel (Prefabs/UI/Versions), каждый растянут на весь экран, Board/Versions/Ending выключены. Сцену собирай через unity-skills REST, не одноразовыми скриптами.
+6. Build Profile Web: Compression Brotli, Decompression Fallback вкл., Data Caching вкл. Собрать в Builds/Web, открыть локально: python3 -m http.server 8000 --directory Builds/Web. Вес сборки – в DEVLOG.
+7. Раздел Layout в CLAUDE.md: где код, данные, префабы, сцены, тесты; как гонять тесты; как собрать Web.
 
-Не трогай: docs/GDD.md, docs/DEMO.md, docs/ROADMAP.md (кроме галочки), .claude/, .agent/.
+НЕ ТРОГАТЬ
+docs/GDD.md, docs/DEMO.md, docs/ROADMAP.md (кроме галочки M0), .claude/, .agent/, .github/. Никакой логики в системах – только заглушки. Найденное попутно – в docs/BUGS.md (Открыто, с датой).
 
-Готово, когда: проект открывается без ошибок консоли, все заглушки компилируются, тесты зелёные, Web-сборка собирается и открывается локально в браузере (python3 -m http.server в Builds/Web), Layout в CLAUDE.md заполнен.
+ТЕХНИКА (грабли)
+- Unity Editor открыт с этим проектом. REST unity-skills: http://localhost:8090/?expectProject=centrinvest-profession-game; инструкции – .agent/skills/unity-skills/SKILL.md. Без REST – сцену и префабы делает человек в редакторе по пункту 5, агент пишет только .cs и asmdef.
+- После правки .cs и asmdef: asset_refresh, дождаться компиляции по waitUrl, ошибок консоли 0.
+- Тесты – Test Runner, EditMode, сборка Studio.Tests.EditMode; число зелёных записать.
+- ProjectSettings/ и Packages/ на этой карточке твои: коммитить только осознанные изменения (Build Profile, Input System), шум от открытия редактора – тоже можно, это Р1.
+- Если Unity молчит – модальный диалог в редакторе: сказать человеку, не ретраить.
 
-В конце: запись в docs/DEVLOG.md, обновить docs/STATE.md и статус P-1 здесь, показать мне сообщение коммита «chore: project skeleton, assemblies, scenes and web build profile» и ждать подтверждения.
+ОТЧЁТНОСТЬ
+- docs/DEVLOG.md: запись «P-1 Каркас», статус «сделано» (код компилируется, тесты зелёные), вес Web-сборки.
+- docs/STATE.md: P-1 сделан, дальше P-2…P-5 параллельно по ролям. docs/PROMPTS.md: статус P-1. docs/ROADMAP.md: галочка M0.
+- Коммит один: «chore: project skeleton, assemblies, contract stubs and web build profile». Сначала покажи сообщение, коммить после «да». Файлы добавляй по именам или папкам, не git add -A.
+- Перед стартом: git status, git pull origin dev. В конце: git push -u origin p-1-skeleton, PR в dev (тело: что сделано, как проверить, что не проверено).
+
+ВОРОТА (по числам)
+G1 SmokeTests падал до появления типов (показать вывод). G2 Web-сборка открывается в браузере, видно пустую сцену Menu без ошибок в консоли браузера. G3 EditMode-тесты зелёные (число), ошибок консоли редактора 0, все 6 систем бросают NotImplementedException с номером карточки. G4 DEVLOG, STATE, PROMPTS, ROADMAP, Layout в CLAUDE.md обновлены. G5 git status чист.
 ```
 
 ---

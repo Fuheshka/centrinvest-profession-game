@@ -10,7 +10,7 @@ Chosen: a game about a game designer (`docs/GDD.md`), demo scope in `docs/DEMO.m
 - `docs/IDEAS.md` – profession and concept candidates, comparison, chosen direction. Once a direction is picked, the GDD goes to `docs/GDD.md` and wins over prompts.
 - `docs/STATE.md` – where work stopped and what to continue with. Read it before a task, update it in the same commit after the task.
 - `docs/BUGS.md` – open bugs and questions, fixed-bug changelog.
-- `docs/ROADMAP.md` – milestones and class contracts; `docs/PROMPTS.md` – task cards; `docs/TEAM.md` – who owns what; `docs/mockup/` – UI mockups (PNG + HTML).
+- `docs/ROADMAP.md` – milestones and class contracts; `docs/PROMPTS.md` – task cards; `docs/TEAM.md` – who owns what; `docs/NONCODE.md` – non-code tasks; `docs/AUDIO.md` – sound and music list; `docs/mockup/` – UI mockups (PNG + HTML).
 
 ## Hard constraints from the case
 
@@ -29,6 +29,7 @@ Chosen: a game about a game designer (`docs/GDD.md`), demo scope in `docs/DEMO.m
 - Never add Claude attribution (Co-Authored-By etc.) to commits or PRs.
 - TDD (red – green – refactor) for game logic (rules, scoring, save, difficulty). Not required for pure visuals or layout.
 - Keep the change inside the task's boundary. Anything else noticed goes to `docs/BUGS.md` (Open, dated) instead of being fixed on the side.
+- Task prompts (cards in `docs/PROMPTS.md`, hand-offs to other agents) follow the template in `.agent/skills/task-prompt/SKILL.md`.
 - Record non-obvious decisions and trade-offs in `docs/DECISIONS.md` (short, dated).
 - Dash in text is "–", never "—". No emoji in game text and docs.
 
@@ -39,7 +40,15 @@ Chosen: a game about a game designer (`docs/GDD.md`), demo scope in `docs/DEMO.m
 
 ## Layout
 
-Unity 6, Universal 2D (URP), target Web (WebGL). Game code, tests and scenes: to be filled once the first code lands.
+Unity 6, Universal 2D (URP), target Web (WebGL). Everything of ours lives in `Assets/_Project/`; ownership per folder is in `docs/TEAM.md`.
+
+- `Scripts/Core/` – assembly `Studio.Core` (namespace `Studio.Core`), engine-only logic, no UI references. `Enums.cs`; `Data/` ScriptableObjects (`CardSO`, `ComboSO`, `OptionSO`, `MessageSO`, `QuoteSO`, `ContentDB`); `State/` serializable state (`GameState`, `BoardState`, `DecisionRecord`, `VersionRecord`); `Systems/` static classes (`DecisionResolver`, `BoardRules`, `DayClock`, `ReviewSystem`, `Difficulty`, `SaveSystem`). Contracts: `docs/ROADMAP.md`.
+- `Scripts/UI/{Messenger,Menu,Board,Versions,Common}/` – assembly `Studio.UI` (references Core, TextMeshPro, UnityEngine.UI).
+- `Tests/EditMode/{Core,Board,Review}/` – assembly `Studio.Tests.EditMode` (Editor only, NUnit). Each role tests its own area.
+- `Data/Test/` – test ScriptableObjects; `Data/Level1/` – content of level "First release".
+- `Scenes/` – `Menu` (build index 0) and `Game`. `Prefabs/UI/{Common,Messenger,Board,Versions}/` – root prefabs placed in `Game`. `Art/` – sprites and fonts.
+- Web build: `Builds/Web/` (gitignored), Brotli + Decompression Fallback + Data Caching. Serve locally: `cd Builds/Web && python3 -m http.server`.
+- Run tests: Unity Editor, Window > General > Test Runner > EditMode > Run All. Via REST (Editor open): `POST /skill/test_run_by_name {"testName":"Studio.Tests"}`, then `test_get_result` with the returned `jobId`. Do not use plain `test_run` – it also runs the unity-skills package tests (about 1700) and blocks the Editor for minutes.
 
 ## Environment notes
 

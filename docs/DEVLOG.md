@@ -52,3 +52,15 @@
 - Проверка: PNG отрисованы headless Chrome из HTML макета, просмотрены.
 - Статус: ждёт проверки командой
 - Коммит: docs: team roles, ownership, mockup exports and agent pointers
+
+## 2026-10-24 · Звук и задачи без кода
+- Что работает: `docs/AUDIO.md` – 6 треков с настроением, темпом и тегами для поиска, 32 обязательных и 9 желательных звуков с именами файлов, бесплатные источники и лицензии, правила сдачи; `docs/NONCODE.md` – задачи Н-1…Н-9 (тексты, звук, арт, название, правда о профессии, тест на подростках, QA, презентация, видео); `docs/CREDITS.md` – шаблон.
+- Проверка: не требуется, только документы.
+- Статус: ждёт проверки командой
+- Коммит: docs: audio list and non-code tasks
+
+## 2026-10-24 · P-1 Каркас
+- Что работает: папки `Assets/_Project/` по владению из `TEAM.md` (с `Audio/{Music,SFX}`); сборки `Studio.Core`, `Studio.UI` (с Input System), `Studio.Tests.EditMode`; все контракты из `ROADMAP.md` заглушками (enum'ы, `Cost`, 6 ScriptableObject, состояние, 6 систем с `NotImplementedException("P-N")`); сцены `Menu` и `Game` в Build Settings, в `Game` пять пустых префабов панелей (Board, Versions, Ending выключены), Canvas 1920x1080 match 0.5, EventSystem с Input System UI Input Module; Web-профили: Brotli, Decompression Fallback, Data Caching. Пустая Web-сборка открывается локально и показывает пустое меню.
+- Проверка: `SmokeTests` 4/4 зелёные (Axis, JSON round-trip GameState и VersionRecord, все 6 систем бросают исключение с номером карточки); красный прогон до типов: `error CS0234 ... 'Core' does not exist in the namespace 'Studio'`; Web-сборка `Builds/Web` весит 10.3 МБ (Brotli: wasm 7.0 МБ, data 3.1 МБ), через `python3 -m http.server` грузится без ошибок в консоли браузера. Сцены и префабы собраны одноразовым Editor-скриптом (удалён), выключение панелей – через unity-skills REST. Не проверено: сборка с контентом, телефон.
+- Статус: сделано
+- Коммит: chore: project skeleton, assemblies, contract stubs and web build profile
