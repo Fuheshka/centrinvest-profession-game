@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a24152171ed4556afda7da809847c7, type: 3}
+  m_Name: TestContentDB
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.ContentDB
+  brief: {fileID: 11400000, guid: 8dfb7878dbd6c44c1bc5c1816718aafe, type: 2}
+  cards: []
+  combos: []
+  messages:
+  - {fileID: 11400000, guid: bbb98888a0f9a4ea88db3e4325ca4d66, type: 2}
+  - {fileID: 11400000, guid: 25bc06ea9371244d997d68d831345f20, type: 2}
+  quotes: []
+  tagConflicts: []
+  startBudget: 60000
+  deadline: 15
