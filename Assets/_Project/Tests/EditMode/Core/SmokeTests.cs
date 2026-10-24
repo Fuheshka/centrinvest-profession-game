@@ -36,8 +36,6 @@ namespace Studio.Tests
         [Test]
         public void Systems_ThrowNotImplementedWithCardNumber()
         {
-            Expect("P-2", () => DecisionResolver.CanAfford(null, null));
-            Expect("P-2", () => DecisionResolver.Apply(null, null, null, null));
             Expect("P-3", () => BoardRules.Thread(null, null, null, null));
             Expect("P-3", () => BoardRules.Goals(null, null));
             Expect("P-6", () => DayClock.EndDay(null, null));
