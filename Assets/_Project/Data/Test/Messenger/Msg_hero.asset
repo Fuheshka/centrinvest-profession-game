@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_hero
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: hero
+  sender: 1
+  stage: 0
+  day: 1
+  text: "\u0421\u0434\u0435\u043B\u0430\u043B\u0430 \u0442\u0440\u0438 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430 \u0433\u0435\u0440\u043E\u044F. \u041A\u0430\u043A\u043E\u0439 \u0431\u0435\u0440\u0451\u043C? \u041E\u0441\u0442\u0430\u043B\u044C\u043D\u044B\u0435 \u0432\u044B\u043A\u0438\u043D\u0443, \u043F\u0435\u0440\u0435\u0434\u0435\u043B\u044B\u0432\u0430\u0442\u044C \u043F\u043E\u0442\u043E\u043C \u2013 2 \u0434\u043D\u044F."
+  images:
+  - {fileID: 1226492259313273041, guid: 93a3878f027484e95983298367f361c3, type: 3}
+  - {fileID: 613771753500962085, guid: de1ad307b43df41e7b2893258081146a, type: 3}
+  - {fileID: 9131432010456110297, guid: 4a10ee8b1293f4fe6bc878cd79f1276f, type: 3}
+  options:
+  - {fileID: 11400000, guid: ed1d4c36b01db41a0901a247e8542959, type: 2}
+  - {fileID: 11400000, guid: 097383a1002594884a3f90bcd10f07e0, type: 2}
+  - {fileID: 11400000, guid: 94baf14d8e74e410fbcc2b11de4f95c0, type: 2}
