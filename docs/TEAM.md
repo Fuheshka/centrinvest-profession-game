@@ -4,14 +4,18 @@
 
 ## Роли и владение
 
-| Роль | Карточки (`PROMPTS.md`) | Владеет |
-|---|---|---|
-| **Р1 · Ядро** | P-1, P-2, P-6, P-9 (логика), P-11 | `Scripts/Core/State/`, `Scripts/Core/Systems/Decision*`, `DayClock*`, `Save*`, `Difficulty*`; `ContentDB`; `ProjectSettings/`, `Packages/`; сцена `Game` (только корневые префабы) |
-| **Р2 · Правила** | P-3, P-7, P-12 (логика), P-10 | `Scripts/Core/Systems/Board*`, `Review*`, `Advisor*`; `Data/Level1/`; `docs/balance/` |
-| **Р3 · Чат** | P-4, P-9 (меню), P-12 (панель) | `Scripts/UI/Messenger/`, `Scripts/UI/Menu/`, `Prefabs/UI/Messenger/`, `Prefabs/UI/Common/` (TopBar, кнопки), сцена `Menu` |
-| **Р4 · Доска и версии** | P-5, P-8 | `Scripts/UI/Board/`, `Scripts/UI/Versions/`, `Prefabs/UI/Board/`, `Prefabs/UI/Versions/` (+ финал) |
+С P-18 (2026-10-24) карта владения дополнена областями MVP (`MVP_RULES.md`). Старые строки сохранены: прототип живёт до P-28.
 
-Тесты: каждый пишет в `Tests/EditMode/<своя область>/`. Тестовые данные: `Data/Test/<своя область>/`.
+| Роль | Карточки MVP | Карточки прототипа | Владеет |
+|---|---|---|---|
+| **Р1 · Ядро** | P-18, P-19, P-21, P-28, P-29 | P-1, P-2, P-6, P-9 (логика), P-11 | `Scripts/Core/Enums.cs`, `Scripts/Core/Data/LevelSO*`, `Scripts/Core/State/` (в т.ч. `Level*`), `Scripts/Core/Systems/WorkSim*` (время, работа, энергия, ночь, оплата, файлы), `Save*`, `DayClock*`, `Decision*`, `Difficulty*`; `ContentDB`; `ProjectSettings/`, `Packages/`; сцена `Game` (корневые префабы), игровой контроллер `Scripts/UI/Common/GameLoop*` (тик, пауза, автосохранение) |
+| **Р2 · Правила** | P-20, P-22, P-23 | P-3, P-7, P-12 (логика), P-10 | `Scripts/Core/Systems/ConceptRules*`, `Staffing*`, `Review.cs`, `Board*`, `ReviewSystem*`, `Advisor*`; `Data/Level0/`, `Data/Level1/`; `docs/balance/` |
+| **Р3 · Чат** | P-24, P-25 | P-4, P-9 (меню), P-12 (панель) | `Scripts/UI/Messenger/`, `Scripts/UI/Menu/`, `Scripts/UI/Hire/`, `Prefabs/UI/Messenger/`, `Prefabs/UI/Hire/`, `Prefabs/UI/Common/` (TopBar с таймером и кнопкой конца дня, общие кнопки), `Prefabs/UI/Menu/`, сцена `Menu` |
+| **Р4 · Дэшборд и задачи** | P-26, P-27 | P-5, P-8 | `Scripts/UI/Board/`, `Scripts/UI/Tasks/`, `Scripts/UI/Versions/` (сборка, отзыв, итог), `Prefabs/UI/Board/`, `Prefabs/UI/Tasks/`, `Prefabs/UI/Versions/` |
+
+Новые области MVP: хедхантер – Р3 (UI) и Р2 (правила найма); таск-лист – Р4 (UI) и Р1 (назначение и приоритеты в `WorkSim`); энергия, работа, файлы, ночной цикл – Р1; концепт – Р2 (правила) и Р4 (холст); сборка и отзыв – Р2 (правила) и Р4 (экраны); ночной отчёт – Р3 (модальное окно в `Prefabs/UI/Common/`).
+
+Предлагаемое изменение ролей (решает команда): при составе 2 разработчика + 2 художника Р1 и Р2 ведёт один человек (Core), Р3 и Р4 – второй (UI). Владение папками остаётся по таблице: так понятно, кто ревьюит чьи файлы.
 
 ## Порядок старта
 
@@ -29,7 +33,7 @@
 
 ## Unity: как не ломать сцены
 
-- Сцены почти пустые: в `Game` лежат только корневые префабы (`TopBar`, `MessengerPanel`, `BoardPanel`, `VersionsPanel`, `EndingPanel`). Каждый правит **свой префаб**, а не сцену. Сцену `Game` правит только Р1, `Menu` – только Р3.
+- Сцены почти пустые: в `Game` лежат только корневые префабы (`TopBar`, `MessengerPanel`, `BoardPanel`, `VersionsPanel`, `EndingPanel`; в MVP добавятся `HirePanel`, `TaskPanel`). Каждый правит **свой префаб**, а не сцену. Сцену `Game` правит только Р1, `Menu` – только Р3.
 - Новый общий префаб (кнопка, плашка) – в `Prefabs/UI/Common/`, владелец Р3. Не устраивает – просим Р3.
 - `ProjectSettings/` и `Packages/` – только Р1. Нужен пакет – просим.
 - Unity сам меняет файлы при открытии (`ProjectSettings`, `packages-lock.json`). Если ты их не трогал – не коммить: `git checkout -- ProjectSettings Packages` перед коммитом.
