@@ -38,6 +38,7 @@ namespace Studio.UI
                 tabs[i].targetGraphic.color = on ? tabActive : tabIdle;
                 ((RectTransform)tabs[i].transform).sizeDelta = on ? tabActiveSize : tabIdleSize;
             }
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)tabs[0].transform.parent);
         }
 
         public void Refresh(GameState s)
