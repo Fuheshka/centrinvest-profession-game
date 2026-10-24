@@ -31,6 +31,9 @@ MonoBehaviour:
   messages:
   - {fileID: 11400000, guid: bbb98888a0f9a4ea88db3e4325ca4d66, type: 2}
   - {fileID: 11400000, guid: 25bc06ea9371244d997d68d831345f20, type: 2}
+  - {fileID: 11400000, guid: 29cee22e7c64452db360179c9c54fa9d, type: 2}
+  - {fileID: 11400000, guid: b557c408c7d04148bdd5b2a5bbea291a, type: 2}
+  - {fileID: 11400000, guid: 0a88a879744e47cc9b898a39a9c4dd93, type: 2}
   quotes: []
   tagConflicts: []
   startBudget: 60000

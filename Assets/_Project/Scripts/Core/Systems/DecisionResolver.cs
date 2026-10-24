@@ -37,6 +37,8 @@ namespace Studio.Core
             state.inbox.Remove(message.id);
             if (!state.answered.Contains(message.id)) state.answered.Add(message.id);
             state.log.Add(record);
+            if (option.followUp != null)
+                state.pending.Add(new Pending { messageId = option.followUp.id, day = state.day + option.followUpDelayDays });
             return record;
         }
 

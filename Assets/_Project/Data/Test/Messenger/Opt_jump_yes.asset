@@ -19,5 +19,5 @@ MonoBehaviour:
     budget: 50000
   deltas: 00000000000000000000000000000000i
   tags: []
-  followUp: {fileID: 0}
-  followUpDelayDays: 0
+  followUp: {fileID: 11400000, guid: 0a88a879744e47cc9b898a39a9c4dd93, type: 2}
+  followUpDelayDays: 1

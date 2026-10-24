@@ -92,3 +92,9 @@
 - Коммит: feat(ui): pin board with drag, threads and goals
 - Скриншот: docs/progress/board/20261024-093359__grey-board-v1.jpg
 
+
+## 2026-10-24 · P-6 Цикл дня
+- Что работает: «Закончить день» вызывает `DayClock.EndDay`: день +1, сообщения этапа с наступившим днём падают во входящие, неотвеченные остаются, ответ с `followUp` приходит через `followUpDelayDays` (результат решения на следующее утро). Production -> Release в день `releaseStartDay` (или первого сообщения этапа Release), Release -> Done при одобренной версии, после дедлайна (день > deadline) игра уходит в Done. Idea -> Production только через `BoardRules.Commit`.
+- Проверка: EditMode 63/63 зелёные (16 новых `DayClockTests`, 2 новых в `DecisionResolverTests`; из `SmokeTests` убрана строка про заглушку P-6). Тесты и код писались вместе, красный прогон до кода не снимался. В Play на `TestContentDB`: три вызова `onClick` кнопки «Закончить день» из REST – день 1 -> 4, в чате Босса бриф и сообщение дня 2. Не проверено: follow-up «Двойной прыжок готов» в Play кликом (покрыт тестом), настоящий клик мышью (кнопка скрыта на этапе Идея до питча – решение P-5), сохранение `pending` через `SaveSystem` (P-9; JSON round-trip тестом есть).
+- Статус: сделано
+- Коммит: feat(core): day clock, follow-ups and stage transitions

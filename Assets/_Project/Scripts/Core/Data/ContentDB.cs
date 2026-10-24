@@ -21,5 +21,6 @@ namespace Studio.Core
         public TagPair[] tagConflicts = new TagPair[0];
         public int startBudget;
         public int deadline;
+        public int releaseStartDay;   // 0 = derive from the first Release message in `messages`
     }
 }
