@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Идея – пиновая доска</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;family=Caveat:wght@600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#FF8A4C}a:hover{color:#FFB285}
+</style>
+</helmet>
+<div style="width: 1440px; height: 810px; box-sizing: border-box; background: #16181F; color: #ECEDEF; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <header style="height: 72px; flex: none; display: flex; align-items: center; gap: 24px; padding: 0 24px; background: #1D2028; border-bottom: 1px solid #2C303B">
+    <div style="font-family: Unbounded, sans-serif; font-weight: 700; font-size: 18px">Билд к пятнице</div>
+    <nav aria-label="Этапы" style="display: flex; align-items: center; gap: 8px; font-size: 14px">
+      <span style="padding: 6px 12px; border-radius: 999px; color: #16181F; background: #FF8A4C; font-weight: 700">1 Идея</span>
+      <span style="padding: 6px 12px; border-radius: 999px; color: #7D828F; background: #252833">2 Разработка</span>
+      <span style="padding: 6px 12px; border-radius: 999px; color: #7D828F; background: #252833">3 Релиз</span>
+    </nav>
+    <div style="flex: 1 1 0"></div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end">
+      <span style="font-size: 12px; color: #A9ADB8">До дедлайна</span>
+      <span style="font-size: 20px; font-weight: 700">14 дней <span style="font-size: 14px; color: #7D828F; font-weight: 500">· день 2 из 15</span></span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end">
+      <span style="font-size: 12px; color: #A9ADB8">Бюджет</span>
+      <span style="font-size: 20px; font-weight: 700">470 000 ₽</span>
+    </div>
+    <button style="height: 44px; padding: 0 20px; border-radius: 10px; border: 0; background: #FF8A4C; color: #16181F; font-weight: 700; font-size: 15px; font-family: Inter, sans-serif">Отправить питч</button>
+  </header>
+
+  <div style="flex: 1 1 0; display: flex; min-height: 0">
+    <section aria-label="Доска" style="flex: 1 1 0; position: relative; margin: 16px; border-radius: 14px; background: #B98A5A; border: 10px solid #6E4A2C; overflow: hidden">
+      <svg width="1040" height="700" viewBox="0 0 1040 700" style="position: absolute; left: 0; top: 0" role="img" aria-label="Нитки: Рогалик – Петля времени сочетаются, Рогалик – Мультяшный сеттинг неизвестно, Подростки – Хоррор конфликт">
+        <path d="M200 150 Q 330 210 470 150" stroke="#2E9E6A" stroke-width="4" fill="none"/>
+        <path d="M200 150 Q 230 300 260 430" stroke="#F2C94C" stroke-width="4" stroke-dasharray="10 8" fill="none"/>
+        <path d="M480 430 Q 640 470 780 420" stroke="#C93A3F" stroke-width="3" fill="none"/>
+        <path d="M480 438 Q 640 478 780 428" stroke="#C93A3F" stroke-width="3" fill="none"/>
+        <path d="M470 150 Q 620 120 780 170" stroke="#2E9E6A" stroke-width="4" fill="none"/>
+      </svg>
+      <sc-for list="{{pins}}" as="p" hint-placeholder-count="6">
+        <div style="{{p.pos}}">
+          <span style="position: absolute; top: -8px; left: 50%; margin-left: -8px; width: 16px; height: 16px; border-radius: 8px; background: {{p.pin}}; box-shadow: 0 2px 2px rgba(0,0,0,.35)"></span>
+          <div style="font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #6E5A44; font-weight: 700">{{p.slot}}</div>
+          <div style="font-family: Caveat, cursive; font-size: 30px; color: #2A2017; line-height: 1.1; margin-top: 4px">{{p.name}}</div>
+          <div style="font-size: 12px; color: #6E5A44; margin-top: 6px">{{p.note}}</div>
+        </div>
+      </sc-for>
+      <div style="position: absolute; left: 300px; top: 92px; padding: 6px 12px; border-radius: 6px; background: #1F3B33; color: #BFF0D6; font-size: 13px; font-weight: 600">Комбо: «День сурка» +Интерес</div>
+      <div style="position: absolute; left: 560px; top: 470px; padding: 6px 12px; border-radius: 6px; background: #4A1F22; color: #FFD2D4; font-size: 13px; font-weight: 600">Конфликт: хоррор не для всех подростков</div>
+      <div style="position: absolute; left: 800px; top: 560px; width: 190px; height: 110px; border: 2px dashed #6E4A2C; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #4A3220; font-size: 14px; text-align: center">Слот «Фишка»<br>перетащи карточку</div>
+    </section>
+
+    <aside style="width: 340px; flex: none; border-left: 1px solid #2C303B; background: #1A1C23; display: flex; flex-direction: column; padding: 20px; gap: 14px; box-sizing: border-box">
+      <div style="background: #252833; border-radius: 12px; padding: 14px; font-size: 14px; line-height: 1.5"><b>Бриф от Бориса Петровича:</b> игра для подростков на телефон. 15 дней, 500 000. Удиви.</div>
+      <div style="font-weight: 600">Карточки на руке</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{hand}}" as="h" hint-placeholder-count="6">
+          <button style="text-align: left; padding: 10px; border-radius: 8px; border: 0; background: #F6F0E3; color: #2A2017; font-family: Inter, sans-serif">
+            <span style="display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #6E5A44; font-weight: 700">{{h.slot}}</span>
+            <span style="display: block; font-size: 15px; font-weight: 600; margin-top: 2px">{{h.name}}</span>
+          </button>
+        </sc-for>
+      </div>
+      <button style="height: 44px; border-radius: 10px; border: 1px solid #3A3E4B; background: transparent; color: #ECEDEF; font-family: Inter, sans-serif">Исследовать рынок · 30 000 ₽</button>
+      <button style="height: 44px; border-radius: 10px; border: 1px solid #3A3E4B; background: transparent; color: #ECEDEF; font-family: Inter, sans-serif">Спросить команду · полдня</button>
+      <div style="height: 1px; background: #2C303B"></div>
+      <div style="font-weight: 600">Цели по доске</div>
+      <sc-for list="{{goals}}" as="g" hint-placeholder-count="4">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="display: flex; justify-content: space-between; font-size: 13px"><span>{{g.name}}</span><span style="color: #A9ADB8">цель {{g.val}}</span></div>
+          <div style="height: 6px; border-radius: 3px; background: #2C303B"><div style="{{g.bar}}"></div></div>
+        </div>
+      </sc-for>
+      <div style="display: flex; gap: 12px; font-size: 12px; color: #A9ADB8; flex-wrap: wrap">
+        <span>━ сочетаются</span><span>═ конфликт</span><span>┅ неизвестно</span>
+      </div>
+    </aside>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":810}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const pos = (x, y, r) => 'position: absolute; left: ' + x + 'px; top: ' + y + 'px; width: 190px; padding: 16px 14px 14px; box-sizing: border-box; background: #F6F0E3; border-radius: 4px; box-shadow: 0 6px 14px rgba(0,0,0,.3); transform: rotate(' + r + 'deg)';
+    return {
+      pins: [
+        { slot: 'Жанр', name: 'Рогалик', note: 'популярность: высокая', pin: '#E5484D', pos: pos(105, 90, -2) },
+        { slot: 'Механика', name: 'Петля времени', note: 'дорого: +2 дня', pin: '#2F80ED', pos: pos(375, 90, 1.5) },
+        { slot: 'Референс', name: 'Hades', note: 'ориентир по ощущениям', pin: '#3FB37F', pos: pos(690, 110, -1) },
+        { slot: 'Сеттинг', name: 'Мультяшный', note: 'подходит телефону', pin: '#F2994A', pos: pos(165, 370, 2) },
+        { slot: 'Аудитория', name: 'Подростки', note: 'из брифа', pin: '#7A5AF8', pos: pos(385, 370, -1.5) },
+        { slot: 'Жанр-доп', name: 'Хоррор', note: 'популярность: средняя', pin: '#E5484D', pos: pos(690, 360, 1) }
+      ],
+      hand: [
+        { slot: 'Фишка', name: 'Котики' },
+        { slot: 'Фишка', name: 'Гравитация' },
+        { slot: 'Фишка', name: 'Кооператив' },
+        { slot: 'Механика', name: 'Крафт' },
+        { slot: 'Сеттинг', name: 'Космос' },
+        { slot: 'Жанр', name: 'Платформер' }
+      ],
+      goals: [
+        { name: 'Интерес', val: 70, bar: 'width: 70%; height: 6px; border-radius: 3px; background: #FF8A4C' },
+        { name: 'Цельность', val: 60, bar: 'width: 60%; height: 6px; border-radius: 3px; background: #FF8A4C' },
+        { name: 'Понятность', val: 65, bar: 'width: 65%; height: 6px; border-radius: 3px; background: #FF8A4C' },
+        { name: 'Техничка', val: 50, bar: 'width: 50%; height: 6px; border-radius: 3px; background: #FF8A4C' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

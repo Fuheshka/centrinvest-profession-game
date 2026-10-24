@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Финал – релиз</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#FF8A4C}a:hover{color:#FFB285}
+</style>
+</helmet>
+<div style="width: 1440px; height: 810px; box-sizing: border-box; background: #16181F; color: #ECEDEF; font-family: Inter, system-ui, sans-serif; display: flex; gap: 48px; padding: 64px 80px; overflow: hidden">
+  <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 24px">
+    <div style="font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: #FF8A4C; font-weight: 600">Релиз · день 15</div>
+    <h1 style="margin: 0; font-family: Unbounded, sans-serif; font-size: 52px; line-height: 1.1">«Котопетля» вышла!</h1>
+    <div style="display: flex; align-items: center; gap: 24px">
+      <div style="width: 140px; height: 140px; border-radius: 70px; border: 8px solid #3FB37F; display: flex; align-items: center; justify-content: center; font-family: Unbounded, sans-serif; font-size: 48px; font-weight: 700">81</div>
+      <div><div style="font-size: 28px; font-weight: 700">Хит</div><div style="font-size: 16px; color: #A9ADB8; margin-top: 4px">Оценка критиков и игроков · 3 версии до релиза</div></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <sc-for list="{{reviews}}" as="r" hint-placeholder-count="4">
+        <div style="background: #1D2028; border: 1px solid #2C303B; border-radius: 12px; padding: 14px; font-size: 14px; line-height: 1.5">«{{r.text}}»<div style="font-size: 12px; color: #A9ADB8; margin-top: 6px">{{r.who}}</div></div>
+      </sc-for>
+    </div>
+    <div style="display: flex; gap: 12px; margin-top: auto">
+      <button style="height: 52px; padding: 0 28px; border-radius: 12px; border: 0; background: #FF8A4C; color: #16181F; font-weight: 700; font-size: 16px; font-family: Inter, sans-serif">Новый проект</button>
+      <button style="height: 52px; padding: 0 24px; border-radius: 12px; border: 1px solid #3A3E4B; background: transparent; color: #ECEDEF; font-size: 16px; font-family: Inter, sans-serif">Узнать о профессии больше</button>
+    </div>
+  </div>
+  <aside style="width: 460px; flex: none; background: #1D2028; border-radius: 16px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+    <div style="font-weight: 700; font-size: 18px">Разбор твоих решений</div>
+    <sc-for list="{{recap}}" as="d" hint-placeholder-count="4">
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="{{d.dot}}"></span>
+        <div><div style="font-size: 15px; font-weight: 600">{{d.title}}</div><div style="font-size: 13px; color: #A9ADB8; line-height: 1.5">{{d.why}}</div></div>
+      </div>
+    </sc-for>
+    <div style="height: 1px; background: #2C303B"></div>
+    <div style="font-size: 14px; line-height: 1.6; color: #C9CCD4">Геймдизайнер – это не «придумать идею». Это сотни решений, которые сочетаются между собой, укладываются в сроки и нравятся людям. Ты только что сделал это за 15 дней.</div>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":810}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const dot = (c) => 'width: 12px; height: 12px; border-radius: 6px; flex: none; margin-top: 5px; background: ' + c;
+    return {
+      reviews: [
+        { text: 'Петля времени с котом – лучшее, что я играл в этом месяце', who: 'игрок, 14 лет' },
+        { text: 'Цельный стиль, понятное начало', who: 'обзор «[ИЗДАНИЕ]»' },
+        { text: 'Иногда тормозит на старом телефоне', who: 'игрок, 16 лет' },
+        { text: 'Студия, за которой стоит следить', who: 'издатель' }
+      ],
+      recap: [
+        { title: 'Комбо «День сурка» на доске', why: 'Дало +Интерес на весь проект.', dot: dot('#3FB37F') },
+        { title: 'Рыцарь-кот вместо странника', why: 'Совпал с мультяшным сеттингом: +Цельность.', dot: dot('#3FB37F') },
+        { title: 'Вернул туториал в v0.2', why: 'Понятность выросла с 38 до 69.', dot: dot('#3FB37F') },
+        { title: 'Оставил баг коллизий', why: 'Техничка ниже цели – отзывы про провалы в пол.', dot: dot('#FF6B6B') }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Релиз – версии и фидбек</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#FF8A4C}a:hover{color:#FFB285}
+</style>
+</helmet>
+<div style="width: 1440px; height: 810px; box-sizing: border-box; background: #16181F; color: #ECEDEF; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+  <header style="height: 72px; flex: none; display: flex; align-items: center; gap: 24px; padding: 0 24px; background: #1D2028; border-bottom: 1px solid #2C303B">
+    <div style="font-family: Unbounded, sans-serif; font-weight: 700; font-size: 18px">Билд к пятнице</div>
+    <nav aria-label="Этапы" style="display: flex; align-items: center; gap: 8px; font-size: 14px">
+      <span style="padding: 6px 12px; border-radius: 999px; color: #7D828F; background: #252833">1 Идея ✓</span>
+      <span style="padding: 6px 12px; border-radius: 999px; color: #7D828F; background: #252833">2 Разработка ✓</span>
+      <span style="padding: 6px 12px; border-radius: 999px; color: #16181F; background: #FF8A4C; font-weight: 700">3 Релиз</span>
+    </nav>
+    <div style="flex: 1 1 0"></div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end">
+      <span style="font-size: 12px; color: #A9ADB8">До дедлайна</span>
+      <span style="font-size: 20px; font-weight: 700; color: #FF6B6B">2 дня <span style="font-size: 14px; color: #7D828F; font-weight: 500">· день 13 из 15</span></span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end">
+      <span style="font-size: 12px; color: #A9ADB8">Бюджет</span>
+      <span style="font-size: 20px; font-weight: 700">86 000 ₽</span>
+    </div>
+    <button style="height: 44px; padding: 0 20px; border-radius: 10px; border: 0; background: #FF8A4C; color: #16181F; font-weight: 700; font-size: 15px; font-family: Inter, sans-serif">Собрать v0.2 и отправить</button>
+  </header>
+
+  <div style="flex: 1 1 0; display: flex; min-height: 0">
+    <aside style="width: 260px; flex: none; background: #1A1C23; border-right: 1px solid #2C303B; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+      <div style="font-weight: 600">История версий</div>
+      <div style="padding: 12px; border-radius: 10px; background: #252833; border: 2px solid #FF8A4C">
+        <div style="display: flex; justify-content: space-between"><b>v0.1</b><span style="font-size: 12px; color: #FF6B6B">доработать</span></div>
+        <div style="font-size: 12px; color: #A9ADB8; margin-top: 4px">день 12 · 14 решений</div>
+      </div>
+      <div style="padding: 12px; border-radius: 10px; border: 1px dashed #3A3E4B">
+        <div style="display: flex; justify-content: space-between"><b>v0.2</b><span style="font-size: 12px; color: #A9ADB8">черновик</span></div>
+        <div style="font-size: 12px; color: #A9ADB8; margin-top: 4px">изменено: герой, туториал</div>
+      </div>
+      <div style="font-size: 12px; color: #7D828F; line-height: 1.5; margin-top: auto">Первая версия почти всегда уходит на доработку. Это нормально – так работают все студии.</div>
+    </aside>
+
+    <main style="flex: 1 1 0; padding: 24px; display: flex; flex-direction: column; gap: 18px; min-width: 0">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <div style="width: 44px; height: 44px; border-radius: 22px; background: #E5484D; display: flex; align-items: center; justify-content: center; font-weight: 700">Б</div>
+        <div><div style="font-weight: 600">Фидбек на v0.1 · Борис Петрович</div><div style="font-size: 13px; color: #A9ADB8">«Идея крутая, но играть пока тяжело. Разберись.»</div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{axes}}" as="a" hint-placeholder-count="4">
+          <div style="background: #1D2028; border-radius: 12px; padding: 14px; border: 1px solid #2C303B">
+            <div style="font-size: 13px; color: #A9ADB8">{{a.name}}</div>
+            <div style="font-size: 28px; font-weight: 700; margin-top: 4px; {{a.col}}">{{a.val}}<span style="font-size: 14px; color: #7D828F; font-weight: 500"> / цель {{a.goal}}</span></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-weight: 600">Отзывы плейтестеров – найди причину каждого</div>
+      <sc-for list="{{quotes}}" as="q" hint-placeholder-count="4">
+        <div style="{{q.box}}">
+          <div style="flex: 1 1 0; font-size: 15px; line-height: 1.5">«{{q.text}}»<div style="font-size: 12px; color: #A9ADB8; margin-top: 4px">{{q.who}}</div></div>
+          <span style="{{q.tagStyle}}">{{q.tag}}</span>
+        </div>
+      </sc-for>
+    </main>
+
+    <aside style="width: 380px; flex: none; border-left: 1px solid #2C303B; background: #1A1C23; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px">
+      <div style="font-weight: 600">Журнал решений</div>
+      <div style="font-size: 13px; color: #A9ADB8">Выбран отзыв: «Не понял, куда идти». Какое решение виновато?</div>
+      <sc-for list="{{log}}" as="d" hint-placeholder-count="6">
+        <button style="{{d.style}}">
+          <span style="display: flex; justify-content: space-between; font-size: 12px; color: #A9ADB8"><span>{{d.when}}</span><span>{{d.stage}}</span></span>
+          <span style="display: block; font-size: 14px; margin-top: 4px">{{d.text}}</span>
+        </button>
+      </sc-for>
+      <div style="margin-top: auto; background: #252833; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+        <div style="font-size: 14px">Переделать «Туториал вырезать»?</div>
+        <div style="font-size: 13px; color: #A9ADB8">Решение этапа 2: 1 день · 20 000 ₽</div>
+        <button style="height: 44px; border-radius: 10px; border: 0; background: #ECEDEF; color: #16181F; font-weight: 700; font-family: Inter, sans-serif">Переоткрыть решение</button>
+      </div>
+    </aside>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":810}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const box = 'display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 12px; background: #1D2028; ';
+    const tag = 'font-size: 12px; padding: 4px 10px; border-radius: 999px; white-space: nowrap; ';
+    const btn = 'text-align: left; padding: 10px 12px; border-radius: 10px; font-family: Inter, sans-serif; color: #ECEDEF; ';
+    return {
+      axes: [
+        { name: 'Интерес', val: 72, goal: 70, col: 'color: #3FB37F' },
+        { name: 'Цельность', val: 64, goal: 60, col: 'color: #3FB37F' },
+        { name: 'Понятность', val: 38, goal: 65, col: 'color: #FF6B6B' },
+        { name: 'Техничка', val: 47, goal: 50, col: 'color: #F2C94C' }
+      ],
+      quotes: [
+        { text: 'Не понял, куда идти на первом уровне', who: 'Плейтестер, 13 лет', tag: 'выбран', box: box + 'border: 2px solid #FF8A4C', tagStyle: tag + 'background: #FF8A4C; color: #16181F; font-weight: 700' },
+        { text: 'Петля времени – огонь, хочу ещё', who: 'Плейтестер, 15 лет', tag: 'похвала', box: box + 'border: 1px solid #2C303B', tagStyle: tag + 'background: #1F3B33; color: #BFF0D6' },
+        { text: 'Иногда кот проваливается в пол', who: 'Плейтестер, 14 лет', tag: 'не разобран', box: box + 'border: 1px solid #2C303B', tagStyle: tag + 'background: #2C303B; color: #A9ADB8' },
+        { text: 'Слишком много кнопок сразу', who: 'Борис Петрович', tag: 'не разобран', box: box + 'border: 1px solid #2C303B', tagStyle: tag + 'background: #2C303B; color: #A9ADB8' }
+      ],
+      log: [
+        { when: 'день 2', stage: 'Идея', text: 'Механика: Петля времени', style: btn + 'background: #1D2028; border: 1px solid #2C303B' },
+        { when: 'день 5', stage: 'Разработка', text: 'Герой: Рыцарь-кот', style: btn + 'background: #1D2028; border: 1px solid #2C303B' },
+        { when: 'день 7', stage: 'Разработка', text: 'Туториал вырезать ради бюджета', style: btn + 'background: #2A2320; border: 2px solid #FF8A4C' },
+        { when: 'день 9', stage: 'Разработка', text: 'Взяли идею Гоши: 6 кнопок способностей', style: btn + 'background: #1D2028; border: 1px solid #2C303B' },
+        { when: 'день 11', stage: 'Разработка', text: 'Баг коллизий оставить', style: btn + 'background: #1D2028; border: 1px solid #2C303B' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

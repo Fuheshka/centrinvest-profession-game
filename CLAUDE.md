@@ -2,7 +2,7 @@
 
 Hackathon case from Bank "Centr-invest": a browser game that lets a teenager (under 16) try one profession from the inside. Prize fund 100 000 RUB. Full case text: `docs/case/case-centrinvest.pdf` (plain text next to it). Requirements as a checklist: `docs/CASE.md`.
 
-Stage: idea search. Stack, profession and concept are not chosen yet – candidates and decisions go to `docs/IDEAS.md`.
+Chosen: a game about a game designer (`docs/GDD.md`), demo scope in `docs/DEMO.md`. Stack: Unity 6, Universal 2D, Web build.
 
 ## Source of truth
 
@@ -10,6 +10,7 @@ Stage: idea search. Stack, profession and concept are not chosen yet – candida
 - `docs/IDEAS.md` – profession and concept candidates, comparison, chosen direction. Once a direction is picked, the GDD goes to `docs/GDD.md` and wins over prompts.
 - `docs/STATE.md` – where work stopped and what to continue with. Read it before a task, update it in the same commit after the task.
 - `docs/BUGS.md` – open bugs and questions, fixed-bug changelog.
+- `docs/ROADMAP.md` – milestones and class contracts; `docs/PROMPTS.md` – task cards; `docs/TEAM.md` – who owns what; `docs/mockup/` – UI mockups (PNG + HTML).
 
 ## Hard constraints from the case
 
@@ -23,7 +24,7 @@ Stage: idea search. Stack, profession and concept are not chosen yet – candida
 
 ## Working rules
 
-- Work on `dev`. Global changes (new system, multi-day work) go on `feat/<name>` off `dev`. `main` moves only by releases. Check `git status` before and after each task; nothing stays uncommitted across tasks.
+- Four developers share the repo; ownership of folders and git rules are in `docs/TEAM.md`. Edit only files your role owns. Every task card gets its own branch off `dev` (`p-N-short-name`) and a PR into `dev` (squash merge). `main` moves only by releases. Check `git status` before and after each task; nothing stays uncommitted across tasks.
 - One task = one commit, docs included. Work through tasks without asking, but `git commit` only after the user confirms it in chat (show the message first). Commit messages in English, Conventional Commits.
 - Never add Claude attribution (Co-Authored-By etc.) to commits or PRs.
 - TDD (red – green – refactor) for game logic (rules, scoring, save, difficulty). Not required for pure visuals or layout.

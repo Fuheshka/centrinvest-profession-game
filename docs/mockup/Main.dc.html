@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Главное меню</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#FF8A4C}a:hover{color:#FFB285}
+</style>
+</helmet>
+<div style="width: 1440px; height: 810px; box-sizing: border-box; background: #16181F; color: #ECEDEF; font-family: Inter, system-ui, sans-serif; display: flex; overflow: hidden">
+  <div style="flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; gap: 40px; padding: 0 96px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: #FF8A4C; font-weight: 600">Студия «[НАЗВАНИЕ]» · Ростов-на-Дону</div>
+      <h1 style="margin: 0; font-family: Unbounded, sans-serif; font-weight: 700; font-size: 64px; line-height: 1.05">Билд к пятнице</h1>
+      <p style="margin: 0; font-size: 20px; color: #A9ADB8; max-width: 520px; line-height: 1.5">Ты – стажёр-геймдизайнер. 15 дней, 500 000 и первый проект студии.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 420px">
+      <label for="nick" style="font-size: 14px; color: #A9ADB8">Как тебя зовут в рабочем чате?</label>
+      <input id="nick" type="text" value="Даня" style="height: 52px; box-sizing: border-box; padding: 0 16px; font-size: 18px; border-radius: 10px; border: 1px solid #3A3E4B; background: #20232C; color: #ECEDEF; font-family: Inter, sans-serif">
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <div style="font-size: 14px; color: #A9ADB8">Сложность</div>
+      <div style="display: flex; gap: 12px">
+        <sc-for list="{{levels}}" as="lv" hint-placeholder-count="3">
+          <button style="{{lv.style}}">
+            <span style="display: block; font-size: 16px; font-weight: 600">{{lv.name}}</span>
+            <span style="display: block; font-size: 13px; color: #A9ADB8; margin-top: 4px">{{lv.hint}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; gap: 16px">
+      <button style="height: 56px; padding: 0 36px; border: 0; border-radius: 12px; background: #FF8A4C; color: #16181F; font-size: 18px; font-weight: 700; font-family: Inter, sans-serif">Выйти на работу</button>
+      <button style="height: 56px; padding: 0 28px; border: 1px solid #3A3E4B; border-radius: 12px; background: transparent; color: #ECEDEF; font-size: 16px; font-family: Inter, sans-serif">Продолжить · день 6</button>
+    </div>
+  </div>
+  <div style="width: 600px; background: #20232C; display: flex; align-items: center; justify-content: center; border-left: 1px solid #2C303B">
+    <div style="width: 440px; height: 520px; border-radius: 16px; border: 2px dashed #3A3E4B; display: flex; align-items: center; justify-content: center; text-align: center; color: #7D828F; font-size: 16px; padding: 24px; box-sizing: border-box">[АРТ: вечерний офис студии, монитор с чатом, пробковая доска на стене, окно на Ростов]</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":810}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const base = 'width: 168px; text-align: left; padding: 14px 16px; border-radius: 12px; font-family: Inter, sans-serif; color: #ECEDEF; ';
+    return {
+      levels: [
+        { name: 'Стажёр', hint: 'Время с запасом', style: base + 'background: #20232C; border: 1px solid #3A3E4B' },
+        { name: 'Дизайнер', hint: 'Впритык', style: base + 'background: #2A2320; border: 2px solid #FF8A4C' },
+        { name: 'Ведущий', hint: 'ИИ часто врёт', style: base + 'background: #20232C; border: 1px solid #3A3E4B' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
