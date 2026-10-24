@@ -9,5 +9,6 @@ namespace Studio.Core
         public Axis axis;
         [TextArea] public string text;
         public string author;
+        public bool praise;              // compliment for an axis at or above its goal
     }
 }

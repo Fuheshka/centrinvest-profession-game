@@ -36,10 +36,6 @@ namespace Studio.Tests
         [Test]
         public void Systems_ThrowNotImplementedWithCardNumber()
         {
-            Expect("P-7", () => ReviewSystem.Review(null, null));
-            Expect("P-7", () => ReviewSystem.Blame(null, null, null));
-            Expect("P-7", () => ReviewSystem.ReopenCost(null));
-            Expect("P-7", () => ReviewSystem.Reopen(null, null, null, null));
             Expect("P-9", () => Difficulty.For(DifficultyLevel.Intern));
             Expect("P-9", () => SaveSystem.Save(null));
             Expect("P-9", () => SaveSystem.Load());
