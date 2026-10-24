@@ -64,3 +64,9 @@
 - Проверка: `SmokeTests` 4/4 зелёные (Axis, JSON round-trip GameState и VersionRecord, все 6 систем бросают исключение с номером карточки); красный прогон до типов: `error CS0234 ... 'Core' does not exist in the namespace 'Studio'`; Web-сборка `Builds/Web` весит 10.3 МБ (Brotli: wasm 7.0 МБ, data 3.1 МБ), через `python3 -m http.server` грузится без ошибок в консоли браузера. Сцены и префабы собраны одноразовым Editor-скриптом (удалён), выключение панелей – через unity-skills REST. Не проверено: сборка с контентом, телефон.
 - Статус: сделано
 - Коммит: chore: project skeleton, assemblies, contract stubs and web build profile
+
+## 2026-10-24 · P-2 Состояние игры и решения
+- Что работает: `GameState.New` создаёт старт (день 1, дедлайн и бюджет из `ContentDB`, оси 30, цели 50, этап Идея, бриф в inbox); `DecisionResolver.CanAfford` и `Apply`: списание бюджета и дней, дельты осей, Цельность по тегам доски (+5 совпадение, –8 конфликт в любом порядке пары), зажим 0..100, запись в журнал, перенос сообщения из inbox в answered, `InvalidOperationException` без денег или после дедлайна. Поля данных и состояния были готовы в P-1.
+- Проверка: `DecisionResolverTests` 10 тестов, красные до `GameState.New` (`CS0117`), затем зелёные; всего 14/14. Не проверено: отложенные ответы (`followUp`) – это P-6.
+- Статус: сделано
+- Коммит: feat(core): game state, content data and decision resolver

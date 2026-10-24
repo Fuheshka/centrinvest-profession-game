@@ -19,5 +19,22 @@ namespace Studio.Core
         public List<VersionRecord> versions = new List<VersionRecord>();
         public List<string> inbox = new List<string>();       // message ids
         public List<string> answered = new List<string>();    // message ids
+
+        public static GameState New(ContentDB db, string nickname, DifficultyLevel difficulty)
+        {
+            var s = new GameState
+            {
+                nickname = nickname,
+                difficulty = difficulty,
+                day = 1,
+                deadline = db.deadline,
+                budget = db.startBudget,
+                stage = Stage.Idea,
+                axes = new[] { 30, 30, 30, 30 },
+                goals = new[] { 50, 50, 50, 50 },
+            };
+            if (db.brief != null) s.inbox.Add(db.brief.id);
+            return s;
+        }
     }
 }
