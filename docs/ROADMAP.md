@@ -31,12 +31,13 @@ ComboSO   : a, b (CardSO), kind (Match | Conflict), title, deltas int[4]
 OptionSO  : id, text, cost, deltas int[4], tags[], followUp (MessageSO), followUpDelayDays
 MessageSO : id, sender, stage, day, text, images (Sprite[]), options (OptionSO[])
 QuoteSO   : id, axis, text, author
-ContentDB : brief (MessageSO), cards, combos, messages, quotes, tagConflicts (пары строк), startBudget, deadline
+ContentDB : brief (MessageSO), cards, combos, messages, quotes, tagConflicts (пары строк), startBudget, deadline, releaseStartDay (0 = день первого сообщения Release)
 
 // Состояние (сериализуется JsonUtility целиком)
 GameState : nickname, difficulty, day, deadline, budget, stage,
             axes int[4], goals int[4], board (BoardState), log (List<DecisionRecord>),
-            versions (List<VersionRecord>), inbox (List<string> id сообщений), answered (List<string>)
+            versions (List<VersionRecord>), inbox (List<string> id сообщений), answered (List<string>),
+            pending (List<Pending {messageId, day}>)
 BoardState     : placed (List<SlotEntry {slot, cardId}>), links (List<Link {a, b}>), revealed (List<string> cardId)
 DecisionRecord : messageId, optionId, stage, day, deltas int[4]
 VersionRecord  : number, day, axes int[4], approved, quoteIds (List<string>), blamed (List<QuoteBlame {quoteId, messageId}>)
@@ -52,6 +53,7 @@ BoardRules.Reveal(GameState, string cardId) / Research(GameState, string cardId,
 BoardRules.Goals(BoardState, ContentDB) -> int[4]
 BoardRules.Commit(GameState, ContentDB)                                // конец этапа 1: goals, эффекты связанных комбо в axes, stage = Production
 DayClock.EndDay(GameState, ContentDB) -> List<MessageSO>      // новые сообщения на утро
+DayClock.IsOverDeadline(GameState) -> bool                     // day > deadline
 ReviewSystem.Review(GameState, ContentDB) -> VersionRecord
 ReviewSystem.Blame(GameState, VersionRecord, string quoteId) -> string messageId   // виновное решение
 ReviewSystem.ReopenCost(DecisionRecord) -> Cost

@@ -29,14 +29,26 @@ namespace Studio.UI
         {
             topBar = FindAnyObjectByType<TopBarView>();
             State = GameState.New(db, "Игрок", difficulty);
-            // Until DayClock (P-6) delivers mail, day-1 messages of the stage land in the inbox at start.
+            // DayClock delivers from day 2 on; day-1 messages land in the inbox at start.
             foreach (var m in db.messages)
                 if (m != null && m.day <= State.day && m.stage == State.stage) State.inbox.Add(m.id);
 
             tabChats.onClick.AddListener(() => ShowTab(0));
             tabBoard.onClick.AddListener(() => ShowTab(1));
             tabVersions.onClick.AddListener(() => ShowTab(2));
+            if (topBar != null) topBar.EndDayClicked += EndDay;
             ShowTab(0);
+            RefreshAll();
+        }
+
+        void OnDestroy()
+        {
+            if (topBar != null) topBar.EndDayClicked -= EndDay;
+        }
+
+        void EndDay()
+        {
+            DayClock.EndDay(State, db);
             RefreshAll();
         }
 

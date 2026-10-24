@@ -129,6 +129,26 @@ namespace Studio.Tests
         }
 
         [Test]
+        public void Apply_FollowUpAddsPendingAfterCostAndDelay()
+        {
+            var followUp = Msg("f1");
+            var opt = Opt("o", days: 2);
+            opt.followUp = followUp;
+            opt.followUpDelayDays = 1;
+            DecisionResolver.Apply(state, message, opt, db);
+            Assert.AreEqual(1, state.pending.Count);
+            Assert.AreEqual("f1", state.pending[0].messageId);
+            Assert.AreEqual(4, state.pending[0].day);   // day 1 + 2 cost days + 1 delay
+        }
+
+        [Test]
+        public void Apply_WithoutFollowUpLeavesPendingEmpty()
+        {
+            DecisionResolver.Apply(state, message, Opt("o"), db);
+            Assert.IsEmpty(state.pending);
+        }
+
+        [Test]
         public void Apply_ClampsAxesTo0And100()
         {
             state.axes = new[] { 95, 3, 50, 50 };

@@ -2,7 +2,7 @@
 
 Читать перед задачей, обновлять в конце каждой задачи в том же коммите.
 
-- **Обновлено:** 2026-10-24 (P-5).
+- **Обновлено:** 2026-10-24 (P-6).
 - **Этап:** реализация демо, веха M0 (`ROADMAP.md`).
 - **Сделано:** `GDD.md`, `DEMO.md`, план `ROADMAP.md` с контрактами, промпты P-1…P-12 в `PROMPTS.md`, UI-макет 5 экранов в `docs/mockup/` (PNG + HTML), онлайн-версия в Claude Design у автора; роли 4 разработчиков и правила git в `TEAM.md`.
 - **Каркас (P-1):** готов в ветке `p-1-skeleton`: папки `Assets/_Project/`, asmdef `Studio.Core` / `Studio.UI` / `Studio.Tests.EditMode`, все контракты заглушками (`NotImplementedException("P-N")`), сцены `Menu` и `Game`, Web-профиль, пустая сборка 10 МБ. Layout – в `CLAUDE.md`.
@@ -10,5 +10,6 @@
 - **P-3:** готов в ветке `p-3-board-rules` (поверх `p-2-decisions`): `BoardRules` (Place, Remove, Connect, Disconnect, Thread, Reveal, Research, Goals, Commit), 30 тестов; всего 44/44 зелёные. Контракт в `ROADMAP.md` обновлён (`Thread` получил `showThreads`), решение в `DECISIONS.md`. Дальше от P-3 зависят P-5 (UI доски), P-6 (переход Idea -> Production через `Commit`).
 - **P-4:** готов в ветке `p-4-messenger` (поверх `p-3-board-rules`, потому что в `dev` ещё нет P-1…P-3): серый мессенджер в `Game` – `TopBar`, `MessengerPanel` (вкладки, список чатов, лента, ответы, заглушка Нейрона и плейтеста), `MessengerController`, тестовый `ContentDB` в `Data/Test/Messenger/`. Заглушек P-2 не нужно – `DecisionResolver` настоящий. Вкладки Доска и Версии – пустые панели внутри `MessengerPanel`, P-5 и P-8 заменят их своими. Сообщения дня 1 пока кладутся в inbox при старте контроллером, пока нет `DayClock` (P-6). Кнопка «Закончить день» подписана на `TopBarView.EndDayClicked`, действия нет до P-6.
 - **P-5:** готов в ветке `p-5-board` (поверх `p-4-messenger`): вкладка «Доска» – 6 слотов, перетаскивание карточек, нитки четырёх видов с плашками комбо, клик по нитке рвёт её, правая панель (бриф, рука, исследование рынка, цели, легенда), «Отправить питч» в верхней панели вызывает `BoardRules.Commit`. Решения и касания чужих файлов – в `DECISIONS.md` («UI доски»); открытое – `BUGS.md` B-004. Тестовые карточки и комбо – `Data/Test/Board/`, подключены в `TestContentDB`. `showThreads` и цена исследования пока поля `BoardPanelView` (ждут P-9). Тач и WebGL не проверены.
+- **P-6:** готов в ветке `p-6-day-clock` (поверх `p-5-board`): `DayClock.EndDay` (доставка сообщений по дням, отложенные ответы через `GameState.pending`, Production -> Release, Release -> Done по одобрению или дедлайну), `IsOverDeadline`, follow-up в `DecisionResolver.Apply`, `ContentDB.releaseStartDay`; кнопка «Закончить день» подключена в `MessengerController`. 63/63 зелёные. Решения – `DECISIONS.md` («DayClock»). Дальше от P-6 зависят P-7 (одобрение версии), P-9 (сохранение `pending`). Кнопка скрыта на этапе Идея до питча (P-5).
 - **Дальше:** мерж P-1 в `dev`, затем P-2…P-5 параллельно по ролям из `TEAM.md`. Без кода – Н-1…Н-9 из `NONCODE.md`, сразу: тексты, звук, арт, название, правда о профессии.
 - **Открытые вопросы к автору:** дата дедлайна хакатона (в ROADMAP – [ДАТА]). Состав: 2 разработчика, 2 художника (джуны).
