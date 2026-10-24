@@ -27,6 +27,7 @@ namespace Studio.Core
                 stage = state.stage,
                 day = state.day,
                 deltas = deltas,
+                cost = option.cost,
             };
 
             state.budget -= option.cost.budget;

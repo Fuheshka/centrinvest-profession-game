@@ -30,7 +30,7 @@ CardSO    : id, slot, title, tags[], productionCost (Cost), goalDeltas int[4], p
 ComboSO   : a, b (CardSO), kind (Match | Conflict), title, deltas int[4]
 OptionSO  : id, text, cost, deltas int[4], tags[], followUp (MessageSO), followUpDelayDays
 MessageSO : id, sender, stage, day, text, images (Sprite[]), options (OptionSO[])
-QuoteSO   : id, axis, text, author
+QuoteSO   : id, axis, text, author, praise (похвала оси на цели и выше)
 ContentDB : brief (MessageSO), cards, combos, messages, quotes, tagConflicts (пары строк), startBudget, deadline, releaseStartDay (0 = день первого сообщения Release)
 
 // Состояние (сериализуется JsonUtility целиком)
@@ -39,7 +39,7 @@ GameState : nickname, difficulty, day, deadline, budget, stage,
             versions (List<VersionRecord>), inbox (List<string> id сообщений), answered (List<string>),
             pending (List<Pending {messageId, day}>)
 BoardState     : placed (List<SlotEntry {slot, cardId}>), links (List<Link {a, b}>), revealed (List<string> cardId)
-DecisionRecord : messageId, optionId, stage, day, deltas int[4]
+DecisionRecord : messageId, optionId, stage, day, deltas int[4], cost (Cost варианта), replaced (переоткрыто, есть запись новее)
 VersionRecord  : number, day, axes int[4], approved, quoteIds (List<string>), blamed (List<QuoteBlame {quoteId, messageId}>)
 
 // Системы (чистый C#)
@@ -54,10 +54,13 @@ BoardRules.Goals(BoardState, ContentDB) -> int[4]
 BoardRules.Commit(GameState, ContentDB)                                // конец этапа 1: goals, эффекты связанных комбо в axes, stage = Production
 DayClock.EndDay(GameState, ContentDB) -> List<MessageSO>      // новые сообщения на утро
 DayClock.IsOverDeadline(GameState) -> bool                     // day > deadline
-ReviewSystem.Review(GameState, ContentDB) -> VersionRecord
-ReviewSystem.Blame(GameState, VersionRecord, string quoteId) -> string messageId   // виновное решение
-ReviewSystem.ReopenCost(DecisionRecord) -> Cost
-ReviewSystem.Reopen(GameState, DecisionRecord, OptionSO newOption, ContentDB)
+ReviewSystem.Review(GameState, ContentDB, int tolerance = 0) -> VersionRecord   // tolerance = DifficultySettings.reviewTolerance; сборка = 1 день
+ReviewSystem.Blame(GameState, VersionRecord, string quoteId, ContentDB) -> string messageId   // виновное решение; ReviewSystem.BoardId = "board" для доски и решений этапа Idea
+ReviewSystem.CheckBlame(GameState, VersionRecord, string quoteId, string guessedMessageId, ContentDB) -> bool   // угадал – version.blamed, нет – day += 1
+ReviewSystem.BoardRecord(GameState, ContentDB) -> DecisionRecord   // зафиксированная доска как запись, для Reopen доски
+ReviewSystem.ReopenCost(DecisionRecord) -> Cost                    // cost × 2 для Idea, × 1 для Production, минимум 1 день; доска = 2 дня
+ReviewSystem.Reopen(GameState, DecisionRecord, OptionSO newOption, ContentDB)   // откат deltas, цена, replaced = true; доска – stage = Idea
+ReviewSystem.Recommit(GameState, ContentDB)                        // питч переоткрытой доски: Commit, затем stage = Release
 Difficulty.For(DifficultyLevel) -> DifficultySettings { budgetMul, daysBonus, aiErrorChance, showThreads, reviewTolerance }
 SaveSystem.Save(GameState) / Load() -> GameState / HasSave()
 ```
