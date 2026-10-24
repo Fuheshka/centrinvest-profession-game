@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_ads
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: ads
+  sender: 3
+  stage: 1
+  day: 9
+  text: "Издатель хочет рекламу. Каждые 30 секунд. Говорит, все так делают."
+  images: []
+  options:
+  - {fileID: 11400000, guid: 4f950a24c3e3511b8e661a7ed945c4ab, type: 2}
+  - {fileID: 11400000, guid: 9a8227891c6258a3b4ec376097a9bedf, type: 2}
+  - {fileID: 11400000, guid: 6b97b0da807d50e7997fc19db88a2ddb, type: 2}

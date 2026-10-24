@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_perf
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: perf
+  sender: 2
+  stage: 1
+  day: 10
+  text: "На старых телефонах игра тормозит. Как слайд-шоу. Оптимизируем?"
+  images: []
+  options:
+  - {fileID: 11400000, guid: 6339513e23ff5b908c24f706386c5882, type: 2}
+  - {fileID: 11400000, guid: 3dc84f9ac92651fd9b9f08a859c7a4c0, type: 2}
+  - {fileID: 11400000, guid: c1ab0db8a13b5911baafdcb2c5fe8c22, type: 2}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80aea8d837e9b462788f2c0441dad2a0, type: 3}
+  m_Name: Opt_hero_dark
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.OptionSO
+  id: hero_dark
+  text: "Мрачный"
+  cost:
+    days: 0
+    budget: 0
+  deltas: 04000000000000000000000000000000
+  tags:
+  - "мрачный"
+  followUp: {fileID: 0}
+  followUpDelayDays: 0

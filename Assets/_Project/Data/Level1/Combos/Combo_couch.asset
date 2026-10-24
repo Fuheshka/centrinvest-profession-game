@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90c864f1a2d64c6c8d031303b631a9b, type: 3}
+  m_Name: Combo_couch
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.ComboSO
+  a: {fileID: 11400000, guid: f0331f3f147e5b62bce5c68668920d31, type: 2}
+  b: {fileID: 11400000, guid: 6bc7ba5542585782b82fd42f6700a21b, type: 2}
+  kind: 1
+  title: "Диванный кооп"
+  deltas: 0a000000050000000000000000000000

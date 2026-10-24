@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_hero
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: hero
+  sender: 1
+  stage: 1
+  day: 4
+  text: "Набросала героя в трёх стилях. Выбирай, я уже в любом влюблена."
+  images: []
+  options:
+  - {fileID: 11400000, guid: 550de6fb8a70512691cc98c8d3f230d4, type: 2}
+  - {fileID: 11400000, guid: ae8d89dcd92955cc9b8b086e2dd5f99d, type: 2}
+  - {fileID: 11400000, guid: 9c3ebfb31314507da52d445cd290366e, type: 2}
