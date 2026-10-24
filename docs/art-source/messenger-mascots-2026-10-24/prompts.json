@@ -1,0 +1,32 @@
+{
+  "base": "Use case: stylized-concept. Asset type: square messenger contact avatar for a teen-friendly indie game «Билд к пятнице». The attached image is a STYLE REFERENCE ONLY. Create a NEW original pixel-art character with the same charming low-resolution, chunky pixels and expressive simplicity. Single centered bust or full small creature, readable silhouette and face at 48x48. Warm dark chocolate brown flat square background #35180E, no border, no UI frame, no writing, no letters, no logo, no watermark. Strict square composition, subject fills about 75 percent of canvas, generous margin so circular avatar crop will not cut face. Controlled olive, warm ivory, sunflower yellow and coral accents matching existing game UI. Clean pixel edges, not painterly, not 3D.",
+  "mode": "built-in image_gen",
+  "reference_role": "style only, generate new images",
+  "items": [
+    {
+      "name": "goose-messenger",
+      "ref": "/var/folders/89/s995fdnj0cd_pcd0bvnxzbx40000gn/T/codex-clipboard-8124645c-f529-483c-a45f-9845d7673b7f.png",
+      "detail": "A funny ivory goose with long neck, stubby orange feet, golden beak and slightly self-important smile. Add a tiny olive neckerchief as a distinct original detail. Whole goose fully visible, clear bright eye, friendly silhouette."
+    },
+    {
+      "name": "wizard-frog",
+      "ref": "/var/folders/89/s995fdnj0cd_pcd0bvnxzbx40000gn/T/codex-clipboard-9be4c0f1-d085-418c-8da0-04ea7126b1ac.png",
+      "detail": "A tiny moss-green frog apprentice wearing an oversized warm brown floppy wizard hat with a sunflower-yellow star pin, one raised eyebrow and small grin. Face visible under hat brim; distinctive triangular silhouette."
+    },
+    {
+      "name": "surprised-giraffe",
+      "ref": "/var/folders/89/s995fdnj0cd_pcd0bvnxzbx40000gn/T/codex-clipboard-d26db8bb-72c5-489f-8fc8-a3ed63abf71c.png",
+      "detail": "A comically surprised tan giraffe head and upper neck with a few brown spots, large round spectacles, small dark horns and bright open mouth. Playful expressive eyes, no cropping of horns."
+    },
+    {
+      "name": "peach-lovebird",
+      "ref": "/var/folders/89/s995fdnj0cd_pcd0bvnxzbx40000gn/T/codex-clipboard-4b512713-bcc6-4fd8-bb45-e7e2bfd9e59a.png",
+      "detail": "A chubby peach-faced green lovebird with a tiny dark headset and one cheeky eye glint. Warm orange face, green-lime chest and teal wing tips, looking slightly sideways. Big readable beak silhouette."
+    },
+    {
+      "name": "mint-alien",
+      "ref": "/var/folders/89/s995fdnj0cd_pcd0bvnxzbx40000gn/T/codex-clipboard-b577c3df-867e-4abb-8c55-67e9a16a9207.png",
+      "detail": "A mint-green two-antenna alien creature with floppy cat-like ears, tiny dark freckles and knowing sly smile. A tiny yellow pin on one antenna adds a distinct original detail. Head and shoulders fully visible."
+    }
+  ]
+}
