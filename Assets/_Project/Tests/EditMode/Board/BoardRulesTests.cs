@@ -238,6 +238,31 @@ namespace Studio.Tests
             Assert.AreEqual(100, state.budget);
         }
 
+        [Test]
+        public void AskTeam_SpendsOneDayAndReveals()
+        {
+            BoardRules.AskTeam(state, "horror");
+            Assert.AreEqual(2, state.day);
+            Assert.AreEqual(100, state.budget, "asking the team costs time only");
+            CollectionAssert.Contains(state.board.revealed, "horror");
+        }
+
+        [Test]
+        public void AskTeam_ThrowsWhenNoDaysLeft()
+        {
+            state.day = state.deadline;
+            Assert.Throws<InvalidOperationException>(() => BoardRules.AskTeam(state, "horror"));
+            CollectionAssert.DoesNotContain(state.board.revealed, "horror");
+        }
+
+        [Test]
+        public void AskTeam_AlreadyRevealedIsFree()
+        {
+            BoardRules.Reveal(state, "horror");
+            BoardRules.AskTeam(state, "horror");
+            Assert.AreEqual(1, state.day);
+        }
+
         // ---- Goals ----
 
         [Test]

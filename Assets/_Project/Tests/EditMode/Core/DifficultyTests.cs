@@ -29,6 +29,7 @@ namespace Studio.Tests
             db.deadline = 12;
             var state = GameState.New(db, "tester", level);
             Assert.AreEqual(budget, state.budget);
+            Assert.AreEqual(budget, state.startBudget);
             Assert.AreEqual(deadline, state.deadline);
             Assert.AreEqual(level, state.difficulty);
         }

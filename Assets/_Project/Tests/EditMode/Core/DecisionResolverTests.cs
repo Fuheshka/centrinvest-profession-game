@@ -119,6 +119,17 @@ namespace Studio.Tests
             Assert.AreEqual(22, state2.axes[(int)Axis.Coherence]);
         }
 
+        [Test]
+        public void BoardFit_IsTheCoherenceShiftWithoutChangingState()
+        {
+            db.tagConflicts = new[] { new TagPair { a = "horror", b = "kids" } };
+            Place(Slot.Audience, "kids", "kids");
+            Assert.AreEqual(5, DecisionResolver.BoardFit(state, Opt("a", tags: new[] { "kids" }), db));
+            Assert.AreEqual(-8, DecisionResolver.BoardFit(state, Opt("b", tags: new[] { "horror" }), db));
+            Assert.AreEqual(0, DecisionResolver.BoardFit(state, Opt("c", tags: new[] { "other" }), db));
+            Assert.AreEqual(30, state.axes[(int)Axis.Coherence]);
+        }
+
         void Place2(GameState s, string cardId, params string[] tags)
         {
             var c = ScriptableObject.CreateInstance<CardSO>();

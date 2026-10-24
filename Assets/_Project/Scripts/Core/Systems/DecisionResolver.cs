@@ -18,7 +18,7 @@ namespace Studio.Core
 
             var deltas = new int[4];
             for (int i = 0; i < 4; i++) deltas[i] = option.deltas[i];
-            deltas[(int)Axis.Coherence] += TagCoherence(state, option, db);
+            deltas[(int)Axis.Coherence] += BoardFit(state, option, db);
 
             var record = new DecisionRecord
             {
@@ -43,7 +43,8 @@ namespace Studio.Core
             return record;
         }
 
-        static int TagCoherence(GameState state, OptionSO option, ContentDB db)
+        // How the option's tags agree with the board cards: the Coherence shift Apply will add. Shown to the player as a hint.
+        public static int BoardFit(GameState state, OptionSO option, ContentDB db)
         {
             var boardTags = new HashSet<string>();
             foreach (var entry in state.board.placed)

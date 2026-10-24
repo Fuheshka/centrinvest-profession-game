@@ -9,15 +9,16 @@ namespace Studio.Core
         const int BuildDays = 1;
         const int BigGap = 15;                   // an axis this far below its goal gets two quotes
         const int PitchRedoDays = 1;             // base price of the board, doubled as a stage 1 decision
+        const int FirstVersionCritique = 2;      // v0.1 always gets at least this many critical quotes
 
         // Builds the next version: snapshot, verdict, feedback quotes. Costs a day.
-        // tolerance = DifficultySettings.reviewTolerance; the caller passes it until Difficulty (P-9) exists.
+        // Story beat (B-020): v0.1 always comes back for rework, so every game meets the feedback loop;
+        // a later version is approved only once every critical quote of the previous one has its cause found.
         public static VersionRecord Review(GameState state, ContentDB db, int tolerance = 0)
         {
             if (state.stage != Stage.Release)
                 throw new InvalidOperationException("Versions are built in Release, not " + state.stage);
-            // Story beat: v0.1 comes back for rework unless every goal is met (Intern keeps the tolerance).
-            if (state.versions.Count == 0 && state.difficulty != DifficultyLevel.Intern) tolerance = 0;
+            bool first = state.versions.Count == 0;
 
             var used = new HashSet<string>();
             foreach (var v in state.versions) used.UnionWith(v.quoteIds);
@@ -27,20 +28,87 @@ namespace Studio.Core
                 number = state.versions.Count + 1,
                 day = state.day,
                 axes = (int[])state.axes.Clone(),
-                approved = true,
+                approved = !first && AllSorted(state.versions[state.versions.Count - 1], db),
             };
+            int critique = 0;
             for (int i = 0; i < 4; i++)
             {
                 int gap = state.goals[i] - state.axes[i];
                 if (gap > tolerance) version.approved = false;
-                if (gap > 0) Pick(db, (Axis)i, false, gap >= BigGap ? 2 : 1, used, version.quoteIds);
+                if (gap > 0) critique += Pick(db, (Axis)i, false, gap >= BigGap ? 2 : 1, used, version.quoteIds);
             }
+            var critiqued = new List<int>();
+            if (first)
+                foreach (int i in WeakestMetAxes(state))
+                {
+                    if (critique >= FirstVersionCritique) break;
+                    if (Pick(db, (Axis)i, false, 1, used, version.quoteIds) > 0) { critique++; critiqued.Add(i); }
+                }
             foreach (int i in StrongAxes(state))
-                if (Pick(db, (Axis)i, true, 1, used, version.quoteIds) > 0) break;
+                if (!critiqued.Contains(i) && Pick(db, (Axis)i, true, 1, used, version.quoteIds) > 0) break;
 
             state.day += BuildDays;
             state.versions.Add(version);
             return version;
+        }
+
+        // Every critical (non-praise) quote of the version has its cause found.
+        public static bool AllSorted(VersionRecord version, ContentDB db)
+        {
+            foreach (var id in version.quoteIds)
+            {
+                var q = FindQuote(db, id);
+                if (q != null && !q.praise && !version.blamed.Exists(b => b.quoteId == id)) return false;
+            }
+            return true;
+        }
+
+        // Decisions the journal highlights for a quote: live ones that lowered its axis, plus the worst ones
+        // (so a quote on an axis nobody lowered still has a suspect). Idea-stage decisions answer as BoardId.
+        public static List<string> Suspects(GameState state, string quoteId, ContentDB db)
+        {
+            var list = new List<string>();
+            var quote = FindQuote(db, quoteId);
+            if (quote == null || quote.praise) return list;
+            int axis = (int)quote.axis;
+            foreach (var r in Live(state, db))
+                if (r.deltas[axis] < 0 && !list.Contains(Id(r))) list.Add(Id(r));
+            foreach (var id in Culprits(state, axis, db))
+                if (!list.Contains(id)) list.Add(id);
+            return list;
+        }
+
+        // All live decisions tied for the worst delta on the axis.
+        static List<string> Culprits(GameState state, int axis, ContentDB db)
+        {
+            int worst = int.MaxValue;
+            foreach (var r in Live(state, db)) worst = Math.Min(worst, r.deltas[axis]);
+            var ids = new List<string>();
+            foreach (var r in Live(state, db))
+                if (r.deltas[axis] == worst && !ids.Contains(Id(r))) ids.Add(Id(r));
+            return ids;
+        }
+
+        // The board record first, then decisions not replaced by a reopen.
+        static IEnumerable<DecisionRecord> Live(GameState state, ContentDB db)
+        {
+            yield return BoardRecord(state, db);
+            foreach (var r in state.log)
+                if (!r.replaced) yield return r;
+        }
+
+        static string Id(DecisionRecord r) => r.stage == Stage.Idea ? BoardId : r.messageId;
+
+        // Axes at or above their goal, smallest surplus first, axis order on a tie.
+        static List<int> WeakestMetAxes(GameState s)
+        {
+            var list = StrongAxes(s);
+            list.Sort((a, b) =>
+            {
+                int c = (s.axes[a] - s.goals[a]).CompareTo(s.axes[b] - s.goals[b]);
+                return c != 0 ? c : a.CompareTo(b);
+            });
+            return list;
         }
 
         // The decision behind a quote: the worst delta on its axis among live decisions, later one on a tie.
@@ -57,17 +125,17 @@ namespace Studio.Core
             return worst.stage == Stage.Idea ? BoardId : worst.messageId;
         }
 
-        // Right guess is recorded in version.blamed; a wrong one costs a day.
+        // Right guess (any decision tied for the worst, B-021) is recorded in version.blamed; a wrong one costs a day.
         public static bool CheckBlame(GameState state, VersionRecord version, string quoteId, string guessedMessageId, ContentDB db)
         {
-            var culprit = Blame(state, version, quoteId, db);
-            if (culprit == null || culprit != guessedMessageId)
+            var quote = FindQuote(db, quoteId);
+            if (Blame(state, version, quoteId, db) == null || !Culprits(state, (int)quote.axis, db).Contains(guessedMessageId))
             {
                 state.day += 1;
                 return false;
             }
             if (!version.blamed.Exists(b => b.quoteId == quoteId))
-                version.blamed.Add(new QuoteBlame { quoteId = quoteId, messageId = culprit });
+                version.blamed.Add(new QuoteBlame { quoteId = quoteId, messageId = guessedMessageId });
             return true;
         }
 

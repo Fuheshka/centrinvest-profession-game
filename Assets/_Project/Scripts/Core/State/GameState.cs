@@ -22,6 +22,7 @@ namespace Studio.Core
         public int day;
         public int deadline;
         public int budget;
+        public int startBudget;          // budget at the start, for {budget} in the brief
         public Stage stage;
         public int[] axes = new int[4];
         public int[] goals = new int[4];
@@ -46,6 +47,7 @@ namespace Studio.Core
                 axes = new[] { 30, 30, 30, 30 },
                 goals = new[] { 50, 50, 50, 50 },
             };
+            s.startBudget = s.budget;
             if (db.brief != null) s.inbox.Add(db.brief.id);
             return s;
         }

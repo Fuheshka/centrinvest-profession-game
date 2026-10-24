@@ -17,6 +17,22 @@ namespace Studio.Tests.Versions
         [TestCase(100, Verdict.GameOfYear)]
         public void VerdictThresholds(int score, Verdict expected) => Assert.AreEqual(expected, Ending.VerdictFor(score));
 
+        [TestCase(1, "1 день")]
+        [TestCase(3, "3 дня")]
+        [TestCase(11, "11 дней")]
+        [TestCase(16, "16 дней")]
+        [TestCase(18, "18 дней")]
+        [TestCase(21, "21 день")]
+        [TestCase(22, "22 дня")]
+        public void DaysInBriefAgree(int n, string expected) => Assert.AreEqual(expected, Format.Days(n));
+
+        [Test]
+        public void BriefNumbersFollowTheState()
+        {
+            var s = new GameState { nickname = "Аня", deadline = 21, startBudget = 650000 };
+            Assert.AreEqual("Аня: 21 день, 650 000 руб.", Format.Name("{name}: {days}, {budget}", s));
+        }
+
         [Test]
         public void ScoreIsAxisAverage() => Assert.AreEqual(70, Ending.Score(new[] { 85, 55, 70, 70 }));
 

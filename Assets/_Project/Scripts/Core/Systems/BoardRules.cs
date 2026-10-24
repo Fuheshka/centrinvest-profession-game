@@ -6,6 +6,7 @@ namespace Studio.Core
     public static class BoardRules
     {
         const int ConflictCoherencePenalty = 10;
+        public const int AskTeamDays = 1;
 
         public static void Place(GameState state, CardSO card)
         {
@@ -62,6 +63,16 @@ namespace Studio.Core
             if (state.budget < cost.budget)
                 throw new InvalidOperationException("Not enough budget to research " + cardId);
             state.budget -= cost.budget;
+            Reveal(state, cardId);
+        }
+
+        // "Ask the team": the same reveal paid with one day instead of budget. Already revealed card is free.
+        public static void AskTeam(GameState state, string cardId)
+        {
+            if (state.board.revealed.Contains(cardId)) return;
+            if (state.day + AskTeamDays > state.deadline)
+                throw new InvalidOperationException("No days left to ask the team about " + cardId);
+            state.day += AskTeamDays;
             Reveal(state, cardId);
         }
 

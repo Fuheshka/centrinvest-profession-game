@@ -96,10 +96,17 @@ namespace Studio.Tests
 
         // ---- Review: approval ----
 
+        // A reviewed v0.1 whose critical quotes all have their cause found.
+        void FirstVersionSorted()
+        {
+            var v1 = ReviewSystem.Review(state, db);
+            foreach (var id in v1.quoteIds) v1.blamed.Add(new QuoteBlame { quoteId = id, messageId = "x" });
+        }
+
         [Test]
         public void Review_ApprovesWhenEveryAxisIsWithinTolerance()
         {
-            state.difficulty = DifficultyLevel.Intern;
+            FirstVersionSorted();
             state.axes = new[] { 45, 50, 70, 46 };
             Assert.IsTrue(ReviewSystem.Review(state, db, tolerance: 5).approved);
         }
@@ -107,26 +114,48 @@ namespace Studio.Tests
         [Test]
         public void Review_RejectsAxisBelowTolerance()
         {
-            state.difficulty = DifficultyLevel.Intern;
+            FirstVersionSorted();
             state.axes = new[] { 44, 50, 70, 50 };
             Assert.IsFalse(ReviewSystem.Review(state, db, tolerance: 5).approved);
         }
 
+        [TestCase(DifficultyLevel.Intern)]
         [TestCase(DifficultyLevel.Designer)]
         [TestCase(DifficultyLevel.Lead)]
-        public void Review_FirstVersionIgnoresToleranceAboveIntern(DifficultyLevel level)
+        public void Review_FirstVersionAlwaysGoesBackForRework(DifficultyLevel level)
         {
             state.difficulty = level;
-            state.axes = new[] { 48, 50, 50, 50 };
-            Assert.IsFalse(ReviewSystem.Review(state, db, tolerance: 5).approved, "v0.1");
-            Assert.IsTrue(ReviewSystem.Review(state, db, tolerance: 5).approved, "v0.2");
+            state.axes = new[] { 90, 90, 90, 90 };
+            Assert.IsFalse(ReviewSystem.Review(state, db, tolerance: 10).approved);
         }
 
         [Test]
-        public void Review_FirstVersionOnDesignerPassesWhenAllGoalsMet()
+        public void Review_FirstVersionGetsTwoCriticalQuotesEvenWhenGoalsAreMet()
         {
-            state.axes = new[] { 50, 60, 50, 55 };
-            Assert.IsTrue(ReviewSystem.Review(state, db, tolerance: 5).approved);
+            state.axes = new[] { 70, 60, 52, 90 };   // weakest surplus: Clarity +2, then Coherence +10
+            CollectionAssert.AreEqual(new[] { "cla1", "coh1", "praiseInt" }, ReviewSystem.Review(state, db).quoteIds);
+        }
+
+        [Test]
+        public void Review_LaterVersionWaitsUntilPreviousQuotesAreSorted()
+        {
+            state.axes = new[] { 90, 90, 90, 90 };
+            var v1 = ReviewSystem.Review(state, db);
+            Assert.IsFalse(ReviewSystem.Review(state, db).approved, "v0.2: no cause found for v0.1 quotes");
+
+            var v2 = state.versions[1];
+            foreach (var id in v2.quoteIds) v2.blamed.Add(new QuoteBlame { quoteId = id, messageId = "x" });
+            Assert.IsTrue(ReviewSystem.Review(state, db).approved, "v0.3 after v0.2 is sorted");
+            Assert.IsFalse(ReviewSystem.AllSorted(v1, db));
+        }
+
+        [Test]
+        public void AllSorted_IgnoresPraise()
+        {
+            var v = Version("int1", "praiseInt");
+            Assert.IsFalse(ReviewSystem.AllSorted(v, db));
+            v.blamed.Add(new QuoteBlame { quoteId = "int1", messageId = "a" });
+            Assert.IsTrue(ReviewSystem.AllSorted(v, db));
         }
 
         [Test]
@@ -173,6 +202,7 @@ namespace Studio.Tests
         [Test]
         public void Review_PraiseFallsBackToNextStrongAxisWithAQuote()
         {
+            state.versions.Add(new VersionRecord { number = 1 });   // v0.2: no forced critique
             state.axes = new[] { 55, 50, 50, 90 };   // Tech is best but has no praise quote
             CollectionAssert.AreEqual(new[] { "praiseInt" }, ReviewSystem.Review(state, db).quoteIds);
         }
@@ -260,6 +290,52 @@ namespace Studio.Tests
             Assert.AreEqual(1, v.blamed.Count);
             Assert.AreEqual("int1", v.blamed[0].quoteId);
             Assert.AreEqual("a", v.blamed[0].messageId);
+        }
+
+        [Test]
+        public void CheckBlame_AnyDecisionTiedForWorstCounts()
+        {
+            Log("a", Stage.Production, new[] { -10, 0, 0, 0 });
+            Log("b", Stage.Production, new[] { -10, 0, 0, 0 });
+            Assert.IsTrue(ReviewSystem.CheckBlame(state, Version("int1"), "int1", "a", db));
+            Assert.IsTrue(ReviewSystem.CheckBlame(state, Version("int1"), "int1", "b", db));
+        }
+
+        [Test]
+        public void CheckBlame_IdeaStageTiedWithMessageAcceptsTheBoard()
+        {
+            Log("brief", Stage.Idea, new[] { -10, 0, 0, 0 });
+            Log("a", Stage.Production, new[] { -10, 0, 0, 0 });
+            Assert.IsTrue(ReviewSystem.CheckBlame(state, Version("int1"), "int1", ReviewSystem.BoardId, db));
+        }
+
+        // ---- Suspects ----
+
+        [Test]
+        public void Suspects_AreDecisionsThatLoweredTheQuoteAxis()
+        {
+            Log("a", Stage.Production, new[] { -3, 0, 0, 0 });
+            Log("b", Stage.Production, new[] { 5, 0, 0, 0 });
+            Log("c", Stage.Production, new[] { 0, -9, 0, 0 });
+            Log("d", Stage.Production, new[] { -8, 0, 0, 0 }).replaced = true;
+            Log("brief", Stage.Idea, new[] { -1, 0, 0, 0 });
+            CollectionAssert.AreEquivalent(new[] { "a", ReviewSystem.BoardId }, ReviewSystem.Suspects(state, "int1", db));
+        }
+
+        [Test]
+        public void Suspects_FallBackToTheWorstWhenNothingLoweredTheAxis()
+        {
+            Log("a", Stage.Production, new[] { 3, 0, 0, 0 });
+            Log("b", Stage.Production, new[] { 1, 0, 0, 0 });
+            // the empty board (delta 0) is the worst here
+            CollectionAssert.AreEquivalent(new[] { ReviewSystem.BoardId }, ReviewSystem.Suspects(state, "int1", db));
+        }
+
+        [Test]
+        public void Suspects_OfPraiseAreEmpty()
+        {
+            Log("a", Stage.Production, new[] { -3, 0, 0, 0 });
+            Assert.IsEmpty(ReviewSystem.Suspects(state, "praiseInt", db));
         }
 
         [Test]
