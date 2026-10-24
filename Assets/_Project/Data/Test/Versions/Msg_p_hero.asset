@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_p_hero
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: p_hero
+  sender: 1
+  stage: 1
+  day: 2
+  text: "Лера: какого героя рисуем?"
+  images: []
+  options:
+  - {fileID: 11400000, guid: 17680a33af754d84aaa27a40880311af, type: 2}
+  - {fileID: 11400000, guid: ad9629a01c9241818c4cb6dac9b0b5a8, type: 2}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_p_style
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: p_style
+  sender: 3
+  stage: 1
+  day: 5
+  text: "Марина: единый стиль или смешаем?"
+  images: []
+  options:
+  - {fileID: 11400000, guid: 7cc999c0347d4baebcb99a1352dae3eb, type: 2}
+  - {fileID: 11400000, guid: 9e7feca5efb04de48297cb91c9b565fd, type: 2}
