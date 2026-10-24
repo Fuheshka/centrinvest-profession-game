@@ -57,7 +57,7 @@ namespace Studio.UI
             if (!empty || size == frameSize || size.x < 10) return;
             frameSize = size;
             foreach (Transform c in frame) Destroy(c.gameObject);
-            var colour = new Color(0.36f, 0.25f, 0.14f);
+            var colour = new Color32(0x68, 0x77, 0x34, 255);
             float hw = size.x / 2f - 2f, hh = size.y / 2f - 2f;
             ThreadView.Dashes(frame, -hw, hw, hh, 3, 12, 8, colour);
             ThreadView.Dashes(frame, -hw, hw, -hh, 3, 12, 8, colour);

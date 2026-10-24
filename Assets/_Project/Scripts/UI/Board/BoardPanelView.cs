@@ -233,7 +233,7 @@ namespace Studio.UI
             BoardRules.Commit(State, Db);
             pinFirstId = null;
             Refresh();
-            controller.tabChats.onClick.Invoke();
+            controller.ShowTab(0);
         }
 
         SlotView SlotFor(Slot slot)

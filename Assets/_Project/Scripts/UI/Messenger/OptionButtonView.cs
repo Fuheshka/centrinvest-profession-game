@@ -17,7 +17,7 @@ namespace Studio.UI
             cost.text = Format.Cost(o.cost);
             bool ok = DecisionResolver.CanAfford(s, o);
             button.interactable = ok;
-            label.color = ok ? label.color : new Color(0.55f, 0.57f, 0.62f);
+            label.color = ok ? label.color : new Color32(0x9C, 0x8B, 0x30, 255);
             hint.gameObject.SetActive(!ok);
             if (!ok)
                 hint.text = s.budget < o.cost.budget

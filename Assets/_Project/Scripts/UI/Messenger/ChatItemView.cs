@@ -20,7 +20,7 @@ namespace Studio.UI
             timeText.text = "день " + day;
             badge.SetActive(unread > 0);
             badgeText.text = unread.ToString();
-            background.color = selected ? new Color(0.145f, 0.16f, 0.2f) : new Color(0.086f, 0.094f, 0.12f);
+            background.color = selected ? new Color32(0xD8, 0xE2, 0xA6, 255) : new Color32(0xED, 0xF4, 0xE4, 255);
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => onClick(sender));
         }

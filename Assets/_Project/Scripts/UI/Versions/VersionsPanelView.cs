@@ -131,7 +131,7 @@ namespace Studio.UI
             selQuote = null;
             PostBossReply(v);
             controller.Refresh();
-            controller.tabVersions.onClick.Invoke();
+            controller.ShowTab(2);
             Refresh();
         }
 
@@ -292,7 +292,7 @@ namespace Studio.UI
             boardReopened = true;
             selQuote = null;
             controller.Refresh();
-            controller.tabBoard.onClick.Invoke();
+            controller.ShowTab(1);
         }
 
         void OpenModal(DecisionRecord rec)

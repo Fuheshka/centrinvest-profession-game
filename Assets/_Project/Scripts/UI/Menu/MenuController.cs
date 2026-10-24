@@ -14,15 +14,10 @@ namespace Studio.UI
 
         public TMP_InputField nameInput;
         public Button[] levelButtons = new Button[3];     // Intern, Designer, Lead
-        public Image[] levelBoxes = new Image[3];
-        public Outline[] levelFrames = new Outline[3];
-        public Button startButton, continueButton, confirmYes, confirmNo;
-        public TMP_Text continueLabel;
-        public GameObject confirm;
-        public Color levelIdle = new Color32(0x1D, 0x20, 0x28, 255);
-        public Color levelSelected = new Color32(0x2B, 0x24, 0x20, 255);
-        public Color frameIdle = new Color32(0x2C, 0x30, 0x3B, 255);
-        public Color frameSelected = new Color32(0xFF, 0x8A, 0x4C, 255);
+        public Button startButton, backButton, continueButton, confirmYes, confirmNo;
+        public TMP_Text continueLabel, popupTitle;
+        public GameObject namePopup, confirm;
+        public string[] levelNames = { "Стажёр", "Дизайнер", "Ведущий" };
 
         DifficultyLevel level = DifficultyLevel.Designer;
 
@@ -35,6 +30,7 @@ namespace Studio.UI
                 levelButtons[i].onClick.AddListener(() => SetLevel(l));
             }
             startButton.onClick.AddListener(OnStart);
+            backButton.onClick.AddListener(() => namePopup.SetActive(false));
             continueButton.onClick.AddListener(OnContinue);
             confirmYes.onClick.AddListener(StartNew);
             confirmNo.onClick.AddListener(() => confirm.SetActive(false));
@@ -43,18 +39,15 @@ namespace Studio.UI
             continueButton.gameObject.SetActive(save != null);
             if (save != null) continueLabel.text = "Продолжить · день " + save.day;
             confirm.SetActive(false);
-            SetLevel(level);
+            namePopup.SetActive(false);
         }
 
+        // Picking a level opens the nickname window; the game starts from there.
         void SetLevel(DifficultyLevel l)
         {
             level = l;
-            for (int i = 0; i < levelBoxes.Length; i++)
-            {
-                bool on = i == (int)l;
-                levelBoxes[i].color = on ? levelSelected : levelIdle;
-                levelFrames[i].effectColor = on ? frameSelected : frameIdle;
-            }
+            popupTitle.text = "Уровень: " + levelNames[(int)l];
+            namePopup.SetActive(true);
         }
 
         void OnStart()

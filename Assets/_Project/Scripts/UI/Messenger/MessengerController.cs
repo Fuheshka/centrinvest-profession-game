@@ -10,7 +10,6 @@ namespace Studio.UI
         public DifficultyLevel difficulty = DifficultyLevel.Designer;
         public ChatListView chatList;
         public ChatView chatView;
-        public Button tabChats, tabBoard, tabVersions;
         public GameObject chatsTab, boardTab, versionsTab;
 
         TopBarView topBar;
@@ -38,18 +37,24 @@ namespace Studio.UI
             }
             Session.Continue = false;
 
-            tabChats.onClick.AddListener(() => ShowTab(0));
-            tabBoard.onClick.AddListener(() => ShowTab(1));
-            tabVersions.onClick.AddListener(() => ShowTab(2));
-            if (topBar != null) topBar.EndDayClicked += EndDay;
+            if (topBar != null)
+            {
+                topBar.EndDayClicked += EndDay;
+                topBar.TabClicked += OnTab;
+            }
             ShowTab(0);
             RefreshAll();
         }
 
         void OnDestroy()
         {
-            if (topBar != null) topBar.EndDayClicked -= EndDay;
+            if (topBar == null) return;
+            topBar.EndDayClicked -= EndDay;
+            topBar.TabClicked -= OnTab;
         }
+
+        // Top bar order is Board, Chats, Versions; ShowTab keeps the old order Chats, Board, Versions.
+        void OnTab(int i) => ShowTab(i == 0 ? 1 : i == 1 ? 0 : 2);
 
         void EndDay()
         {
@@ -57,12 +62,13 @@ namespace Studio.UI
             RefreshAll();
         }
 
-        void ShowTab(int i)
+        public void ShowTab(int i)
         {
             SaveSystem.Save(State);   // after a pitch or a build the UI switches tab, so this covers Commit and Review too
             chatsTab.SetActive(i == 0);
             boardTab.SetActive(i == 1);
             versionsTab.SetActive(i == 2);
+            if (topBar != null) topBar.SetTab(i == 0 ? 1 : i == 1 ? 0 : 2);
         }
 
         void Select(Sender s)
