@@ -1,0 +1,53 @@
+# OS
+.DS_Store
+._*
+Thumbs.db
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Web (Node / Vite / etc.)
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+*.log
+.env
+.env.*
+!.env.example
+
+# Unity (if the stack ends up being Unity WebGL)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+*.csproj
+*.sln
+
+# Local agent configs and temporary screenshots
+.agents/
+.claude/*
+!.claude/settings.json
+/screenshots/
+.trace-mcp/
+.gamemaker/
+
+# unlazy skill working files
+GATES.md
+.unlazy/
+.unlazy-hook-state.json
+
+# Progress timelapses (rebuild with tools/progress.py build)
+/docs/progress/_out/
+
+# Obsidian vault settings (per user)
+docs/.obsidian/
+
+# oh-my-claudecode runtime state (project skills stay committable)
+/.omc/*
+!/.omc/skills/

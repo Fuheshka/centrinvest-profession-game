@@ -1,0 +1,42 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Context was compacted or the session resumed. Before continuing, re-read CLAUDE.md (Working rules, Reporting), docs/STATE.md and the last three entries of docs/DEVLOG.md. When the task is done, append its DEVLOG entry and update docs/STATE.md.'"
+          }
+        ]
+      },
+      {
+        "matcher": "resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Context was compacted or the session resumed. Before continuing, re-read CLAUDE.md (Working rules, Reporting), docs/STATE.md and the last three entries of docs/DEVLOG.md. When the task is done, append its DEVLOG entry and update docs/STATE.md.'"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "ponytail@ponytail": true,
+    "caveman@caveman": true
+  },
+  "extraKnownMarketplaces": {
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  }
+}
