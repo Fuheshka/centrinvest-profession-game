@@ -46,7 +46,7 @@ namespace Studio.UI
             foreach (var o in current.options)
             {
                 var opt = o;
-                Instantiate(optionPrefab, options).Setup(s, opt, () => pick(current, opt));
+                Instantiate(optionPrefab, options).Setup(s, db, opt, () => pick(current, opt));
             }
         }
     }

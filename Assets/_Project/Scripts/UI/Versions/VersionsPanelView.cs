@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Studio.Core;
 using TMPro;
@@ -142,9 +143,12 @@ namespace Studio.UI
             m.sender = Sender.Boss;
             m.stage = Stage.Release;
             m.day = S.day;   // put into the inbox here; DayClock skips ids already in the inbox
+            bool unsorted = v.number > 1 && !ReviewSystem.AllSorted(S.versions[v.number - 2], Db);
             m.text = v.approved
                 ? $"Версия v0.{v.number} одобрена. Берём в релиз!"
-                : $"Версия v0.{v.number}: идея крутая, но играть пока тяжело. Разбери отзывы во вкладке «Версии», найди причину каждого и пересобери.";
+                : unsorted
+                    ? $"Версия v0.{v.number}: ты пересобрал, не разобрав отзывы прошлой версии. Найди причину каждого отзыва во вкладке «Версии», потом собирай."
+                    : $"Версия v0.{v.number}: идея крутая, но играть пока тяжело. Разбери отзывы во вкладке «Версии», найди причину каждого и пересобери.";
             Db.messages = Db.messages.Concat(new[] { m }).ToArray();
             S.inbox.Add(m.id);
         }
@@ -227,11 +231,12 @@ namespace Studio.UI
             var quote = selQuote == null ? null : Db.quotes.FirstOrDefault(x => x != null && x.id == selQuote);
             journalHint.text = v == null ? "Здесь будут твои решения после первой версии."
                 : quote == null ? "Выбери отзыв, потом решение, которое его вызвало."
-                : "Выбран отзыв: «" + quote.text + "». Какое решение виновато?";
+                : "Выбран отзыв: «" + quote.text + "». Подсвечены решения, которые могли его вызвать. Какое виновато?";
 
             Format.Clear(journalList);
-            Row(v, ReviewSystem.BoardRecord(S, Db), "Идея");
-            foreach (var r in S.log.Where(x => !x.replaced)) Row(v, r, r.stage == Stage.Idea ? "Идея" : "Разработка");
+            var suspects = quote == null ? null : ReviewSystem.Suspects(S, quote.id, Db);
+            Row(v, ReviewSystem.BoardRecord(S, Db), "Идея", suspects);
+            foreach (var r in S.log.Where(x => !x.replaced)) Row(v, r, r.stage == Stage.Idea ? "Идея" : "Разработка", suspects);
 
             reopenBox.SetActive(false);
             if (v != null && quote != null)
@@ -241,11 +246,13 @@ namespace Studio.UI
             }
         }
 
-        void Row(VersionRecord v, DecisionRecord r, string stageName)
+        // With a quote selected only its suspects stay clickable (B-021); stage 1 decisions answer as the board.
+        void Row(VersionRecord v, DecisionRecord r, string stageName, List<string> suspects)
         {
-            bool culprit = v != null && v.blamed.Exists(b => b.messageId == r.messageId);
-            string id = r.messageId;
-            Instantiate(journalRowPrefab, journalList).Setup(r.day, stageName, Ending.DecisionText(S, Db, r), culprit, v != null, () => Guess(id));
+            string id = r.stage == Stage.Idea ? ReviewSystem.BoardId : r.messageId;
+            bool culprit = v != null && v.blamed.Exists(b => b.messageId == id);
+            bool active = v != null && (suspects == null || suspects.Contains(id));
+            Instantiate(journalRowPrefab, journalList).Setup(r.day, stageName, Ending.DecisionText(S, Db, r), culprit, active, () => Guess(id));
         }
 
         void Guess(string messageId)

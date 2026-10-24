@@ -19,6 +19,7 @@ namespace Studio.UI
             background.color = culprit ? Pal.GreenTint : Pal.Panel2;
             border.enabled = culprit;
             button.interactable = interactable;
+            day.alpha = stage.alpha = text.alpha = interactable ? 1f : 0.3f;   // non-suspects fade out (B-021)
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => click());
         }

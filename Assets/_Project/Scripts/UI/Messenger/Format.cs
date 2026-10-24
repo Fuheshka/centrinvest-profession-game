@@ -12,7 +12,17 @@ namespace Studio.UI
         }
 
         // {name} in message and option texts is the player's nickname.
-        public static string Name(string text, GameState s) => text?.Replace("{name}", s.nickname);
+        // {days} and {budget} follow the difficulty, so the brief never promises numbers the top bar does not show.
+        public static string Name(string text, GameState s)
+            => text?.Replace("{name}", s.nickname).Replace("{days}", Days(s.deadline)).Replace("{budget}", Money(s.startBudget));
+
+        // 1 день, 3 дня, 18 дней, 21 день.
+        public static string Days(int n)
+        {
+            int m10 = n % 10, m100 = n % 100;
+            var word = m10 == 1 && m100 != 11 ? "день" : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? "дня" : "дней";
+            return n + " " + word;
+        }
 
         public static string Money(int n) => n.ToString("N0", System.Globalization.CultureInfo.InvariantCulture).Replace(',', ' ') + " руб.";
 

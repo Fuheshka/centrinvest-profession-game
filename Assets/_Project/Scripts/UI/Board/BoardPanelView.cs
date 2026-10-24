@@ -39,6 +39,7 @@ namespace Studio.UI
             content.SetActive(false);
             pitchButton.gameObject.SetActive(false);
             researchButton.onClick.AddListener(Research);
+            askButton.onClick.AddListener(AskTeam);
             pitchButton.onClick.AddListener(Pitch);
             for (var i = 0; i < legendSamples.Length; i++)
                 ThreadView.DrawLine(legendSamples[i], 44, (ThreadKind)new[] { 1, 2, 0, 3 }[i]);   // Match, Conflict, Unknown, Neutral
@@ -94,7 +95,7 @@ namespace Studio.UI
             Clear(threadLayer);
 
             var board = State.board;
-            briefText.text = Db.brief != null ? "<b>Бриф:</b> " + Db.brief.text : "";
+            briefText.text = Db.brief != null ? "<b>Бриф:</b> " + Format.Name(Db.brief.text, State) : "";
 
             var placedIds = new HashSet<string>();
             foreach (var entry in board.placed)
@@ -128,10 +129,23 @@ namespace Studio.UI
             var view = Instantiate(cardPrefab, parent, false);
             view.dragLayer = dragLayer;
             view.Setup(card, Note(card), onBoard, card.id == selectedId, card.id == pinFirstId, Editable);
-            view.Clicked = v => { selectedId = selectedId == v.Card.id ? null : v.Card.id; Refresh(); };
+            view.Clicked = OnCardClick;
             view.PinClicked = OnPin;
             view.DropRequested = OnDrop;
             return view;
+        }
+
+        // A hand card goes to its slot on click as well as by drag; a board card is selected for research.
+        void OnCardClick(CardView v)
+        {
+            if (!v.OnBoard)
+            {
+                if (!Editable) return;
+                BoardRules.Place(State, v.Card);
+                selectedId = v.Card.id;
+            }
+            else selectedId = selectedId == v.Card.id ? null : v.Card.id;
+            Refresh();
         }
 
         string Note(CardSO card)
@@ -211,19 +225,27 @@ namespace Studio.UI
             string hint = null;
             var ok = Editable;
             if (!Editable) hint = "доска зафиксирована";
-            else if (selectedId == null) { ok = false; hint = "выбери карточку кликом"; }
+            else if (selectedId == null) { ok = false; hint = "выбери карточку на доске кликом"; }
             else if (State.board.revealed.Contains(selectedId)) { ok = false; hint = "эта карточка уже изучена"; }
-            else if (State.budget < price.budget) { ok = false; hint = "не хватает бюджета"; }
+            var canAsk = ok && State.day + BoardRules.AskTeamDays <= State.deadline;
+            if (ok && State.budget < price.budget) { ok = false; hint = canAsk ? "на рынок не хватает бюджета, спроси команду" : "не хватает бюджета"; }
             researchButton.interactable = ok;
+            askButton.interactable = canAsk;
             researchHint.text = hint ?? "откроет популярность и нитки с ней";
-            askButton.interactable = false;
-            askLabel.text = "Спросить команду · полдня";
+            askLabel.text = "Спросить команду · 1 день";
         }
 
         void Research()
         {
             if (selectedId == null || !Editable) return;
             BoardRules.Research(State, selectedId, new Cost { budget = researchPrice });
+            Refresh();
+        }
+
+        void AskTeam()
+        {
+            if (selectedId == null || !Editable) return;
+            BoardRules.AskTeam(State, selectedId);
             Refresh();
         }
 
