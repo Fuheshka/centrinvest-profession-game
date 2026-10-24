@@ -82,16 +82,26 @@ namespace Studio.UI.Mvp
             var t = s.Task(taskId);
             var pool = new List<string>();
             foreach (var e in s.staff) if (e.d == t.d) pool.Add(e.id);
+            pool.Sort((x, y) => Rank(game.L.Candidate(y)).CompareTo(Rank(game.L.Candidate(x))));   // best first
             if (pool.Count == 0)
             {
                 game.modal.Show("Некому поручить", "Нужен сотрудник: " + Names.Of(t.d) + ". Найми его в хедхантере.", ("Понятно", null));
                 return;
             }
             int i = pool.IndexOf(t.assigneeId);
-            WorkSim.Assign(s, taskId, pool[(i + 1) % pool.Count]);
+            string pick;
+            if (i >= 0) pick = pool[(i + 1) % pool.Count];
+            else
+            {
+                // first assignment: the best employee who has no other unfinished task; if all are busy, the best overall
+                pick = pool.Find(id => !s.tasks.Exists(o => !o.done && o.id != taskId && o.assigneeId == id)) ?? pool[0];
+            }
+            WorkSim.Assign(s, taskId, pick);
             game.Commit();
             Redraw();
         }
+
+        static int Rank(CandidateDef c) => c.quality * 10 + c.speed;
 
         void Build()
         {

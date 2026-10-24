@@ -77,15 +77,10 @@ namespace Studio.UI.Mvp
 
         public void LinkClicked(ConceptLink link)
         {
-            var s = game.S; var l = game.L;
-            var a = s.concept.blocks.Find(x => x.id == link.a); var b = s.concept.blocks.Find(x => x.id == link.b);
-            var fx = ConceptRules.PairEffects(l, a.paramId, b.paramId);
-            string text = fx.Count == 0 ? "Сочетание ничего не даёт: ни плюсов, ни минусов." : "";
-            foreach (var e in fx) text += (e.sign > 0 ? "+" : "–") + l.tuning.conceptStep + " " + Names.Of(e.d) + "\n";
-            var opts = new List<(string, System.Action)>();
-            if (!s.concept.approved) opts.Add(("Удалить линию", () => { ConceptRules.Disconnect(s, link.a, link.b); game.Commit(); Redraw(); }));
-            opts.Add(("Закрыть", null));
-            game.modal.Show(Title(a) + " + " + Title(b), text, opts.ToArray());
+            var s = game.S;
+            if (s.concept.approved) return;
+            var view = linkViews.Find(x => x.link == link).view;
+            popup.Show(view.tag, "Линия", ("Удалить", () => { ConceptRules.Disconnect(s, link.a, link.b); game.Commit(); Redraw(); }, 2));
         }
 
         // "Д+1 З–1": net effect per discipline, green plus and red minus on the dark plate.
@@ -131,7 +126,7 @@ namespace Studio.UI.Mvp
             }
             for (int i = 0; i < palette.Length; i++) palette[i].interactable = !s.concept.approved && s.BlockOf((BlockType)i) == null;
             var t = ConceptRules.Totals(s, l);
-            totals.text = "Итог концепта\nДизайн " + Sign(t[0] * l.tuning.conceptStep) + "\nМеханики " + Sign(t[1] * l.tuning.conceptStep) + "\nЗвук " + Sign(t[2] * l.tuning.conceptStep);
+            totals.text = "Итог: Дизайн " + Sign(t[0] * l.tuning.conceptStep) + " · Механики " + Sign(t[1] * l.tuning.conceptStep) + " · Звук " + Sign(t[2] * l.tuning.conceptStep);
             bool ok = ConceptRules.CanApprove(s, l, out var why);
             approve.interactable = ok;
             reason.text = s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;

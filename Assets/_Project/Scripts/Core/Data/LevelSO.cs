@@ -9,7 +9,7 @@ namespace Studio.Core
     [Serializable] public class Effect { public Discipline d; public int sign; }
     [Serializable] public class PairRule { public string a, b; public List<Effect> effects = new List<Effect>(); }
     [Serializable] public class TaskTemplate { public string id; public Discipline d; public string titleFormat; public BlockType tierFrom; public bool tierFromBlock; public int fixedTier = 1; }
-    [Serializable] public class CandidateDef { public string id, name; public Discipline d; public int speed, quality; public Sprite portrait; }
+    [Serializable] public class CandidateDef { public string id, name; public Discipline d; public int speed, quality; public Sprite portrait, character; public string quirk; }   // portrait: messenger mascot; character: drawn person for the headhunter
     [Serializable] public class TextDef { public string key, text; }
     // A random work event: an employee writes in the chat and offers two choices (docs/DECISIONS.md, 2026-10-24).
     // progress is a share of the task's effort, energy and budget are plain numbers.

@@ -383,9 +383,8 @@ public static class MvpUiBuilder
         // ---- headhunter and tasks share mockup 1: olive left column, light centre with olive rows, team cards, yellow button
         var hire = Node("HireWindow", body); Stretch(hire);
         var hw = hire.gameObject.AddComponent<HireWindow>(); hw.game = game; hw.top = top;
-        hw.list = ThreeColumns(hire, "Кандидаты", "Найм", "Кого берём?\n\nСкорость – как быстро\nКачество – насколько хорошо\nНочь – может ли работать ночью\n\nПлатишь за каждый рабочий день.", rowLight, hw.team, out var hireButton, out _);
+        ThreeColumns(hire, "Кандидаты", "Найм", "Кого берём?\n\nСкорость – как быстро\nКачество – насколько хорошо\nНочь – может ли работать ночью\n\nПлатишь за каждый рабочий день.", rowLight, new RowView[4], out var hireButton, out _);
         hw.toTasks = hireButton; hireButton.GetComponentInChildren<TMP_Text>().text = "К задачам";
-        hw.rowPrefab = rowOlive;
 
         var tasks = Node("TaskWindow", body); Stretch(tasks);
         var tw = tasks.gameObject.AddComponent<TaskWindow>(); tw.game = game;

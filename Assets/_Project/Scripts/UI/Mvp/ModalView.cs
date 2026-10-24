@@ -23,13 +23,16 @@ namespace Studio.UI.Mvp
             body.text = text;
             body.gameObject.SetActive(!string.IsNullOrEmpty(text));
             foreach (Transform c in options) Destroy(c.gameObject);
+            int n = 0;
             foreach (var b in buttons)
             {
                 var btn = Instantiate(optionPrefab, options);
-                btn.GetComponentInChildren<TMP_Text>().text = b.label;
                 var img = btn.GetComponent<Image>(); var txt = btn.GetComponentInChildren<TMP_Text>();
-                if (b.label == "Отмена") { img.color = Palette.Dim; txt.color = Palette.Cream; }                    // the quiet way out
-                else if (b.label.StartsWith("Удалить") || b.label.StartsWith("Уволить")) { img.color = Palette.Red; txt.color = Palette.Cream; }    // destructive
+                txt.text = b.label;
+                bool quiet = b.label == "Отмена" || b.label == "Закрыть" || n > 0;                                  // the first button is the main action
+                img.color = quiet ? Palette.Secondary : Palette.Primary;
+                if (b.label.StartsWith("Удалить") || b.label.StartsWith("Уволить")) { img.color = Palette.Red; txt.color = Palette.Cream; }    // destructive
+                n++;
                 var act = b.action;
                 btn.onClick.AddListener(() => { root.SetActive(false); act?.Invoke(); });
             }

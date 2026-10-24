@@ -52,7 +52,7 @@ public static class MvpPatch
             if (p.Contains("/Left/Card/") || p.Contains("/TotalsCard/")) Center(t, TextAlignmentOptions.Top);
             else if (p.EndsWith("/Reason") || p.EndsWith("/Modal/Panel/Title") || p.EndsWith("/Modal/Panel/Body")) Center(t, TextAlignmentOptions.Top);
         }
-        foreach (var w in new[] { root.GetComponentInChildren<HireWindow>(true).team, root.GetComponentInChildren<TaskWindow>(true).team })
+        foreach (var w in new[] { root.GetComponentInChildren<TaskWindow>(true).team })
             foreach (var card in w)
             {
                 Center(card.title, TextAlignmentOptions.Center);

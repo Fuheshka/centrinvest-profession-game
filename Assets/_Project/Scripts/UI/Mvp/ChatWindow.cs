@@ -13,6 +13,8 @@ namespace Studio.UI.Mvp
         public RowView chatRowPrefab, messagePrefab;
         public ScrollRect feedScroll;
         public TMPro.TMP_Text header;
+        public Image headerAvatar;
+        public Sprite bossAvatar;
 
         readonly Dictionary<string, int> read = new Dictionary<string, int>();   // messages of each chat the player has seen
         string open = LevelState.Boss;
@@ -37,15 +39,17 @@ namespace Studio.UI.Mvp
                 var row = Instantiate(chatRowPrefab, chatList);
                 var c = game.L.Candidate(id);
                 int unread = id == open ? 0 : Count(s, id) - (read.TryGetValue(id, out var r) ? r : 0);
-                row.Set(id == LevelState.Boss ? "Борис Петрович · руководитель" : c.name + " · " + Names.Of(c.d),
+                row.Set(id == LevelState.Boss ? "Борис Петрович" : c.name + " · " + Names.Of(c.d),
                         Last(s, id), unread > 0 ? "<color=#C93A3F><b>● " + unread + "</b></color>" : null);
                 row.background.color = id == open ? Palette.Yellow : Palette.Cream;
+                SetAvatar(row.avatar, id);
                 string k = id;
                 row.main.onClick.AddListener(() => { open = k; Redraw(); });
             }
 
             var oc = game.L.Candidate(open);
             header.text = open == LevelState.Boss ? "Борис Петрович · руководитель" : oc.name + " · " + Names.Of(oc.d);
+            SetAvatar(headerAvatar, open);
             read[open] = Count(s, open);
             foreach (Transform c in feed) Destroy(c.gameObject);
             foreach (var m in s.chat)
@@ -64,6 +68,14 @@ namespace Studio.UI.Mvp
             feedScroll.verticalNormalizedPosition = 0;
         }
 
+        // Mascot portrait of a chat: the boss from this window, an employee from his CandidateDef.
+        void SetAvatar(Image img, string id)
+        {
+            var sp = id == LevelState.Boss ? bossAvatar : (game.L.Candidate(id)?.character ?? game.L.Candidate(id)?.portrait);
+            if (img == null || sp == null) return;
+            img.sprite = sp; img.color = Color.white;
+        }
+
         bool NeedsButtons() => false;
 
         static int Count(LevelState s, string chatId) => s.chat.FindAll(m => m.chatId == chatId).Count;
@@ -71,7 +83,7 @@ namespace Studio.UI.Mvp
         static string Last(LevelState s, string id)
         {
             for (int i = s.chat.Count - 1; i >= 0; i--)
-                if (s.chat[i].chatId == id) { var t = s.chat[i].text; return t.Length > 40 ? t.Substring(0, 40) + "…" : t; }
+                if (s.chat[i].chatId == id) { var t = s.chat[i].text; return t.Length > 34 ? t.Substring(0, 34) + "…" : t; }
             return "";
         }
 

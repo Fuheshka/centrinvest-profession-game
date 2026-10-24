@@ -7,7 +7,7 @@ namespace Studio.UI.Mvp
     // Generic list row prefab: background, up to three texts and two buttons. Each window fills what it needs.
     public class RowView : MonoBehaviour
     {
-        public Image background;
+        public Image background, avatar;
         public TMP_Text title, subtitle, right;
         public Button main, button1, button2;
         public TMP_Text button1Label, button2Label;

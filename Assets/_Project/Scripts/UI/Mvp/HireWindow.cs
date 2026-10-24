@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Studio.UI.Mvp
 {
+    // Headhunter: cards of every candidate with their characteristics and pay; hiring opens the employee's chat.
     public class HireWindow : MonoBehaviour
     {
         public GameLoop game;
-        public Transform list;
-        public RowView rowPrefab;
-        public RowView[] team = new RowView[4];
+        public Transform grid;
+        public CandidateCardView cardPrefab;
         public UnityEngine.UI.Button toTasks;
         public TopBarMvp top;
         float redrawTimer;
@@ -33,32 +33,19 @@ namespace Studio.UI.Mvp
         {
             if (game.S == null) return;
             var s = game.S; var l = game.L;
-            TeamCards.Fill(game, team);
             int n = 0;
             foreach (var c in l.candidates)
             {
-                var row = RowView.At(list, rowPrefab, n++);
+                var card = CandidateCardView.At(grid, cardPrefab, n++);
                 var e = s.Employee(c.id);
-                row.Set(c.name + " · " + Names.Of(c.d),
-                        "Скорость " + c.speed + "/3 · Качество " + c.quality + "/3"
-                        + (e != null ? " · Энергия " + Mathf.RoundToInt(e.energy) : ""),
-                        Names.Money(Staffing.DailyRate(c, l.tuning)) + " / день");
-                row.Progress(-1);
-                row.background.color = e != null ? Palette.Dim : Palette.Olive;
+                card.Set(c.character != null ? c.character : c.portrait, c.name, Names.Of(c.d), c.quirk, c.speed, c.quality, Names.Money(Staffing.DailyRate(c, l.tuning)) + " ₽ / день");
                 string id = c.id;
-                if (e == null)
-                {
-                    bool ok = Staffing.CanHire(s, l, id, out var why);
-                    row.Button1(ok ? "Нанять" : why, ok, () => { Staffing.Hire(s, l, id); game.Commit(); Redraw(); });
-                    row.Button2(null, false, null);
-                }
-                else
-                {
-                    row.Button1("В команде", false, null);
-                    row.Button2("Уволить", true, () => game.modal.Show("Уволить: " + c.name + "?",
+                bool ok = Staffing.CanHire(s, l, id, out var why);
+                card.SetHire(e != null, ok ? "Нанять" : why, ok,
+                    () => { Staffing.Hire(s, l, id); game.Commit(); Redraw(); },
+                    () => game.modal.Show("Уволить: " + c.name + "?",
                         "Задачи " + c.name + " останутся без исполнителя, прогресс сохранится. Деньги за сегодня не вернутся. Нанять заново можно здесь же.",
                         ("Уволить", () => { Staffing.Fire(s, id); game.Commit(); Redraw(); }), ("Отмена", null)));
-                }
             }
         }
     }
