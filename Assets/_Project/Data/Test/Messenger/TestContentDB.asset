@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: TestContentDB
   m_EditorClassIdentifier: Studio.Core::Studio.Core.ContentDB
   brief: {fileID: 11400000, guid: 8dfb7878dbd6c44c1bc5c1816718aafe, type: 2}
-  cards: []
-  combos: []
+  cards:
+  - {fileID: 11400000, guid: 420fca1f0b21d42189600e6d4ecfe10d, type: 2}
+  - {fileID: 11400000, guid: a4110c1cd56ae4a98aff7ca43ab005a5, type: 2}
+  - {fileID: 11400000, guid: 5128853bd48fb41fbbdfe4e664ee010a, type: 2}
+  - {fileID: 11400000, guid: e8dbf66e60e6342adaeebf47a01e7827, type: 2}
+  - {fileID: 11400000, guid: e1f5c43fc46c14dae8d0981283c5c89f, type: 2}
+  - {fileID: 11400000, guid: 5fbe97fde2fe34feb99a6e7d35af5a1d, type: 2}
+  - {fileID: 11400000, guid: 84f3a24af4501498e8e11ba1d3d636e2, type: 2}
+  - {fileID: 11400000, guid: e63ab838b6a3e4c4e887fc7664fd3980, type: 2}
+  combos:
+  - {fileID: 11400000, guid: 86bc1c38264e442d7b591a0c27df1534, type: 2}
+  - {fileID: 11400000, guid: 95dfd41a62d2d4939b51ac564b4e37ca, type: 2}
+  - {fileID: 11400000, guid: 2703a0c5204754c7d9023ee7233957b9, type: 2}
+  - {fileID: 11400000, guid: 9c97d97d56762408aa18cb0e19f36f72, type: 2}
+  - {fileID: 11400000, guid: 9ac6c1800d8d44ffc9718f2506aa45ea, type: 2}
   messages:
   - {fileID: 11400000, guid: bbb98888a0f9a4ea88db3e4325ca4d66, type: 2}
   - {fileID: 11400000, guid: 25bc06ea9371244d997d68d831345f20, type: 2}
