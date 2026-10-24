@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_anim
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: anim
+  sender: 1
+  stage: 1
+  day: 10
+  text: "Анимации делаю по 12 кадров или по 4? По 12 – красиво, но долго."
+  images: []
+  options:
+  - {fileID: 11400000, guid: 14d7681fa1a95433befd5f154538fa61, type: 2}
+  - {fileID: 11400000, guid: d972f2706f3d5e04ba879accac76d99d, type: 2}

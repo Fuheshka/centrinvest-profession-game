@@ -32,20 +32,5 @@ namespace Studio.Tests
             Assert.IsNotNull(back.quoteIds);
             Assert.IsNotNull(back.blamed);
         }
-
-        [Test]
-        public void Systems_ThrowNotImplementedWithCardNumber()
-        {
-            Expect("P-9", () => Difficulty.For(DifficultyLevel.Intern));
-            Expect("P-9", () => SaveSystem.Save(null));
-            Expect("P-9", () => SaveSystem.Load());
-            Expect("P-9", () => SaveSystem.HasSave());
-        }
-
-        static void Expect(string card, TestDelegate call)
-        {
-            var ex = Assert.Throws<NotImplementedException>(call);
-            Assert.AreEqual(card, ex.Message);
-        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Studio.Core
 {
@@ -13,6 +14,9 @@ namespace Studio.Core
     [Serializable]
     public class GameState
     {
+        public const int CurrentSaveVersion = 1;
+
+        public int saveVersion = CurrentSaveVersion;
         public string nickname;
         public DifficultyLevel difficulty;
         public int day;
@@ -30,13 +34,14 @@ namespace Studio.Core
 
         public static GameState New(ContentDB db, string nickname, DifficultyLevel difficulty)
         {
+            var d = Difficulty.For(difficulty);
             var s = new GameState
             {
                 nickname = nickname,
                 difficulty = difficulty,
                 day = 1,
-                deadline = db.deadline,
-                budget = db.startBudget,
+                deadline = db.deadline + d.daysBonus,
+                budget = Mathf.RoundToInt(db.startBudget * d.budgetMul),
                 stage = Stage.Idea,
                 axes = new[] { 30, 30, 30, 30 },
                 goals = new[] { 50, 50, 50, 50 },

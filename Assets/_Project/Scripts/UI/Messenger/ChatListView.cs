@@ -30,7 +30,7 @@ namespace Studio.UI
                     last = m; unread++;
                 }
                 var item = Instantiate(itemPrefab, content);
-                item.Setup(sender, last != null ? last.text : "Нет новых сообщений", last != null ? last.day : s.day,
+                item.Setup(sender, last != null ? Format.Name(last.text, s) : "Нет новых сообщений", last != null ? last.day : s.day,
                     unread, sender == selected, onSelect);
             }
         }

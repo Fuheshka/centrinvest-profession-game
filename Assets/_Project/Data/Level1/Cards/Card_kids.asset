@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3516ea89505741629492b1fbd968056, type: 3}
+  m_Name: Card_kids
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.CardSO
+  id: kids
+  slot: 2
+  title: "Дети 6+"
+  tags:
+  - "детский"
+  - "мультяшный"
+  - "казуальный"
+  productionCost:
+    days: 0
+    budget: 0
+  goalDeltas: 00000000000000001400000000000000
+  popularity: 50

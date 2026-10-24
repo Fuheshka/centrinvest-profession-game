@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26e6e853ea6c4ab48c958910aea7afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Studio.UI::Studio.UI.MessengerController
-  db: {fileID: 11400000, guid: 3f8d2d58f82ad4730b6336612f0c7823, type: 2}
+  db: {fileID: 11400000, guid: 2fb984434df35e06aaa5d007a8bc236c, type: 2}
   difficulty: 1
   chatList: {fileID: 3753155162230303899}
   chatView: {fileID: 1773524684135780489}
@@ -2188,6 +2188,7 @@ MonoBehaviour:
   messages: {fileID: 9065213966394465172}
   options: {fileID: 7600815244128736621}
   bubblePrefab: {fileID: 7487812119136088710, guid: 8b83ad66826174afebf6abacc228a7a3, type: 3}
+  replyPrefab: {fileID: 7487812119136088710, guid: cb80795f6e9b4d1eb17977f00f5cf09a, type: 3}
   optionPrefab: {fileID: 4450668171751240200, guid: 54d15597809eb412cbad7c21ac319aa7, type: 3}
   optionBar: {fileID: 9059114693846806000}
 --- !u!1 &3935887561115981631

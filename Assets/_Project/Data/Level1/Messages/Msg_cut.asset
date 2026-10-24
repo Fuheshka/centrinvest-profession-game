@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4142ff151753845ee9423b2e430e52ba, type: 3}
+  m_Name: Msg_cut
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.MessageSO
+  id: cut
+  sender: 3
+  stage: 1
+  day: 7
+  text: "{name}, издатель урезал бюджет на 100 000. Что выкидываем?"
+  images: []
+  options:
+  - {fileID: 11400000, guid: cb6f64a076de5b58b6d19d6d7a013de3, type: 2}
+  - {fileID: 11400000, guid: f4382dface825cc38b38343b1a546854, type: 2}
+  - {fileID: 11400000, guid: c527db0902535ffe8252fe8f858a0801, type: 2}

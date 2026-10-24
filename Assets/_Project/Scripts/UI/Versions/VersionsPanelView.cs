@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Studio.Core;
 using TMPro;
@@ -8,23 +7,43 @@ using UnityEngine.UI;
 namespace Studio.UI
 {
     // Stage 3 tab: version history, boss feedback with quotes, decision journal, blame and reopen.
-    // Root prefab in Game next to MessengerPanel; the UI is built in code and covers the messenger's "Версии" tab area.
+    // Root prefab in Game next to MessengerPanel; all visuals live in the prefab, the code fills rows and handles clicks.
     public class VersionsPanelView : MonoBehaviour
     {
         const float ToastSeconds = 2.5f;
 
+        public GameObject content;                       // hidden in the prefab; shown while the Versions tab is open
+        public Transform versionList;
+        public VersionRowView versionRowPrefab;
+        public GameObject emptyState, feedback;
+        public TMP_Text emptyTitle, emptyText, feedbackTitle, feedbackSub;
+        public AxisCardView[] axisCards = new AxisCardView[4];
+        public Transform quoteList;
+        public QuoteRowView quoteRowPrefab;
+        public TMP_Text journalHint;
+        public Transform journalList;
+        public JournalRowView journalRowPrefab;
+        public GameObject reopenBox, reopenWarn;
+        public TMP_Text reopenTitle, reopenCost;
+        public Button reopenButton;
+        public GameObject toastRoot;
+        public TMP_Text toastText;
+        public GameObject modal;
+        public TMP_Text modalTitle;
+        public Transform modalList;
+        public ReopenOptionView optionPrefab;
+        public Button modalCancel;
+        public Button buildButtonPrefab;
+
         MessengerController controller;
         TopBarView topBar;
-        GameObject content, modal;
-        RectTransform left, center, right, modalList;
-        TMP_Text toast, modalTitle;
         Button buildButton;
         TMP_Text buildLabel;
 
         int selVersion = -1;
         string selQuote;
         float toastUntil;
-        bool shown, boardReopened, dbCloned, built;
+        bool boardReopened, dbCloned;
         int lastVersions = -1;
 
         GameState S => controller.State;
@@ -35,78 +54,26 @@ namespace Studio.UI
             controller = FindAnyObjectByType<MessengerController>();
             topBar = FindAnyObjectByType<TopBarView>();
             if (controller == null || topBar == null) { enabled = false; return; }
-            UiKit.Font = topBar.budgetText.font;
-            BuildSkeleton();
+            modalCancel.onClick.AddListener(() => modal.SetActive(false));
             DockBuildButton();
         }
 
-        void BuildSkeleton()
-        {
-            var bg = UiKit.Box(transform, "Content", UiKit.Bg);
-            content = bg.gameObject;
-            UiKit.Stretch(bg.rectTransform);
-            UiKit.H(bg.rectTransform, 0).childForceExpandHeight = true;
-
-            left = Column(content.transform, "Left", 300, UiKit.Bg);
-            center = Column(content.transform, "Center", -1, UiKit.Bg);
-            right = Column(content.transform, "Right", 360, UiKit.Panel);
-
-            // toast and reopen window float over everything
-            var t = UiKit.Box(content.transform, "Toast", new Color(0.79f, 0.23f, 0.25f, 0.95f));
-            t.raycastTarget = false;
-            t.gameObject.AddComponent<LayoutElement>().ignoreLayout = true;
-            var trt = t.rectTransform;
-            trt.anchorMin = trt.anchorMax = new Vector2(0.5f, 0f);
-            trt.pivot = new Vector2(0.5f, 0f);
-            trt.anchoredPosition = new Vector2(0, 40);
-            trt.sizeDelta = new Vector2(420, 56);
-            toast = UiKit.Label(t.transform, "", 20, Color.white, FontStyles.Bold, TextAlignmentOptions.Center);
-            UiKit.Stretch(toast.rectTransform);
-            t.gameObject.SetActive(false);
-
-            var dim = UiKit.Box(content.transform, "Modal", new Color(0, 0, 0, 0.75f));
-            dim.gameObject.AddComponent<LayoutElement>().ignoreLayout = true;
-            UiKit.Stretch(dim.rectTransform);
-            modal = dim.gameObject;
-            var box = UiKit.Box(modal.transform, "Box", UiKit.Panel);
-            var brt = box.rectTransform;
-            brt.anchorMin = brt.anchorMax = brt.pivot = new Vector2(0.5f, 0.5f);
-            brt.sizeDelta = new Vector2(620, 0);
-            UiKit.V(brt, 12, 24);
-            box.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-            modalTitle = UiKit.Label(box.transform, "", 22, UiKit.Text, FontStyles.Bold);
-            modalList = UiKit.Node(box.transform, "Options");
-            UiKit.V(modalList, 10);
-            UiKit.TextButton(box.transform, "Отмена", UiKit.Panel2, UiKit.Text, () => modal.SetActive(false), 44);
-            modal.SetActive(false);
-            built = true;
-        }
-
-        static RectTransform Column(Transform parent, string name, float width, Color bg)
-        {
-            var img = UiKit.Box(parent, name, bg);
-            UiKit.V(img.rectTransform, 12, 20);
-            UiKit.Size(img, w: width, flexW: width < 0 ? 1 : 0, flexH: 1);
-            return img.rectTransform;
-        }
-
-        // The build button covers "Закончить день" in Release, as in the mockup; Р3's TopBar prefab stays untouched.
+        // The build button sits over "Закончить день" in Release, as in the mockup; Р3's TopBar prefab stays untouched.
         void DockBuildButton()
         {
             var end = (RectTransform)topBar.endDayButton.transform;
-            var go = Instantiate(topBar.endDayButton.gameObject, end.parent);
-            go.name = "BuildButton";
-            var rt = (RectTransform)go.transform;
-            buildButton = go.GetComponent<Button>();
-            buildButton.onClick.RemoveAllListeners();
+            buildButton = Instantiate(buildButtonPrefab, end.parent);
+            var rt = (RectTransform)buildButton.transform;
+            rt.anchorMin = end.anchorMin; rt.anchorMax = end.anchorMax; rt.pivot = end.pivot;
+            rt.anchoredPosition = end.anchoredPosition; rt.sizeDelta = end.sizeDelta;
             buildButton.onClick.AddListener(Build);
-            buildLabel = go.GetComponentInChildren<TMP_Text>();
-            go.SetActive(false);
+            buildLabel = buildButton.GetComponentInChildren<TMP_Text>();
+            buildButton.gameObject.SetActive(false);
         }
 
         void Update()
         {
-            if (!built || controller.State == null) return;
+            if (controller.State == null) return;
 
             // Reopened board: after the new pitch (stage Production) the game goes straight back to Release.
             if (boardReopened && S.stage == Stage.Production)
@@ -123,14 +90,12 @@ namespace Studio.UI
 
             bool want = controller.versionsTab.activeInHierarchy;
             if (want) FitToTab();
-            if (want != shown || (want && lastVersions != S.versions.Count))
+            if (want != content.activeSelf || (want && lastVersions != S.versions.Count))
             {
-                shown = want;
                 content.SetActive(want);
                 if (want) Refresh();
             }
-            if (toast.transform.parent.gameObject.activeSelf && Time.unscaledTime > toastUntil)
-                toast.transform.parent.gameObject.SetActive(false);
+            if (toastRoot.activeSelf && Time.unscaledTime > toastUntil) toastRoot.SetActive(false);
         }
 
         void FitToTab()
@@ -144,8 +109,8 @@ namespace Studio.UI
 
         void Toast(string text)
         {
-            toast.text = text;
-            toast.transform.parent.gameObject.SetActive(true);
+            toastText.text = text;
+            toastRoot.SetActive(true);
             toastUntil = Time.unscaledTime + ToastSeconds;
         }
 
@@ -160,7 +125,7 @@ namespace Studio.UI
                 controller.db = Instantiate(controller.db);
                 dbCloned = true;
             }
-            var v = ReviewSystem.Review(S, Db);
+            var v = ReviewSystem.Review(S, Db, Difficulty.For(S.difficulty).reviewTolerance);
             if (v.approved || DayClock.IsOverDeadline(S)) S.stage = Stage.Done;
             selVersion = S.versions.Count - 1;
             selQuote = null;
@@ -188,7 +153,7 @@ namespace Studio.UI
 
         void Refresh()
         {
-            if (!built || S == null) return;
+            if (S == null) return;
             lastVersions = S.versions.Count;
             if (S.versions.Count > 0 && (selVersion < 0 || selVersion >= S.versions.Count)) selVersion = S.versions.Count - 1;
             RefreshLeft();
@@ -210,126 +175,65 @@ namespace Studio.UI
 
         void RefreshLeft()
         {
-            Format.Clear(left);
-            UiKit.Label(left, "История версий", 24, UiKit.Text, FontStyles.Bold);
+            Format.Clear(versionList);
             for (int i = 0; i < S.versions.Count; i++)
             {
                 int idx = i;
                 var v = S.versions[i];
                 int prevDay = i == 0 ? 0 : S.versions[i - 1].day;
                 int count = S.log.Count(r => r.day <= v.day && !r.replaced) + 1;
-                string info = "день " + v.day + " · " + count + " решений";
-                string changed = i == 0 ? "" : Changed(prevDay, v.day);
-                VersionCard(left, "v0." + v.number, v.approved ? "одобрено" : "доработать",
-                    v.approved ? UiKit.Green : UiKit.Red, info, changed, i == selVersion, () => { selVersion = idx; selQuote = null; Refresh(); });
+                Instantiate(versionRowPrefab, versionList).Setup("v0." + v.number, v.approved ? "одобрено" : "доработать",
+                    v.approved ? Pal.Green : Pal.Red, "день " + v.day + " · " + count + " решений",
+                    i == 0 ? "" : Changed(prevDay, v.day), i == selVersion, () => { selVersion = idx; selQuote = null; Refresh(); });
             }
             var last = S.versions.Count > 0 ? S.versions[S.versions.Count - 1] : null;
             if (S.stage == Stage.Release && (last == null || !last.approved))
-            {
-                string changed = last == null ? "первая сборка" : Changed(last.day, S.day);
-                VersionCard(left, "v0." + (S.versions.Count + 1), "черновик", UiKit.Dim, "день " + S.day,
-                    changed, false, () => { });
-            }
-            var spacer = UiKit.Node(left, "Spacer");
-            UiKit.Size(spacer, flexH: 1);
-            UiKit.Label(left, "Первая версия почти всегда уходит на доработку. Это нормально – так работают все студии.", 15, UiKit.Dim);
-        }
-
-        static void VersionCard(Transform parent, string title, string status, Color statusColor, string info, string changed,
-            bool selected, System.Action click)
-        {
-            var img = UiKit.ButtonBox(parent, "Version", UiKit.Panel2, click);
-            if (selected) UiKit.Border(img, UiKit.Accent);
-            UiKit.V(img.rectTransform, 4, 14);
-            var row = UiKit.Node(img.transform, "Row");
-            UiKit.H(row, 8).childAlignment = TextAnchor.MiddleLeft;
-            UiKit.Label(row, title, 22, UiKit.Text, FontStyles.Bold);
-            UiKit.Size(row.GetChild(0), flexW: 1);
-            UiKit.Label(row, status, 15, statusColor);
-            UiKit.Label(img.transform, info, 15, UiKit.Dim);
-            if (changed != "") UiKit.Label(img.transform, changed, 15, UiKit.Dim);
+                Instantiate(versionRowPrefab, versionList).Setup("v0." + (S.versions.Count + 1), "черновик", Pal.Dim, "день " + S.day,
+                    last == null ? "первая сборка" : Changed(last.day, S.day), false, () => { });
         }
 
         void RefreshCenter()
         {
-            Format.Clear(center);
             var v = Selected;
+            emptyState.SetActive(v == null);
+            feedback.SetActive(v != null);
             if (v == null)
             {
-                UiKit.Label(center, "Версий пока нет", 24, UiKit.Text, FontStyles.Bold);
-                UiKit.Label(center, S.stage == Stage.Release
+                emptyTitle.text = "Версий пока нет";
+                emptyText.text = S.stage == Stage.Release
                     ? "Нажми «Собрать v0.1 и отправить» вверху, чтобы получить первый фидбек."
-                    : "Версии собираются на этапе «Релиз». Сначала закончи разработку.", 18, UiKit.Dim);
+                    : "Версии собираются на этапе «Релиз». Сначала закончи разработку.";
                 return;
             }
 
-            UiKit.Label(center, "Фидбек на v0." + v.number + " · Борис Петрович", 24, UiKit.Text, FontStyles.Bold);
-            UiKit.Label(center, v.approved ? "«Берём в релиз!»" : "«Идея крутая, но играть пока тяжело. Разбери.»", 18, UiKit.Dim);
+            feedbackTitle.text = "Фидбек на v0." + v.number + " · Борис Петрович";
+            feedbackSub.text = v.approved ? "«Берём в релиз!»" : "«Идея крутая, но играть пока тяжело. Разбери.»";
+            for (int i = 0; i < axisCards.Length; i++) axisCards[i].Setup(Ending.AxisNames[i], v.axes[i], S.goals[i]);
 
-            var axes = UiKit.Node(center, "Axes");
-            UiKit.H(axes, 12).childForceExpandWidth = true;
-            for (int i = 0; i < 4; i++) AxisCard(axes, i, v.axes[i], S.goals[i]);
-
-            UiKit.Label(center, "Отзывы плейтестеров – найди причину каждого", 20, UiKit.Text, FontStyles.Bold);
-            var list = UiKit.Scroll(center, 10);
-            UiKit.Size(list.parent, flexH: 1);
+            Format.Clear(quoteList);
             foreach (var id in v.quoteIds)
             {
                 var q = Db.quotes.FirstOrDefault(x => x != null && x.id == id);
-                if (q != null) QuoteRow(list, v, q);
+                if (q == null) continue;
+                string qid = q.id;
+                Instantiate(quoteRowPrefab, quoteList).Setup(q, v.blamed.Exists(b => b.quoteId == qid), selQuote == qid,
+                    () => { selQuote = selQuote == qid ? null : qid; RefreshCenter(); RefreshRight(); });
             }
-        }
-
-        static void AxisCard(Transform parent, int axis, int value, int goal)
-        {
-            var img = UiKit.Box(parent, "Axis", UiKit.Panel);
-            UiKit.V(img.rectTransform, 2, 12);
-            UiKit.Size(img, flexW: 1);
-            bool ok = value >= goal;
-            Color c = ok ? UiKit.Green : goal - value <= 10 ? UiKit.Yellow : UiKit.Red;
-            UiKit.Label(img.transform, Ending.AxisNames[axis], 16, UiKit.Dim);
-            var row = UiKit.Node(img.transform, "Row");
-            UiKit.H(row, 6).childAlignment = TextAnchor.LowerLeft;
-            UiKit.Label(row, value.ToString(), 36, c, FontStyles.Bold);
-            UiKit.Label(row, "/ цель " + goal, 16, UiKit.Dim);
-            UiKit.Label(img.transform, ok ? "цель достигнута" : "ниже цели", 14, c);
-        }
-
-        void QuoteRow(Transform parent, VersionRecord v, QuoteSO q)
-        {
-            bool blamed = v.blamed.Exists(b => b.quoteId == q.id);
-            bool picked = selQuote == q.id;
-            string status = q.praise ? "похвала" : blamed ? "найдена причина" : picked ? "выбран" : "не разобран";
-            Color sc = q.praise || blamed ? UiKit.Green : picked ? UiKit.Accent : UiKit.Dim;
-            string id = q.id;
-            var img = UiKit.ButtonBox(parent, "Quote", blamed ? new Color32(0x1E, 0x35, 0x2C, 255) : picked ? new Color32(0x4A, 0x32, 0x24, 255) : UiKit.Panel, () => { selQuote = selQuote == id ? null : id; RefreshCenter(); RefreshRight(); },
-                !q.praise && !blamed);
-            UiKit.H(img.rectTransform, 12, 14).childAlignment = TextAnchor.MiddleLeft;
-            var texts = UiKit.Node(img.transform, "Texts");
-            UiKit.V(texts, 2);
-            UiKit.Size(texts, flexW: 1);
-            UiKit.Label(texts, "«" + q.text + "»", 19, UiKit.Text);
-            UiKit.Label(texts, q.author, 15, UiKit.Dim);
-            UiKit.Label(img.transform, status, 15, sc, FontStyles.Bold, TextAlignmentOptions.Right);
         }
 
         void RefreshRight()
         {
-            Format.Clear(right);
-            UiKit.Label(right, "Журнал решений", 24, UiKit.Text, FontStyles.Bold);
             var v = Selected;
             var quote = selQuote == null ? null : Db.quotes.FirstOrDefault(x => x != null && x.id == selQuote);
-            string hint = v == null ? "Здесь будут твои решения после первой версии."
+            journalHint.text = v == null ? "Здесь будут твои решения после первой версии."
                 : quote == null ? "Выбери отзыв, потом решение, которое его вызвало."
                 : "Выбран отзыв: «" + quote.text + "». Какое решение виновато?";
-            UiKit.Label(right, hint, 16, UiKit.Dim);
 
-            var list = UiKit.Scroll(right, 10);
-            UiKit.Size(list.parent, flexH: 1);
-            var board = ReviewSystem.BoardRecord(S, Db);
-            Row(list, v, board, "Идея");
-            foreach (var r in S.log.Where(x => !x.replaced)) Row(list, v, r, r.stage == Stage.Idea ? "Идея" : "Разработка");
+            Format.Clear(journalList);
+            Row(v, ReviewSystem.BoardRecord(S, Db), "Идея");
+            foreach (var r in S.log.Where(x => !x.replaced)) Row(v, r, r.stage == Stage.Idea ? "Идея" : "Разработка");
 
+            reopenBox.SetActive(false);
             if (v != null && quote != null)
             {
                 var blame = v.blamed.Find(b => b.quoteId == quote.id);
@@ -337,19 +241,11 @@ namespace Studio.UI
             }
         }
 
-        void Row(Transform parent, VersionRecord v, DecisionRecord r, string stageName)
+        void Row(VersionRecord v, DecisionRecord r, string stageName)
         {
             bool culprit = v != null && v.blamed.Exists(b => b.messageId == r.messageId);
             string id = r.messageId;
-            var img = UiKit.ButtonBox(parent, "Decision", culprit ? new Color32(0x1E, 0x35, 0x2C, 255) : UiKit.Panel2, () => Guess(id), v != null);
-            if (culprit) UiKit.Border(img, UiKit.Green);
-            UiKit.V(img.rectTransform, 2, 12);
-            var head = UiKit.Node(img.transform, "Head");
-            UiKit.H(head, 8);
-            UiKit.Label(head, "день " + r.day, 14, UiKit.Dim);
-            UiKit.Size(head.GetChild(0), flexW: 1);
-            UiKit.Label(head, stageName, 14, UiKit.Dim, align: TextAlignmentOptions.Right);
-            UiKit.Label(img.transform, Ending.DecisionText(S, Db, r), 17, UiKit.Text);
+            Instantiate(journalRowPrefab, journalList).Setup(r.day, stageName, Ending.DecisionText(S, Db, r), culprit, v != null, () => Guess(id));
         }
 
         void Guess(string messageId)
@@ -377,15 +273,15 @@ namespace Studio.UI
             var rec = Culprit(messageId);
             if (rec == null) return;
             var cost = ReviewSystem.ReopenCost(rec);
-            var box = UiKit.Box(right, "Reopen", UiKit.Panel2);
-            UiKit.V(box.rectTransform, 6, 14);
-            UiKit.Label(box.transform, "Переоткрыть «" + Short(Ending.DecisionText(S, Db, rec)) + "»?", 18, UiKit.Text);
-            UiKit.Label(box.transform, "Решение этапа " + (rec.stage == Stage.Idea ? 1 : 2) + ": " + Format.Cost(cost), 15, UiKit.Dim);
             bool board = messageId == ReviewSystem.BoardId;
             bool ok = board ? CanPay(cost.days, cost.budget) : true;
-            UiKit.TextButton(box.transform, "Переоткрыть решение", new Color32(0xF6, 0xF0, 0xE3, 255), UiKit.Bg,
-                () => { if (board) ReopenBoard(rec); else OpenModal(rec); }, 48, ok);
-            if (!ok) UiKit.Label(box.transform, "Не хватает дней или бюджета", 14, UiKit.Red);
+            reopenBox.SetActive(true);
+            reopenTitle.text = "Переоткрыть «" + Short(Ending.DecisionText(S, Db, rec)) + "»?";
+            reopenCost.text = "Решение этапа " + (rec.stage == Stage.Idea ? 1 : 2) + ": " + Format.Cost(cost);
+            reopenButton.interactable = ok;
+            reopenButton.onClick.RemoveAllListeners();
+            reopenButton.onClick.AddListener(() => { if (board) ReopenBoard(rec); else OpenModal(rec); });
+            reopenWarn.SetActive(!ok);
         }
 
         bool CanPay(int days, int budget) => S.budget >= budget && S.day + days <= S.deadline;
@@ -410,10 +306,7 @@ namespace Studio.UI
             {
                 var opt = o;
                 bool ok = CanPay(cost.days + opt.cost.days, cost.budget + opt.cost.budget);
-                var b = UiKit.ButtonBox(modalList, "Option", UiKit.Panel2, () => Reopen(rec, opt), ok);
-                UiKit.V(b.rectTransform, 2, 12);
-                UiKit.Label(b.transform, opt.text, 18, ok ? UiKit.Text : UiKit.Dim);
-                UiKit.Label(b.transform, ok ? Format.Cost(opt.cost) : "не хватает дней или бюджета", 14, ok ? UiKit.Dim : UiKit.Red);
+                Instantiate(optionPrefab, modalList).Setup(opt.text, ok ? Format.Cost(opt.cost) : "не хватает дней или бюджета", ok, () => Reopen(rec, opt));
             }
             modal.SetActive(true);
         }

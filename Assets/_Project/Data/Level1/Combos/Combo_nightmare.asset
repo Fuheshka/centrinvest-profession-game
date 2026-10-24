@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90c864f1a2d64c6c8d031303b631a9b, type: 3}
+  m_Name: Combo_nightmare
+  m_EditorClassIdentifier: Studio.Core::Studio.Core.ComboSO
+  a: {fileID: 11400000, guid: b755311c5d965a42acde96f0848a6da9, type: 2}
+  b: {fileID: 11400000, guid: 08646bd5f0e4556691e6c0992129b4f4, type: 2}
+  kind: 2
+  title: "Кошмары детсада"
+  deltas: 00000000000000000000000000000000

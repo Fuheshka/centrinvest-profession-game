@@ -13,7 +13,7 @@ namespace Studio.UI
 
         public void Setup(GameState s, OptionSO o, Action onClick)
         {
-            label.text = o.text;
+            label.text = Format.Name(o.text, s);
             cost.text = Format.Cost(o.cost);
             bool ok = DecisionResolver.CanAfford(s, o);
             button.interactable = ok;
