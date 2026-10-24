@@ -11,6 +11,9 @@ namespace Studio.UI
             foreach (Transform c in t) { c.gameObject.SetActive(false); Object.Destroy(c.gameObject); }
         }
 
+        // {name} in message and option texts is the player's nickname.
+        public static string Name(string text, GameState s) => text?.Replace("{name}", s.nickname);
+
         public static string Money(int n) => n.ToString("N0", System.Globalization.CultureInfo.InvariantCulture).Replace(',', ' ') + " руб.";
 
         public static string Cost(Cost c)

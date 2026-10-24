@@ -27,6 +27,7 @@ Chosen: a game about a game designer (`docs/GDD.md`), demo scope in `docs/DEMO.m
 - Four developers share the repo; ownership of folders and git rules are in `docs/TEAM.md`. Edit only files your role owns. Every task card gets its own branch off `dev` (`p-N-short-name`) and a PR into `dev` (squash merge). `main` moves only by releases. Check `git status` before and after each task; nothing stays uncommitted across tasks.
 - One task = one commit, docs included. Work through tasks without asking, but `git commit` only after the user confirms it in chat (show the message first). Commit messages in English, Conventional Commits.
 - Never add Claude attribution (Co-Authored-By etc.) to commits or PRs.
+- UI lives in scenes and prefabs (`Assets/_Project/Prefabs/UI`, `Scenes/`), not built by code (`new GameObject`, `AddComponent`). Code only links inspector references and updates data; list rows are `Instantiate`d row prefabs. Artists must be able to edit the look without touching code.
 - TDD (red – green – refactor) for game logic (rules, scoring, save, difficulty). Not required for pure visuals or layout.
 - Keep the change inside the task's boundary. Anything else noticed goes to `docs/BUGS.md` (Open, dated) instead of being fixed on the side.
 - Task prompts (cards in `docs/PROMPTS.md`, hand-offs to other agents) follow the template in `.agent/skills/task-prompt/SKILL.md`.

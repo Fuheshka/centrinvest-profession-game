@@ -28,10 +28,15 @@ namespace Studio.UI
         void Start()
         {
             topBar = FindAnyObjectByType<TopBarView>();
-            State = GameState.New(db, "Игрок", difficulty);
-            // DayClock delivers from day 2 on; day-1 messages land in the inbox at start.
-            foreach (var m in db.messages)
-                if (m != null && m.day <= State.day && m.stage == State.stage) State.inbox.Add(m.id);
+            if (Session.Continue) State = SaveSystem.Load();
+            if (State == null)
+            {
+                State = GameState.New(db, Session.Nickname ?? MenuController.DefaultName, Session.Nickname != null ? Session.Level : difficulty);
+                // DayClock delivers from day 2 on; day-1 messages land in the inbox at start.
+                foreach (var m in db.messages)
+                    if (m != null && m.day <= State.day && m.stage == State.stage) State.inbox.Add(m.id);
+            }
+            Session.Continue = false;
 
             tabChats.onClick.AddListener(() => ShowTab(0));
             tabBoard.onClick.AddListener(() => ShowTab(1));
@@ -54,6 +59,7 @@ namespace Studio.UI
 
         void ShowTab(int i)
         {
+            SaveSystem.Save(State);   // after a pitch or a build the UI switches tab, so this covers Commit and Review too
             chatsTab.SetActive(i == 0);
             boardTab.SetActive(i == 1);
             versionsTab.SetActive(i == 2);
@@ -77,6 +83,7 @@ namespace Studio.UI
 
         void RefreshAll()
         {
+            SaveSystem.Save(State);
             if (topBar != null) topBar.Refresh(State);
             chatList.Refresh(State, db, selected, Select);
             chatView.Refresh(State, db, selected, Pick);

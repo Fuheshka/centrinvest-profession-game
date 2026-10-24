@@ -79,6 +79,7 @@ namespace Studio.UI
             UiKit.V(modalList, 10);
             UiKit.TextButton(box.transform, "Отмена", UiKit.Panel2, UiKit.Text, () => modal.SetActive(false), 44);
             modal.SetActive(false);
+            shown = true;   // content is created active: the first Update hides it while the tab is closed
             built = true;
         }
 
@@ -160,7 +161,7 @@ namespace Studio.UI
                 controller.db = Instantiate(controller.db);
                 dbCloned = true;
             }
-            var v = ReviewSystem.Review(S, Db);
+            var v = ReviewSystem.Review(S, Db, Difficulty.For(S.difficulty).reviewTolerance);
             if (v.approved || DayClock.IsOverDeadline(S)) S.stage = Stage.Done;
             selVersion = S.versions.Count - 1;
             selQuote = null;

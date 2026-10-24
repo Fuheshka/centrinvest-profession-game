@@ -21,8 +21,6 @@ namespace Studio.UI
         public TMP_Text[] goalTargets = new TMP_Text[4];
         public RectTransform[] legendSamples = new RectTransform[4];   // Match, Conflict, Unknown, Neutral
 
-        // DifficultySettings.showThreads comes with Difficulty (P-9); until then threads stay yellow until researched.
-        public bool showThreads;
         public int researchPrice = 30000;
 
         MessengerController controller;
@@ -172,7 +170,7 @@ namespace Studio.UI
             var a = FindCard(link.a);
             var b = FindCard(link.b);
             if (a == null || b == null) return;
-            var kind = BoardRules.Thread(a, b, Db, State.board, showThreads);
+            var kind = BoardRules.Thread(a, b, Db, State.board, Difficulty.For(State.difficulty).showThreads);
             string label = null;
             if (kind == ThreadKind.Match || kind == ThreadKind.Conflict)
             {

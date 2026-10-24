@@ -14,7 +14,7 @@ namespace Studio.UI
         // Images are selectable cards when each one maps to an option (hero variants).
         public void Setup(GameState s, MessageSO m, bool active, Action<MessageSO, OptionSO> pick)
         {
-            text.text = m.text;
+            text.text = Format.Name(m.text, s);
             imageGrid.gameObject.SetActive(m.images.Length > 0);
             for (int i = 0; i < m.images.Length; i++)
             {
