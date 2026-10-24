@@ -38,4 +38,8 @@ Stage: idea search. Stack, profession and concept are not chosen yet – candida
 
 ## Layout
 
-To be filled once the stack is chosen (game code, tests, build output, deploy target).
+Unity 6, Universal 2D (URP), target Web (WebGL). Game code, tests and scenes: to be filled once the first code lands.
+
+## Environment notes
+
+- Unity REST (unity-skills package `com.besty.unity-skills`) runs at `http://localhost:8090/` while the Editor is open; add `?expectProject=centrinvest-profession-game` to every call. Skill docs: `.agent/skills/unity-skills/SKILL.md`. After editing `.cs`, call `asset_refresh` and wait on the returned `waitUrl` for compile errors.
