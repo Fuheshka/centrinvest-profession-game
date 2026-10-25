@@ -80,7 +80,26 @@ namespace Studio.UI.Mvp
         // The customer's verdict screen; a failed build offers to send a weak file to fix.
         public void ShowReview(BuildRecord r)
         {
-            if (r.passed) { review.Show("Уровень пройден!", r, L, ("Заново", Restart), ("В меню", ToMenu)); return; }
+            string linkedFile = "";
+            if (r.files != null && r.files.Count > 0)
+            {
+                var weakestFile = r.files[0];
+                foreach (var file in r.files)
+                    if (file.quality < weakestFile.quality) weakestFile = file;
+                var projectFile = S.files.Find(file => file.id == weakestFile.fileId || file.taskId == weakestFile.fileId);
+                if (projectFile != null) linkedFile = projectFile.title;
+                if (string.IsNullOrWhiteSpace(linkedFile))
+                {
+                    var task = S.tasks.Find(item => item.id == weakestFile.fileId || item.fileId == weakestFile.fileId);
+                    linkedFile = task != null ? task.title : "Файл проекта · " + Names.Of((Discipline)Review.Weakest(r));
+                }
+            }
+            if (r.passed)
+            {
+                review.Show("Первый релиз готов!", r, L, S.budget, linkedFile, FinalDecisionSummary(r),
+                    ("В меню", ToMenu), ("Пройти ещё раз", Restart));
+                return;
+            }
             var opts = new List<(string, Action)>();
             int w = Review.Weakest(r);
             foreach (var f in S.files)
@@ -91,7 +110,29 @@ namespace Studio.UI.Mvp
                 }
             if (r.unmetRequirements.Count > 0) opts.Insert(0, ("Пересмотреть концепт", () => FindAnyObjectByType<TopBarMvp>()?.Show(1)));
             opts.Add(("Закрыть", null));
-            review.Show("Отзыв заказчика", r, L, opts.ToArray());
+            review.Show("Отзыв заказчика", r, L, S.budget, linkedFile, null, opts.ToArray());
+        }
+
+        string FinalDecisionSummary(BuildRecord r)
+        {
+            string Param(BlockType type)
+            {
+                var block = S.BlockOf(type);
+                return block == null ? "не выбран" : L.Param(block.paramId)?.title ?? "не выбран";
+            }
+
+            var team = new List<string>();
+            foreach (var member in S.staff)
+            {
+                var candidate = L.Candidate(member.id);
+                if (candidate != null) team.Add(candidate.name);
+            }
+
+            string teamText = team.Count > 0 ? string.Join(" · ", team) : "Команда не нанята";
+            return "Твои решения:\n"
+                + "Концепт: " + Param(BlockType.Genre) + " · " + Param(BlockType.Audience) + " · " + Param(BlockType.Platform) + "\n"
+                + "Команда: " + teamText + "\n"
+                + "Выпустил игру на день " + r.day + " из " + L.deadlineDays + " · сборка " + r.number + ".";
         }
 
         public void ShowResult()

@@ -38,7 +38,7 @@ namespace Studio.UI.Mvp
             {
                 var card = CandidateCardView.At(grid, cardPrefab, n++);
                 var e = s.Employee(c.id);
-                card.Set(c.character != null ? c.character : c.portrait, c.name, Names.Of(c.d), c.quirk, c.speed, c.quality, Names.Money(Staffing.DailyRate(c, l.tuning)) + " ₽ / день");
+                card.Set(c.character != null ? c.character : c.portrait, c.name, ProfessionOf(c.d), c.quirk, c.speed, c.quality, Names.Money(Staffing.DailyRate(c, l.tuning)) + " ₽ / день");
                 string id = c.id;
                 bool ok = Staffing.CanHire(s, l, id, out var why);
                 card.SetHire(e != null, ok ? "Нанять" : why, ok,
@@ -48,5 +48,12 @@ namespace Studio.UI.Mvp
                         ("Уволить", () => { Staffing.Fire(s, id); game.Commit(); Redraw(); }), ("Отмена", null)));
             }
         }
+
+        static string ProfessionOf(Discipline discipline) => discipline switch
+        {
+            Discipline.Design => "Художник",
+            Discipline.Mechanics => "Разработчик",
+            _ => "Звукорежиссёр"
+        };
     }
 }

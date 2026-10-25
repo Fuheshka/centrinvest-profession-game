@@ -140,8 +140,8 @@ public static class MenuKit
             // buttons
             var start = Box("StartButton", root.transform, 70, 934, 440, 84);
             mc.startButton = Flat(start, Palette.Primary, Palette.Hex("B89A1E"));
-            Icon(start, Kit + "Icons/icons-navigation/play.png", 50, 22, 40).raycastTarget = false;
-            var sl = Txt(start, "Начать смену", 36, Ink, heading, TextAlignmentOptions.Center); sl.rectTransform.Fill(); sl.rectTransform.offsetMin = new Vector2(96, 0);
+            Icon(start, Kit + "Icons/icons-navigation/play.png", 22, 26, 32).raycastTarget = false;
+            var sl = Txt(start, "Начать смену", 36, Ink, heading, TextAlignmentOptions.Center); sl.rectTransform.Fill();
             var cont = Box("ContinueButton", root.transform, 540, 934, 410, 84);
             mc.continueButton = Flat(cont, Palette.Hex("2A1810"), Olive);
             mc.continueLabel = Txt(cont, "Продолжить", 30, new Color32(0xD8, 0xE2, 0xA6, 255), body, TextAlignmentOptions.Center);
@@ -170,6 +170,32 @@ public static class MenuKit
         }
         finally { PrefabUtility.UnloadPrefabContents(root); }
         Debug.Log("MenuScreen rebuilt from the kit.");
+    }
+
+    [MenuItem("Tools/UI/Center start button content")]
+    public static void CenterStartButtonContent()
+    {
+        var root = PrefabUtility.LoadPrefabContents(Path);
+        try
+        {
+            var start = root.transform.Find("StartButton");
+            var label = start != null ? start.Find("Text")?.GetComponent<TMP_Text>() : null;
+            if (label == null) throw new System.InvalidOperationException("Start button label was not found.");
+
+            label.rectTransform.Fill();
+            var icon = start.Find("Icon") as RectTransform;
+            if (icon != null)
+            {
+                icon.anchorMin = icon.anchorMax = new Vector2(0, 1);
+                icon.pivot = new Vector2(0, 1);
+                icon.anchoredPosition = new Vector2(22, -26);
+                icon.sizeDelta = new Vector2(32, 32);
+            }
+
+            PrefabUtility.SaveAsPrefabAsset(root, Path);
+        }
+        finally { PrefabUtility.UnloadPrefabContents(root); }
+        Debug.Log("Start button label centered.");
     }
 
     static void Fill(this RectTransform r) => Stretch(r);

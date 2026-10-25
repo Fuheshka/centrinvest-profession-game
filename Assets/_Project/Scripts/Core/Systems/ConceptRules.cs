@@ -27,11 +27,72 @@ namespace Studio.Core
 
         public static bool SetParam(LevelState s, LevelSO level, string blockId, string paramId)
         {
+            return SetParam(s, level, blockId, paramId, out _);
+        }
+
+        public static bool SetParam(LevelState s, LevelSO level, string blockId, string paramId, out string reason)
+        {
+            reason = null;
             var b = Find(s, blockId);
             var p = level.Param(paramId);
-            if (!(Editable(s) || CanRework(s)) || b == null || p == null || p.type != b.type) return false;
+            if (!(Editable(s) || CanRework(s))) { reason = "Параметры нельзя менять после принятого концепта без негативного отзыва"; return false; }
+            if (b == null || p == null || p.type != b.type) { reason = "Параметр не подходит этому блоку"; return false; }
+            if (b.paramId == paramId) return true;
+
+            bool rework = CanRework(s);
+            if (rework && s.reworkChargedBuild != s.builds.Count)
+            {
+                if (s.day >= s.deadline) { reason = "Дедлайн уже наступил: потратить день на пересмотр нельзя"; return false; }
+
+                int payroll = 0;
+                foreach (var employee in s.staff)
+                    payroll += Staffing.Rate(s, level, employee.id);
+                if (s.budget < payroll)
+                {
+                    reason = "На пересмотр не хватает бюджета: нужны дневные ставки команды (" + payroll + ")";
+                    return false;
+                }
+
+                s.budget -= payroll;
+                s.reworkChargedBuild = s.builds.Count;
+                s.Say(LevelState.Boss, "text", "Пересмотр концепта: списаны дневные ставки команды и один игровой день.");
+                WorkSim.EndDay(s, level, s.day);
+            }
+
             b.paramId = paramId;
+            if (rework) RefreshTasksForConceptChange(s, level, b.type);
             return true;
+        }
+
+        static void RefreshTasksForConceptChange(LevelState s, LevelSO level, BlockType changedType)
+        {
+            foreach (var task in s.tasks)
+            {
+                if (task.isFix) continue;
+                var template = level.tasks.Find(x => x.id == task.id);
+                if (template == null) continue;
+
+                string title = template.titleFormat;
+                foreach (var conceptBlock in s.concept.blocks)
+                    title = title.Replace("{" + conceptBlock.type + "}", level.Param(conceptBlock.paramId).title);
+                task.title = title;
+
+                if (!template.tierFromBlock || template.tierFrom != changedType) continue;
+                var block = s.concept.blocks.Find(x => x.type == changedType);
+                var param = block != null ? level.Param(block.paramId) : null;
+                if (param == null) continue;
+                int tier = Mathf.Clamp(param.tier, 1, 3);
+                if (task.tier == tier) continue;
+
+                task.tier = tier;
+                task.effort = level.tuning.effortPerTier * tier;
+                task.progress = 0;
+                task.qualitySum = 0;
+                task.done = false;
+                foreach (var employee in s.staff)
+                    if (employee.currentTaskId == task.id) employee.currentTaskId = null;
+                s.files.RemoveAll(file => file.id == task.id || file.taskId == task.id);
+            }
         }
 
         public static bool Move(LevelState s, string blockId, float x, float y)

@@ -71,7 +71,7 @@ namespace Studio.UI
             return list;
         }
 
-        // Two best and two worst live decisions by total axis change, the board included.
+        // Two decisions that helped most and one that cost the most, including the concept board.
         public static List<Highlight> Breakdown(GameState s, ContentDB db)
         {
             var all = s.log.Where(r => !r.replaced).ToList();
@@ -79,7 +79,8 @@ namespace Studio.UI
             var sorted = all.OrderByDescending(r => r.deltas.Sum()).ToList();
             var picked = new List<DecisionRecord>();
             picked.AddRange(sorted.Take(2));
-            picked.AddRange(sorted.Skip(2).Reverse().Take(2));   // worst first, no overlap with the best
+            var worst = sorted.LastOrDefault(r => !picked.Contains(r));
+            if (worst != null) picked.Add(worst);
             return picked.Select(r => Describe(s, db, r)).ToList();
         }
 

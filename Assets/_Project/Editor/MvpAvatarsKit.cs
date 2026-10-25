@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Mascot portraits for the messenger (Art/UI/GeneratedKit20261024/MessengerAvatars): imports them as
-// pixel sprites, writes them into the Level 0 candidates and wires the chat list rows and header. Safe to rerun.
+// Pixel sprites for candidates and the left chat list. Safe to rerun.
 public static class MvpAvatarsKit
 {
     const string Dir = "Assets/_Project/Art/UI/GeneratedKit20261024/MessengerAvatars/";
@@ -43,10 +43,7 @@ public static class MvpAvatarsKit
         try
         {
             var cw = root.GetComponentInChildren<ChatWindow>(true);
-            cw.bossAvatar = Mascot("wizard-frog");
-            var ha = root.transform.Find("Body/ChatWindow/FeedArea/Header/Avatar").GetComponent<Image>();
-            ha.sprite = Mascot("wizard-frog"); ha.color = Color.white; ha.preserveAspect = true;
-            cw.headerAvatar = ha;
+            cw.bossAvatar = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/boris-neutral.png");
             PrefabUtility.SaveAsPrefabAsset(root, screen);
         }
         finally { PrefabUtility.UnloadPrefabContents(root); }
@@ -55,9 +52,9 @@ public static class MvpAvatarsKit
         var r = PrefabUtility.LoadPrefabContents(row);
         try
         {
-            var av = r.transform.Find("Avatar").GetComponent<Image>();
-            av.preserveAspect = true;
-            r.GetComponent<RowView>().avatar = av;
+            var face = r.transform.Find("Avatar/Face").GetComponent<Image>();
+            face.preserveAspect = true;
+            r.GetComponent<RowView>().avatar = face;
             PrefabUtility.SaveAsPrefabAsset(r, row);
         }
         finally { PrefabUtility.UnloadPrefabContents(r); }

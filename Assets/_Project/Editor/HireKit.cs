@@ -143,6 +143,7 @@ public static class HireKit
         var ci = Img(coin, Spr("Icons/icons-navigation/coins"), Color.white); ci.preserveAspect = true;
         v.rate = Txt(Box("Rate", r, 376, 186, 196, 40), "5 000 ₽ / день", 20, Palette.Ink, heading, TextAlignmentOptions.MidlineLeft);
         v.rate.textWrappingMode = TextWrappingModes.NoWrap;
+        v.rate.enableAutoSizing = true; v.rate.fontSizeMin = 14; v.rate.fontSizeMax = 20;
 
         var row = Box("Buttons", r, 22, 250, 536, 58);
         var h = row.gameObject.AddComponent<HorizontalLayoutGroup>();

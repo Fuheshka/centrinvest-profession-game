@@ -21,13 +21,13 @@ namespace Studio.UI
         public static readonly Color Yellow = new Color(0.949f, 0.788f, 0.298f);
         public static readonly Color Grey = new Color(0.36f, 0.38f, 0.44f);
 
-        const float PinGap = 12f;           // thread stops at the pin edge, not at its centre
         const float HitHeight = 26f;
 
         public void Setup(Vector2 from, Vector2 to, ThreadKind kind, string label, Action onClick)
         {
             var delta = to - from;
-            var len = Mathf.Max(0f, delta.magnitude - 2f * PinGap);
+            // Endpoints are the centre of the visible circular pins. The pins render above this line.
+            var len = delta.magnitude;
             ((RectTransform)transform).localPosition = (from + to) / 2f;
 
             line.sizeDelta = new Vector2(len, HitHeight);

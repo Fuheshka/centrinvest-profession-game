@@ -17,6 +17,16 @@ namespace Studio.UI.Mvp
 
         public Vector2 Center => ((RectTransform)transform).anchoredPosition;
 
+        // The sticker's two side ports are centred at 41.1% of its width from the pivot.
+        // Keep connections on the visible rings instead of routing through the card centre.
+        public Vector2 PortToward(Vector2 target)
+        {
+            float side = target.x >= Center.x ? 1f : -1f;
+            return PortOnSide(side);
+        }
+
+        public Vector2 PortOnSide(float side) => Center + new Vector2(Mathf.Sign(side) * ((RectTransform)transform).rect.width * 0.411f, 0f);
+
         public void Bind(DashboardWindow w, Block b, string t, string v, bool selected, bool dim)
         {
             owner = w; block = b;

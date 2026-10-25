@@ -67,15 +67,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xAB\u041E\u0442\u0437\u044B\u0432\xBB"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe4d9814a8ff9415eb771caaf329ba07, type: 2}
-  m_sharedMaterial: {fileID: -8021692979514521102, guid: fe4d9814a8ff9415eb771caaf329ba07, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c63775346cbd448198e5524f838d686, type: 2}
+  m_sharedMaterial: {fileID: -5779848344384850410, guid: 6c63775346cbd448198e5524f838d686, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0.14901961, g: 0.03529412, b: 0, a: 1}
+  m_fontColor: {r: 0.21176471, g: 0.12156863, b: 0.07450981, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -323,15 +323,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0438\u0433\u0440\u043E\u043A, 14 \u043B\u0435\u0442"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fe4d9814a8ff9415eb771caaf329ba07, type: 2}
-  m_sharedMaterial: {fileID: -8021692979514521102, guid: fe4d9814a8ff9415eb771caaf329ba07, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6c63775346cbd448198e5524f838d686, type: 2}
+  m_sharedMaterial: {fileID: -5779848344384850410, guid: 6c63775346cbd448198e5524f838d686, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0.14901961, g: 0.03529412, b: 0, a: 1}
+  m_fontColor: {r: 0.21176471, g: 0.12156863, b: 0.07450981, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -348,8 +348,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

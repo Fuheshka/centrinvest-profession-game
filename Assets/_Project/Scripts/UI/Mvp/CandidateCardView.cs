@@ -14,6 +14,13 @@ namespace Studio.UI.Mvp
         public Button hire, fire;
         public Color speedOn = Palette.Hex("E7CC38"), qualityOn = Palette.Hex("718733"), off = Palette.Hex("D9D6C3");
 
+        void Awake()
+        {
+            rate.enableAutoSizing = true;
+            rate.fontSizeMin = 14;
+            rate.fontSizeMax = 20;
+        }
+
         public static CandidateCardView At(Transform grid, CandidateCardView prefab, int i)
         {
             while (grid.childCount <= i) Instantiate(prefab, grid);

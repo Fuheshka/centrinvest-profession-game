@@ -40,9 +40,63 @@ public static class DebugState
         Production();
         var g = Object.FindFirstObjectByType<GameLoop>(); var s = g.S;
         foreach (var t in s.tasks) { t.done = true; t.progress = t.effort; }
-        foreach (var f in s.files) f.quality = 70;
+        foreach (var t in s.tasks)
+        {
+            var f = s.files.Find(x => x.taskId == t.id);
+            if (f == null)
+            {
+                var author = s.staff.Find(e => e.id == t.assigneeId) ?? s.staff.Find(e => e.d == t.d);
+                f = new FileState
+                {
+                    id = t.id + "_preview_file", taskId = t.id, d = t.d, title = t.title,
+                    revision = 1, authorId = author != null ? author.id : null, day = s.day
+                };
+                s.files.Add(f);
+            }
+            f.quality = t.d == Discipline.Design ? 55 : t.d == Discipline.Mechanics ? 76 : 84;
+        }
         var r = Review.Build(s, g.L);
         g.Commit();
         if (r != null) g.ShowReview(r);
+    }
+
+    [MenuItem("Tools/UI/Debug: passed release")]
+    public static void PassedRelease()
+    {
+        var g = Object.FindFirstObjectByType<GameLoop>();
+        if (g == null || !Application.isPlaying) { Debug.LogWarning("Passed release preview: needs Play mode in Game."); return; }
+        var s = g.S; var l = g.L;
+        if (s.stage != LevelStage.Concept) { Debug.LogWarning("Passed release preview: start a fresh level first."); return; }
+
+        string[] ps = { "platformer", "teen", "space", "pixel", "gravity", "phone" };
+        var types = (BlockType[])System.Enum.GetValues(typeof(BlockType));
+        string prev = null;
+        for (int i = 0; i < types.Length; i++)
+        {
+            var id = ConceptRules.Place(s, l, types[i], 160 + (i % 3) * 360, -130 - (i / 3) * 280);
+            ConceptRules.SetParam(s, l, id, ps[i]);
+            if (prev != null) ConceptRules.Connect(s, prev, id);
+            prev = id;
+        }
+        if (!ConceptRules.Approve(s, l)) { Debug.LogWarning("Passed release preview: could not approve concept."); return; }
+
+        foreach (var id in new[] { "lera", "kostya", "anya" }) Staffing.Hire(s, l, id);
+        foreach (var t in s.tasks)
+        {
+            var who = s.staff.Find(e => e.d == t.d);
+            if (who != null) WorkSim.Assign(s, t.id, who.id);
+            t.done = true; t.progress = t.effort;
+            var f = s.files.Find(x => x.taskId == t.id);
+            if (f == null)
+            {
+                var author = s.staff.Find(e => e.id == t.assigneeId) ?? s.staff.Find(e => e.d == t.d);
+                f = new FileState { id = t.id + "_release_preview", taskId = t.id, d = t.d, title = t.title, revision = 1, authorId = author?.id, day = s.day };
+                s.files.Add(f);
+            }
+            f.quality = 96;
+        }
+        var r = Review.Build(s, l);
+        g.Commit();
+        if (r == null) Debug.LogWarning("Passed release preview: build did not complete.");
     }
 }

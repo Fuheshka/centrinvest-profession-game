@@ -9,9 +9,6 @@ namespace Studio.UI
     // Final screen: appears over everything once the stage is Done. Visuals live in the prefab.
     public class EndingPanelView : MonoBehaviour
     {
-        // shortcut: placeholder link, the real page comes with the presentation material
-        const string ProfessionUrl = "https://example.com/game-designer";
-
         public GameObject content;   // hidden in the prefab
         public TMP_Text kicker, headline, scoreText, verdictText, verdictSub, professionText;
         public Image ring;
@@ -25,8 +22,10 @@ namespace Studio.UI
         void Start()
         {
             controller = FindAnyObjectByType<MessengerController>();
+            newButton.GetComponentInChildren<TMP_Text>().text = "В меню";
+            moreButton.GetComponentInChildren<TMP_Text>().text = "Пройти ещё раз";
             newButton.onClick.AddListener(() => SceneManager.LoadScene(0));
-            moreButton.onClick.AddListener(() => Application.OpenURL(ProfessionUrl));
+            moreButton.onClick.AddListener(() => SceneManager.LoadScene(1));
         }
 
         void Update()
@@ -49,7 +48,12 @@ namespace Studio.UI
             ring.color = vc;
             scoreText.text = score.ToString();
             verdictText.text = Ending.VerdictName(verdict); verdictText.color = vc;
-            verdictSub.text = "Оценка критиков и игроков · версий до релиза: " + s.versions.Count;
+            bool approved = s.versions.Count > 0 && s.versions[s.versions.Count - 1].approved;
+            int spent = Mathf.Max(0, s.startBudget - s.budget);
+            verdictSub.text = (approved ? "Требования заказчика выполнены" : "Заказчик не принял игру")
+                + " · версий: " + s.versions.Count
+                + "\nПотрачено " + Money(spent) + " ₽ · осталось " + Money(s.budget) + " ₽"
+                + " · день " + Mathf.Min(s.day, s.deadline) + " из " + s.deadline;
 
             Format.Clear(reviewList);
             foreach (var q in Ending.Reviews(s, db)) Instantiate(reviewPrefab, reviewList).Setup(q);
@@ -57,5 +61,7 @@ namespace Studio.UI
             foreach (var h in Ending.Breakdown(s, db)) Instantiate(highlightPrefab, breakdownList).Setup(h);
             professionText.text = string.Format(Ending.ProfessionText, Mathf.Min(s.day, s.deadline));
         }
+
+        static string Money(int value) => value.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("ru-RU")).Replace('\u00a0', ' ');
     }
 }

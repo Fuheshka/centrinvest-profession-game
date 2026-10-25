@@ -46,7 +46,6 @@ public static class MvpRoundAvatars
         {
             var cw = root.GetComponentInChildren<ChatWindow>(true);
             cw.bossAvatar = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/GeneratedKit20261024/Avatars/avatars/boris-neutral.png");   // one drawn person per chat, no repeats
-            cw.headerAvatar = Round(cw.headerAvatar.transform.parent.GetComponent<Image>() != null && cw.headerAvatar.name == "Face" ? cw.headerAvatar.transform.parent.GetComponent<Image>() : cw.headerAvatar);
             PrefabUtility.SaveAsPrefabAsset(root, screen);
         }
         finally { PrefabUtility.UnloadPrefabContents(root); }

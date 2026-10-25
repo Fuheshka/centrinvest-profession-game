@@ -13,9 +13,8 @@ namespace Studio.UI.Mvp
         public RowView chatRowPrefab, messagePrefab;
         public ScrollRect feedScroll;
         public TMPro.TMP_Text header;
-        public Image headerAvatar;
-        public Sprite bossAvatar, playerAvatar;
-        public Transform linePrefab, avatarPrefab;   // a message line (avatar + bubble) and the round avatar placed beside a bubble
+        public Sprite bossAvatar;
+        public Transform linePrefab;   // message row wrapper used to align incoming and outgoing bubbles
 
         readonly Dictionary<string, int> read = new Dictionary<string, int>();   // messages of each chat the player has seen
         string open = LevelState.Boss;
@@ -50,7 +49,6 @@ namespace Studio.UI.Mvp
 
             var oc = game.L.Candidate(open);
             header.text = open == LevelState.Boss ? "Борис Петрович · руководитель" : oc.name + " · " + Names.Of(oc.d);
-            SetAvatar(headerAvatar, open);
             read[open] = Count(s, open);
             foreach (Transform c in feed) Destroy(c.gameObject);
             foreach (var m in s.chat)
@@ -59,15 +57,13 @@ namespace Studio.UI.Mvp
                 var line = Instantiate(linePrefab, feed);
                 bool mine = m.kind == "me";
                 line.GetComponent<HorizontalLayoutGroup>().childAlignment = mine ? TextAnchor.UpperRight : TextAnchor.UpperLeft;
-                if (!mine) PutAvatar(line, AvatarOf(m.chatId));
                 var row = Instantiate(messagePrefab, line);
                 var le = row.GetComponent<LayoutElement>() ?? row.gameObject.AddComponent<LayoutElement>();
                 le.preferredWidth = Mathf.Clamp(row.title.GetPreferredValues(m.text, 820, 0).x + 64, 260, 880);   // a bubble hugs its text
-                if (mine) PutAvatar(line, playerAvatar);
                 row.Set(m.text, "день " + m.day);
                 row.title.font = row.subtitle.font;   // message text is body text, not a heading
                 row.background.color = m.kind == "file" ? Palette.Cream : m.kind == "review" ? Palette.Yellow : Palette.Hex("FBF8EA");
-                if (m.kind == "file") FixButton(row, m.refId);
+                if (m.kind == "file") FileAttachment(row, m);
                 else if (m.kind == "event") EventButtons(row, m);
                 else if (m.kind == "me") { row.background.color = Palette.Hex("CFE8B8"); row.title.alignment = row.subtitle.alignment = TMPro.TextAlignmentOptions.TopRight; row.Button1(null, false, null); }
                 else row.Button1(null, false, null);
@@ -81,12 +77,10 @@ namespace Studio.UI.Mvp
         {
             var sp = id == LevelState.Boss ? bossAvatar : (game.L.Candidate(id)?.character ?? game.L.Candidate(id)?.portrait);
             if (img == null || sp == null) return;
+            var face = img.transform.Find("Face");
+            if (face != null && face.TryGetComponent(out Image faceImage)) img = faceImage;
             img.sprite = sp; img.color = Color.white;
         }
-
-        void PutAvatar(Transform line, Sprite face) => Instantiate(avatarPrefab, line).GetChild(0).GetComponent<Image>().sprite = face;
-
-        Sprite AvatarOf(string id) => id == LevelState.Boss ? bossAvatar : (game.L.Candidate(id)?.character ?? game.L.Candidate(id)?.portrait);
 
         bool NeedsButtons() => false;
 
@@ -103,12 +97,30 @@ namespace Studio.UI.Mvp
         {
             var def = game.L.events.Find(x => x.id == m.refId);
             if (def == null || EventRules.Find(game.S, m.refId, m.chatId) == null) return;   // already answered
-            row.background.color = Palette.Yellow;
-            row.Set(m.text, def.options[0].label + ": " + Names.Effects(def.options[0]) + "\n" + def.options[1].label + ": " + Names.Effects(def.options[1]));
-            row.Button1(def.options[0].label, true, () => Pick(m, 0));
-            row.Button2(def.options[1].label, true, () => Pick(m, 1));
-            foreach (var (b, t) in new[] { (row.button1, row.button1Label), (row.button2, row.button2Label) })
-            { b.GetComponent<Image>().color = Palette.Olive; t.color = Palette.Cream; }   // readable on the yellow row
+            row.background.color = Palette.Hex("FBF8EA");
+            row.Set(m.text);
+            row.Button1(Choice(def.options[0].label, Names.Effects(def.options[0])), true, () => Pick(m, 0));
+            row.Button2(Choice(def.options[1].label, Names.Effects(def.options[1])), true, () => Pick(m, 1));
+            StyleChoice(row.button1, row.button1Label, Palette.Olive);
+            StyleChoice(row.button2, row.button2Label, Palette.Hex("657936"));
+        }
+
+        static string Choice(string label, string effect) => label + "\n<size=18>" + effect + "</size>";
+
+        static void StyleChoice(Button button, TMPro.TMP_Text label, Color color)
+        {
+            if (button == null || label == null) return;
+            button.GetComponent<Image>().color = color;
+            label.color = Palette.Cream;
+            label.fontSize = 20;
+            label.alignment = TMPro.TextAlignmentOptions.Center;
+            label.textWrappingMode = TMPro.TextWrappingModes.Normal;
+            var layout = button.GetComponent<LayoutElement>();
+            if (layout != null)
+            {
+                layout.minWidth = 250; layout.preferredWidth = 320;
+                layout.minHeight = 72; layout.preferredHeight = 78;
+            }
         }
 
         void Pick(ChatEntry m, int option)
@@ -116,6 +128,10 @@ namespace Studio.UI.Mvp
             if (!EventRules.Resolve(game.S, game.L, m.refId, m.chatId, option))
                 game.modal.Show("Не хватает денег", "На такой вариант в бюджете пока нет средств. Выбери другой.", ("Понятно", null));
             game.Commit();
+            // Resolving an event may not add a chat entry. Force the open conversation to redraw
+            // so its two answer cards disappear as soon as the player has chosen.
+            drawnCount = -1;
+            Redraw();
         }
 
         void FixButton(RowView row, string fileId)
@@ -123,6 +139,29 @@ namespace Studio.UI.Mvp
             var s = game.S;
             bool rework = s.builds.Count > 0 && !s.builds[s.builds.Count - 1].passed && s.stage == LevelStage.Production;
             row.Button1(rework ? "На исправление" : null, true, () => FixPicker.Open(game, fileId));
+        }
+
+        void FileAttachment(RowView row, ChatEntry message)
+        {
+            var file = game.S.File(message.refId);
+            if (file == null)
+            {
+                row.Set(message.text, "Вложение · день " + message.day);
+                FixButton(row, message.refId);
+                return;
+            }
+
+            row.Set(message.text, file.title + " · " + Names.Of(file.d));
+            row.background.color = Palette.Cream;
+            row.title.fontStyle = TMPro.FontStyles.Bold;
+            row.subtitle.color = Palette.Hex("5B4A3A");
+            if (row.right != null)
+            {
+                row.right.text = Mathf.RoundToInt(file.quality) + "/100";
+                row.right.color = file.quality >= 70 ? Palette.Green : Palette.Primary;
+                row.right.gameObject.SetActive(true);
+            }
+            FixButton(row, file.id);
         }
     }
 

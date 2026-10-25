@@ -61,7 +61,17 @@ namespace Studio.UI.Mvp
             }
             var opts = new List<(string, System.Action, int)>();
             foreach (var p in game.L.parameters)
-                if (p.type == b.type) { var pid = p.id; opts.Add((p.title, () => { ConceptRules.SetParam(game.S, game.L, b.id, pid); game.Commit(); Redraw(); }, b.paramId == pid ? 1 : 0)); }
+                if (p.type == b.type) { var pid = p.id; opts.Add((p.title, () =>
+                {
+                    if (!ConceptRules.SetParam(game.S, game.L, b.id, pid, out var reason))
+                    {
+                        if (!string.IsNullOrEmpty(reason)) game.modal.Show("Концепт не изменён", reason, ("Понятно", null));
+                        Redraw();
+                        return;
+                    }
+                    game.Commit();
+                    Redraw();
+                }, b.paramId == pid ? 1 : 0)); }
             if (!game.S.concept.approved) opts.Add(("Удалить блок", () => { ConceptRules.Remove(game.S, b.id); game.Commit(); Redraw(); }, 2));
             popup.Show((RectTransform)views[b.id].transform, Names.Of(b.type), opts.ToArray());
         }
@@ -70,7 +80,8 @@ namespace Studio.UI.Mvp
         public void Dragging(Block b, Vector2 pos)
         {
             b.x = pos.x; b.y = pos.y;
-            foreach (var (link, view) in linkViews) view.Place(views[link.a].Center, views[link.b].Center);
+            foreach (var (link, view) in linkViews)
+                PlaceLink(link, view);
         }
 
         public void Moved(Block b, Vector2 pos) { ConceptRules.Move(game.S, b.id, pos.x, pos.y); SaveSystem.SaveLevel(game.S); Redraw(); }
@@ -109,31 +120,119 @@ namespace Studio.UI.Mvp
             foreach (var b in s.concept.blocks)
             {
                 var v = Instantiate(blockPrefab, canvas);
-                v.Bind(this, b, Names.Of(b.type), b.paramId == null ? "выбрать" : l.Param(b.paramId).title, b.id == linkFrom, linkFrom != null && b.id != linkFrom
-                    && (s.concept.links.Count >= ConceptRules.MaxLinks || !ConceptRules.CanLink(s.concept.blocks.Find(x => x.id == linkFrom).type, b.type)));
+                var param = b.paramId == null ? null : l.Param(b.paramId);
+                var source = linkFrom == null ? null : s.concept.blocks.Find(x => x.id == linkFrom);
+                v.Bind(this, b, Names.Of(b.type), param?.title ?? "выбрать", b.id == linkFrom, source != null && b.id != linkFrom
+                    && (s.concept.links.Count >= ConceptRules.MaxLinks || !ConceptRules.CanLink(source.type, b.type)));
                 views[b.id] = v;
             }
             foreach (var link in s.concept.links)
             {
                 var v = Instantiate(linkPrefab, linkLayer);
-                var a = s.concept.blocks.Find(x => x.id == link.a); var b = s.concept.blocks.Find(x => x.id == link.b);
-                var fx = ConceptRules.PairEffects(l, a.paramId, b.paramId);
+                var blockA = s.concept.blocks.Find(x => x.id == link.a); var blockB = s.concept.blocks.Find(x => x.id == link.b);
+                var fx = ConceptRules.PairEffects(l, blockA.paramId, blockB.paramId);
                 bool neutral = fx.Count == 0;   // no rule for this pair: grey, not a red "bad" verdict
                 linkViews.Add((link, v));
-                v.Bind(this, link, views[link.a].Center, views[link.b].Center,
+                var viewA = views[link.a]; var viewB = views[link.b];
+                LinkPorts(viewA, viewB, out var from, out var to, out _);
+                v.Bind(this, link, from, to,
                        neutral ? Palette.Neutral : ConceptRules.LinkColor(s, l, link.a, link.b) == LinkColor.Green ? Palette.Green : Palette.Red,
                        neutral ? "–" : Tag(fx, l.tuning.conceptStep));
+                PlaceLink(link, v);
             }
             for (int i = 0; i < palette.Length; i++) palette[i].interactable = !s.concept.approved && s.BlockOf((BlockType)i) == null;
             var t = ConceptRules.Totals(s, l);
             totals.text = "Итог: Дизайн " + Sign(t[0] * l.tuning.conceptStep) + " · Механики " + Sign(t[1] * l.tuning.conceptStep) + " · Звук " + Sign(t[2] * l.tuning.conceptStep);
             bool ok = ConceptRules.CanApprove(s, l, out var why);
             approve.interactable = ok;
-            reason.text = ConceptRules.CanRework(s) ? "Концепт можно пересмотреть: поменяй параметры и пересобери игру" : s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
+            reason.text = ConceptRules.CanRework(s)
+                ? (s.reworkChargedBuild == s.builds.Count
+                    ? "Пересмотр оплачен: можно менять параметры. Сложность задач обновится."
+                    : "Первое изменение: один день и дневные ставки команды. Сложность задач обновится.")
+                : s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
             string count = " " + s.concept.links.Count + "/" + ConceptRules.MaxLinks;
             mode.text = linking ? (linkFrom == null ? "Выбери первый блок" : "Выбери второй блок") + count : "Связать блоки" + count;
             tagLayer.SetAsLastSibling();
             linkMode.interactable = !s.concept.approved;
+        }
+
+        void LinkPorts(BlockView a, BlockView b, out Vector2 from, out Vector2 to, out bool vertical)
+        {
+            var delta = b.Center - a.Center;
+            vertical = Mathf.Abs(delta.x) < ((RectTransform)a.transform).rect.width * 0.6f
+                && Mathf.Abs(delta.y) > ((RectTransform)a.transform).rect.height * 0.6f;
+            if (vertical)
+            {
+                float side = (a.Center.x + b.Center.x) * 0.5f < canvas.rect.width * 0.5f ? 1f : -1f;
+                from = a.PortOnSide(side);
+                to = b.PortOnSide(side);
+            }
+            else
+            {
+                from = a.PortToward(b.Center);
+                to = b.PortToward(a.Center);
+            }
+        }
+
+        void PlaceLink(ConceptLink link, LinkView view)
+        {
+            var a = views[link.a]; var b = views[link.b];
+            LinkPorts(a, b, out var from, out var to, out var vertical);
+            if (vertical)
+            {
+                float side = Mathf.Sign(from.x - a.Center.x);
+                float normalX = -(to.y - from.y);
+                view.Place(from, to, 45f * Mathf.Sign(side * normalX));
+            }
+            else view.Place(from, to, NeededBend(link, from, to));
+        }
+
+        float NeededBend(ConceptLink link, Vector2 from, Vector2 to)
+        {
+            var chord = to - from;
+            float lengthSq = chord.sqrMagnitude;
+            if (lengthSq < 1f) return 0f;
+
+            bool obstructed = false;
+            foreach (var pair in views)
+            {
+                if (pair.Key == link.a || pair.Key == link.b) continue;
+                var rt = (RectTransform)pair.Value.transform;
+                float t = Mathf.Clamp01(Vector2.Dot(pair.Value.Center - from, chord) / lengthSq);
+                var nearest = from + chord * t;
+                if (Vector2.Distance(pair.Value.Center, nearest) < Mathf.Min(rt.rect.width, rt.rect.height) * 0.49f)
+                {
+                    obstructed = true;
+                    break;
+                }
+            }
+            if (!obstructed) return 0f;
+
+            var normal = new Vector2(-chord.y, chord.x).normalized;
+            const float amount = 150f;
+            float positive = CurveClearance(from, to, normal * amount, link);
+            float negative = CurveClearance(from, to, -normal * amount, link);
+            return positive >= negative ? amount : -amount;
+        }
+
+        float CurveClearance(Vector2 from, Vector2 to, Vector2 controlOffset, ConceptLink link)
+        {
+            float clearance = 0f;
+            for (int step = 1; step < 10; step++)
+            {
+                float t = step / 10f;
+                var point = Vector2.Lerp(from, to, t) + controlOffset * (4f * t * (1f - t));
+                foreach (var pair in views)
+                {
+                    if (pair.Key == link.a || pair.Key == link.b) continue;
+                    var rt = (RectTransform)pair.Value.transform;
+                    var delta = point - pair.Value.Center;
+                    float dx = Mathf.Max(0f, Mathf.Abs(delta.x) - rt.rect.width * 0.5f);
+                    float dy = Mathf.Max(0f, Mathf.Abs(delta.y) - rt.rect.height * 0.5f);
+                    clearance += Mathf.Sqrt(dx * dx + dy * dy);
+                }
+            }
+            return clearance;
         }
 
         static string Sign(int v) => v > 0 ? "+" + v : v.ToString();

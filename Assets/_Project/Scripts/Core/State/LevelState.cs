@@ -82,6 +82,8 @@ namespace Studio.Core
         public string levelId, nickname;
         public int day;
         public float dayElapsed;
+        // Build number whose concept rework day and team payroll have already been charged.
+        public int reworkChargedBuild;
         public LevelStage stage;
         public int budget, deadline;
         public ConceptState concept = new ConceptState();

@@ -4950,5 +4950,19 @@
       ]
     }
   ],
+  "standalone_assets": [
+    {
+      "name": "starhop-original",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/GameCovers/starhop-original.png",
+      "use": "UI-6 review cover",
+      "size": [1672, 941]
+    },
+    {
+      "name": "starhop-sequel",
+      "file": "Assets/_Project/Art/UI/GeneratedKit20261024/GameCovers/starhop-sequel.png",
+      "use": "UI-6 ending cover",
+      "size": [1672, 940]
+    }
+  ],
   "warnings": []
 }
