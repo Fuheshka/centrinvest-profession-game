@@ -179,6 +179,8 @@ namespace Studio.UI.Mvp
                     ? "Пересмотр оплачен: можно менять параметры. Сложность задач обновится."
                     : "Первое изменение: один день и дневные ставки команды. Сложность задач обновится.")
                 : s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
+            var cardPack = ConceptRules.MatchPack(s, l);
+            if (cardPack != null) reason.text += "\nСочетание: " + cardPack.title;
             string count = " " + s.concept.links.Count + "/" + ConceptRules.MaxLinks;
             mode.text = linking ? (linkFrom == null ? "Выбери первый блок" : "Выбери второй блок") + count : "Связать блоки" + count;
             linkMode.GetComponent<Image>().color = linking ? Palette.Green : Palette.Primary;

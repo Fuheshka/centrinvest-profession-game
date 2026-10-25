@@ -5,9 +5,29 @@ using UnityEngine;
 namespace Studio.Core
 {
     [Serializable] public class Requirement { public BlockType type; public string paramId; }
-    [Serializable] public class ParamDef { public string id; public BlockType type; public string title; public int tier; }
+    [Serializable] public class ParamDef { public string id; public BlockType type; public string title; public int tier; public bool deriveFromPack; }
     [Serializable] public class Effect { public Discipline d; public int sign; }
     [Serializable] public class PairRule { public string a, b; public List<Effect> effects = new List<Effect>(); }
+    [Serializable]
+    public class CardPackDef
+    {
+        public string id, title;
+        public string genre, audience, setting, style, mechanics, platform;
+
+        public string ParamId(BlockType type)
+        {
+            switch (type)
+            {
+                case BlockType.Genre: return genre;
+                case BlockType.Audience: return audience;
+                case BlockType.Setting: return setting;
+                case BlockType.Style: return style;
+                case BlockType.Mechanics: return mechanics;
+                case BlockType.Platform: return platform;
+                default: return null;
+            }
+        }
+    }
     [Serializable] public class TaskTemplate { public string id; public Discipline d; public string titleFormat; public BlockType tierFrom; public bool tierFromBlock; public int fixedTier = 1; }
     [Serializable] public class CandidateDef { public string id, name; public Discipline d; public int speed, quality; public Sprite portrait, character; public string quirk; }   // portrait: messenger mascot; character: drawn person for the headhunter
     [Serializable] public class TextDef { public string key, text; }
@@ -62,6 +82,7 @@ namespace Studio.Core
         public List<Requirement> requirements = new List<Requirement>();
         public List<ParamDef> parameters = new List<ParamDef>();
         public List<PairRule> pairRules = new List<PairRule>();
+        public List<CardPackDef> cardPacks = new List<CardPackDef>();
         public List<TaskTemplate> tasks = new List<TaskTemplate>();
         public List<CandidateDef> candidates = new List<CandidateDef>();
         public List<TextDef> texts = new List<TextDef>();
