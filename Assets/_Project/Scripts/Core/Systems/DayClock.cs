@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Studio.Core
 {
+    [System.Obsolete("Legacy prototype day flow. Use WorkSim for the MVP.", false)]
     public static class DayClock
     {
         // Ends the day: moves the clock, switches the stage if its day came, returns the morning's new messages.

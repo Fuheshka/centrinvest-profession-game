@@ -63,16 +63,16 @@ namespace Studio.Tests.Versions
         public void EmptyBoardHasFallbackTitle() => Assert.AreEqual("Без названия", Ending.GameTitle(new GameState(), Db()));
 
         [Test]
-        public void BreakdownTakesTwoBestAndTwoWorst()
+        public void BreakdownTakesTwoBestAndOneWorst()
         {
             var s = new GameState();
             foreach (var d in new[] { 25, 10, 0, -5, -10 })
                 s.log.Add(new DecisionRecord { messageId = "m" + d, optionId = "o", deltas = new[] { d, 0, 0, 0 } });
             s.log.Add(new DecisionRecord { messageId = "gone", deltas = new[] { 99, 0, 0, 0 }, replaced = true });
             var list = Ending.Breakdown(s, Db());
-            Assert.AreEqual(4, list.Count);
+            Assert.AreEqual(3, list.Count);
             Assert.IsTrue(list[0].good && list[1].good);
-            Assert.IsFalse(list[2].good && list[3].good);
+            Assert.IsFalse(list[2].good);
         }
     }
 }

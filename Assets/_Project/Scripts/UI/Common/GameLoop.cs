@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Studio.Core;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Studio.UI.Mvp
@@ -36,6 +37,8 @@ namespace Studio.UI.Mvp
 
         void Update()
         {
+            AudioManager.Play(review.IsOpen ? Track.Review : Track.Work);
+            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) TogglePause();
             if (Paused || modal.IsOpen || review.IsOpen || S.stage != LevelStage.Production) return;
             var report = WorkSim.Tick(S, L, Time.unscaledDeltaTime * L.tuning.timeScale);
             EventRules.Tick(S, L, Time.unscaledDeltaTime * L.tuning.timeScale, n => UnityEngine.Random.Range(0, n));
@@ -71,10 +74,18 @@ namespace Studio.UI.Mvp
                 ("Утро, день " + S.day, null));
         }
 
+        void TogglePause()
+        {
+            if (SettingsPanel.IsOpen) { SettingsPanel.Close(); return; }
+            if (Paused && modal.IsOpen) { modal.Hide(); Paused = false; }
+            else if (!Paused && !modal.IsOpen && !review.IsOpen) ShowPause();
+        }
+
         public void ShowPause()
         {
             Paused = true;
-            modal.Show("Пауза", "День " + S.day + ". Время стоит.", ("Продолжить", () => Paused = false), ("В меню", ToMenu));
+            modal.Show("Пауза", "День " + S.day + ". Время стоит.", ("Продолжить", () => Paused = false),
+                ("Настройки", () => SettingsPanel.Open(ShowPause)), ("В меню", ToMenu));
         }
 
         // The customer's verdict screen; a failed build offers to send a weak file to fix.

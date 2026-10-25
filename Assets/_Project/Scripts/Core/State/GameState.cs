@@ -11,6 +11,7 @@ namespace Studio.Core
         public int day;
     }
 
+    [System.Obsolete("Legacy prototype state. Use LevelState for the MVP.", false)]
     [Serializable]
     public class GameState
     {

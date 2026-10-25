@@ -1,5 +1,6 @@
 namespace Studio.Core
 {
+    [System.Obsolete("Legacy prototype difficulty. Level0 uses its LevelSO tuning.", false)]
     public static class Difficulty
     {
         public static DifficultySettings For(DifficultyLevel level)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Studio.Core
 {
+    [System.Obsolete("Legacy prototype decisions. Use the MVP Level0 systems.", false)]
     public static class DecisionResolver
     {
         const int MatchBonus = 5;

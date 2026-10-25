@@ -10,6 +10,7 @@ namespace Studio.Core
         public string b;
     }
 
+    [System.Obsolete("Legacy prototype content. Use LevelSO for the MVP.", false)]
     [CreateAssetMenu(menuName = "Studio/ContentDB", fileName = "ContentDB")]
     public class ContentDB : ScriptableObject
     {
