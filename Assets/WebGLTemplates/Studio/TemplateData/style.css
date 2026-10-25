@@ -1,9 +1,12 @@
-body { padding: 0; margin: 0; background: linear-gradient(#1E1A04, #2F0D0B); min-height: 100vh }
+body { padding: 0; margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 50% 30%, #3b2a12 0%, #1E1A04 55%, #120a02 100%); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif }
 #unity-container { position: absolute }
-#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
-#unity-container.unity-mobile { position: fixed; width: 100%; height: 100% }
+#unity-container.unity-desktop { position: static; display: flex; flex-direction: column; align-items: center; padding-top: 14px }
+#unity-container.unity-mobile { position: fixed; width: 100%; height: 100%; height: 100dvh }
 .unity-mobile #unity-fullscreen-container { width: 100%; height: 100% }
-#unity-fullscreen-container { position: relative; }
+html, body { overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent }
+#unity-canvas { touch-action: none }
+#unity-fullscreen-container { position: relative; border-radius: 14px; overflow: hidden; border: 3px solid #5B6B2E; box-shadow: 0 0 0 6px rgba(216,226,166,.08), 0 24px 70px rgba(0,0,0,.65) }
+.mobile #unity-fullscreen-container { border: 0; border-radius: 0; box-shadow: none }
 #unity-canvas { position: absolute; width: 100%; height: 100%; background: {{{ BACKGROUND_COLOR }}} }
 #unity-loading-container { position: absolute; width: 100%; height: 100%; backdrop-filter: blur(5px); display: none; }
 #unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
@@ -20,3 +23,24 @@ body { padding: 0; margin: 0; background: linear-gradient(#1E1A04, #2F0D0B); min
 #unity-loading-bar { text-align: center; color: #D8E2A6; font-family: sans-serif }
 #unity-progress-bar-empty { margin: 0 auto }
 #unity-footer { display: none }
+
+#rotate-hint { display: none; position: fixed; inset: 0; z-index: 10; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: #1E1A04; color: #D8E2A6; font: 20px sans-serif; text-align: center }
+#rotate-hint .phone { width: 56px; height: 96px; border: 5px solid #D8E2A6; border-radius: 10px; animation: turn 2s ease-in-out infinite }
+@keyframes turn { 0%, 30% { transform: rotate(0) } 70%, 100% { transform: rotate(-90deg) } }
+@media (orientation: portrait) { body:has(.unity-mobile) #rotate-hint { display: flex } }
+
+#site-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 28px 0; color: #EFF2DF }
+#site-head .brand { display: flex; align-items: center; gap: 12px }
+#site-head img { width: 36px; height: 36px; object-fit: contain }
+#site-head .name { font-size: 26px; font-weight: 800; letter-spacing: .04em }
+#site-head .tag { font-size: 15px; color: #D8E2A6; opacity: .8; padding-left: 12px; border-left: 2px solid #5B6B2E }
+#site-head .link { color: #1E1A04; background: #E7CC38; padding: 7px 16px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none }
+#site-head .link:hover { background: #F2DB5C }
+#site-foot { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 14px 20px 18px; color: #D8E2A6; font-size: 14px; flex-wrap: wrap }
+#site-foot .hint { opacity: .8 }
+#site-foot kbd { background: #EFF2DF; color: #1E1A04; border-radius: 5px; padding: 1px 7px; font: 700 13px monospace; margin-right: 4px }
+#fs-btn { cursor: pointer; background: transparent; color: #EFF2DF; border: 2px solid #5B6B2E; border-radius: 999px; padding: 6px 16px; font-size: 14px; font-weight: 600 }
+#fs-btn:hover { background: #5B6B2E }
+.mobile #site-head, .mobile #site-foot { display: none }
+@media (max-width: 900px) { #site-head .tag { display: none } }
+#unity-fullscreen-container:fullscreen { width: 100vw !important; height: 100vh !important; border: 0; border-radius: 0; box-shadow: none }

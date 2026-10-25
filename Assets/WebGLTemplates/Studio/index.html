@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ru">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | {{{ PRODUCT_NAME }}}</title>
+    <title>РЕЛИЗ! – симулятор геймдизайнера</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Браузерная игра: попробуй себя геймдизайнером. Кейс банка Центр-инвест.">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 #if SHOW_DIAGNOSTICS
@@ -15,20 +17,31 @@
 #endif
   </head>
   <body>
+    <header id="site-head">
+      <div class="brand"><img src="TemplateData/studio-logo.png" alt=""><span class="name">РЕЛИЗ!</span><span class="tag">симулятор геймдизайнера</span></div>
+      <a class="link" href="https://github.com/Fuheshka/centrinvest-profession-game" target="_blank" rel="noopener">Исходный код</a>
+    </header>
     <div id="unity-container" class="unity-desktop">
       <div id="unity-fullscreen-container">
         <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="-1"></canvas>
         <div id="unity-loading-container">
           <div id="unity-loading-bar">
             <div id="unity-logo"></div>
-            <div style="margin-bottom:12px;font-size:18px">Билд к пятнице · загрузка</div>
+            <div style="margin-bottom:12px;font-size:18px">РЕЛИЗ! · загрузка</div>
             <div id="unity-progress-bar-empty">
               <div id="unity-progress-bar-full"></div>
             </div>
           </div>
         </div>
       </div>
+      <div id="rotate-hint"><div class="phone"></div><div>Поверните телефон горизонтально</div></div>
       <div id="unity-warning"> </div>
+      <footer id="site-foot">
+        <span class="hint"><kbd>Esc</kbd> пауза</span>
+        <span class="hint">Прогресс сохраняется автоматически</span>
+        <span class="hint">Хакатон банка «Центр-инвест»</span>
+        <button id="fs-btn" type="button">На весь экран</button>
+      </footer>
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
@@ -119,7 +132,9 @@
       // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
       // expected to change.
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      var unity = null;
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+      if (isMobile) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
         var meta = document.createElement('meta');
@@ -127,7 +142,18 @@
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         document.querySelector("#unity-container").className = "unity-mobile";
+        document.body.className = "mobile";
         canvas.className = "unity-mobile";
+
+        // First tap = user gesture: go fullscreen and lock landscape (Android; iPhone Safari has neither, the rotate hint covers it).
+        var goFull = function () {
+          document.removeEventListener("pointerup", goFull);
+          if (document.fullscreenElement) return;
+          var done = function () { try { screen.orientation.lock("landscape").catch(function () {}); } catch (e) {} };
+          if (unity) { unity.SetFullscreen(1); done(); }
+          else if (fullscreenContainer.requestFullscreen) fullscreenContainer.requestFullscreen().then(done).catch(function () {});
+        };
+        document.addEventListener("pointerup", goFull);
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
@@ -146,7 +172,8 @@
         // Desktop style: Render the game canvas container in a window that can be maximized to fullscreen:
         // fill the window, keep 16:9 (the UI is laid out for 1920x1080)
         function fit() {
-          var w = Math.min(window.innerWidth, window.innerHeight * 16 / 9);
+          var chrome = document.querySelector("#site-head").offsetHeight + document.querySelector("#site-foot").offsetHeight + 28;
+          var w = Math.min(window.innerWidth - 40, (window.innerHeight - chrome) * 16 / 9);
           fullscreenContainer.style.width = Math.floor(w) + "px";
           fullscreenContainer.style.height = Math.floor(w * 9 / 16) + "px";
         }
@@ -171,12 +198,13 @@
             loadingContainer.style.display = "none";
           }
         }).then((unityInstance) => {
+                unity = unityInstance;
 #if SHOW_DIAGNOSTICS
                 document.getElementById("diagnostics-icon").onclick = () => {
                   unityDiagnostics.openDiagnosticsDiv(unityInstance.GetMetricsInfo);
                 };
 #endif
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
+                document.querySelector("#fs-btn").onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
 
