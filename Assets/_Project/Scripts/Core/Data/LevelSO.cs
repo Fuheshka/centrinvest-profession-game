@@ -32,7 +32,7 @@ namespace Studio.Core
     [Serializable]
     public class EventDef
     {
-        public string id; public Discipline d; public bool anyone, boss; public string text;
+        public string id; public Discipline d; public bool anyone, boss, must; public string text;   // must: comes before any other event, from the boss if nobody fits
         public string after;                                       // shown only once this event has been answered
         public List<Discipline> needs = new List<Discipline>();    // every listed discipline must be on the team
         public List<EventOption> options = new List<EventOption>();

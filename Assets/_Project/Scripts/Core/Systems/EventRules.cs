@@ -32,19 +32,25 @@ namespace Studio.Core
         static bool Spawn(LevelState s, LevelSO level, Func<int, int> next)
         {
             var pairs = new List<(string who, EventDef ev)>();
+            var forced = new List<(string who, EventDef ev)>();
             foreach (var ev in level.events)
             {
                 if (s.eventsSeen.Contains(ev.id) || s.pendingEvents.Exists(p => p.eventId == ev.id)) continue;
                 if (!string.IsNullOrEmpty(ev.after) &&!s.eventsSeen.Contains(ev.after)) continue;
                 if (!ev.needs.TrueForAll(d => s.staff.Exists(x => x.d == d))) continue;
+                var mine = ev.must ? forced : pairs;
+                bool bossFree = !s.pendingEvents.Exists(p => p.employeeId == LevelState.Boss);
                 if (ev.boss)
                 {
-                    if (!s.pendingEvents.Exists(p => p.employeeId == LevelState.Boss)) pairs.Add((LevelState.Boss, ev));
+                    if (bossFree) mine.Add((LevelState.Boss, ev));
                     continue;
                 }
+                int before = mine.Count;
                 foreach (var e in s.staff)
-                    if (e.currentTaskId != null && (ev.anyone || ev.d == e.d) && !s.pendingEvents.Exists(p => p.employeeId == e.id)) pairs.Add((e.id, ev));
+                    if (e.currentTaskId != null && (ev.anyone || ev.d == e.d) && !s.pendingEvents.Exists(p => p.employeeId == e.id)) mine.Add((e.id, ev));
+                if (ev.must && mine.Count == before && bossFree) mine.Add((LevelState.Boss, ev));   // nobody fits: the boss passes it on
             }
+            if (forced.Count > 0) pairs = forced;
             if (pairs.Count == 0) return false;
             var (who, def) = pairs[next(pairs.Count)];
             s.pendingEvents.Add(new PendingEvent { eventId = def.id, employeeId = who });
