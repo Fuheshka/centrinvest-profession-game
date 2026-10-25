@@ -47,7 +47,7 @@ namespace Studio.UI.Mvp
         {
             AudioManager.Play(review.IsOpen ? Track.Review : Track.Work);
             if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) TogglePause();
-            if (Paused || modal.IsOpen || review.IsOpen || S.stage != LevelStage.Production) return;
+            if (Paused || modal.IsOpen || DashboardIntro.IsOpen || review.IsOpen || S.stage != LevelStage.Production) return;
             var report = WorkSim.Tick(S, L, Time.unscaledDeltaTime * L.tuning.timeScale);
             EventRules.Tick(S, L, Time.unscaledDeltaTime * L.tuning.timeScale, n => UnityEngine.Random.Range(0, n));
             if (report != null) DayEnded(report);

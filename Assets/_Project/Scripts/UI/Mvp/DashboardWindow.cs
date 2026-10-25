@@ -17,6 +17,7 @@ namespace Studio.UI.Mvp
         public TMP_Text totals, reason, mode;
         public Button approve, linkMode;
         public PopupMenu popup;
+        public DashboardIntro intro;
 
         readonly Dictionary<string, BlockView> views = new Dictionary<string, BlockView>();
         readonly List<(ConceptLink link, LinkView view)> linkViews = new List<(ConceptLink, LinkView)>();
@@ -32,7 +33,23 @@ namespace Studio.UI.Mvp
             game.Changed += OnChanged;
         }
 
-        void OnEnable() => Redraw();
+        void OnEnable()
+        {
+            Redraw();
+            var c = game.S?.concept;
+            if (c == null || c.introSeen) return;
+            c.introSeen = true;
+            game.Commit();
+            intro.Show();
+        }
+
+        // Blink the link button until the first line is drawn: it is the least obvious step on the canvas.
+        void Update()
+        {
+            var c = game.S?.concept;
+            if (c == null || linking || c.approved || c.links.Count > 0 || c.blocks.Count < 2) return;
+            linkMode.GetComponent<Image>().color = Color.Lerp(Palette.Primary, Palette.Cream, Mathf.PingPong(Time.unscaledTime * 1.5f, 1) * 0.6f);
+        }
         string popBlock, popLink, nudgeBlock;   // one-shot accents for the view that is rebuilt right after a real change
         int drawnHash;
         void OnChanged() { if (isActiveAndEnabled && Hash() != drawnHash) Redraw(); }
@@ -82,6 +99,8 @@ namespace Studio.UI.Mvp
                     game.Commit();
                     Redraw();
                 }, b.paramId == pid ? 1 : 0)); }
+            if (!game.S.concept.approved && game.S.concept.links.Count < ConceptRules.MaxLinks)
+                opts.Add(("Связать с...", () => { linking = true; linkFrom = b.id; Redraw(); }, 0));
             if (!game.S.concept.approved) opts.Add(("Удалить блок", () => { ConceptRules.Remove(game.S, b.id); game.Commit(); Redraw(); }, 2));
             popup.Show((RectTransform)views[b.id].transform, Names.Of(b.type), opts.ToArray());
         }

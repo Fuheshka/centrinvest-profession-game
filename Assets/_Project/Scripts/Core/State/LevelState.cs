@@ -12,6 +12,7 @@ namespace Studio.Core
         public List<Block> blocks = new List<Block>();
         public List<ConceptLink> links = new List<ConceptLink>();
         public bool approved;
+        public bool introSeen;   // the explanation of blocks and links was shown once
         public int nextId;
     }
 

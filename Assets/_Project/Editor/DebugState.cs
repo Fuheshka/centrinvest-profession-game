@@ -34,6 +34,13 @@ public static class DebugState
         g.Commit();
     }
 
+    [MenuItem("Tools/UI/Debug: dashboard intro")]
+    public static void DashboardIntroNow()
+    {
+        if (!Application.isPlaying) return;
+        Object.FindFirstObjectByType<TopBarMvp>().Show(1);   // the real path: DashboardWindow.OnEnable opens the intro once
+    }
+
     [MenuItem("Tools/UI/Debug: event chat")]
     public static void EventChat()
     {
