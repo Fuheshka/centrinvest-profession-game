@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Studio.Core;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace Studio.UI.Mvp
         string open = LevelState.Boss;
         int drawnCount = -1;
         string drawnChat;
+        readonly Dictionary<string, int> seenTotal = new Dictionary<string, int>();   // messages per chat at the last draw: only growth gets an accent
+        bool chatInited;
 
         void Awake() => game.Changed += Redraw;
         void OnEnable() { drawnCount = -1; Redraw(); }
@@ -29,6 +32,8 @@ namespace Studio.UI.Mvp
             if (game.S == null || !isActiveAndEnabled) return;
             var s = game.S;
             if (s.chat.Count == drawnCount && open == drawnChat && !NeedsButtons()) return;
+            bool sameChat = open == drawnChat;
+            int openBefore = seenTotal.TryGetValue(open, out var ob) ? ob : 0;
             drawnCount = s.chat.Count; drawnChat = open;
 
             foreach (Transform c in chatList) Destroy(c.gameObject);
@@ -45,15 +50,20 @@ namespace Studio.UI.Mvp
                 SetAvatar(row.avatar, id);
                 string k = id;
                 row.main.onClick.AddListener(() => { open = k; Redraw(); });
+                int total = Count(s, id);
+                if (chatInited && total > (seenTotal.TryGetValue(id, out var before) ? before : 0)) Pulse.Pop(this, row.transform, 1.05f, 0.4f);   // portrait and row of the chat that got a message
+                seenTotal[id] = total;
             }
 
             var oc = game.L.Candidate(open);
             header.text = open == LevelState.Boss ? "Борис Петрович · руководитель" : oc.name + " · " + Names.Of(oc.d);
             read[open] = Count(s, open);
             foreach (Transform c in feed) Destroy(c.gameObject);
+            int idx = 0;
             foreach (var m in s.chat)
             {
                 if (m.chatId != open) continue;
+                bool fresh = chatInited && sameChat && idx++ >= openBefore;
                 var line = Instantiate(linePrefab, feed);
                 bool mine = m.kind == "me";
                 line.GetComponent<HorizontalLayoutGroup>().childAlignment = mine ? TextAnchor.UpperRight : TextAnchor.UpperLeft;
@@ -67,7 +77,9 @@ namespace Studio.UI.Mvp
                 else if (m.kind == "event") EventButtons(row, m);
                 else if (m.kind == "me") { row.background.color = Palette.Hex("CFE8B8"); row.title.alignment = row.subtitle.alignment = TMPro.TextAlignmentOptions.TopRight; row.Button1(null, false, null); }
                 else row.Button1(null, false, null);
+                if (fresh) Pulse.Pop(this, row.transform, 1.04f, 0.3f);
             }
+            chatInited = true;
             Canvas.ForceUpdateCanvases();
             feedScroll.verticalNormalizedPosition = 0;
         }
@@ -99,8 +111,8 @@ namespace Studio.UI.Mvp
             if (def == null || EventRules.Find(game.S, m.refId, m.chatId) == null) return;   // already answered
             row.background.color = Palette.Hex("FBF8EA");
             row.Set(m.text);
-            row.Button1(Choice(def.options[0].label, Names.Effects(def.options[0])), true, () => Pick(m, 0));
-            row.Button2(Choice(def.options[1].label, Names.Effects(def.options[1])), true, () => Pick(m, 1));
+            row.Button1(Choice(def.options[0].label, Names.Effects(def.options[0])), true, () => Pick(m, 0, row));
+            row.Button2(Choice(def.options[1].label, Names.Effects(def.options[1])), true, () => Pick(m, 1, row));
             StyleChoice(row.button1, row.button1Label, Palette.Olive);
             StyleChoice(row.button2, row.button2Label, Palette.Hex("657936"));
         }
@@ -123,13 +135,29 @@ namespace Studio.UI.Mvp
             }
         }
 
-        void Pick(ChatEntry m, int option)
+        void Pick(ChatEntry m, int option, RowView row)
         {
-            if (!EventRules.Resolve(game.S, game.L, m.refId, m.chatId, option))
-                game.modal.Show("Не хватает денег", "На такой вариант в бюджете пока нет средств. Выбери другой.", ("Понятно", null));
+            bool ok = EventRules.Resolve(game.S, game.L, m.refId, m.chatId, option);
+            AudioManager.Play(ok ? Fx.MsgOut : Fx.Error);
+            if (!ok) game.modal.Show("Не хватает денег", "На такой вариант в бюджете пока нет средств. Выбери другой.", ("Понятно", null));
             game.Commit();
+            if (ok)
+            {
+                // short confirmation: the chosen card pops and both lock, then the answers leave
+                row.button1.interactable = row.button2.interactable = false;
+                Pulse.Pop(this, (option == 0 ? row.button1 : row.button2).transform, 1.1f, 0.3f);
+                StartCoroutine(RedrawAfter(0.35f));
+                return;
+            }
             // Resolving an event may not add a chat entry. Force the open conversation to redraw
             // so its two answer cards disappear as soon as the player has chosen.
+            drawnCount = -1;
+            Redraw();
+        }
+
+        IEnumerator RedrawAfter(float seconds)
+        {
+            yield return new WaitForSecondsRealtime(seconds);
             drawnCount = -1;
             Redraw();
         }

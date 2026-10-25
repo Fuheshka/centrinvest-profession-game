@@ -19,7 +19,7 @@ namespace Studio.UI.Mvp
         public Color tabOnColor, tabOffColor;       // optional (alpha > 0): flat tabs tinted by state instead of the old yellow/mustard
         public RectTransform timeFill;     // day clock: right anchor is the share of the workday gone
 
-        int current, seen = -1, lastCount = -1;
+        int current, seen = -1, lastCount = -1, lastDay = -1, lastBudget = int.MinValue;
         float toastUntil, pulse;
         string toast;
 
@@ -45,6 +45,7 @@ namespace Studio.UI.Mvp
                 toast = "Новое сообщение: " + (from != null ? from.name : "Борис Петрович");
                 toastUntil = Time.unscaledTime + 4;
                 pulse = 1;
+                AudioManager.Play(Fx.MsgNew);
             }
             lastCount = n;
             int unread = n - seen;
@@ -69,6 +70,11 @@ namespace Studio.UI.Mvp
             string phase = s.stage == LevelStage.Concept ? "план" : f < 0.34f ? "утро" : f < 0.67f ? "день" : "вечер";
             if (phaseText != null) { dayText.text = "День " + s.day + " / " + s.deadline; phaseText.text = phase; budgetText.text = Names.Money(s.budget) + " ₽"; }
             else { dayText.text = "День " + s.day + " из " + s.deadline + "\n" + phase; budgetText.text = "Бюджет\n" + Names.Money(s.budget); }
+            // accent only the field that really changed; the first draw and a loaded game stay quiet
+            if (lastDay >= 0 && s.day != lastDay) Pulse.Pop(this, dayText.transform, 1.12f, 0.4f, dayText, Palette.Yellow);
+            if (lastBudget != int.MinValue && s.budget < lastBudget) AudioManager.Play(Fx.Money);
+            if (lastBudget != int.MinValue && s.budget != lastBudget) Pulse.Pop(this, budgetText.transform, 1.12f, 0.4f, budgetText, s.budget < lastBudget ? Palette.Red : Palette.Green);
+            lastDay = s.day; lastBudget = s.budget;
             bool working = s.stage == LevelStage.Production;
             endDay.interactable = working;
             tabs[2].interactable = tabs[3].interactable = s.stage != LevelStage.Concept;

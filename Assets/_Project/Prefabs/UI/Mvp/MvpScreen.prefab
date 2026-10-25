@@ -1263,6 +1263,7 @@ GameObject:
   - component: {fileID: 7741732077691647896}
   - component: {fileID: 7950181463646677794}
   - component: {fileID: 3627168074315372928}
+  - component: {fileID: 5852284196110152579}
   m_Layer: 0
   m_Name: Tab3
   m_TagString: Untagged
@@ -1436,6 +1437,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &5852284196110152579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747287931090319987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &749302053422373556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1470,7 @@ GameObject:
   - component: {fileID: 173166438284239345}
   - component: {fileID: 6940396162724050660}
   - component: {fileID: 8995372326408954170}
+  - component: {fileID: 8737851954337207297}
   m_Layer: 0
   m_Name: Tab1
   m_TagString: Untagged
@@ -1624,6 +1644,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &8737851954337207297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749302053422373556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &827598930958790876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,6 +2106,8 @@ GameObject:
   - component: {fileID: 8974685477011808418}
   - component: {fileID: 8971239331036536290}
   - component: {fileID: 6720457742180708892}
+  - component: {fileID: 3397960667306711381}
+  - component: {fileID: 4181195731713335152}
   m_Layer: 0
   m_Name: DashboardWindow
   m_TagString: Untagged
@@ -2169,6 +2209,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3397960667306711381
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980360135798213301}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &4181195731713335152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980360135798213301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8358894a24b6436999f6f0a2f3e28c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.PanelFade
+  duration: 0.18
 --- !u!1 &1080729126722750260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,6 +3292,7 @@ GameObject:
   - component: {fileID: 8560885781295340000}
   - component: {fileID: 1184845899848653873}
   - component: {fileID: 8919150100104166211}
+  - component: {fileID: 2112336936776146877}
   m_Layer: 0
   m_Name: Build
   m_TagString: Untagged
@@ -3351,6 +3417,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0.72156864, g: 0.6039216, b: 0.11764706, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &2112336936776146877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861223200599196315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 2
+  duration: 0.12
 --- !u!1 &1880909868795050895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,6 +3848,8 @@ GameObject:
   - component: {fileID: 8368112694491426384}
   - component: {fileID: 547466682028104045}
   - component: {fileID: 2011930130934283824}
+  - component: {fileID: 1951952009931100740}
+  - component: {fileID: 2873273062398442753}
   m_Layer: 0
   m_Name: HireWindow
   m_TagString: Untagged
@@ -3849,6 +3935,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.5
+--- !u!225 &1951952009931100740
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207581874106246609}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2873273062398442753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207581874106246609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8358894a24b6436999f6f0a2f3e28c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.PanelFade
+  duration: 0.18
 --- !u!1 &2239608932427967276
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,6 +4445,7 @@ GameObject:
   - component: {fileID: 8294578052401924812}
   - component: {fileID: 4245134727641471423}
   - component: {fileID: 1811995643724924146}
+  - component: {fileID: 4392835098204470483}
   m_Layer: 0
   m_Name: ToTasks
   m_TagString: Untagged
@@ -4458,6 +4570,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0.72156864, g: 0.6039216, b: 0.11764706, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &4392835098204470483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453802389818934195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 2
+  duration: 0.12
 --- !u!1 &2520624952352669248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4823,6 +4953,8 @@ GameObject:
   - component: {fileID: 5961770878081592421}
   - component: {fileID: 4212959187077192005}
   - component: {fileID: 6871958293176270493}
+  - component: {fileID: 2654388425161131912}
+  - component: {fileID: 8973164817118826780}
   m_Layer: 0
   m_Name: MvpScreen
   m_TagString: Untagged
@@ -4958,6 +5090,31 @@ MonoBehaviour:
   body: {fileID: 2699419592768830604}
   options: {fileID: 5749556097521845157}
   optionPrefab: {fileID: 9037697557768227972, guid: d1235039ec322432ab255cc3f5655d96, type: 3}
+--- !u!225 &2654388425161131912
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816066294146576108}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8973164817118826780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816066294146576108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8358894a24b6436999f6f0a2f3e28c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.PanelFade
+  duration: 0.45
 --- !u!1 &2849720982663871739
 GameObject:
   m_ObjectHideFlags: 0
@@ -5048,6 +5205,7 @@ GameObject:
   - component: {fileID: 2112738729432979908}
   - component: {fileID: 6261428967787970275}
   - component: {fileID: 5886722185377098600}
+  - component: {fileID: 8187061817867370004}
   m_Layer: 0
   m_Name: Tab2
   m_TagString: Untagged
@@ -5221,6 +5379,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &8187061817867370004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866985633121043110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &2910576183423342695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5296,6 +5472,7 @@ GameObject:
   - component: {fileID: 7847363368156946205}
   - component: {fileID: 5538178071988035065}
   - component: {fileID: 9007080229399931786}
+  - component: {fileID: 5418544415682012092}
   m_Layer: 0
   m_Name: Tab0
   m_TagString: Untagged
@@ -5470,6 +5647,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &5418544415682012092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981660721691619745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &2996179914524883177
 GameObject:
   m_ObjectHideFlags: 0
@@ -7229,6 +7424,7 @@ GameObject:
   - component: {fileID: 4637245783564076728}
   - component: {fileID: 7775217083330919152}
   - component: {fileID: 1856569815321968623}
+  - component: {fileID: 1587788162230488283}
   m_Layer: 0
   m_Name: LinkMode
   m_TagString: Untagged
@@ -7353,6 +7549,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0.7254902, g: 0.7529412, b: 0.54509807, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &1587788162230488283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679531407769616087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 2
+  duration: 0.12
 --- !u!1 &3683459156820406170
 GameObject:
   m_ObjectHideFlags: 0
@@ -7916,6 +8130,7 @@ GameObject:
   - component: {fileID: 5882750834728516588}
   - component: {fileID: 2728673155533807161}
   - component: {fileID: 6018754666990815164}
+  - component: {fileID: 72187543459983665}
   m_Layer: 0
   m_Name: Type2
   m_TagString: Untagged
@@ -8089,6 +8304,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &72187543459983665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976079854517339293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &4022276283907354344
 GameObject:
   m_ObjectHideFlags: 0
@@ -8416,6 +8649,7 @@ GameObject:
   - component: {fileID: 8301494737047687582}
   - component: {fileID: 8496203595128058159}
   - component: {fileID: 9136605382690065430}
+  - component: {fileID: 3391655030793489869}
   m_Layer: 0
   m_Name: Type1
   m_TagString: Untagged
@@ -8589,6 +8823,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &3391655030793489869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4244453439345875869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &4335811209691269618
 GameObject:
   m_ObjectHideFlags: 0
@@ -10539,6 +10791,7 @@ GameObject:
   - component: {fileID: 6539733146676564472}
   - component: {fileID: 4819756442697461036}
   - component: {fileID: 1914509992389142730}
+  - component: {fileID: 8526724750932052001}
   m_Layer: 0
   m_Name: Type0
   m_TagString: Untagged
@@ -10712,6 +10965,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &8526724750932052001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333504125730863397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &5353000602230098977
 GameObject:
   m_ObjectHideFlags: 0
@@ -10797,6 +11068,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4902376061764903576}
   - component: {fileID: 4190448431149192070}
+  - component: {fileID: 2099621831867398256}
+  - component: {fileID: 7919572958948588694}
   m_Layer: 0
   m_Name: ChatWindow
   m_TagString: Untagged
@@ -10846,6 +11119,31 @@ MonoBehaviour:
   header: {fileID: 5264079951753470444}
   bossAvatar: {fileID: 21300000, guid: b40a748ccfcd0442f956d0c32ec242d6, type: 3}
   linePrefab: {fileID: 1505503505017873628, guid: 8a171867427624d0ab73041ed8bbc825, type: 3}
+--- !u!225 &2099621831867398256
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481533238503470681}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7919572958948588694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481533238503470681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8358894a24b6436999f6f0a2f3e28c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.PanelFade
+  duration: 0.18
 --- !u!1 &5498723903933939072
 GameObject:
   m_ObjectHideFlags: 0
@@ -11309,6 +11607,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8923347684105930379}
   - component: {fileID: 1071709201423491063}
+  - component: {fileID: 3115919769968332820}
+  - component: {fileID: 920966870555077642}
   m_Layer: 0
   m_Name: TaskWindow
   m_TagString: Untagged
@@ -11363,6 +11663,31 @@ MonoBehaviour:
   build: {fileID: 1184845899848653873}
   buildReason: {fileID: 2880080865263162901}
   filesLabel: {fileID: 4073896896902798502}
+--- !u!225 &3115919769968332820
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972145568423767677}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &920966870555077642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972145568423767677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8358894a24b6436999f6f0a2f3e28c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.PanelFade
+  duration: 0.18
 --- !u!1 &5993080649785396679
 GameObject:
   m_ObjectHideFlags: 0
@@ -12011,6 +12336,7 @@ GameObject:
   - component: {fileID: 3517752936498671488}
   - component: {fileID: 2515619517178061827}
   - component: {fileID: 7138384168893377113}
+  - component: {fileID: 1635906718333943232}
   m_Layer: 0
   m_Name: Type3
   m_TagString: Untagged
@@ -12184,6 +12510,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &1635906718333943232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359598601742459359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &6387637517903798110
 GameObject:
   m_ObjectHideFlags: 0
@@ -12814,6 +13158,7 @@ GameObject:
   - component: {fileID: 4069133542134398480}
   - component: {fileID: 3877136941585072556}
   - component: {fileID: 6845903546045845583}
+  - component: {fileID: 4219988755468711282}
   m_Layer: 0
   m_Name: Pause
   m_TagString: Untagged
@@ -12960,6 +13305,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &4219988755468711282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682013323922966202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &6708457140450476000
 GameObject:
   m_ObjectHideFlags: 0
@@ -12975,6 +13338,7 @@ GameObject:
   - component: {fileID: 701555319217111529}
   - component: {fileID: 8393890554600507818}
   - component: {fileID: 8955457410906037496}
+  - component: {fileID: 3299871861672491272}
   m_Layer: 0
   m_Name: Type4
   m_TagString: Untagged
@@ -13148,6 +13512,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &3299871861672491272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708457140450476000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &6731900253066227821
 GameObject:
   m_ObjectHideFlags: 0
@@ -13163,6 +13545,7 @@ GameObject:
   - component: {fileID: 4990815922644986992}
   - component: {fileID: 4156578978736149566}
   - component: {fileID: 6267247030412108027}
+  - component: {fileID: 1022952117214276540}
   m_Layer: 0
   m_Name: Type5
   m_TagString: Untagged
@@ -13336,6 +13719,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &1022952117214276540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731900253066227821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &6916408813637028304
 GameObject:
   m_ObjectHideFlags: 0
@@ -13587,6 +13988,7 @@ GameObject:
   - component: {fileID: 2505410658095528306}
   - component: {fileID: 3416309706593839210}
   - component: {fileID: 7096753908286378048}
+  - component: {fileID: 5759136408198969689}
   m_Layer: 0
   m_Name: EndDay
   m_TagString: Untagged
@@ -13759,6 +14161,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &5759136408198969689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981004674073696793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &6991430629484477173
 GameObject:
   m_ObjectHideFlags: 0
@@ -14949,6 +15369,7 @@ GameObject:
   - component: {fileID: 8547993608020616726}
   - component: {fileID: 575915324253195193}
   - component: {fileID: 5806638263640149742}
+  - component: {fileID: 5833237595258602630}
   m_Layer: 0
   m_Name: Approve
   m_TagString: Untagged
@@ -15073,6 +15494,24 @@ MonoBehaviour:
   m_EffectColor: {r: 0.72156864, g: 0.6039216, b: 0.11764706, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &5833237595258602630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939591746958638507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 2
+  duration: 0.12
 --- !u!1 &8026857963107992426
 GameObject:
   m_ObjectHideFlags: 0
@@ -16360,6 +16799,7 @@ GameObject:
   - component: {fileID: 7722465306074225436}
   - component: {fileID: 2552312542694266008}
   - component: {fileID: 3001609226965231715}
+  - component: {fileID: 3614661776213192305}
   m_Layer: 0
   m_Name: Backdrop
   m_TagString: Untagged
@@ -16468,6 +16908,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3614661776213192305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924241082210699462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 2
+  duration: 0.12
 --- !u!1 &8948557025666093576
 GameObject:
   m_ObjectHideFlags: 0

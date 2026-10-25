@@ -1,3 +1,4 @@
+using System.Collections;
 using Studio.Core;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace Studio.UI
         public Button startButton, continueButton, confirmYes, confirmNo, settingsButton;
         public TMP_Text continueLabel;
         public GameObject confirm;
+        public CanvasGroup fade;   // optional: the menu fades out before the Game scene loads (docs/UI_MOTION.md)
+        bool leaving;
 
         void Awake()
         {
@@ -46,12 +49,26 @@ namespace Studio.UI
             Session.Nickname = n.Length == 0 ? DefaultName : n;
             Session.Level = DifficultyLevel.Intern;
             Session.Continue = false;
-            SceneManager.LoadScene("Game");
+            Leave();
         }
 
         void OnContinue()
         {
             Session.Continue = true;
+            Leave();
+        }
+
+        void Leave()
+        {
+            if (leaving) return;
+            leaving = true;
+            if (fade != null) StartCoroutine(FadeThenLoad()); else SceneManager.LoadScene("Game");
+        }
+
+        IEnumerator FadeThenLoad()
+        {
+            fade.interactable = false;
+            for (float t = 0; t < 0.22f; t += Time.unscaledDeltaTime) { fade.alpha = 1 - t / 0.22f; yield return null; }
             SceneManager.LoadScene("Game");
         }
     }

@@ -48,7 +48,7 @@ namespace Studio.UI.Mvp
         }
 
         public void OnPointerClick(PointerEventData e) { if (!dragged) owner.Clicked(block); }
-        public void OnBeginDrag(PointerEventData e) => dragged = true;
+        public void OnBeginDrag(PointerEventData e) { dragged = true; transform.localScale = Vector3.one * 1.06f; }   // lifted while held; the view is rebuilt on drop
 
         public void OnDrag(PointerEventData e)
         {

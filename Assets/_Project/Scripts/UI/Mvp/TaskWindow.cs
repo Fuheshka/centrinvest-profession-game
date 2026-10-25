@@ -17,14 +17,17 @@ namespace Studio.UI.Mvp
         public Button build;
         public TMP_Text buildReason, filesLabel;
         float redrawTimer;
+        readonly HashSet<string> doneShown = new HashSet<string>();   // files already in the tray: only a new one gets the arrival accent
+        bool trayInited;
 
         void Awake()
         {
             game.Changed += Tick;
+            build.gameObject.AddComponent<SfxButton>().fx = Fx.Confirm;
             build.onClick.AddListener(Build);
         }
 
-        void OnEnable() => Redraw();
+        void OnEnable() { trayInited = false; Redraw(); }
 
         void Tick()
         {
@@ -81,9 +84,13 @@ namespace Studio.UI.Mvp
                 var t = s.tasks[i];
                 var ic = slot.transform.GetChild(0).GetComponent<Image>();
                 ic.sprite = t.d == Discipline.Design ? fileDesign : t.d == Discipline.Mechanics ? fileMechanics : fileSound;
+                bool arrived = t.done && trayInited && doneShown.Add(t.id);
+                if (t.done) doneShown.Add(t.id); else doneShown.Remove(t.id);
                 ic.gameObject.SetActive(t.done);
+                if (arrived) { Pulse.Pop(this, slot.transform, 1.3f, 0.5f); }
                 slot.color = t.done ? Palette.Primary : Palette.Hex("3A2A20");
             }
+            trayInited = true;
             bool ok = Review.CanBuild(s, l, out var reason);
             build.interactable = ok;
             buildReason.text = ok ? "Все файлы готовы – можно собирать." : reason ?? "";

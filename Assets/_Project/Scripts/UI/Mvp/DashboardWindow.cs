@@ -26,12 +26,14 @@ namespace Studio.UI.Mvp
         void Awake()
         {
             for (int i = 0; i < palette.Length; i++) { var t = (BlockType)i; palette[i].onClick.AddListener(() => Place(t)); }
+            approve.gameObject.AddComponent<SfxButton>().fx = Fx.Confirm;
             approve.onClick.AddListener(() => { if (ConceptRules.Approve(game.S, game.L)) { game.Commit(); FindAnyObjectByType<TopBarMvp>()?.Show(2); } });
             linkMode.onClick.AddListener(() => { linking = !linking; linkFrom = null; Redraw(); });
             game.Changed += OnChanged;
         }
 
         void OnEnable() => Redraw();
+        string popBlock, popLink, nudgeBlock;   // one-shot accents for the view that is rebuilt right after a real change
         int drawnHash;
         void OnChanged() { if (isActiveAndEnabled && Hash() != drawnHash) Redraw(); }
         int Hash() => game.S == null ? 0 : JsonUtility.ToJson(game.S.concept).GetHashCode() ^ (linking ? 1 : 0) ^ (linkFrom?.GetHashCode() ?? 0);
@@ -40,7 +42,8 @@ namespace Studio.UI.Mvp
         {
             int n = game.S.concept.blocks.Count;
             float x = 160 + (n % 3) * 360, y = -130 - (n / 3) * 280;
-            if (ConceptRules.Place(game.S, game.L, t, x, y) != null) { game.Commit(); Redraw(); }
+            var placed = ConceptRules.Place(game.S, game.L, t, x, y);
+            if (placed != null) { popBlock = placed; game.Commit(); Redraw(); }
         }
 
         public void Clicked(Block b)
@@ -53,9 +56,11 @@ namespace Studio.UI.Mvp
                 else if (game.S.concept.links.Count < ConceptRules.MaxLinks && ConceptRules.CanLink(game.S.concept.blocks.Find(x => x.id == linkFrom).type, b.type))
                 {
                     ConceptRules.Connect(game.S, linkFrom, b.id);
+                    popLink = linkFrom + "|" + b.id;
                     linkFrom = null;
                     game.Commit();
                 }
+                else nudgeBlock = b.id;   // refused: too many links or no rule for this pair
                 Redraw();
                 return;
             }
@@ -69,6 +74,7 @@ namespace Studio.UI.Mvp
                         Redraw();
                         return;
                     }
+                    popBlock = b.id;
                     game.Commit();
                     Redraw();
                 }, b.paramId == pid ? 1 : 0)); }
@@ -84,7 +90,7 @@ namespace Studio.UI.Mvp
                 PlaceLink(link, view);
         }
 
-        public void Moved(Block b, Vector2 pos) { ConceptRules.Move(game.S, b.id, pos.x, pos.y); SaveSystem.SaveLevel(game.S); Redraw(); }
+        public void Moved(Block b, Vector2 pos) { popBlock = b.id; ConceptRules.Move(game.S, b.id, pos.x, pos.y); SaveSystem.SaveLevel(game.S); Redraw(); }
 
         public void LinkClicked(ConceptLink link)
         {
@@ -153,6 +159,12 @@ namespace Studio.UI.Mvp
             string count = " " + s.concept.links.Count + "/" + ConceptRules.MaxLinks;
             mode.text = linking ? (linkFrom == null ? "Выбери первый блок" : "Выбери второй блок") + count : "Связать блоки" + count;
             tagLayer.SetAsLastSibling();
+            if (popBlock != null && views.TryGetValue(popBlock, out var pv)) Pulse.Pop(this, pv.transform, 1.07f, 0.25f);
+            if (nudgeBlock != null && views.TryGetValue(nudgeBlock, out var nv)) Pulse.Nudge(this, nv.transform);
+            if (popLink != null)
+                foreach (var (lk, lv) in linkViews)
+                    if (popLink == lk.a + "|" + lk.b || popLink == lk.b + "|" + lk.a) Pulse.Pop(this, lv.tag, 1.3f, 0.4f);
+            popBlock = popLink = nudgeBlock = null;
             linkMode.interactable = !s.concept.approved;
         }
 

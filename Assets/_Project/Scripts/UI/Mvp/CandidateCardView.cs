@@ -14,6 +14,8 @@ namespace Studio.UI.Mvp
         public Button hire, fire;
         public Color speedOn = Palette.Hex("E7CC38"), qualityOn = Palette.Hex("718733"), off = Palette.Hex("D9D6C3");
 
+        bool wasHired, inited;
+
         void Awake()
         {
             rate.enableAutoSizing = true;
@@ -37,6 +39,8 @@ namespace Studio.UI.Mvp
         // hired: the main button turns into a quiet "in the team" mark and a small fire button appears
         public void SetHire(bool hired, string label, bool canHire, UnityEngine.Events.UnityAction onHire, UnityEngine.Events.UnityAction onFire)
         {
+            if (inited && hired && !wasHired) Pulse.Pop(this, transform, 1.05f, 0.35f);   // only a real hire, not a redraw or a load
+            wasHired = hired; inited = true;
             hireLabel.text = hired ? "В команде" : label;
             hire.interactable = !hired && canHire;
             var img = hire.targetGraphic as Image;

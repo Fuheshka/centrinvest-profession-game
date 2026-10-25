@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4371922207739245012}
   - component: {fileID: 9037697557768227972}
   - component: {fileID: 6611680968264502450}
+  - component: {fileID: 5911112936030297854}
   m_Layer: 0
   m_Name: Option
   m_TagString: Untagged
@@ -144,6 +145,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &5911112936030297854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129199458059577413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 2
+  duration: 0.12
 --- !u!1 &7403492864386849079
 GameObject:
   m_ObjectHideFlags: 0

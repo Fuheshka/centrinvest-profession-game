@@ -13,6 +13,17 @@ namespace Studio.UI.Mvp
         public Button assign, up;
         public TMP_Text assignLabel;
 
+        float shown = -1, target;   // displayed progress follows the real one; never runs ahead of it
+        bool wasDone, inited;
+
+        void Update()
+        {
+            if (shown < 0 || Mathf.Approximately(shown, target)) return;
+            shown = Mathf.MoveTowards(shown, target, Time.unscaledDeltaTime * 0.6f);
+            fill.anchorMax = new Vector2(shown, 1);
+            percent.text = Mathf.RoundToInt(shown * 100) + "%";
+        }
+
         public static TaskRowView At(Transform list, TaskRowView prefab, int i)
         {
             while (list.childCount <= i) Instantiate(prefab, list);
@@ -28,8 +39,12 @@ namespace Studio.UI.Mvp
             if (face != null) avatar.sprite = face;
             who.text = whoText; role.text = roleText;
             status.text = statusText; statusBg.color = statusColor;
-            percent.text = Mathf.RoundToInt(progress * 100) + "%";
-            fill.anchorMax = new Vector2(Mathf.Clamp01(progress), 1);
+            target = Mathf.Clamp01(progress);
+            if (shown < 0 || target < shown) shown = target;   // first draw, a reassigned row or a reset: no tween
+            fill.anchorMax = new Vector2(shown, 1);
+            percent.text = Mathf.RoundToInt(shown * 100) + "%";
+            if (inited && done && !wasDone) Pulse.Pop(this, transform, 1.03f, 0.4f);   // once, on the real transition to done
+            wasDone = done; inited = true;
             background.color = done ? Palette.Hex("EEF4DC") : Palette.Hex("FBF8EA");
         }
     }

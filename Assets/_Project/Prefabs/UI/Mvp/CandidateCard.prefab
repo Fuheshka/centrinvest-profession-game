@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 2985877272959908008}
   - component: {fileID: 5634225535533124672}
   - component: {fileID: 4280194243024554112}
+  - component: {fileID: 2032167478106962649}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -297,6 +298,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &2032167478106962649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207564793753864533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &701700759324585749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2049,7 @@ GameObject:
   - component: {fileID: 1026253233115356929}
   - component: {fileID: 4832453825412931824}
   - component: {fileID: 8661595046904882461}
+  - component: {fileID: 5797897754962261179}
   m_Layer: 0
   m_Name: Hire
   m_TagString: Untagged
@@ -2176,6 +2196,24 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &5797897754962261179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629637966482049257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c485463851334a4fa8b7a5126951585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Studio.UI::Studio.UI.Mvp.ButtonMotion
+  target: {fileID: 0}
+  focusOutline: {fileID: 0}
+  hoverScale: 1.03
+  pressScale: 0.96
+  hoverLift: 0
+  duration: 0.12
 --- !u!1 &7661553905943922038
 GameObject:
   m_ObjectHideFlags: 0

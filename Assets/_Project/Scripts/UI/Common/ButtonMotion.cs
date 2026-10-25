@@ -15,7 +15,8 @@ namespace Studio.UI.Mvp
         public float hoverScale = 1.03f, pressScale = 0.96f, hoverLift = 2f, duration = 0.12f;
 
         Selectable button;
-        Vector3 baseScale; Vector2 basePos;
+        Vector3 baseScale;
+        float lift;   // current applied lift in px; applied as a delta so the button's own position is never stored or overwritten
         bool hover, down;
         Coroutine run;
 
@@ -23,11 +24,13 @@ namespace Studio.UI.Mvp
         {
             button = GetComponent<Selectable>();
             if (target == null) target = (RectTransform)transform;
-            baseScale = target.localScale; basePos = target.anchoredPosition;
+            baseScale = target.localScale;
             if (focusOutline != null) focusOutline.enabled = false;
         }
 
-        void OnDisable() { hover = down = false; target.localScale = baseScale; target.anchoredPosition = basePos; }
+        void OnDisable() { hover = down = false; target.localScale = baseScale; Lift(0); }
+
+        void Lift(float to) { if (to == lift) return; target.anchoredPosition += Vector2.up * (to - lift); lift = to; }
 
         public void OnPointerEnter(PointerEventData e) { hover = true; Play(); }
         public void OnPointerExit(PointerEventData e) { hover = down = false; Play(); }
@@ -40,22 +43,23 @@ namespace Studio.UI.Mvp
         {
             bool live = button.IsInteractable();
             float s = !live ? 1 : down ? pressScale : hover ? hoverScale : 1;
-            float lift = live && hover && !down ? hoverLift : 0;
+            float want = live && hover && !down ? hoverLift : 0;
             if (run != null) StopCoroutine(run);
-            if (isActiveAndEnabled) run = StartCoroutine(Tween(baseScale * s, basePos + Vector2.up * lift));
+            if (isActiveAndEnabled) run = StartCoroutine(Tween(baseScale * s, want));
         }
 
-        IEnumerator Tween(Vector3 scale, Vector2 pos)
+        IEnumerator Tween(Vector3 scale, float liftTo)
         {
-            Vector3 s0 = target.localScale; Vector2 p0 = target.anchoredPosition;
+            Vector3 s0 = target.localScale; float l0 = lift;
             for (float t = 0; t < duration; t += Time.unscaledDeltaTime)
             {
                 float k = 1 - (1 - t / duration) * (1 - t / duration);   // ease-out
                 target.localScale = Vector3.LerpUnclamped(s0, scale, k);
-                target.anchoredPosition = Vector2.LerpUnclamped(p0, pos, k);
+                Lift(Mathf.LerpUnclamped(l0, liftTo, k));
                 yield return null;
             }
-            target.localScale = scale; target.anchoredPosition = pos;
+            target.localScale = scale;
+            Lift(liftTo);
         }
     }
 }
