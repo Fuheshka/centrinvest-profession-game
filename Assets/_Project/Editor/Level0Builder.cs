@@ -88,20 +88,10 @@ public static class Level0Builder
             C("kostya", "Костя", M, 2, 2), C("dima", "Дима", M, 1, 3),
             C("anya", "Аня", S, 2, 3), C("gosha", "Гоша", S, 1, 2),
         };
-        l.events = new List<EventDef>
-        {
-            Ev("ref", D, false, "Нашёл(ла) крутой референс, но придётся пересобрать часть арта. Пересобираем?", ("Пересобрать", "Принято, пересобираю. Будет красивее.", -10, 0.12f, 0), ("Не надо", "Ок, остаёмся на текущем.", 3, 0, 0)),
-            Ev("pack", D, false, "Затык на детали. Можно купить готовый пак ассетов за 2 000, а можно нарисовать самому.", ("Купить пак", "Беру пак, сэкономлю время.", 0, 0.15f, -2000), ("Рисуй сам(а)", "Нарисую, но это займёт силы.", -8, 0.05f, 0)),
-            Ev("bug", M, false, "Нашёл(ла) баг в старом коде. Чинить сейчас?", ("Чинить", "Починил(а). Теперь спокойнее.", -6, 0.08f, 0), ("Потом", "Ладно, оставлю на потом.", 0, 0.04f, 0)),
-            Ev("physics", M, false, "Предлагаю упростить физику: быстрее, но менее красиво.", ("Упростить", "Упростил(а), дело пошло.", 5, 0.2f, 0), ("Оставить", "Оставляем как задумано.", 0, 0, 0)),
-            Ev("track", S, false, "Есть классный трек у знакомого композитора, 3 000. Берём?", ("Купить трек", "Беру трек, ставлю в игру.", 0, 0.2f, -3000), ("Сделаю сам(а)", "Сделаю сам(а), выйдет дешевле.", -6, 0.06f, 0)),
-            Ev("headache", S, false, "Голова гудит от наушников. Нужен перерыв?", ("Отдохни", "Спасибо, схожу на воздух.", 12, 0, 0), ("Дожми", "Ладно, дожму.", -8, 0.08f, 0)),
-            Ev("coffee", D, true, "Устал(а). Можно кофе за счёт студии, 500.", ("Кофе", "Спасибо! Бодрее.", 10, 0, -500), ("Терпи", "Хорошо, потерплю.", -5, 0.05f, 0)),
-            Ev("noise", D, true, "В офисе шумно. Надеть наушники и ускориться или позвать всех на обед за 1 000?", ("Наушники", "Надел(а), работаю.", 0, 0.06f, 0), ("Обед", "Все довольны.", 8, 0, -1000)),
-        };
+        l.events = Events();
         l.texts = new List<TextDef>
         {
-            T("approved", "Концепт принят. Теперь хедхантер: найми людей на дизайн, механики и звук, потом раздай задачи в таск-листе. С этой минуты пошёл рабочий день – 5 минут."),
+            T("approved", "Концепт принят. Теперь хедхантер: найми людей на дизайн, механики и звук, потом раздай задачи в таск-листе."),
             T("morning", "Утро, день {day}. До дедлайна дней: {left}. Уставшие отдохнули – проверь задачи."),
             T("last_day", "Последний день! Собери игру до конца дня, иначе заказчику нечего показать."),
             T("passed", "«Южный капитал» принял игру. Уровень пройден!"),
@@ -122,6 +112,102 @@ public static class Level0Builder
 
     static ParamDef P(string id, BlockType t, string title, int tier = 0) => new ParamDef { id = id, type = t, title = title, tier = tier };
     static CandidateDef C(string id, string n, Discipline d, int sp, int q) => new CandidateDef { id = id, name = n, d = d, speed = sp, quality = q };
+    // Rewrites only the event list: Build() would also reset candidates, portraits and every other inspector edit.
+    [MenuItem("Tools/Level0/Rebuild events only")]
+    public static void RebuildEvents()
+    {
+        var l = AssetDatabase.LoadAssetAtPath<LevelSO>(Path);
+        l.events = Events();
+        EditorUtility.SetDirty(l);
+        AssetDatabase.SaveAssets();
+        Debug.Log("Level0 events rebuilt: " + l.events.Count);
+    }
+
+    // docs/EVENTS.md describes the same list. Senders: an employee of discipline d, anyone, or the boss.
+    static List<EventDef> Events()
+    {
+        const Discipline D = Discipline.Design, M = Discipline.Mechanics, S = Discipline.Sound;
+        return new List<EventDef>
+        {
+            // Company-wide
+            Ev("power", D, "Привет, слушай, подскажи, у нас вырубили электричество, что нам делать? Компы не работают, ну и мы тоже не можем.",
+                O("Выходной", "Ну и славно. Отдыхаем, а завтра с новыми силами.", endDay: true),
+                O("Коворкинг", "Супер, я уже собираю ноутбук. Там хоть розетки есть.", budget: -5000),
+                O("Скоро починят", "Ждём тогда. Надеюсь, файлы сохранились...", failChance: 0.5f, failAll: -0.05f)),
+            Ev("internet", "Сообщение от компании: беспилотная опасность! Интернета до завтра не будет. Возможно, полностью.",
+                O("Работайте на мобильном", "Раздаём с телефонов. Медленно, но работаем.", speed: 0.5f, speedAll: true),
+                O("Работайте без интернета", "Без сети так без сети. Только справочников под рукой нет.", speed: 0.25f, speedAll: true)),
+            Ev("slop", M, "Это ужасно, наша игра – кусок сырого и вообще ни капли не проработанного нейрослопа! Ты попробуй диалоги почитать, я клянусь тебе, немой лучше скажет.",
+                O("Я проверю работы команды", "Понял. Команда, всем показать, что уже сделано.", teamEnergy: -60, progressAll: 0.10f, disc: new[] { (D, -0.20f) })),
+            // Artist
+            Ev("art_detail", D, "Я всё поняла, но кое-что не поняла – какой у нас уровень детализации в прологе? Как в Last Night, Replaced и такое всё или попроще? Если так, то нужно сразу поговорить о доплате.",
+                O("Да, сделай красиво", "Тогда рисую по максимуму. Пролог будет выглядеть как надо.", budget: -30000, progress: 0.15f),
+                O("Нет, делаем всё «по-стандарту»", "Поняла, без излишеств.")),
+            Ev("art_pics", D, "Охаёшечки-даттебаешечки! Сэмпай должен мне помочь выбрать. Я набросала разные вариантики, посмотри, что тут больше каваииии.",
+                O("Просмотрю позже", "Хорошо, сэмпай! Тогда пока оставлю все три."),
+                O("Выбери на своё усмотрение", "Сама выберу? Тогда третий, он самый каваииии!")),
+            Ev("art_ai", D, "Я нагенерила пикч, но они слишком ИИ-шные. Давай я их просто зашакалю, испорчу и вставлю типо я сделала? Ок, да?",
+                O("Ок, да", "Зашакалю так, что никто не отличит. Время сэкономлю.", progress: 0.10f),
+                O("Нет/Нет", "Ладно... Нарисую всё сама, придётся начинать заново.", progress: -0.10f)),
+            // Programmer
+            Ev("croak", M, "У меня проблема (не прикол). В проекте вирус, не могу убрать. Время от времени после билда я слышу в проекте чьё-то квакание. Это не критично, но мне кажется, рано или поздно это может начать надоедать.",
+                O("Пусть квакает", "Ладно, пусть будет. Ква.", croak: true),
+                O("Убирай немедленно", "Понял, лезу в логи. Это надолго.", energy: -20)),
+            Ev("yoda", M, "У меня снова проблема (и это снова не прикол). Я добавил для теста модельку Йоды из «Звёздных войн», но вместо зелёного чудища тут какой-то бородатый мужик. Пытаюсь удалить – недостаточно прав и смешной (как по мне) мем в логи про IT.", after: "croak",
+                O("Кажется, я знаю, кто это (YODA остаётся)", "Ладно, пусть живёт. Бородатый Йода – тоже Йода."),
+                O("Избавься от него", "Ещё раз и ещё раз... Всё, удалил. Силы ушли.", energy: -50)),
+            // Musician
+            Ev("fl", S, "Привет, у меня траблы небольшие – мне нужно fl'ку оплатить, чтоб работать, это 1,5к. Закинешь вечнозелёных?",
+                O("Отказать", "Раскусил, да? Ладно, работаю на том, что есть.", progress: 0.10f),
+                O("Ладно", "Спасибо! Ты попался в финансовую ловушку, но трек теперь пойдёт.", budget: -1500, progress: 0.10f)),
+            Ev("half_track", S, "Ещё вопросик один обкашлять нужно – я не успеваю закончить трек, я чётко половину набросал.", after: "fl",
+                O("Просто продублируй имеющееся", "Скопирую половину в зацикленном виде. Никто не заметит.", progress: 0.05f),
+                O("Останься и доработай", "Эх... Остаюсь. Но это будет стоить денег и сил.", budget: -2000, energy: -30, progress: 0.20f)),
+            // Writer
+            Ev("writer1", M, "«Кусок нейрослопа». Сам пиши, если тебя что-то не устраивает. Либо я делаю свою работу так, как захочу, либо я её не делаю.", after: "slop",
+                O("Занимайся. Делай", "Вот и славно. Сейчас будет шедевр.", progress: 0.15f),
+                O("Я сказал «Нет»", "Ах так?! Хорошо, сделаю, но потом не жалуйся.", energy: -40, progress: 0.20f)),
+            Ev("writer2", M, "Всё. На***. Я за******. Я не могу больше этим заниматься, я увольняюсь.", after: "writer1",
+                O("Давай я просто буду больше тебе платить?", "Хм. Это другой разговор. Остаюсь.", rate: 100),
+                O("Давай ты просто отдохнёшь?", "Наверное, ты прав. Сегодня просто поваляюсь.", speed: 0.5f),
+                O("Ладно.", "Вот и поговорили. Всего хорошего.", fire: M)),
+            // Small talk, kept from the first version and re-voiced
+            Ev("ref", D, false, "Нашёл(ла) крутой референс, но придётся пересобрать часть арта. Пересобираем?", ("Пересобрать", "Принято, пересобираю. Будет красивее.", -10, 0.12f, 0), ("Не надо", "Ок, остаёмся на текущем.", 3, 0, 0)),
+            Ev("pack", D, false, "Затык на детали. Можно купить готовый пак ассетов за 2 000, а можно нарисовать самому.", ("Купить пак", "Беру пак, сэкономлю время.", 0, 0.15f, -2000), ("Рисуй сам(а)", "Нарисую, но это займёт силы.", -8, 0.05f, 0)),
+            Ev("bug", M, false, "Нашёл(ла) баг в старом коде. Чинить сейчас?", ("Чинить", "Починил(а). Теперь спокойнее.", -6, 0.08f, 0), ("Потом", "Ладно, оставлю на потом.", 0, 0.04f, 0)),
+            Ev("physics", M, false, "Предлагаю упростить физику: быстрее, но менее красиво.", ("Упростить", "Упростил(а), дело пошло.", 5, 0.2f, 0), ("Оставить", "Оставляем как задумано.", 0, 0, 0)),
+            Ev("track", S, false, "Есть классный трек у знакомого композитора, 3 000. Берём?", ("Купить трек", "Беру трек, ставлю в игру.", 0, 0.2f, -3000), ("Сделаю сам(а)", "Сделаю сам(а), выйдет дешевле.", -6, 0.06f, 0)),
+            Ev("headache", S, false, "Голова гудит от наушников. Нужен перерыв?", ("Отдохни", "Спасибо, схожу на воздух.", 12, 0, 0), ("Дожми", "Ладно, дожму.", -8, 0.08f, 0)),
+            Ev("coffee", D, true, "Устал(а). Можно кофе за счёт студии, 500.", ("Кофе", "Спасибо! Бодрее.", 10, 0, -500), ("Терпи", "Хорошо, потерплю.", -5, 0.05f, 0)),
+            Ev("noise", D, true, "В офисе шумно. Надеть наушники и ускориться или позвать всех на обед за 1 000?", ("Наушники", "Надел(а), работаю.", 0, 0.06f, 0), ("Обед", "Все довольны.", 8, 0, -1000)),
+        };
+    }
+
+    static EventOption O(string label, string reply, float energy = 0, float progress = 0, int budget = 0, float teamEnergy = 0, float progressAll = 0,
+        (Discipline d, float share)[] disc = null, float speed = 0, bool speedAll = false, float failChance = 0, float failAll = 0, int rate = 0,
+        bool endDay = false, bool croak = false, Discipline? fire = null)
+    {
+        var o = new EventOption { label = label, reply = reply, energy = energy, progress = progress, budget = budget, teamEnergy = teamEnergy, progressAll = progressAll,
+            speed = speed, speedAll = speedAll, failChance = failChance, failAll = failAll, rate = rate, endDay = endDay, croak = croak, fire = fire.HasValue ? (int)fire.Value : -1 };
+        if (disc != null) foreach (var x in disc) o.disc.Add(new DiscShare { d = x.d, share = x.share });
+        return o;
+    }
+    static EventDef Ev(string id, Discipline d, string text, params EventOption[] opts) => Ev(id, d, text, null, null, opts);
+    static EventDef Ev(string id, Discipline d, string text, string after, params EventOption[] opts) => Ev(id, d, text, null, after, opts);
+    static EventDef Ev(string id, Discipline d, string text, Discipline[] needs, params EventOption[] opts) => Ev(id, d, text, needs, null, opts);
+    static EventDef Ev(string id, string text, params EventOption[] opts)   // from the boss
+    {
+        var e = Ev(id, Discipline.Design, text, null, null, opts);
+        e.boss = true;
+        return e;
+    }
+    static EventDef Ev(string id, Discipline d, string text, Discipline[] needs, string after, EventOption[] opts)
+    {
+        var e = new EventDef { id = id, d = d, text = text, after = after };
+        if (needs != null) e.needs.AddRange(needs);
+        e.options.AddRange(opts);
+        return e;
+    }
     static EventDef Ev(string id, Discipline d, bool anyone, string text, params (string label, string reply, float energy, float progress, int budget)[] opts)
     {
         var e = new EventDef { id = id, d = d, anyone = anyone, text = text };

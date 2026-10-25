@@ -34,6 +34,28 @@ public static class DebugState
         g.Commit();
     }
 
+    [MenuItem("Tools/UI/Debug: event chat")]
+    public static void EventChat()
+    {
+        Production();
+        var g = Object.FindFirstObjectByType<GameLoop>();
+        var s = g.S;
+        foreach (var e in s.staff) e.currentTaskId = s.tasks.Find(t => t.assigneeId == e.id)?.id;
+        foreach (var (id, who) in new[] { ("art_pics", "lera"), ("croak", "kostya") })
+        {
+            s.pendingEvents.Add(new PendingEvent { eventId = id, employeeId = who });
+            s.Say(who, "event", g.L.events.Find(x => x.id == id).text, id);
+        }
+        g.Commit();
+        var chat = Object.FindFirstObjectByType<ChatWindow>();   // open Lera's chat
+        var t = typeof(ChatWindow);
+        t.GetField("open", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(chat, "lera");
+        t.GetMethod("Redraw", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)?.Invoke(chat, null);
+    }
+
+    [MenuItem("Tools/UI/Debug: clear level save")]
+    public static void ClearSave() { PlayerPrefs.DeleteKey(SaveSystem.LevelKey); PlayerPrefs.Save(); }
+
     [MenuItem("Tools/UI/Debug: negative review")]
     public static void NegativeReview()
     {

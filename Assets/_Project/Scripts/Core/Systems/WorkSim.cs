@@ -52,6 +52,9 @@ namespace Studio.Core
             e.paidDay = s.day;
         }
 
+        // An employee with an unanswered question from the chat stops until the player answers.
+        static bool Asking(LevelState s, EmployeeState e) => s.pendingEvents.Exists(p => p.employeeId == e.id);
+
         static bool Ready(LevelSO level, EmployeeState e, TaskState t) =>
             e.energy >= level.tuning.TierEnergy(t.tier) || (e.currentTaskId == t.id && e.energy > 0);
 
@@ -71,6 +74,7 @@ namespace Studio.Core
             if (t.done) return WorkStatus.Done;
             var e = t.assigneeId == null ? null : s.Employee(t.assigneeId);
             if (e == null) { why = WaitReason.NoAssignee; return WorkStatus.Open; }
+            if (Asking(s, e)) { why = WaitReason.Question; return WorkStatus.Waiting; }
             if (!Ready(level, e, t)) { why = WaitReason.NoEnergy; return WorkStatus.Waiting; }
             if (!CanPay(s, level, e)) { why = WaitReason.NoBudget; return WorkStatus.Waiting; }
             if (Pick(s, level, e) != t) { why = WaitReason.NotFirst; return WorkStatus.Queued; }
@@ -99,7 +103,7 @@ namespace Studio.Core
             foreach (var e in s.staff)
             {
                 var t = Pick(s, level, e);
-                if (t != null && !CanPay(s, level, e)) t = null;
+                if (t != null && (!CanPay(s, level, e) || Asking(s, e))) t = null;
                 if (t == null)
                 {
                     e.currentTaskId = null;
@@ -110,7 +114,7 @@ namespace Studio.Core
                 e.currentTaskId = t.id;
                 var c = level.Candidate(e.id);
                 float q = tu.qualityBase + tu.qualityPerPoint * c.quality - (e.energy < tu.fatigueBelow ? tu.fatiguePenalty : 0);
-                float pts = Mathf.Min(c.speed * h, t.effort - t.progress);
+                float pts = Mathf.Min(c.speed * h * s.Mul(e.d), t.effort - t.progress);
                 t.progress += pts;
                 t.qualitySum += q * pts;
                 e.energy = Mathf.Max(0, e.energy - tu.drainPerSecond * h);
@@ -138,6 +142,7 @@ namespace Studio.Core
                 s.files.Add(f);
             }
             string text = f.title + " · v" + f.revision + " · качество " + Mathf.RoundToInt(f.quality);
+            s.Say(e.id, "text", t.isFix ? "Готово, поправил(а): " + f.title : "Готово: " + f.title);
             s.Say(e.id, "file", text, f.id);
             if (s.tasks.TrueForAll(x => x.done)) s.Say(LevelState.Boss, "text", level.Text("all_done", "Все файлы готовы. Заходи во вкладку «Задачи» и собирай игру."));
         }
@@ -164,6 +169,7 @@ namespace Studio.Core
             }
             s.day++;
             s.dayElapsed = 0;
+            s.mulDesign = s.mulMech = s.mulSound = 1;
             bool last = s.day >= s.deadline;
             s.Say(LevelState.Boss, "text", last
                 ? level.Text("last_day", "Последний день. Собери игру до конца дня.")

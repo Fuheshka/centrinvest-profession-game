@@ -22,6 +22,7 @@ namespace Studio.Core
         public Discipline d;
         public float energy = 100;
         public int paidDay;
+        public int rateBonus;             // raised by events, on top of the candidate's rate
         public string currentTaskId;      // started task: continues below the tier threshold until energy is 0
     }
 
@@ -95,7 +96,9 @@ namespace Studio.Core
         public List<PendingEvent> pendingEvents = new List<PendingEvent>();
         public List<string> eventsSeen = new List<string>();
         public float eventTimer;
-        public bool eventsStarted;
+        public bool eventsStarted, croak;
+        public float croakTimer;
+        public float mulDesign = 1, mulMech = 1, mulSound = 1;   // today's speed multipliers from events, reset every morning
         public FailReason failReason;
         public int score;
 
@@ -118,6 +121,9 @@ namespace Studio.Core
 
         public void Say(string chatId, string kind, string text, string refId = null) =>
             chat.Add(new ChatEntry { chatId = chatId, day = day, kind = kind, text = text, refId = refId });
+
+        public float Mul(Discipline d) => d == Discipline.Design ? mulDesign : d == Discipline.Mechanics ? mulMech : mulSound;
+        public void SetMul(Discipline d, float v) { if (d == Discipline.Design) mulDesign = v; else if (d == Discipline.Mechanics) mulMech = v; else mulSound = v; }
 
         public EmployeeState Employee(string id) => staff.Find(e => e.id == id);
         public TaskState Task(string id) => tasks.Find(t => t.id == id);

@@ -27,6 +27,14 @@ namespace Studio.UI.Mvp
         void Awake() => game.Changed += Redraw;
         void OnEnable() { drawnCount = -1; Redraw(); }
 
+        // Jump to the chat with one employee (from the task list).
+        public void Open(string id)
+        {
+            open = id;
+            drawnCount = -1;
+            FindAnyObjectByType<TopBarMvp>().Show(0);
+        }
+
         void Redraw()
         {
             if (game.S == null || !isActiveAndEnabled) return;
@@ -69,13 +77,19 @@ namespace Studio.UI.Mvp
                 line.GetComponent<HorizontalLayoutGroup>().childAlignment = mine ? TextAnchor.UpperRight : TextAnchor.UpperLeft;
                 var row = Instantiate(messagePrefab, line);
                 var le = row.GetComponent<LayoutElement>() ?? row.gameObject.AddComponent<LayoutElement>();
-                le.preferredWidth = Mathf.Clamp(row.title.GetPreferredValues(m.text, 820, 0).x + 64, 260, 880);   // a bubble hugs its text
-                row.Set(m.text, "день " + m.day);
+                le.preferredWidth = Mathf.Clamp(row.title.GetPreferredValues(Emphasize(m.text), 820, 0).x + 64, 260, 880);   // a bubble hugs its text
+                le.flexibleWidth = 0; le.minWidth = 0;
+                row.Set(m.kind == "me" ? m.text : Emphasize(m.text), "день " + m.day);
                 row.title.font = row.subtitle.font;   // message text is body text, not a heading
+                // Telegram-like: text on the left, small time stamp at the bottom right of the bubble
+                row.title.alignment = TMPro.TextAlignmentOptions.TopLeft;
+                row.subtitle.alignment = TMPro.TextAlignmentOptions.BottomRight;
+                row.subtitle.fontSize = 16;
+                row.subtitle.color = m.kind == "me" ? Palette.Hex("5E8A4C") : Palette.Hex("8A8F72");
                 row.background.color = m.kind == "file" ? Palette.Cream : m.kind == "review" ? Palette.Yellow : Palette.Hex("FBF8EA");
                 if (m.kind == "file") FileAttachment(row, m);
                 else if (m.kind == "event") EventButtons(row, m);
-                else if (m.kind == "me") { row.background.color = Palette.Hex("CFE8B8"); row.title.alignment = row.subtitle.alignment = TMPro.TextAlignmentOptions.TopRight; row.Button1(null, false, null); }
+                else if (m.kind == "me") { row.background.color = Palette.Hex("CFE8B8"); row.Button1(null, false, null); }
                 else row.Button1(null, false, null);
                 if (fresh) Pulse.Pop(this, row.transform, 1.04f, 0.3f);
             }
@@ -110,12 +124,40 @@ namespace Studio.UI.Mvp
             var def = game.L.events.Find(x => x.id == m.refId);
             if (def == null || EventRules.Find(game.S, m.refId, m.chatId) == null) return;   // already answered
             row.background.color = Palette.Hex("FBF8EA");
-            row.Set(m.text);
-            row.Button1(Choice(def.options[0].label, Names.Effects(def.options[0])), true, () => Pick(m, 0, row));
-            row.Button2(Choice(def.options[1].label, Names.Effects(def.options[1])), true, () => Pick(m, 1, row));
-            StyleChoice(row.button1, row.button1Label, Palette.Olive);
-            StyleChoice(row.button2, row.button2Label, Palette.Hex("657936"));
+            row.Set(Emphasize(m.text));
+            // The bubble keeps only the text; answers sit under it, two per row.
+            var buttons = new List<Button>();
+            RowView r = null;
+            for (int j = 0; j < def.options.Count; j++)
+            {
+                int k = j;
+                if (j % 2 == 0) r = ChoiceRow(row.GetComponent<LayoutElement>().preferredWidth);
+                string label = Choice(def.options[j].label, Names.Effects(def.options[j]));
+                UnityEngine.Events.UnityAction act = () => Pick(m, k, row, buttons);
+                if (j % 2 == 0) { r.Button1(label, true, act); buttons.Add(r.button1); StyleChoice(r.button1, r.button1Label, Palette.Olive); }
+                else { r.Button2(label, true, act); buttons.Add(r.button2); StyleChoice(r.button2, r.button2Label, Palette.Hex("657936")); }
+            }
         }
+
+        RowView ChoiceRow(float width)
+        {
+            var line = Instantiate(linePrefab, feed);
+            line.GetComponent<HorizontalLayoutGroup>().childAlignment = TextAnchor.UpperLeft;
+            var r = Instantiate(messagePrefab, line);
+            var le = r.GetComponent<LayoutElement>() ?? r.gameObject.AddComponent<LayoutElement>();
+            le.preferredWidth = Mathf.Max(720, width); le.flexibleWidth = 0; le.minWidth = 0;
+            r.background.color = Palette.Hex("FBF8EA");   // same cream as the question above
+            r.Set("");
+            r.title.transform.parent.gameObject.SetActive(false);   // no text column: the buttons start at the left edge
+            r.Button1(null, false, null); r.Button2(null, false, null);
+            return r;
+        }
+
+        // Key parts in bold so they do not drown in the text: quoted names, numbers with units, places of the game.
+        static readonly System.Text.RegularExpressions.Regex Key = new System.Text.RegularExpressions.Regex(
+            @"«[^»]+»|\d[\d  ]*(?:\s?(?:%|₽|дн\w*|дня|минут\w*|баллов|или выше))?\+?|[Пп]одростк\w*|[Дд]оск\w*|ШиШ\.ру|[Тт]аск-лист\w*|[Кк]онцепт\w*|[Зз]елёная линия|\*\*[^*]+\*\*");
+        internal static string Emphasize(string text) =>
+            Key.Replace(text ?? "", m => "<b><color=#A8431E>" + m.Value.Trim('*') + "</color></b>");
 
         static string Choice(string label, string effect) => label + "\n<size=18>" + effect + "</size>";
 
@@ -131,11 +173,12 @@ namespace Studio.UI.Mvp
             if (layout != null)
             {
                 layout.minWidth = 250; layout.preferredWidth = 320;
-                layout.minHeight = 72; layout.preferredHeight = 78;
+                float need = label.GetPreferredValues(label.text, layout.preferredWidth - 24, 0).y + 24;   // long effect lines wrap
+                layout.minHeight = Mathf.Max(72, need); layout.preferredHeight = Mathf.Max(78, need);
             }
         }
 
-        void Pick(ChatEntry m, int option, RowView row)
+        void Pick(ChatEntry m, int option, RowView row, List<Button> buttons)
         {
             bool ok = EventRules.Resolve(game.S, game.L, m.refId, m.chatId, option);
             AudioManager.Play(ok ? Fx.MsgOut : Fx.Error);
@@ -144,8 +187,8 @@ namespace Studio.UI.Mvp
             if (ok)
             {
                 // short confirmation: the chosen card pops and both lock, then the answers leave
-                row.button1.interactable = row.button2.interactable = false;
-                Pulse.Pop(this, (option == 0 ? row.button1 : row.button2).transform, 1.1f, 0.3f);
+                foreach (var b in buttons) b.interactable = false;
+                Pulse.Pop(this, buttons[option].transform, 1.1f, 0.3f);
                 StartCoroutine(RedrawAfter(0.35f));
                 return;
             }

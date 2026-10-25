@@ -13,8 +13,30 @@ namespace Studio.Core
     [Serializable] public class TextDef { public string key, text; }
     // A random work event: an employee writes in the chat and offers two choices (docs/DECISIONS.md, 2026-10-24).
     // progress is a share of the task's effort, energy and budget are plain numbers.
-    [Serializable] public class EventOption { public string label, reply; public float energy, progress; public int budget; }
-    [Serializable] public class EventDef { public string id; public Discipline d; public bool anyone; public string text; public List<EventOption> options = new List<EventOption>(); }
+    [Serializable] public class DiscShare { public Discipline d; public float share; }
+    // progress is a share of the task's effort, energy and budget are plain numbers. Everything below the first line is optional.
+    [Serializable]
+    public class EventOption
+    {
+        public string label, reply; public float energy, progress; public int budget;
+        public float teamEnergy;                 // added to every employee
+        public float progressAll;                // share of effort added to every open task whose discipline is not in disc
+        public List<DiscShare> disc = new List<DiscShare>();
+        public float speed, failChance, failAll; // speed: x for the rest of the day (0 = none); failChance: odds that failAll hits every open task
+        public bool speedAll;                    // speed hits the whole team instead of the sender's discipline
+        public int rate;                         // raises the sender's daily pay for good
+        public bool endDay, croak;               // endDay: the rest of today is lost
+        public int fire = -1;                    // Discipline (as int) of the employee who leaves, -1 nobody
+    }
+    // A random work event: an employee (or the boss) writes in the chat and offers choices (docs/DECISIONS.md, 2026-10-24).
+    [Serializable]
+    public class EventDef
+    {
+        public string id; public Discipline d; public bool anyone, boss; public string text;
+        public string after;                                       // shown only once this event has been answered
+        public List<Discipline> needs = new List<Discipline>();    // every listed discipline must be on the team
+        public List<EventOption> options = new List<EventOption>();
+    }
 
     // Every number of the MVP rules lives here, so balance is edited in the inspector (docs/MVP_RULES.md, section 3).
     [Serializable]

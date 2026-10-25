@@ -9,11 +9,17 @@ namespace Studio.Core
     public static class EventRules
     {
         const int MaxPending = 2;
+        const float CroakEvery = 12;
+
+        // The programmer's virus: the UI plays a sound on every croak.
+        public static event Action Croaked;
 
         // next(max) returns an int in [0, max); injected so tests are deterministic.
         public static void Tick(LevelState s, LevelSO level, float dt, Func<int, int> next)
         {
-            if (s.stage != LevelStage.Production || level.events.Count == 0) return;
+            if (s.stage != LevelStage.Production) return;
+            if (s.croak && (s.croakTimer -= dt) <= 0) { s.croakTimer = CroakEvery; Croaked?.Invoke(); }
+            if (level.events.Count == 0) return;
             var tu = level.tuning;
             if (!s.staff.Exists(e => e.currentTaskId != null)) return;   // nobody is working: nothing to write about
             if (!s.eventsStarted) { s.eventsStarted = true; s.eventTimer = tu.eventFirst; }
@@ -25,17 +31,24 @@ namespace Studio.Core
 
         static bool Spawn(LevelState s, LevelSO level, Func<int, int> next)
         {
-            var pairs = new List<(EmployeeState e, EventDef ev)>();
-            foreach (var e in s.staff)
+            var pairs = new List<(string who, EventDef ev)>();
+            foreach (var ev in level.events)
             {
-                if (e.currentTaskId == null || s.pendingEvents.Exists(p => p.employeeId == e.id)) continue;
-                foreach (var ev in level.events)
-                    if ((ev.anyone || ev.d == e.d) && !s.eventsSeen.Contains(ev.id) && !s.pendingEvents.Exists(p => p.eventId == ev.id)) pairs.Add((e, ev));
+                if (s.eventsSeen.Contains(ev.id) || s.pendingEvents.Exists(p => p.eventId == ev.id)) continue;
+                if (!string.IsNullOrEmpty(ev.after) &&!s.eventsSeen.Contains(ev.after)) continue;
+                if (!ev.needs.TrueForAll(d => s.staff.Exists(x => x.d == d))) continue;
+                if (ev.boss)
+                {
+                    if (!s.pendingEvents.Exists(p => p.employeeId == LevelState.Boss)) pairs.Add((LevelState.Boss, ev));
+                    continue;
+                }
+                foreach (var e in s.staff)
+                    if (e.currentTaskId != null && (ev.anyone || ev.d == e.d) && !s.pendingEvents.Exists(p => p.employeeId == e.id)) pairs.Add((e.id, ev));
             }
             if (pairs.Count == 0) return false;
-            var (emp, def) = pairs[next(pairs.Count)];
-            s.pendingEvents.Add(new PendingEvent { eventId = def.id, employeeId = emp.id });
-            s.Say(emp.id, "event", def.text, def.id);
+            var (who, def) = pairs[next(pairs.Count)];
+            s.pendingEvents.Add(new PendingEvent { eventId = def.id, employeeId = who });
+            s.Say(who, "event", def.text, def.id);
             return true;
         }
 
@@ -50,23 +63,46 @@ namespace Studio.Core
             return s.tasks.Find(t => !t.done && t.assigneeId == e.id);
         }
 
-        public static bool Resolve(LevelState s, LevelSO level, string eventId, string employeeId, int option)
+        static void Bump(TaskState t, float share) => t.progress = Mathf.Clamp(t.progress + share * t.effort, 0, t.effort * 0.99f);   // never completes a task by itself
+
+        public static bool Resolve(LevelState s, LevelSO level, string eventId, string employeeId, int option, Func<int, int> next = null)
         {
             var p = Find(s, eventId, employeeId);
             var def = level.events.Find(x => x.id == eventId);
-            var e = s.Employee(employeeId);
-            if (p == null || def == null || e == null || option < 0 || option >= def.options.Count) return false;
+            var e = s.Employee(employeeId);   // null for the boss
+            if (p == null || def == null || (e == null && employeeId != LevelState.Boss) || option < 0 || option >= def.options.Count) return false;
             var o = def.options[option];
             if (o.budget < 0 && s.budget < -o.budget) return false;   // can't pay for it
+            next = next ?? (n => UnityEngine.Random.Range(0, n));
             s.budget = Mathf.Max(0, s.budget + o.budget);
-            e.energy = Mathf.Clamp(e.energy + o.energy, 0, 100);
-            var t = Target(s, e);
-            if (t != null) t.progress = Mathf.Clamp(t.progress + o.progress * t.effort, 0, t.effort * 0.99f);   // never completes a task by itself
+            if (e != null)
+            {
+                e.energy = Mathf.Clamp(e.energy + o.energy, 0, 100);
+                e.rateBonus += o.rate;
+                var t = Target(s, e);
+                if (t != null) Bump(t, o.progress);
+            }
+            foreach (var m in s.staff) m.energy = Mathf.Clamp(m.energy + o.teamEnergy, 0, 100);
+            foreach (var t in s.tasks)
+            {
+                if (t.done) continue;
+                var ds = o.disc.Find(x => x.d == t.d);
+                Bump(t, ds != null ? ds.share : o.progressAll);
+            }
+            if (o.failChance > 0 && next(100) < o.failChance * 100) foreach (var t in s.tasks) if (!t.done) Bump(t, o.failAll);
+            if (o.speed > 0)
+            {
+                if (o.speedAll || e == null) { s.mulDesign *= o.speed; s.mulMech *= o.speed; s.mulSound *= o.speed; }
+                else s.SetMul(e.d, s.Mul(e.d) * o.speed);
+            }
+            if (o.croak) s.croak = true;
+            if (o.endDay) s.dayElapsed = level.tuning.daySeconds;   // the next tick closes the day and the UI shows the night report
             s.pendingEvents.Remove(p);
             s.eventsSeen.Add(eventId);
             string fx = Names.Effects(o);
             s.Say(employeeId, "me", o.label + (fx.Length > 0 ? " (" + fx + ")" : ""));   // the player's side of the dialogue
             s.Say(employeeId, "text", o.reply);
+            if (o.fire >= 0) { var leaver = s.staff.Find(x => x.d == (Discipline)o.fire); if (leaver != null) Staffing.Fire(s, leaver.id); }
             return true;
         }
     }

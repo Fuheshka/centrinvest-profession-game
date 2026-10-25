@@ -6,7 +6,7 @@ namespace Studio.Core
         public static int DailyRate(CandidateDef c, LevelTuning t) =>
             t.ratePerPoint * (c.speed + c.quality);
 
-        public static int Rate(LevelState s, LevelSO level, string employeeId) => DailyRate(level.Candidate(employeeId), level.tuning);
+        public static int Rate(LevelState s, LevelSO level, string employeeId) => DailyRate(level.Candidate(employeeId), level.tuning) + (s.Employee(employeeId)?.rateBonus ?? 0);
 
         // Fired people leave the team; their tasks stay with progress but without an assignee. No refund: today's pay is spent.
         public static bool Fire(LevelState s, string employeeId)

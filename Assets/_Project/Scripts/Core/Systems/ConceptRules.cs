@@ -238,10 +238,22 @@ namespace Studio.Core
         {
             var p = new List<string>();
             if (o.budget != 0) p.Add((o.budget > 0 ? "+" : "–") + Money(Math.Abs(o.budget)) + " руб.");
-            if (o.energy != 0) p.Add("энергия " + (o.energy > 0 ? "+" : "–") + Math.Abs(Mathf.RoundToInt(o.energy)));
-            if (o.progress != 0) p.Add("прогресс " + (o.progress > 0 ? "+" : "–") + Mathf.RoundToInt(Math.Abs(o.progress) * 100) + " %");
+            if (o.rate != 0) p.Add("расход в день +" + Money(o.rate) + " руб.");
+            if (o.energy != 0) p.Add("энергия " + Signed(o.energy));
+            if (o.teamEnergy != 0) p.Add("команда: энергия " + Signed(o.teamEnergy));
+            if (o.progress != 0) p.Add("прогресс " + Pct(o.progress));
+            if (o.progressAll != 0) p.Add("везде " + Pct(o.progressAll));
+            foreach (var d in o.disc) p.Add(Of(d.d).ToLower() + " " + Pct(d.share));
+            if (o.failChance > 0) p.Add(Mathf.RoundToInt(o.failChance * 100) + " %: везде " + Pct(o.failAll));
+            if (o.speed > 0) p.Add("скорость сегодня ×" + o.speed.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture));
+            if (o.endDay) p.Add("день потерян");
+            if (o.fire >= 0) p.Add("уходит сотрудник");
+            if (o.croak) p.Add("ква");
             return string.Join(", ", p);
         }
+
+        static string Signed(float v) => (v > 0 ? "+" : "–") + Math.Abs(Mathf.RoundToInt(v));
+        static string Pct(float share) => (share > 0 ? "+" : "–") + Mathf.RoundToInt(Math.Abs(share) * 100) + " %";
 
         public static string Money(int v) => v.ToString("N0", System.Globalization.CultureInfo.InvariantCulture).Replace(',', ' ');
     }

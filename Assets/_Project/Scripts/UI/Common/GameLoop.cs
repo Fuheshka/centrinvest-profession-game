@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Studio.Core;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,7 @@ namespace Studio.UI.Mvp
         public bool Paused { get; private set; }
 
         float saveTimer;
+        LevelStage lastStage;
 
         void Awake()
         {
@@ -29,8 +31,15 @@ namespace Studio.UI.Mvp
             else Paused = true;   // a loaded game waits for the player
         }
 
+        // No frog sound in the project yet: a message ping stands in until Resources/Sfx gets one.
+        void OnEnable() => EventRules.Croaked += Croak;
+        void OnDisable() => EventRules.Croaked -= Croak;
+        static void Croak() => AudioManager.Play(Fx.MsgNew);
+
         void Start()
         {
+            if (EventSystem.current != null) EventSystem.current.pixelDragThreshold = Mathf.Max(10, Mathf.RoundToInt(Screen.dpi / 12));   // a finger wobbles more than a mouse
+            lastStage = S.stage;
             Changed?.Invoke();
             if (Paused) ShowPause();
         }
@@ -53,6 +62,7 @@ namespace Studio.UI.Mvp
         {
             SaveSystem.SaveLevel(S);
             Changed?.Invoke();
+            if (S.stage != lastStage) { lastStage = S.stage; AudioManager.Play(Fx.Stage); }
             if (S.stage == LevelStage.Passed || S.stage == LevelStage.Failed) ShowResult();
         }
 
@@ -66,6 +76,7 @@ namespace Studio.UI.Mvp
 
         void DayEnded(NightReport r)
         {
+            AudioManager.Play(Fx.Stage);
             Review.CheckBudgetDeadlock(S, L);
             SaveSystem.SaveLevel(S);
             Changed?.Invoke();
@@ -84,7 +95,7 @@ namespace Studio.UI.Mvp
         public void ShowPause()
         {
             Paused = true;
-            modal.Show("Пауза", "День " + S.day + ". Время стоит.", ("Продолжить", () => Paused = false),
+            modal.ShowSized(520, "Пауза", "День " + S.day + ". Время стоит.", ("Продолжить", () => Paused = false),
                 ("Настройки", () => SettingsPanel.Open(ShowPause)), ("В меню", ToMenu));
         }
 
@@ -105,6 +116,7 @@ namespace Studio.UI.Mvp
                     linkedFile = task != null ? task.title : "Файл проекта · " + Names.Of((Discipline)Review.Weakest(r));
                 }
             }
+            AudioManager.Play(r.passed ? Fx.Stage : Fx.Error);
             if (r.passed)
             {
                 review.Show("Первый релиз готов!", r, L, S.budget, linkedFile, FinalDecisionSummary(r),
