@@ -173,13 +173,13 @@ namespace Studio.UI.Mvp
         {
             SaveSystem.DeleteLevel();
             Session.Continue = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PixelTransition.Load(SceneManager.GetActiveScene().name);
         }
 
         void ToMenu()
         {
             SaveSystem.SaveLevel(S);
-            SceneManager.LoadScene("Menu");
+            PixelTransition.Load("Menu");
         }
     }
 }

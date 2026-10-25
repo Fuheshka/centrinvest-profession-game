@@ -50,17 +50,6 @@ public static class MotionKit
         }
         PrefabUtility.SaveAsPrefabAsset(screen, Prefabs[1]);
         PrefabUtility.UnloadPrefabContents(screen);
-        // menu fades out before the Game scene loads
-        var menu = PrefabUtility.LoadPrefabContents(Prefabs[0]);
-        var mc = menu.GetComponentInChildren<Studio.UI.MenuController>(true);
-        if (mc != null && mc.fade == null)
-        {
-            var cg = menu.GetComponent<CanvasGroup>();
-            if (cg == null) cg = menu.AddComponent<CanvasGroup>();
-            mc.fade = cg;
-        }
-        PrefabUtility.SaveAsPrefabAsset(menu, Prefabs[0]);
-        PrefabUtility.UnloadPrefabContents(menu);
         Debug.Log("MotionKit: ButtonMotion added to " + added + " buttons, PanelFade to " + faded + " windows");
     }
 }
