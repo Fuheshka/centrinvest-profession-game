@@ -14,7 +14,7 @@ namespace Studio.UI
         public const int MaxName = 16;
 
         public TMP_InputField nameInput;
-        public Button startButton, continueButton, confirmYes, confirmNo;
+        public Button startButton, continueButton, confirmYes, confirmNo, settingsButton;
         public TMP_Text continueLabel;
         public GameObject confirm;
 
@@ -23,6 +23,7 @@ namespace Studio.UI
             nameInput.characterLimit = MaxName;
             startButton.onClick.AddListener(OnStart);
             continueButton.onClick.AddListener(OnContinue);
+            if (settingsButton != null) settingsButton.onClick.AddListener(() => SettingsPanel.Open());
             confirmYes.onClick.AddListener(StartNew);
             confirmNo.onClick.AddListener(() => confirm.SetActive(false));
 

@@ -17,6 +17,8 @@ namespace Studio.UI.Mvp
 
         void Awake() => root.SetActive(false);
 
+        public void Hide() => root.SetActive(false);
+
         public void Show(string head, string text, params (string label, Action action)[] buttons)
         {
             title.text = head;
