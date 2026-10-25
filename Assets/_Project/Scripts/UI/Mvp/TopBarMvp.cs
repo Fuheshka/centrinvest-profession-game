@@ -19,6 +19,8 @@ namespace Studio.UI.Mvp
         public Color tabOnColor, tabOffColor;       // optional (alpha > 0): flat tabs tinted by state instead of the old yellow/mustard
         public RectTransform timeFill;     // day clock: right anchor is the share of the workday gone
 
+        int attn = -1, unread;
+        readonly bool[] glowing = new bool[4];
         int current, seen = -1, lastCount = -1, lastDay = -1, lastBudget = int.MinValue;
         float toastUntil, pulse;
         string toast;
@@ -48,11 +50,49 @@ namespace Studio.UI.Mvp
                 AudioManager.Play(Fx.MsgNew);
             }
             lastCount = n;
-            int unread = n - seen;
+            unread = n - seen;
             chatBadge.SetActive(unread > 0);
             chatBadgeText.text = unread > 99 ? "99+" : unread.ToString();
             pulse = Mathf.MoveTowards(pulse, 0, Time.unscaledDeltaTime * 2);
             chatBadge.transform.localScale = Vector3.one * (1 + 0.5f * pulse);
+        }
+
+        // The line under the top bar: what to do now, and how long the working day lasts.
+        string Guide(LevelState s, LevelSO l)
+        {
+            if (s.stage == LevelStage.Concept) return "День начнётся после утверждения концепта";
+            if (s.stage != LevelStage.Production) return "";
+            if (attn == 2) return "Найми людей в ШиШ.ру – без команды работа не идёт";
+            if (attn == 3) return "Раздай задачи в Таск-листе – без исполнителя задача стоит";
+            int left = Mathf.Max(0, Mathf.CeilToInt((l.tuning.daySeconds - s.dayElapsed) / l.tuning.timeScale));
+            return "До конца дня " + left / 60 + ":" + (left % 60).ToString("00") + " – потом день закончится сам";
+        }
+
+        // The tab the player should open next; it breathes until opened.
+        int Attention(LevelState s)
+        {
+            if (unread > 0) return 0;
+            if (s.stage == LevelStage.Concept) return s.concept.approved ? -1 : 1;
+            if (s.stage != LevelStage.Production) return -1;
+            if (s.staff.Count == 0) return 2;
+            foreach (var t in s.tasks) if (!t.done && t.assigneeId == null) return 3;
+            return -1;
+        }
+
+        void Update()
+        {
+            bool reset = false;
+            for (int k = 0; k < tabs.Length; k++)
+            {
+                bool on = k == attn && k != current && tabs[k].interactable;
+                if (!on) { if (glowing[k]) { glowing[k] = false; tabs[k].transform.localScale = Vector3.one; reset = true; } continue; }
+                glowing[k] = true;
+                float w = (Mathf.Sin(Time.unscaledTime * 6f) + 1) * 0.5f;
+                tabs[k].GetComponent<Image>().color = Color.Lerp(tabOffColor, Palette.Primary, 0.15f + 0.8f * w);
+                tabs[k].GetComponentInChildren<TMP_Text>().color = w > 0.5f ? Palette.Ink : Palette.Cream;
+                tabs[k].transform.localScale = Vector3.one * (1 + 0.05f * w);
+            }
+            if (reset) Redraw();
         }
 
         public void Show(int i)
@@ -79,8 +119,9 @@ namespace Studio.UI.Mvp
             endDay.interactable = working;
             tabs[2].interactable = tabs[3].interactable = s.stage != LevelStage.Concept;
             Notify(s, l);
+            attn = Attention(s);
             if (timeFill) timeFill.anchorMax = new Vector2(s.stage == LevelStage.Concept ? 0 : Mathf.Clamp01(f), 1);
-            hint.text = Time.unscaledTime < toastUntil ? toast : s.stage == LevelStage.Concept ? "День начнётся после утверждения концепта" : "";
+            hint.text = Time.unscaledTime < toastUntil ? toast : Guide(s, l);
             for (int k = 0; k < tabs.Length; k++)
             {
                 var img = tabs[k].GetComponent<Image>();

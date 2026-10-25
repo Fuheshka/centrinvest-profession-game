@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using Studio.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Studio.UI.Mvp
@@ -21,12 +23,15 @@ namespace Studio.UI.Mvp
 
         public bool IsOpen => root.activeSelf;
 
+        public float stepSeconds = 0.3f;   // one beat of the reveal: score pop, each bar fill, the text fade
+        Coroutine reveal;
+
         void Awake() => root.SetActive(false);
 
         public void Show(string head, BuildRecord r, LevelSO l, int remainingBudget, string linkedFile, string finalSummary, params (string label, Action action)[] buttons)
         {
             title.text = head;
-            subtitle.text = "Сборка " + r.number + " · заказчик «Южный капитал» · день "
+            subtitle.text = (r.passed ? "ПРИНЯТО · " : "НА ДОРАБОТКУ · ") + "сборка " + r.number + " · заказчик «Южный капитал» · день "
                 + r.day + "/" + l.deadlineDays + " · осталось " + Money(remainingBudget) + " ₽";
             score.text = r.overall.ToString();
             score.color = r.passed ? Palette.Green : Palette.Red;
@@ -70,7 +75,45 @@ namespace Studio.UI.Mvp
             }
             root.SetActive(true);
             root.transform.SetAsLastSibling();
+            if (reveal != null) StopCoroutine(reveal);
+            reveal = StartCoroutine(Reveal(r));
         }
+
+        // Order: cover and heading are already there, then the score, the three bars at their real values, then remarks.
+        // A click or Space/Enter/Escape jumps to the final state; the buttons are usable throughout.
+        IEnumerator Reveal(BuildRecord r)
+        {
+            var late = new TMP_Text[] { need, quote, remarks };
+            var target = new float[3];
+            for (int i = 0; i < 3; i++) { target[i] = fills[i].anchorMax.x; fills[i].anchorMax = new Vector2(0, 1); }
+            score.alpha = 0; foreach (var t in late) if (t != null) t.alpha = 0;
+            bool skip = false;
+            IEnumerator Beat(Action<float> step)
+            {
+                for (float x = 0; x < stepSeconds && !skip; x += Time.unscaledDeltaTime)
+                {
+                    step(x / stepSeconds);
+                    skip |= Skipped();
+                    yield return null;
+                }
+            }
+            yield return null;   // let the click that opened the review pass
+            yield return Beat(k => { score.alpha = k; score.transform.localScale = Vector3.one * (1 + 0.25f * Mathf.Sin(k * Mathf.PI)); });
+            for (int i = 0; i < 3 && !skip; i++)
+            {
+                int bar = i;
+                yield return Beat(k => fills[bar].anchorMax = new Vector2(target[bar] * k, 1));
+            }
+            yield return Beat(k => { foreach (var t in late) if (t != null) t.alpha = k; });
+            score.alpha = 1; score.transform.localScale = Vector3.one;
+            for (int i = 0; i < 3; i++) fills[i].anchorMax = new Vector2(target[i], 1);
+            foreach (var t in late) if (t != null) t.alpha = 1;
+            reveal = null;
+        }
+
+        static bool Skipped() =>
+            (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+            || (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame));
 
         static string RequirementsChecklist(BuildRecord record, LevelSO level)
         {

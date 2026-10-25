@@ -8,7 +8,7 @@ namespace Studio.UI
     public class SettingsPanel : MonoBehaviour
     {
         public GameObject root;
-        public Slider master, music;
+        public Slider master, music, sfx;
         public Button close;
 
         static SettingsPanel inst;
@@ -19,8 +19,10 @@ namespace Studio.UI
             inst = this;
             master.SetValueWithoutNotify(AudioManager.Master);
             music.SetValueWithoutNotify(AudioManager.Music);
+            sfx.SetValueWithoutNotify(AudioManager.Sfx);
             master.onValueChanged.AddListener(v => AudioManager.Master = v);
             music.onValueChanged.AddListener(v => AudioManager.Music = v);
+            sfx.onValueChanged.AddListener(v => AudioManager.Sfx = v);
             close.onClick.AddListener(Close);
             root.SetActive(false);
         }
@@ -33,6 +35,7 @@ namespace Studio.UI
             inst.onClose = onClose;
             inst.master.SetValueWithoutNotify(AudioManager.Master);
             inst.music.SetValueWithoutNotify(AudioManager.Music);
+            inst.sfx.SetValueWithoutNotify(AudioManager.Sfx);
             inst.root.SetActive(true);
             inst.root.transform.SetAsLastSibling();
         }

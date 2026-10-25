@@ -10,7 +10,7 @@ namespace Studio.UI.Mvp
         public Image background, avatar, chipBg, statusBg;
         public TMP_Text number, title, chip, who, role, status, percent;
         public RectTransform fill;
-        public Button assign, up;
+        public Button assign, up, wait;   // wait: the employee is stopped by a question in the chat; click opens that chat
         public TMP_Text assignLabel;
 
         float shown = -1, target;   // displayed progress follows the real one; never runs ahead of it
@@ -22,6 +22,14 @@ namespace Studio.UI.Mvp
             shown = Mathf.MoveTowards(shown, target, Time.unscaledDeltaTime * 0.6f);
             fill.anchorMax = new Vector2(shown, 1);
             percent.text = Mathf.RoundToInt(shown * 100) + "%";
+        }
+
+        public void Waiting(bool on, UnityEngine.Events.UnityAction open)
+        {
+            if (wait == null) return;
+            wait.gameObject.SetActive(on);
+            wait.onClick.RemoveAllListeners();
+            if (on) wait.onClick.AddListener(open);
         }
 
         public static TaskRowView At(Transform list, TaskRowView prefab, int i)

@@ -53,10 +53,11 @@ namespace Studio.UI.Mvp
                 var who = t.assigneeId == null ? null : l.Candidate(t.assigneeId);
                 Color chipColor = t.d == Discipline.Design ? Pink : t.d == Discipline.Mechanics ? Purple : Gold;
                 Color stColor = st == WorkStatus.Done ? Green : st == WorkStatus.Working ? Blue : st == WorkStatus.Waiting ? Orange : Grey;
-                row.Set(i + 1, t.title, Names.Of(t.d), chipColor, who?.character, who == null ? "Не назначено" : who.name, who == null ? "" : Names.Of(who.d),
+                row.Set(i + 1, t.title, Names.Of(t.d), chipColor, who?.character, who == null ? "—" : who.name, who == null ? "" : Names.Of(who.d),
                         StatusText(s, l, t, st, why), stColor, t.done ? 1 : t.progress / t.effort, t.done);
                 string id = t.id;
                 bool open = !t.done;
+                row.Waiting(who != null && open && why == WaitReason.Question, () => FindAnyObjectByType<ChatWindow>(FindObjectsInactive.Include).Open(who.id));
                 row.assign.gameObject.SetActive(open);
                 row.assignLabel.text = who == null ? "Назначить" : "Сменить";
                 row.assign.onClick.RemoveAllListeners();
@@ -92,8 +93,8 @@ namespace Studio.UI.Mvp
             }
             trayInited = true;
             bool ok = Review.CanBuild(s, l, out var reason);
-            build.interactable = ok;
-            buildReason.text = ok ? "Все файлы готовы – можно собирать." : reason ?? "";
+            build.interactable = ok && !building;
+            buildReason.text = building ? "Сборка…" : ok ? "Все файлы готовы – можно собирать." : reason ?? "";
         }
 
         static string StatusText(LevelState s, LevelSO l, TaskState t, WorkStatus st, WaitReason why)
@@ -104,7 +105,7 @@ namespace Studio.UI.Mvp
                 case WorkStatus.Working: return "в работе";
                 case WorkStatus.Queued: return why == WaitReason.NotFirst ? "в очереди" : "ждёт дня";
                 case WorkStatus.Waiting:
-                    return why == WaitReason.NoBudget ? "нет денег" : "ждёт сил";
+                    return why == WaitReason.NoBudget ? "нет денег" : why == WaitReason.Question ? "ждёт ответа" : "ждёт сил";
                 default: return "нет исполнителя";
             }
         }
@@ -136,11 +137,25 @@ namespace Studio.UI.Mvp
 
         static int Rank(CandidateDef c) => c.quality * 10 + c.speed;
 
+        // A short beat so the build reads as an action: the button locks and the label says so; the result is computed right after.
         void Build()
         {
-            var s = game.S; var l = game.L;
-            var r = Review.Build(s, l);
-            if (r == null) return;
+            if (building) return;
+            StartCoroutine(BuildBeat());
+        }
+
+        bool building;
+
+        System.Collections.IEnumerator BuildBeat()
+        {
+            building = true;
+            build.interactable = false;
+            buildReason.text = "Сборка…";
+            Pulse.Pop(this, build.transform, 0.94f, 0.35f);
+            yield return new WaitForSecondsRealtime(0.4f);
+            building = false;
+            var r = Review.Build(game.S, game.L);
+            if (r == null) { Redraw(); yield break; }
             game.Commit();
             if (!r.passed) game.ShowReview(r);   // a passed build is shown by Commit
         }

@@ -81,14 +81,16 @@ public static class SettingsKit
         var root = Node("Root", rt); Stretch(root);
         Img(root, null, new Color(0.08f, 0.04f, 0, 0.75f), true);
         sp.root = root.gameObject;
-        var panel = Node("Panel", root); panel.anchorMin = panel.anchorMax = new Vector2(0.5f, 0.5f); panel.sizeDelta = new Vector2(760, 500);
+        var panel = Node("Panel", root); panel.anchorMin = panel.anchorMax = new Vector2(0.5f, 0.5f); panel.sizeDelta = new Vector2(760, 610);
         Img(panel, Spr("Panels/panels/modal-ivory"), Color.white, true);
         Txt(Box("Title", panel, 60, 50, 640, 60), "Настройки", 44, Palette.Ink, heading, TextAlignmentOptions.Center);
         Txt(Box("MasterLabel", panel, 60, 140, 640, 34), "Общая громкость", 26, Palette.Ink, body, TextAlignmentOptions.Left);
         sp.master = MakeSlider(panel, 180);
         Txt(Box("MusicLabel", panel, 60, 250, 640, 34), "Музыка", 26, Palette.Ink, body, TextAlignmentOptions.Left);
         sp.music = MakeSlider(panel, 290);
-        var close = Box("Close", panel, 220, 380, 320, 76);
+        Txt(Box("SfxLabel", panel, 60, 360, 640, 34), "Звуки", 26, Palette.Ink, body, TextAlignmentOptions.Left);
+        sp.sfx = MakeSlider(panel, 400);
+        var close = Box("Close", panel, 220, 490, 320, 76);
         var cimg = Img(close, Spr(Rounded), Palette.Primary, true);
         sp.close = close.gameObject.AddComponent<Button>(); sp.close.targetGraphic = cimg;
         Txt(close, "Готово", 30, Palette.Ink, heading, TextAlignmentOptions.Center);

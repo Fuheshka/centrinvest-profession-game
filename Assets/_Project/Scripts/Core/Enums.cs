@@ -16,7 +16,7 @@ namespace Studio.Core
     public enum FailReason { None, Deadline, NoBudget }
     public enum LinkColor { Green, Red }
     public enum WorkStatus { Open, Queued, Working, Waiting, Done }
-    public enum WaitReason { None, NoEnergy, NoBudget, NoAssignee, NotFirst }
+    public enum WaitReason { None, NoEnergy, NoBudget, NoAssignee, NotFirst, Question }
 
     [Serializable]
     public struct Cost
