@@ -103,3 +103,6 @@ docs/.obsidian/
 # oh-my-claudecode runtime state (project skills stay committable)
 /.omc/*
 !/.omc/skills/
+
+# Unity WebGL build leftovers
+/Data/
