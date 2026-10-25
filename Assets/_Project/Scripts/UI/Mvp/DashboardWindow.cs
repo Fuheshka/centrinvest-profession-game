@@ -130,6 +130,8 @@ namespace Studio.UI.Mvp
             bool ok = ConceptRules.CanApprove(s, l, out var why);
             approve.interactable = ok;
             reason.text = ConceptRules.CanRework(s) ? "Концепт можно пересмотреть: поменяй параметры и пересобери игру" : s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
+            var cardPack = ConceptRules.MatchPack(s, l);
+            if (cardPack != null) reason.text += "\nСочетание: " + cardPack.title;
             string count = " " + s.concept.links.Count + "/" + ConceptRules.MaxLinks;
             mode.text = linking ? (linkFrom == null ? "Выбери первый блок" : "Выбери второй блок") + count : "Связать блоки" + count;
             tagLayer.SetAsLastSibling();

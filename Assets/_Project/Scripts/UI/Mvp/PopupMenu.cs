@@ -13,6 +13,11 @@ namespace Studio.UI.Mvp
         public TMP_Text heading;
         public Transform items;
         public Button itemPrefab, backdrop;
+        const int PageSize = 5;
+        (string label, Action action, int style)[] entries;
+        RectTransform anchor;
+        string title;
+        int page;
 
         public bool IsOpen => root.activeSelf;
 
@@ -23,18 +28,26 @@ namespace Studio.UI.Mvp
         // style: 0 plain, 1 current choice, 2 destructive
         public void Show(RectTransform anchor, string head, params (string label, Action action, int style)[] entries)
         {
-            heading.text = head;
-            foreach (Transform c in items) Destroy(c.gameObject);
-            foreach (var e in entries)
+            title = head;
+            this.anchor = anchor;
+            this.entries = entries;
+            page = 0;
+            ShowPage();
+        }
+
+        void ShowPage()
+        {
+            int pages = Mathf.Max(1, (entries.Length + PageSize - 1) / PageSize);
+            heading.text = pages == 1 ? title : title + " · " + (page + 1) + "/" + pages;
+            foreach (Transform c in items) { c.gameObject.SetActive(false); Destroy(c.gameObject); }
+            if (page > 0) AddButton("Назад", () => { page--; ShowPage(); }, 0, false);
+            int end = Mathf.Min(entries.Length, (page + 1) * PageSize);
+            for (int i = page * PageSize; i < end; i++)
             {
-                var b = Instantiate(itemPrefab, items);
-                var img = b.GetComponent<Image>(); var txt = b.GetComponentInChildren<TMP_Text>();
-                txt.text = e.label;
-                if (e.style == 1) img.color = Palette.Yellow;
-                else if (e.style == 2) { img.color = Palette.Red; txt.color = Palette.Cream; }
-                var act = e.action;
-                b.onClick.AddListener(() => { Hide(); act?.Invoke(); });
+                var e = entries[i];
+                AddButton(e.label, e.action, e.style, true);
             }
+            if (end < entries.Length) AddButton("Далее", () => { page++; ShowPage(); }, 0, false);
             root.SetActive(true);
             root.transform.SetAsLastSibling();
             LayoutRebuilder.ForceRebuildLayoutImmediate(panel);
@@ -47,6 +60,16 @@ namespace Studio.UI.Mvp
             float y = Mathf.Max(Mathf.Min(ac[1].y, bc[1].y), bc[0].y + size.y);
             panel.pivot = new Vector2(0, 1);
             panel.position = new Vector3(Mathf.Max(bc[0].x, x), y, panel.position.z);
+        }
+
+        void AddButton(string label, Action action, int style, bool close)
+        {
+            var b = Instantiate(itemPrefab, items);
+            var img = b.GetComponent<Image>(); var txt = b.GetComponentInChildren<TMP_Text>();
+            txt.text = label;
+            if (style == 1) img.color = Palette.Yellow;
+            else if (style == 2) { img.color = Palette.Red; txt.color = Palette.Cream; }
+            b.onClick.AddListener(() => { if (close) Hide(); action?.Invoke(); });
         }
     }
 }

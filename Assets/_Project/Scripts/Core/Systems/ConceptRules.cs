@@ -61,6 +61,7 @@ namespace Studio.Core
             (BlockType.Genre, BlockType.Audience), (BlockType.Audience, BlockType.Setting), (BlockType.Setting, BlockType.Style),
             (BlockType.Style, BlockType.Mechanics), (BlockType.Mechanics, BlockType.Platform),
             (BlockType.Genre, BlockType.Mechanics), (BlockType.Genre, BlockType.Style), (BlockType.Audience, BlockType.Platform),
+            (BlockType.Audience, BlockType.Style),
         };
 
         public const int MaxLinks = 6;   // a spanning chain needs 5: one spare link, no more
@@ -93,7 +94,36 @@ namespace Studio.Core
             if (pa == null || pb == null) return list;
             foreach (var r in level.pairRules)
                 if ((r.a == pa && r.b == pb) || (r.a == pb && r.b == pa)) list.AddRange(r.effects);
+            // Listed packages provide a positive rule when no explicit balance rule exists.
+            if (list.Count == 0 && level.cardPacks != null)
+            {
+                var a = level.Param(pa); var b = level.Param(pb);
+                if (a != null && b != null && a.type != b.type && (a.deriveFromPack || b.deriveFromPack))
+                    foreach (var pack in level.cardPacks)
+                    {
+                        if (pack.ParamId(a.type) != pa || pack.ParamId(b.type) != pb) continue;
+                        var discipline = a.type == BlockType.Mechanics || b.type == BlockType.Mechanics
+                            ? Discipline.Mechanics
+                            : a.type == BlockType.Setting || b.type == BlockType.Setting
+                                ? Discipline.Sound : Discipline.Design;
+                        list.Add(new Effect { d = discipline, sign = 1 });
+                        break;
+                    }
+            }
             return list;
+        }
+
+        public static CardPackDef MatchPack(LevelState s, LevelSO level)
+        {
+            if (s == null || level == null || level.cardPacks == null) return null;
+            foreach (var pack in level.cardPacks)
+            {
+                bool matches = true;
+                foreach (BlockType type in Enum.GetValues(typeof(BlockType)))
+                    if (s.BlockOf(type)?.paramId != pack.ParamId(type)) { matches = false; break; }
+                if (matches) return pack;
+            }
+            return null;
         }
 
         public static Core.LinkColor LinkColor(LevelState s, LevelSO level, string a, string b)

@@ -96,6 +96,341 @@ MonoBehaviour:
     type: 5
     title: "\u041A\u043E\u043D\u0441\u043E\u043B\u044C"
     tier: 0
+  - id: sixteen
+    type: 1
+    title: "Подростки 16+"
+    tier: 0
+    deriveFromPack: 1
+  - id: dark_fantasy
+    type: 2
+    title: "Тёмное фэнтези"
+    tier: 0
+    deriveFromPack: 1
+  - id: psych_hospital
+    type: 2
+    title: "Психбольница"
+    tier: 0
+    deriveFromPack: 1
+  - id: cozy_village
+    type: 2
+    title: "Уютная деревня"
+    tier: 0
+    deriveFromPack: 1
+  - id: abstract
+    type: 2
+    title: "Абстракция"
+    tier: 0
+    deriveFromPack: 1
+  - id: gothic_fantasy
+    type: 2
+    title: "Готика / фэнтези"
+    tier: 0
+    deriveFromPack: 1
+  - id: any_setting
+    type: 2
+    title: "Любой сеттинг"
+    tier: 0
+    deriveFromPack: 1
+  - id: modern
+    type: 2
+    title: "Современность"
+    tier: 0
+    deriveFromPack: 1
+  - id: school_romance
+    type: 2
+    title: "Школа / романтика"
+    tier: 0
+    deriveFromPack: 1
+  - id: gothic_farm
+    type: 2
+    title: "Готика (вампир-фермер)"
+    tier: 0
+    deriveFromPack: 1
+  - id: abandoned
+    type: 2
+    title: "Заброшенный город"
+    tier: 0
+    deriveFromPack: 1
+  - id: abandoned_place
+    type: 2
+    title: "Заброшка"
+    tier: 0
+    deriveFromPack: 1
+  - id: fantasy
+    type: 2
+    title: "Фэнтези"
+    tier: 0
+    deriveFromPack: 1
+  - id: history_fantasy
+    type: 2
+    title: "История / фэнтези"
+    tier: 0
+    deriveFromPack: 1
+  - id: post_apocalypse
+    type: 2
+    title: "Постапокалипсис"
+    tier: 0
+    deriveFromPack: 1
+  - id: festive
+    type: 2
+    title: "Весёлый мир"
+    tier: 0
+    deriveFromPack: 1
+  - id: modern_history
+    type: 2
+    title: "Современность / история"
+    tier: 0
+    deriveFromPack: 1
+  - id: real_world
+    type: 2
+    title: "Реальный мир"
+    tier: 0
+    deriveFromPack: 1
+  - id: fairy_tale
+    type: 2
+    title: "Сказка"
+    tier: 0
+    deriveFromPack: 1
+  - id: bright_casual
+    type: 3
+    title: "Яркий казуал"
+    tier: 1
+    deriveFromPack: 1
+  - id: drawn_2d
+    type: 3
+    title: "Рисованный 2D"
+    tier: 2
+    deriveFromPack: 1
+  - id: illustrations
+    type: 3
+    title: "Иллюстрации"
+    tier: 2
+    deriveFromPack: 1
+  - id: isometric
+    type: 3
+    title: "Изометрия"
+    tier: 2
+    deriveFromPack: 1
+  - id: anime
+    type: 3
+    title: "Аниме"
+    tier: 2
+    deriveFromPack: 1
+  - id: stylized
+    type: 3
+    title: "Стилизованный"
+    tier: 2
+    deriveFromPack: 1
+  - id: simple
+    type: 3
+    title: "Простой"
+    tier: 1
+    deriveFromPack: 1
+  - id: realism_stylized
+    type: 3
+    title: "Реализм / стилизация"
+    tier: 3
+    deriveFromPack: 1
+  - id: ui_realism
+    type: 3
+    title: "UI / реализм"
+    tier: 2
+    deriveFromPack: 1
+  - id: bright_2d
+    type: 3
+    title: "Яркий 2D"
+    tier: 1
+    deriveFromPack: 1
+  - id: stealth_explore
+    type: 4
+    title: "Стелс и исследование"
+    tier: 2
+    deriveFromPack: 1
+  - id: combat
+    type: 4
+    title: "Боевая система"
+    tier: 2
+    deriveFromPack: 1
+  - id: craft_farm
+    type: 4
+    title: "Крафт и ферма"
+    tier: 2
+    deriveFromPack: 1
+  - id: match3
+    type: 4
+    title: "Match-3"
+    tier: 1
+    deriveFromPack: 1
+  - id: hard_combat_stats
+    type: 4
+    title: "Сложный бой и статы"
+    tier: 3
+    deriveFromPack: 1
+  - id: explore_upgrades
+    type: 4
+    title: "Исследование и апгрейды"
+    tier: 3
+    deriveFromPack: 1
+  - id: deck_random
+    type: 4
+    title: "Deckbuilding и рандом"
+    tier: 2
+    deriveFromPack: 1
+  - id: pvp_loot
+    type: 4
+    title: "PvP и лут"
+    tier: 3
+    deriveFromPack: 1
+  - id: resource_management
+    type: 4
+    title: "Ресурсы и менеджмент"
+    tier: 3
+    deriveFromPack: 1
+  - id: choices_branching
+    type: 4
+    title: "Выборы и ветвление"
+    tier: 2
+    deriveFromPack: 1
+  - id: coop_hide
+    type: 4
+    title: "Кооп и прятки"
+    tier: 3
+    deriveFromPack: 1
+  - id: jumps_physics
+    type: 4
+    title: "Прыжки и физика"
+    tier: 2
+    deriveFromPack: 1
+  - id: army_control
+    type: 4
+    title: "Управление войсками"
+    tier: 3
+    deriveFromPack: 1
+  - id: automation
+    type: 4
+    title: "Автоматизация"
+    tier: 1
+    deriveFromPack: 1
+  - id: craft_build
+    type: 4
+    title: "Крафт и строительство"
+    tier: 3
+    deriveFromPack: 1
+  - id: minigames_rounds
+    type: 4
+    title: "Мини-игры и раунды"
+    tier: 2
+    deriveFromPack: 1
+  - id: tactic_hide
+    type: 4
+    title: "Тактика и прятки"
+    tier: 2
+    deriveFromPack: 1
+  - id: arcade_tracks
+    type: 4
+    title: "Аркада и трассы"
+    tier: 2
+    deriveFromPack: 1
+  - id: management_stats
+    type: 4
+    title: "Менеджмент и статистика"
+    tier: 2
+    deriveFromPack: 1
+  - id: physics_puzzle
+    type: 4
+    title: "Физика и головоломки"
+    tier: 2
+    deriveFromPack: 1
+  - id: solo_story
+    type: 4
+    title: "Одиночный сюжет"
+    tier: 2
+    deriveFromPack: 1
+  - id: pc_console
+    type: 5
+    title: "ПК / консоль"
+    tier: 0
+    deriveFromPack: 1
+  - id: pc_phone
+    type: 5
+    title: "ПК / телефон"
+    tier: 0
+    deriveFromPack: 1
+  - id: phone_switch
+    type: 5
+    title: "Телефон / Switch"
+    tier: 0
+    deriveFromPack: 1
+  - id: console_phone
+    type: 5
+    title: "Консоль / телефон"
+    tier: 0
+    deriveFromPack: 1
+  - id: action
+    type: 0
+    title: "Экшен"
+    tier: 0
+    deriveFromPack: 1
+  - id: simulator
+    type: 0
+    title: "Симулятор"
+    tier: 0
+    deriveFromPack: 1
+  - id: rpg_action
+    type: 0
+    title: "RPG / экшен"
+    tier: 0
+    deriveFromPack: 1
+  - id: card_strategy
+    type: 0
+    title: "Карточная стратегия"
+    tier: 0
+    deriveFromPack: 1
+  - id: shooter
+    type: 0
+    title: "Шутер"
+    tier: 0
+    deriveFromPack: 1
+  - id: strategy
+    type: 0
+    title: "Стратегия"
+    tier: 0
+    deriveFromPack: 1
+  - id: visual_novel
+    type: 0
+    title: "Визуальная новелла"
+    tier: 0
+    deriveFromPack: 1
+  - id: idle
+    type: 0
+    title: "Idle"
+    tier: 0
+    deriveFromPack: 1
+  - id: survival
+    type: 0
+    title: "Выживание"
+    tier: 0
+    deriveFromPack: 1
+  - id: party
+    type: 0
+    title: "Party"
+    tier: 0
+    deriveFromPack: 1
+  - id: stealth_action
+    type: 0
+    title: "Стелс-экшен"
+    tier: 0
+    deriveFromPack: 1
+  - id: racing
+    type: 0
+    title: "Гонки"
+    tier: 0
+    deriveFromPack: 1
+  - id: sports_sim
+    type: 0
+    title: "Спорт / симулятор"
+    tier: 0
+    deriveFromPack: 1
   pairRules:
   - a: horror
     b: kids
@@ -441,6 +776,208 @@ MonoBehaviour:
       sign: 1
     - d: 2
       sign: 1
+  - a: phone
+    b: resource_management
+    effects:
+    - d: 1
+      sign: -1
+  - a: visual_novel
+    b: pvp_loot
+    effects:
+    - d: 1
+      sign: -1
+  - a: idle
+    b: realism
+    effects:
+    - d: 0
+      sign: -1
+  - a: pixel
+    b: adult
+    effects:
+    - d: 0
+      sign: -1
+  - a: party
+    b: solo_story
+    effects:
+    - d: 1
+      sign: -1
+  cardPacks:
+  - id: psych_horror
+    title: "Психологический хоррор"
+    genre: horror
+    audience: adult
+    setting: psych_hospital
+    style: realism
+    mechanics: stealth_explore
+    platform: pc
+  - id: slasher
+    title: "Слэшер"
+    genre: action
+    audience: adult
+    setting: dark_fantasy
+    style: realism
+    mechanics: combat
+    platform: pc_console
+  - id: cozy_farm
+    title: "Коззи-ферма"
+    genre: simulator
+    audience: kids
+    setting: cozy_village
+    style: cartoon
+    mechanics: craft_farm
+    platform: pc_phone
+  - id: mobile_puzzle
+    title: "Мобильная головоломка"
+    genre: puzzle
+    audience: kids
+    setting: abstract
+    style: bright_casual
+    mechanics: match3
+    platform: phone
+  - id: soulslike
+    title: "Соулслайк"
+    genre: rpg_action
+    audience: adult
+    setting: dark_fantasy
+    style: realism
+    mechanics: hard_combat_stats
+    platform: pc_console
+  - id: metroidvania
+    title: "Метроидвания"
+    genre: platformer
+    audience: teen
+    setting: gothic_fantasy
+    style: drawn_2d
+    mechanics: explore_upgrades
+    platform: pc_console
+  - id: roguelike_deckbuilder
+    title: "Рогалик-декбилдер"
+    genre: card_strategy
+    audience: teen
+    setting: any_setting
+    style: illustrations
+    mechanics: deck_random
+    platform: pc_phone
+  - id: battle_royale
+    title: "Королевская битва"
+    genre: shooter
+    audience: sixteen
+    setting: modern
+    style: realism
+    mechanics: pvp_loot
+    platform: pc_phone
+  - id: tycoon
+    title: "Тайкун-менеджер"
+    genre: strategy
+    audience: teen
+    setting: modern
+    style: isometric
+    mechanics: resource_management
+    platform: pc
+  - id: visual_novel
+    title: "Визуальная новелла"
+    genre: visual_novel
+    audience: sixteen
+    setting: school_romance
+    style: anime
+    mechanics: choices_branching
+    platform: pc_phone
+  - id: cozy_twist
+    title: "Коззи с твистом"
+    genre: simulator
+    audience: teen
+    setting: gothic_farm
+    style: stylized
+    mechanics: craft_farm
+    platform: pc
+  - id: coop_horror
+    title: "Кооп-хоррор"
+    genre: horror
+    audience: sixteen
+    setting: abandoned_place
+    style: realism
+    mechanics: coop_hide
+    platform: pc
+  - id: pixel_platformer
+    title: "Пиксельный платформер"
+    genre: platformer
+    audience: kids
+    setting: fantasy
+    style: pixel
+    mechanics: jumps_physics
+    platform: pc_phone
+  - id: rts
+    title: "RTS"
+    genre: strategy
+    audience: teen
+    setting: history_fantasy
+    style: realism
+    mechanics: army_control
+    platform: pc
+  - id: idle_clicker
+    title: "Idle / кликер"
+    genre: idle
+    audience: kids
+    setting: any_setting
+    style: simple
+    mechanics: automation
+    platform: phone
+  - id: sandbox_survival
+    title: "Песочница-выживание"
+    genre: survival
+    audience: teen
+    setting: post_apocalypse
+    style: realism
+    mechanics: craft_build
+    platform: pc
+  - id: party_minigames
+    title: "Партийные мини-игры"
+    genre: party
+    audience: kids
+    setting: festive
+    style: cartoon
+    mechanics: minigames_rounds
+    platform: phone_switch
+  - id: stealth_action
+    title: "Стелс-экшен"
+    genre: stealth_action
+    audience: sixteen
+    setting: modern_history
+    style: realism
+    mechanics: tactic_hide
+    platform: pc
+  - id: arcade_racing
+    title: "Гонки-аркада"
+    genre: racing
+    audience: kids
+    setting: real_world
+    style: realism_stylized
+    mechanics: arcade_tracks
+    platform: console_phone
+  - id: sports_manager
+    title: "Спортивный менеджер"
+    genre: sports_sim
+    audience: teen
+    setting: real_world
+    style: ui_realism
+    mechanics: management_stats
+    platform: pc_phone
+  - id: coop_horror_city
+    title: "Кооп-хоррор: заброшенный город"
+    genre: horror
+    audience: adult
+    setting: abandoned
+    style: realism
+    mechanics: coop_hide
+    platform: pc
+  - id: fairy_physics_puzzle
+    title: "Платформер-головоломка"
+    genre: puzzle
+    audience: kids
+    setting: fairy_tale
+    style: bright_2d
+    mechanics: physics_puzzle
+    platform: pc_phone
   tasks:
   - id: art
     d: 0

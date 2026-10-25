@@ -38,6 +38,78 @@ public static class Level0Builder
             P("jumps", BlockType.Mechanics, "Прыжки", 1), P("gravity", BlockType.Mechanics, "Гравитация", 2), P("craft", BlockType.Mechanics, "Крафт", 3),
             P("phone", BlockType.Platform, "Телефон"), P("pc", BlockType.Platform, "ПК"), P("console", BlockType.Platform, "Консоль"),
         };
+        var packParameters = new[]
+        {
+            P("sixteen", BlockType.Audience, "Подростки 16+"),
+            P("dark_fantasy", BlockType.Setting, "Тёмное фэнтези"),
+            P("psych_hospital", BlockType.Setting, "Психбольница"),
+            P("cozy_village", BlockType.Setting, "Уютная деревня"),
+            P("abstract", BlockType.Setting, "Абстракция"),
+            P("gothic_fantasy", BlockType.Setting, "Готика / фэнтези"),
+            P("any_setting", BlockType.Setting, "Любой сеттинг"),
+            P("modern", BlockType.Setting, "Современность"),
+            P("school_romance", BlockType.Setting, "Школа / романтика"),
+            P("gothic_farm", BlockType.Setting, "Готика (вампир-фермер)"),
+            P("abandoned", BlockType.Setting, "Заброшенный город"),
+            P("abandoned_place", BlockType.Setting, "Заброшка"),
+            P("fantasy", BlockType.Setting, "Фэнтези"),
+            P("history_fantasy", BlockType.Setting, "История / фэнтези"),
+            P("post_apocalypse", BlockType.Setting, "Постапокалипсис"),
+            P("festive", BlockType.Setting, "Весёлый мир"),
+            P("modern_history", BlockType.Setting, "Современность / история"),
+            P("real_world", BlockType.Setting, "Реальный мир"),
+            P("fairy_tale", BlockType.Setting, "Сказка"),
+            P("bright_casual", BlockType.Style, "Яркий казуал", 1),
+            P("drawn_2d", BlockType.Style, "Рисованный 2D", 2),
+            P("illustrations", BlockType.Style, "Иллюстрации", 2),
+            P("isometric", BlockType.Style, "Изометрия", 2),
+            P("anime", BlockType.Style, "Аниме", 2),
+            P("stylized", BlockType.Style, "Стилизованный", 2),
+            P("simple", BlockType.Style, "Простой", 1),
+            P("realism_stylized", BlockType.Style, "Реализм / стилизация", 3),
+            P("ui_realism", BlockType.Style, "UI / реализм", 2),
+            P("bright_2d", BlockType.Style, "Яркий 2D", 1),
+            P("stealth_explore", BlockType.Mechanics, "Стелс и исследование", 2),
+            P("combat", BlockType.Mechanics, "Боевая система", 2),
+            P("craft_farm", BlockType.Mechanics, "Крафт и ферма", 2),
+            P("match3", BlockType.Mechanics, "Match-3", 1),
+            P("hard_combat_stats", BlockType.Mechanics, "Сложный бой и статы", 3),
+            P("explore_upgrades", BlockType.Mechanics, "Исследование и апгрейды", 3),
+            P("deck_random", BlockType.Mechanics, "Deckbuilding и рандом", 2),
+            P("pvp_loot", BlockType.Mechanics, "PvP и лут", 3),
+            P("resource_management", BlockType.Mechanics, "Ресурсы и менеджмент", 3),
+            P("choices_branching", BlockType.Mechanics, "Выборы и ветвление", 2),
+            P("coop_hide", BlockType.Mechanics, "Кооп и прятки", 3),
+            P("jumps_physics", BlockType.Mechanics, "Прыжки и физика", 2),
+            P("army_control", BlockType.Mechanics, "Управление войсками", 3),
+            P("automation", BlockType.Mechanics, "Автоматизация", 1),
+            P("craft_build", BlockType.Mechanics, "Крафт и строительство", 3),
+            P("minigames_rounds", BlockType.Mechanics, "Мини-игры и раунды", 2),
+            P("tactic_hide", BlockType.Mechanics, "Тактика и прятки", 2),
+            P("arcade_tracks", BlockType.Mechanics, "Аркада и трассы", 2),
+            P("management_stats", BlockType.Mechanics, "Менеджмент и статистика", 2),
+            P("physics_puzzle", BlockType.Mechanics, "Физика и головоломки", 2),
+            P("solo_story", BlockType.Mechanics, "Одиночный сюжет", 2),
+            P("pc_console", BlockType.Platform, "ПК / консоль"),
+            P("pc_phone", BlockType.Platform, "ПК / телефон"),
+            P("phone_switch", BlockType.Platform, "Телефон / Switch"),
+            P("console_phone", BlockType.Platform, "Консоль / телефон"),
+            P("action", BlockType.Genre, "Экшен"),
+            P("simulator", BlockType.Genre, "Симулятор"),
+            P("rpg_action", BlockType.Genre, "RPG / экшен"),
+            P("card_strategy", BlockType.Genre, "Карточная стратегия"),
+            P("shooter", BlockType.Genre, "Шутер"),
+            P("strategy", BlockType.Genre, "Стратегия"),
+            P("visual_novel", BlockType.Genre, "Визуальная новелла"),
+            P("idle", BlockType.Genre, "Idle"),
+            P("survival", BlockType.Genre, "Выживание"),
+            P("party", BlockType.Genre, "Party"),
+            P("stealth_action", BlockType.Genre, "Стелс-экшен"),
+            P("racing", BlockType.Genre, "Гонки"),
+            P("sports_sim", BlockType.Genre, "Спорт / симулятор"),
+        };
+        foreach (var parameter in packParameters) parameter.deriveFromPack = true;
+        l.parameters.AddRange(packParameters);
         const Discipline D = Discipline.Design, M = Discipline.Mechanics, S = Discipline.Sound;
         // Rules exist only for linkable block types (ConceptRules.CanLink); the three paper routes are tuned on their chain links.
         l.pairRules = new List<PairRule>
@@ -74,6 +146,37 @@ public static class Level0Builder
             R("kids", "phone", (D, 1), (M, 1)), R("kids", "pc", (D, -1)), R("kids", "console", (D, -1)),
             R("teen", "phone", (D, 1), (M, 1)), R("teen", "pc", (M, 1)), R("teen", "console", (D, 1)),
             R("adult", "phone", (D, -1)), R("adult", "pc", (M, 1)), R("adult", "console", (D, 1), (S, 1)),
+            // Explicit conflicts from the card catalogue. Other new pairs are derived from cardPacks.
+            R("phone", "resource_management", (M, -1)),
+            R("visual_novel", "pvp_loot", (M, -1)),
+            R("idle", "realism", (D, -1)),
+            R("pixel", "adult", (D, -1)),
+            R("party", "solo_story", (M, -1)),
+        };
+        l.cardPacks = new List<CardPackDef>
+        {
+            Pack("psych_horror", "Психологический хоррор", "horror", "adult", "psych_hospital", "realism", "stealth_explore", "pc"),
+            Pack("slasher", "Слэшер", "action", "adult", "dark_fantasy", "realism", "combat", "pc_console"),
+            Pack("cozy_farm", "Коззи-ферма", "simulator", "kids", "cozy_village", "cartoon", "craft_farm", "pc_phone"),
+            Pack("mobile_puzzle", "Мобильная головоломка", "puzzle", "kids", "abstract", "bright_casual", "match3", "phone"),
+            Pack("soulslike", "Соулслайк", "rpg_action", "adult", "dark_fantasy", "realism", "hard_combat_stats", "pc_console"),
+            Pack("metroidvania", "Метроидвания", "platformer", "teen", "gothic_fantasy", "drawn_2d", "explore_upgrades", "pc_console"),
+            Pack("roguelike_deckbuilder", "Рогалик-декбилдер", "card_strategy", "teen", "any_setting", "illustrations", "deck_random", "pc_phone"),
+            Pack("battle_royale", "Королевская битва", "shooter", "sixteen", "modern", "realism", "pvp_loot", "pc_phone"),
+            Pack("tycoon", "Тайкун-менеджер", "strategy", "teen", "modern", "isometric", "resource_management", "pc"),
+            Pack("visual_novel", "Визуальная новелла", "visual_novel", "sixteen", "school_romance", "anime", "choices_branching", "pc_phone"),
+            Pack("cozy_twist", "Коззи с твистом", "simulator", "teen", "gothic_farm", "stylized", "craft_farm", "pc"),
+            Pack("coop_horror", "Кооп-хоррор", "horror", "sixteen", "abandoned_place", "realism", "coop_hide", "pc"),
+            Pack("pixel_platformer", "Пиксельный платформер", "platformer", "kids", "fantasy", "pixel", "jumps_physics", "pc_phone"),
+            Pack("rts", "RTS", "strategy", "teen", "history_fantasy", "realism", "army_control", "pc"),
+            Pack("idle_clicker", "Idle / кликер", "idle", "kids", "any_setting", "simple", "automation", "phone"),
+            Pack("sandbox_survival", "Песочница-выживание", "survival", "teen", "post_apocalypse", "realism", "craft_build", "pc"),
+            Pack("party_minigames", "Партийные мини-игры", "party", "kids", "festive", "cartoon", "minigames_rounds", "phone_switch"),
+            Pack("stealth_action", "Стелс-экшен", "stealth_action", "sixteen", "modern_history", "realism", "tactic_hide", "pc"),
+            Pack("arcade_racing", "Гонки-аркада", "racing", "kids", "real_world", "realism_stylized", "arcade_tracks", "console_phone"),
+            Pack("sports_manager", "Спортивный менеджер", "sports_sim", "teen", "real_world", "ui_realism", "management_stats", "pc_phone"),
+            Pack("coop_horror_city", "Кооп-хоррор: заброшенный город", "horror", "adult", "abandoned", "realism", "coop_hide", "pc"),
+            Pack("fairy_physics_puzzle", "Платформер-головоломка", "puzzle", "kids", "fairy_tale", "bright_2d", "physics_puzzle", "pc_phone"),
         };
         l.tasks = new List<TaskTemplate>
         {
@@ -121,6 +224,8 @@ public static class Level0Builder
     }
 
     static ParamDef P(string id, BlockType t, string title, int tier = 0) => new ParamDef { id = id, type = t, title = title, tier = tier };
+    static CardPackDef Pack(string id, string title, string genre, string audience, string setting, string style, string mechanics, string platform) =>
+        new CardPackDef { id = id, title = title, genre = genre, audience = audience, setting = setting, style = style, mechanics = mechanics, platform = platform };
     static CandidateDef C(string id, string n, Discipline d, int sp, int q) => new CandidateDef { id = id, name = n, d = d, speed = sp, quality = q };
     static EventDef Ev(string id, Discipline d, bool anyone, string text, params (string label, string reply, float energy, float progress, int budget)[] opts)
     {
