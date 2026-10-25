@@ -225,9 +225,9 @@ public static class TaskKit
         v.role = TxtN("Role", head, "Дизайн", 20, Olive, heading); Le(v.role, -1, 30, 1);
         var er = Node("Energy", col); Group<HorizontalLayoutGroup>(er, 10, 0, 0, 0, 0, TextAnchor.MiddleLeft); Le(er, -1, 28);
         var ic = Node("Icon", er); var ii = Img(ic, Spr("Icons/icons-navigation/energy"), Color.white); ii.preserveAspect = true; Le(ic, 30, 24);
-        var track = Node("Track", er); Img(track, Rounded, Palette.Hex("E3E0CC"), 1f); Le(track, -1, 14, 1);
+        var track = Node("Track", er); Img(track, null, Palette.Hex("E3E0CC"), 1f); Le(track, -1, 14, 1);
         var fill = Node("Fill", track); fill.anchorMin = Vector2.zero; fill.anchorMax = Vector2.one; fill.offsetMin = fill.offsetMax = Vector2.zero;
-        v.energyFill = Img(fill, Rounded, Olive, 1f); v.fillRect = fill;
+        v.energyFill = Img(fill, null, Olive, 1f); v.fillRect = fill;
         v.energy = TxtN("Value", er, "100/100", 19, Palette.Ink, heading, TextAlignmentOptions.MidlineRight); v.energy.textWrappingMode = TextWrappingModes.NoWrap; Le(v.energy, 112);
         v.state = TxtN("State", col, "Свободен(на)", 20, Brown, body); Le(v.state, -1, 28);
         v.empty = TxtN("Empty", r, "Свободное место\nнайми в хедхантере", 22, Brown, heading, TextAlignmentOptions.Center);
