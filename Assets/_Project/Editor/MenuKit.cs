@@ -100,14 +100,14 @@ public static class MenuKit
             // title plate
             var plate = Box("Title", root.transform, 70, 50, 880, 250);
             Img(plate, Spr("Panels/panels/title-olive"), Color.white, 1.2f);
-            var tt = Txt(plate, "Билд к пятнице", 80, Cream, heading, TextAlignmentOptions.MidlineLeft);
+            var tt = Txt(plate, "РЕЛИЗ!", 80, Cream, heading, TextAlignmentOptions.MidlineLeft);
             tt.textWrappingMode = TextWrappingModes.NoWrap; tt.enableAutoSizing = true; tt.fontSizeMin = 40; tt.fontSizeMax = 80;
             var tr = tt.rectTransform; tr.anchorMin = Vector2.zero; tr.anchorMax = Vector2.one; tr.offsetMin = new Vector2(56, 70); tr.offsetMax = new Vector2(-180, -34);
             var st = Txt(plate, "СИМУЛЯТОР ГЕЙМДИЗАЙНЕРА", 26, new Color32(0xD8, 0xE2, 0xA6, 255), body, TextAlignmentOptions.MidlineLeft, 8);
             var sr = st.rectTransform; sr.anchorMin = Vector2.zero; sr.anchorMax = new Vector2(1, 0); sr.pivot = new Vector2(0, 0); sr.offsetMin = new Vector2(64, 26); sr.offsetMax = new Vector2(-100, 70);
-            var lp = Box("LogoPlate", plate, 710, 40, 130, 130);   // dark round plate: the pale line-art logo needs a fill
-            Img(lp, Spr("Assets/_Project/Art/UI/circle.png"), Palette.Hex("2B3514"));
-            Icon(lp, "Assets/_Project/Art/UI/Mvp/logo.png", 10, 10, 110);
+            var lp = Box("LogoPlate", plate, 690, 25, 160, 160);
+            var logo = Icon(lp, "Assets/_Project/Art/UI/Mvp/logo.png", 5, 5, 150);
+            logo.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/UI/LogoIvory.mat");
 
             // pitch
             Txt(Box("Pitch", root.transform, 80, 330, 900, 150).transform, "Первая работа.\nПервый релиз.", 66, Cream, heading).rectTransform.Fill();

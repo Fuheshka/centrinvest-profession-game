@@ -86,18 +86,16 @@ public static class MvpTopBarKit
             bar.offsetMin = new Vector2(16, -92); bar.offsetMax = new Vector2(-16, -8);
             Row(bar, 18);
 
-            // logo: fox + title
+            // logo and title
             var logo = Node("Logo", bar);
             Row(logo, 10);
-            var plate = Node("LogoPlate", logo);   // dark round plate: the pale line-art logo is invisible on the bar itself
-            var pi0 = plate.gameObject.AddComponent<Image>();
-            pi0.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/_Project/Art/UI/circle.png"); pi0.color = new Color32(0x2B, 0x35, 0x14, 255); pi0.raycastTarget = false;
-            Le(plate, 72, 72);
-            var li = Node("Logo", plate); Stretch(li, 6);
+            var li = Node("LogoImage", logo);
             var lim = li.gameObject.AddComponent<Image>(); lim.sprite = Spr("Assets/_Project/Art/UI/Mvp/logo.png"); lim.preserveAspect = true; lim.raycastTarget = false;
-            var title = Txt(logo, "Билд\nк пятнице", 24, new Color32(0xEF, 0xF2, 0xDF, 255), heading);
-            title.lineSpacing = -22; Le(title, 150, 64);
-            Le(logo, 230, H);
+            lim.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Art/UI/LogoIvory.mat");
+            Le(li, 80, 80);
+            var title = Txt(logo, "РЕЛИЗ!", 24, new Color32(0xEF, 0xF2, 0xDF, 255), heading);
+            Le(title, 110, 64);
+            Le(logo, 205, H);
 
             // tabs: flat rounded plates (dark, yellow when selected), as in the mockups
             var tabs = Node("Tabs", bar);

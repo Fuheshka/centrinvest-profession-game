@@ -28,7 +28,7 @@
 | G5 | Обложка игры «STARHOP» (отзыв) и космическая сцена с астронавтом (финал) есть только внутри макетов 07 и 08 | Сгенерировать 2 обложки (G-B) |
 | G6 | Картинки значений блоков концепта (платформер, подростки, космос, пиксель, гравитация, телефон) есть только в макете 02; в наборе только иконки категорий | Минимум: иконка категории на карточке. Дополнительно 6 значений по G-C |
 | G7 | Нет иконки «выход» для «Закончить день», вертикальной «⋮», кнопки пауза/настройки в шапке | Взять стрелку вправо и три точки из actions; при желании сгенерировать 3 иконки (G-D) |
-| G8 | Плашка «Билд к пятнице» с лисом (шапка) и логотип меню | Есть `Art/UI/Mvp/logo.png`, `menu-title-plate.png`; сверить с макетом 01 |
+| G8 | Плашка «РЕЛИЗ!» с логотипом лягушки в шапке и меню | Есть `Art/UI/Mvp/logo.png`, `menu-title-plate.png`; сверить с макетом 01 |
 | G9 | Карточка уровня с островом (макет 01) | Спрайт острова не вырезан; взять из `01-menu.png` или G-C |
 | G10 | Звуковая волна для карточки файла в чате (макет 04) | Иконка файла-аудио есть; волну дорисовать (G-D) |
 
@@ -57,7 +57,7 @@
 
 ## 3. Промпты для генерации недостающей графики
 
-Общий префикс для всех: `Use case: ui-asset. Pixel-art UI element for the Russian teen game «Билд к пятнице». Palette: olive #718733, ivory #EFF2DF, sunflower yellow #E7CC38, dark burgundy #210D08, dark brown outline. Chunky pixel look matching the existing kit, transparent background, no text, no watermark.` Референс стиля: `docs/art-source/ui-kit-2026-10-24/overview.jpg`.
+Общий префикс для всех: `Use case: ui-asset. Pixel-art UI element for the Russian teen game «РЕЛИЗ!». Palette: olive #718733, ivory #EFF2DF, sunflower yellow #E7CC38, dark burgundy #210D08, dark brown outline. Chunky pixel look matching the existing kit, transparent background, no text, no watermark.` Референс стиля: `docs/art-source/ui-kit-2026-10-24/overview.jpg`.
 
 - **G-A (фон меню 16:9).** `Illustration only, no UI, no text. 16:9, left 45 percent is flat very dark burgundy #210D08 with sparse faint pixel squares, right 55 percent is a cozy pixel-art game-studio desk scene: cream CRT monitor showing a forest game, cork board with pinned concept cards and green threads, yellow desk lamp, headphones, coffee mug, notebook, books, orange cat asleep on a shelf, big plant, window with warm sunset. Soft gradient from dark left into the scene.`
 - **G-B (обложки).** `Two 16:9 game cover illustrations, no text: (1) pixel-art space platformer, small astronaut on grassy floating platforms, purple ringed planet and stars, dark blue sky; (2) same game, brighter, astronaut jumping with a small round robot companion, orange and teal planets in the background, stars. Same character in both.`

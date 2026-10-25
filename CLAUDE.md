@@ -1,4 +1,4 @@
-# Centr-invest: profession game (case)
+# РЕЛИЗ! – Centr-invest profession game (case)
 
 Hackathon case from Bank "Centr-invest": a browser game that lets a teenager (under 16) try one profession from the inside. Prize fund 100 000 RUB. Full case text: `docs/case/case-centrinvest.pdf` (plain text next to it). Requirements as a checklist: `docs/CASE.md`.
 
