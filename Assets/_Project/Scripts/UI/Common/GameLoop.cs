@@ -31,10 +31,9 @@ namespace Studio.UI.Mvp
             else Paused = true;   // a loaded game waits for the player
         }
 
-        // No frog sound in the project yet: a message ping stands in until Resources/Sfx gets one.
         void OnEnable() => EventRules.Croaked += Croak;
         void OnDisable() => EventRules.Croaked -= Croak;
-        static void Croak() => AudioManager.Play(Fx.MsgNew);
+        static void Croak() => AudioManager.Play(Fx.Frog);
 
         void Start()
         {

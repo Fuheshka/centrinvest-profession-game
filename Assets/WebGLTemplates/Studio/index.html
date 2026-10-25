@@ -172,8 +172,8 @@
         // Desktop style: Render the game canvas container in a window that can be maximized to fullscreen:
         // fill the window, keep 16:9 (the UI is laid out for 1920x1080)
         function fit() {
-          var chrome = document.querySelector("#site-head").offsetHeight + document.querySelector("#site-foot").offsetHeight + 28;
-          var w = Math.min(window.innerWidth - 40, (window.innerHeight - chrome) * 16 / 9);
+          var chrome = document.querySelector("#site-head").offsetHeight + document.querySelector("#site-foot").offsetHeight + 80;
+          var w = Math.min(window.innerWidth - 70, (window.innerHeight - chrome) * 16 / 9);
           fullscreenContainer.style.width = Math.floor(w) + "px";
           fullscreenContainer.style.height = Math.floor(w * 9 / 16) + "px";
         }
