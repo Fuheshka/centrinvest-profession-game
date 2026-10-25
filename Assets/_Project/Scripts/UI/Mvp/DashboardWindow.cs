@@ -40,8 +40,12 @@ namespace Studio.UI.Mvp
 
         void Place(BlockType t)
         {
-            int n = game.S.concept.blocks.Count;
-            float x = 160 + (n % 3) * 360, y = -130 - (n / 3) * 280;
+            float x = 160, y = -190;
+            for (int i = 0; i < 12; i++)   // first grid cell that no block overlaps
+            {
+                x = 160 + (i % 4) * 360; y = -190 - (i / 4) * 230;
+                if (!game.S.concept.blocks.Exists(b => Mathf.Abs(b.x - x) < 300 && Mathf.Abs(b.y - y) < 200)) break;
+            }
             var placed = ConceptRules.Place(game.S, game.L, t, x, y);
             if (placed != null) { popBlock = placed; game.Commit(); Redraw(); }
         }
@@ -158,6 +162,8 @@ namespace Studio.UI.Mvp
                 : s.concept.approved ? "Концепт утверждён" : ok ? "Можно утверждать" : why;
             string count = " " + s.concept.links.Count + "/" + ConceptRules.MaxLinks;
             mode.text = linking ? (linkFrom == null ? "Выбери первый блок" : "Выбери второй блок") + count : "Связать блоки" + count;
+            linkMode.GetComponent<Image>().color = linking ? Palette.Green : Palette.Primary;
+            mode.color = linking ? Palette.Cream : Palette.Ink;
             tagLayer.SetAsLastSibling();
             if (popBlock != null && views.TryGetValue(popBlock, out var pv)) Pulse.Pop(this, pv.transform, 1.07f, 0.25f);
             if (nudgeBlock != null && views.TryGetValue(nudgeBlock, out var nv)) Pulse.Nudge(this, nv.transform);
@@ -209,14 +215,9 @@ namespace Studio.UI.Mvp
             foreach (var pair in views)
             {
                 if (pair.Key == link.a || pair.Key == link.b) continue;
-                var rt = (RectTransform)pair.Value.transform;
-                float t = Mathf.Clamp01(Vector2.Dot(pair.Value.Center - from, chord) / lengthSq);
-                var nearest = from + chord * t;
-                if (Vector2.Distance(pair.Value.Center, nearest) < Mathf.Min(rt.rect.width, rt.rect.height) * 0.49f)
-                {
-                    obstructed = true;
-                    break;
-                }
+                for (int step = 0; step <= 24 && !obstructed; step++)
+                    obstructed = InsideBlock(Vector2.Lerp(from, to, step / 24f), pair.Value, 14f);
+                if (obstructed) break;
             }
             if (!obstructed) return 0f;
 
@@ -227,6 +228,13 @@ namespace Studio.UI.Mvp
             return positive >= negative ? amount : -amount;
         }
 
+        static bool InsideBlock(Vector2 p, BlockView v, float margin)
+        {
+            var r = ((RectTransform)v.transform).rect;
+            var d = p - v.Center;
+            return Mathf.Abs(d.x) < r.width * 0.5f + margin && Mathf.Abs(d.y) < r.height * 0.5f + margin;
+        }
+
         float CurveClearance(Vector2 from, Vector2 to, Vector2 controlOffset, ConceptLink link)
         {
             float clearance = 0f;
@@ -234,6 +242,7 @@ namespace Studio.UI.Mvp
             {
                 float t = step / 10f;
                 var point = Vector2.Lerp(from, to, t) + controlOffset * (4f * t * (1f - t));
+                if (point.x < 12f || point.x > canvas.rect.width - 12f || point.y > -12f || point.y < -canvas.rect.height + 12f) clearance -= 600f;   // curve would leave the board
                 foreach (var pair in views)
                 {
                     if (pair.Key == link.a || pair.Key == link.b) continue;

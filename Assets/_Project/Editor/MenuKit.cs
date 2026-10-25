@@ -121,9 +121,7 @@ public static class MenuKit
             Txt(Box("L0", card, 190, 26, 400, 56), "Уровень 0", 46, Ink, heading).rectTransform.Fill();
             Txt(Box("Name", card, 190, 80, 400, 44), "Обучение", 32, Olive, heading).rectTransform.Fill();
             Txt(Box("Desc", card, 190, 124, 640, 40), "Твой первый проект в студии.", 26, Palette.Hex("5B4A3A"), body).rectTransform.Fill();
-            var badge = Box("Badge", card, 650, 30, 190, 48);
-            Img(badge, Spr("Assets/_Project/Art/UI/rounded.png"), Olive, 1f);
-            var bt = Txt(badge, "12–20 минут", 22, Cream, body, TextAlignmentOptions.Center); bt.rectTransform.Fill();
+            
 
             // nickname
             Txt(Box("NameLabel", root.transform, 80, 800, 500, 34), "Как тебя зовут?", 26, new Color32(0xD8, 0xE2, 0xA6, 255), body).rectTransform.Fill();

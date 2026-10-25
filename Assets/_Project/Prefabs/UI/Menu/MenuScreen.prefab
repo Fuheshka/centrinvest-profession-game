@@ -1256,6 +1256,7 @@ GameObject:
   - component: {fileID: 212114705918135119}
   - component: {fileID: 5027337727965406139}
   - component: {fileID: 3824993853187935146}
+  - component: {fileID: 5241319160311865288}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -1304,7 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16470589, g: 0.09411765, b: 0.0627451, a: 1}
+  m_Color: {r: 0.90588236, g: 0.8, b: 0.21960784, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1383,6 +1384,21 @@ MonoBehaviour:
   pressScale: 0.96
   hoverLift: 2
   duration: 0.12
+--- !u!114 &5241319160311865288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467098055353792020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.16470589, g: 0.05882353, b: 0.007843138, a: 1}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1495403836376815529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,7 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.84705883, g: 0.8862745, b: 0.6509804, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2499,7 +2515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5358221601618287650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3474,7 +3490,6 @@ MonoBehaviour:
   settingsButton: {fileID: 5027337727965406139}
   continueLabel: {fileID: 5184092760407278599}
   confirm: {fileID: 4533151632018815352}
-  fade: {fileID: 1727492198056715274}
 --- !u!225 &1727492198056715274
 CanvasGroup:
   m_ObjectHideFlags: 0

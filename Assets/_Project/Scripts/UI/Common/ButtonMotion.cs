@@ -42,7 +42,8 @@ namespace Studio.UI.Mvp
         void Play()
         {
             bool live = button.IsInteractable();
-            float s = !live ? 1 : down ? pressScale : hover ? hoverScale : 1;
+            // Pressing never shrinks below 1: the raycast rect scales with the button, and a shrunk edge made the release land outside (lost click).
+            float s = !live || down ? 1 : hover ? hoverScale : 1;
             float want = live && hover && !down ? hoverLift : 0;
             if (run != null) StopCoroutine(run);
             if (isActiveAndEnabled) run = StartCoroutine(Tween(baseScale * s, want));
