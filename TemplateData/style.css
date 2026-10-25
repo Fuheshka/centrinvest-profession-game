@@ -1,0 +1,56 @@
+body { padding: 0; margin: 0; min-height: 100vh }
+#unity-container { position: absolute }
+#unity-container.unity-desktop { position: static; display: flex; flex-direction: column; align-items: center; padding-top: 14px }
+#unity-container.unity-mobile { position: fixed; width: 100%; height: 100%; height: 100dvh }
+.unity-mobile #unity-fullscreen-container { width: 100%; height: 100% }
+html, body { overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent }
+#unity-canvas { touch-action: none }
+#unity-fullscreen-container { position: relative }
+.mobile #unity-fullscreen-container { box-shadow: none }
+
+#unity-canvas { position: absolute; width: 100%; height: 100%; background: #231F20 }
+#unity-loading-container { position: absolute; width: 100%; height: 100%; backdrop-filter: blur(5px); display: none; }
+#unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+#unity-logo { width: 260px; height: 260px; margin: 0 auto 24px; background: url('studio-logo.png') no-repeat center / contain }
+#unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('progress-bar-empty-dark.png') no-repeat center }
+#unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
+#unity-footer { position: relative }
+.unity-mobile #unity-footer { display: none }
+#unity-logo-title-footer { float:left; width: 102px; height: 38px; background: url('unity-logo-title-footer.png') no-repeat center }
+#unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px }
+#unity-fullscreen-button { cursor:pointer; float: right; width: 38px; height: 38px; background: url('fullscreen-button.png') no-repeat center }
+#unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+
+#unity-loading-bar { text-align: center; color: #D8E2A6; font-family: sans-serif }
+#unity-progress-bar-empty { margin: 0 auto }
+#unity-footer { display: none }
+
+#rotate-hint { display: none; position: fixed; inset: 0; z-index: 10; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: #1E1A04; color: #D8E2A6; font: 20px sans-serif; text-align: center }
+#rotate-hint .phone { width: 56px; height: 96px; border: 5px solid #D8E2A6; border-radius: 10px; animation: turn 2s ease-in-out infinite }
+@keyframes turn { 0%, 30% { transform: rotate(0) } 70%, 100% { transform: rotate(-90deg) } }
+@media (orientation: portrait) { body:has(.unity-mobile) #rotate-hint { display: flex } }
+
+@font-face { font-family: 'FindSans'; src: url('FindSansPro-Bold.ttf') format('truetype'); font-weight: 700 }
+body { background: #1E1409; font-family: 'FindSans', system-ui, sans-serif; image-rendering: pixelated }
+body:not(.mobile)::before { content: ''; position: fixed; inset: 0; z-index: 0; background: url('frog-pattern.png') 0 0 / 360px; image-rendering: pixelated; opacity: .09; pointer-events: none }
+#unity-container, #site-head { position: relative; z-index: 1 }
+#site-head { display: flex; align-items: center; justify-content: space-between; margin: 18px 28px 0; padding: 8px 14px; background: #6F7F3A; border: 4px solid #E7CC38; box-shadow: 5px 5px 0 #000; color: #EFF2DF }
+#site-head .brand { display: flex; align-items: center; gap: 12px }
+#site-head img { width: 34px; height: 34px; object-fit: contain; image-rendering: auto }
+#site-head .name { font-size: 26px; letter-spacing: .06em; text-shadow: 2px 2px 0 #3B4519 }
+#site-head .tag { font-size: 14px; text-transform: uppercase; letter-spacing: .12em; color: #D8E2A6; padding-left: 12px; border-left: 4px solid #E7CC38 }
+#site-head .link { color: #1E1409; background: #E7CC38; padding: 6px 14px; font-size: 15px; text-decoration: none; box-shadow: 3px 3px 0 #000; text-transform: uppercase; letter-spacing: .06em }
+#site-head .link:hover { background: #F2DB5C }
+#site-head .link:active { transform: translate(3px, 3px); box-shadow: none }
+#unity-container.unity-desktop { padding-top: 26px }
+#unity-fullscreen-container { border: 0; border-radius: 0; overflow: visible; box-shadow: 0 0 0 4px #E7CC38, 0 0 0 10px #5B6B2E, 12px 12px 0 10px #000 }
+#site-foot { gap: 22px; padding: 28px 20px 20px; color: #D8E2A6; font-size: 14px; letter-spacing: .04em }
+#site-foot .hint { opacity: 1 }
+#site-foot kbd { background: #EFF2DF; color: #1E1409; border-radius: 0; padding: 2px 8px; font: 700 13px 'FindSans', monospace; margin-right: 6px; box-shadow: 0 3px 0 #8A8F6A }
+#fs-btn { cursor: pointer; background: #E7CC38; color: #1E1409; border: 0; border-radius: 0; padding: 7px 16px; font: 700 14px 'FindSans', sans-serif; text-transform: uppercase; letter-spacing: .06em; box-shadow: 3px 3px 0 #000 }
+#fs-btn:hover { background: #F2DB5C }
+#fs-btn:active { transform: translate(3px, 3px); box-shadow: none }
+.mobile #site-head, .mobile #site-foot { display: none }
+@media (max-width: 900px) { #site-head .tag { display: none } }
+#unity-fullscreen-container:fullscreen { width: 100vw !important; height: 100vh !important; box-shadow: none }
+#site-foot { display: flex; align-items: center; justify-content: center; flex-wrap: wrap }
