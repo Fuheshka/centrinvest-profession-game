@@ -2,8 +2,7 @@
 
 Our team:
 -Mikhailov Konstantin
--Daniil
-Nikolaeva Eva 
+-Nikolaeva Eva 
 -Skarnovich Yana Artemovna 
 -Ustenko Danil 
 -Kuviko Daniil 
