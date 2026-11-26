@@ -19,7 +19,7 @@
 
 <br>
 
-<img src="docs/progress/ui7/20261024-234545__webgl-main-menu-at-1920x1080.jpg" alt="Главное меню игры" width="760">
+<img src="docs/img/menu-preview.jpg" alt="Главное меню игры РЕЛИЗ!" width="760">
 
 </div>
 
@@ -64,15 +64,15 @@
 
 | Доска концепта | Мессенджер («Жабаграм») |
 |:---:|:---:|
-| <img src="docs/progress/board-kit/20261024-214131__board-on-the-kit-olive-block-column-sticker-blocks-hint-and-.jpg" alt="Доска концепта"><br><sub>Стикеры с параметрами и связи между блоками</sub> | <img src="docs/progress/chat-kit/20261024-220156__chat-messages-with-avatars-beside-the-bubbles.jpg" alt="Чат с командой"><br><sub>ТЗ, события студии и сдача готовых файлов</sub> |
+| <img src="docs/progress/mvp-web-qa/20261025-024110__route-a-concept-plus-twelve-twelve-four.jpg" alt="Доска концепта"><br><sub>Стикеры с параметрами и связи между блоками</sub> | <img src="docs/progress/mvp-web-qa/20261025-024638__route-b-real-art-file-quality-55-in-chat.jpg" alt="Чат с командой"><br><sub>ТЗ, события студии и сдача готовых файлов</sub> |
 
 | Найм команды («ШиШ.ру») | Таск-лист и лоток сборки |
 |:---:|:---:|
-| <img src="docs/progress/headhunter-kit/20261024-214543__headhunter-with-drawn-character-portraits-in-round-frames.jpg" alt="Экран найма"><br><sub>Шесть кандидатов с характеристиками и ставкой</sub> | <img src="docs/progress/tasks-kit/20261024-220156__task-list-rows-with-chips-assignee-and-status-team-column-wi.jpg" alt="Таск-лист"><br><sub>Очередь задач, энергия команды и файлы сборки</sub> |
+| <img src="docs/progress/mvp-web-qa/20261025-024110__route-a-hired-team-before-any-wages.jpg" alt="Экран найма"><br><sub>Шесть кандидатов с характеристиками и ставкой</sub> | <img src="docs/progress/mvp-web-qa/20261025-024217__route-a-four-ready-files-on-day-two.jpg" alt="Таск-лист"><br><sub>Очередь задач, энергия команды и файлы сборки</sub> |
 
 | Отзыв заказчика | Итог и релиз |
 |:---:|:---:|
-| <img src="docs/progress/ui6/review.png" alt="Отзыв заказчика"><br><sub>Оценка по трём осям и разбор слабого места</sub> | <img src="docs/progress/ui6/ending.png" alt="Экран релиза"><br><sub>Обложка проекта, решения и остаток бюджета</sub> |
+| <img src="docs/playtests/mvp-level0/b2-review-69.jpg" alt="Отзыв заказчика"><br><sub>Оценка по трём осям и разбор слабого места</sub> | <img src="docs/progress/mvp-web-qa/20261025-024217__fresh-route-a-passes-with-score-88-and-budget-82000.jpg" alt="Экран релиза"><br><sub>Обложка проекта, решения и остаток бюджета</sub> |
 
 - **Чат.** Борис и нанятые сотрудники пишут в реальном времени, присылают готовые файлы и события студии, где выбор ответа влияет на энергию, время и бюджет.
 - **Доска.** Свободный холст концепта: 22 проверенных набора сочетаний, подсчёт плюсов и минусов, автоматическая генерация задач.
